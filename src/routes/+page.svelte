@@ -97,10 +97,12 @@
         {#if isLoading}
             <ProgressBar />
         {:else}
+        <div class="px-2 w-full" >
             <FileDropzone bind:files={files} on:change={onChangeHandler} name="files" multiple={true} >
                 <svelte:fragment slot="message"><p class="text-xl "><span class="font-semibold">Upload files</span> or drag and drop</p></svelte:fragment>
                 <svelte:fragment slot="meta">GFF and user plot files allowed.</svelte:fragment>
             </FileDropzone>
+        </div>
         {/if}
     </div>
 </div>
