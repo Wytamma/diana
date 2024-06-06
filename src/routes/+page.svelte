@@ -37,7 +37,7 @@
                     }
 					if (name.endsWith('.gff') || name.endsWith('.gff3')){
                         let axis = 'none';
-                        if ($viewsStore.length == 0) {
+                        if ($viewsStore.length == 0 && i == 0) {
                             axis = 'top';
                         } else {
                             axis = 'bottom';
