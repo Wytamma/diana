@@ -40,7 +40,8 @@ export function getAssembly(gffData: string): [string, number] {
     const lines: string[] = gffData.split('\n');
     for (const line of lines) {
         if (line.startsWith('##sequence-region')) {
-            const parts: string[] = line.split(' ');
+            // split the line by whitespace
+            const parts: string[] = line.split(/\s+/);
             const chromosome: string = parts[1];
             const chromosomeLength: number = parseInt(parts[3], 10);
             return [chromosome, chromosomeLength];
@@ -49,10 +50,21 @@ export function getAssembly(gffData: string): [string, number] {
     throw new Error('Could not find the assembly information in the GFF file');
 }
 
+function removeFasta(gffData: string): string {
+    const lines: string[] = gffData.split('\n');
+    const result: string[] = [];
+    for (const line of lines) {
+        if (line.startsWith('##FASTA')) {
+            break;  
+        }
+        result.push(line);
+    }
+    return result.join('\n');
+}
 
-export async function gffToView(data:string, name:string, axis:string) {
-    const processedData = sortGff(data); 
-    
+export async function gffToView(data:string, name:string, axis:string, width:number) {
+    const filteredData = removeFasta(data);
+    const processedData = sortGff(filteredData); 
     const CLI = await new Aioli([
         "htslib/tabix/1.17",
 	    "htslib/bgzip/1.17",
@@ -76,13 +88,15 @@ export async function gffToView(data:string, name:string, axis:string) {
         "linkingId": "SharedXAxis",
         "id": "1-gene",
         "height": 160,
+        "width": width,
         "data": {
         "url": url,
         "indexUrl": indexUrl,  
           "type": "gff",
           "attributesToFields": [
             {"attribute": "gene_biotype", "defaultValue": "unknown"},
-            {"attribute": "Name", "defaultValue": "unknown"}
+            {"attribute": "Name", "defaultValue": "unknown"},
+            {"attribute": "ID", "defaultValue": "unknown"}
           ]
         },
         "color": {
@@ -101,7 +115,7 @@ export async function gffToView(data:string, name:string, axis:string) {
         "tracks": [
           {
             "dataTransform": [
-              {"type": "filter", "field": "type", "oneOf": ["gene"]},
+              {"type": "filter", "field": "type", "oneOf": ["gene", "CDS"]},
               {"type": "filter", "field": "strand", "oneOf": ["+"]}
             ],
             "mark": "triangleRight",
@@ -110,7 +124,7 @@ export async function gffToView(data:string, name:string, axis:string) {
           },
           {
             "dataTransform": [
-              {"type": "filter", "field": "type", "oneOf": ["gene"]}
+              {"type": "filter", "field": "type", "oneOf": ["gene", "CDS"]}
             ],
             "mark": "text",
             "text": {"field": "Name", "type": "nominal"},
@@ -120,7 +134,7 @@ export async function gffToView(data:string, name:string, axis:string) {
           },
           {
             "dataTransform": [
-              {"type": "filter", "field": "type", "oneOf": ["gene"]},
+              {"type": "filter", "field": "type", "oneOf": ["gene", "CDS"]},
               {"type": "filter", "field": "strand", "oneOf": ["-"]}
             ],
             "mark": "triangleLeft",
@@ -130,7 +144,7 @@ export async function gffToView(data:string, name:string, axis:string) {
           },
           {
             "dataTransform": [
-              {"type": "filter", "field": "type", "oneOf": ["gene"]},
+              {"type": "filter", "field": "type", "oneOf": ["gene", "CDS"]},
               {"type": "filter", "field": "strand", "oneOf": ["+"]}
             ],
             "mark": "rule",
@@ -141,7 +155,7 @@ export async function gffToView(data:string, name:string, axis:string) {
           },
           {
             "dataTransform": [
-              {"type": "filter", "field": "type", "oneOf": ["gene"]},
+              {"type": "filter", "field": "type", "oneOf": ["gene", "CDS"]},
               {"type": "filter", "field": "strand", "oneOf": ["-"]}
             ],
             "mark": "rule",

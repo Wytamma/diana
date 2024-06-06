@@ -23,16 +23,18 @@ function convertUserPlotDataToCSV(userPlotData: string) {
     return csvData.join('\n');
 }
 
-export function userPlotToView(userPlotData: string, name: string) {
+export function userPlotToView(userPlotData: string, name: string, width: number) {
     // console.log("userPlotData", userPlotData);
             // Base64 encoded data
 
     let userPlotDataCSV = convertUserPlotDataToCSV(userPlotData);
     let blobURL = createBlobURL(userPlotDataCSV);
-    let domain = [0, 17];
+    let domain = [0, 20];
     return {
         "alignment": "overlay",
         "height": 100,
+        "width": width,
+        "style": {"outlineWidth": 0},
         "tracks":[
           {
               "layout": "linear",

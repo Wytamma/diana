@@ -11,6 +11,7 @@
     let dataLoaded: boolean = false; // Initially false
     let chromosome: string;
     let chromosomeLength: number;
+    let width = 1000;
 
     function onChangeHandler(e: Event): void {
         if (!files || files.length === 0) {
@@ -31,25 +32,26 @@
                         const gff = convertEmblToGff3(text);
                         console.log(gff);
                         
-                        let view = gffToView(gff, name);
+                        let view = gffToView(gff, name, width);
                         resolve(view);
                     }
 					if (name.endsWith('.gff') || name.endsWith('.gff3')){
                         let axis = 'none';
-                        if (i == files.length - 1) {
-                            axis = 'bottom';
-                        } else if (i == 0) {
+                        if ($viewsStore.length == 0) {
                             axis = 'top';
+                        } else {
+                            axis = 'bottom';
                         }
                         [chromosome, chromosomeLength] = getAssembly(text);
-						let view = gffToView(text, name, axis);
+                        console.log(chromosome, chromosomeLength);
+						let view = gffToView(text, name, axis, width);
 						resolve(view);
 					}
                     if (!chromosome) {
                         chromosome = "chr1";
                         chromosomeLength = text?.split('\n').length;
                     }
-                    let view = userPlotToView(text, name);
+                    let view = userPlotToView(text, name, width);
                     resolve(view);
                 };
                 reader.onerror = reject;
@@ -86,7 +88,7 @@
         {#if dataLoaded}
             <GoslingComponent spec={{
 				"padding": 0,
-				"spacing": 0,
+				"spacing": 10,
 				"layout": "linear",
 				"assembly": [[chromosome, chromosomeLength]],
 				"style": {"enableSmoothPath": true, "outlineWidth": 0},
