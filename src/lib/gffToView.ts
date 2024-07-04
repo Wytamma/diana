@@ -66,8 +66,16 @@ export async function gffToView(data:string, name:string, axis:string, width:num
     const filteredData = removeFasta(data);
     const processedData = sortGff(filteredData); 
     const CLI = await new Aioli([
-        "htslib/tabix/1.17",
-	    "htslib/bgzip/1.17",
+      {
+        tool: "tabix",
+        version: "1.17",
+        urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/tabix`
+      },
+      {
+        tool: "bgzip",
+        version: "1.17",
+        urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/bgzip`
+      }
     ]);
     
     const paths = await CLI.mount([{
@@ -86,7 +94,6 @@ export async function gffToView(data:string, name:string, axis:string, width:num
     return {
         "alignment": "overlay",
         "linkingId": "SharedXAxis",
-        "id": "1-gene",
         "height": 160,
         "width": width,
         "data": {
