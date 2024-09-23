@@ -9,13 +9,13 @@ function sortGff(gffData: string): string {
     const headerLines: string[] = [];
     const dataLines: string[] = [];
 
-    lines.forEach(line => {
+    for (const line of lines) {
         if (line.startsWith('#')) {
             headerLines.push(line);
         } else if (line.trim() !== '') {
             dataLines.push(line);
         }
-    });
+    }
 
     // Sort the data lines based on the first column (alphanumeric) and fourth column (numeric)
     dataLines.sort((a, b) => {
@@ -26,7 +26,7 @@ function sortGff(gffData: string): string {
             return col1Comparison;
         }
         // Ensure numeric comparison for the fourth column
-        const col4Comparison: number = parseInt(aCols[3], 10) - parseInt(bCols[3], 10);
+        const col4Comparison: number = Number.parseInt(aCols[3], 10) - Number.parseInt(bCols[3], 10);
         return col4Comparison;
     });
 
@@ -43,7 +43,7 @@ export function getAssembly(gffData: string): [string, number] {
             // split the line by whitespace
             const parts: string[] = line.split(/\s+/);
             const chromosome: string = parts[1];
-            const chromosomeLength: number = parseInt(parts[3], 10);
+            const chromosomeLength: number = Number.parseInt(parts[3], 10);
             return [chromosome, chromosomeLength];
         }
     }
@@ -65,6 +65,7 @@ function removeFasta(gffData: string): string {
 export async function gffToView(data:string, name:string, axis:string, width:number) {
     const filteredData = removeFasta(data);
     const processedData = sortGff(filteredData); 
+    console.log(processedData);
     const CLI = await new Aioli([
       {
         tool: "tabix",
@@ -93,6 +94,7 @@ export async function gffToView(data:string, name:string, axis:string, width:num
     const indexUrl = createBlobURL(indexFile);
     return {
         "alignment": "overlay",
+        "id": "gff",
         "linkingId": "SharedXAxis",
         "height": 160,
         "width": width,
@@ -117,7 +119,7 @@ export async function gffToView(data:string, name:string, axis:string, width:num
             "pseudogene",
             "unknown"
           ],
-          "range": ["#3498db", "#e74c3c", "#1abc9c", "#f1c40f", "#8e44ad", "#2c3e50"]
+          "range": ["#e74c3c", "#1abc9c", "#f1c40f", "#8e44ad", "#2c3e50", "#3498db"]
         },
         "tracks": [
           {

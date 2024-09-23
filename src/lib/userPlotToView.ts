@@ -5,7 +5,7 @@ function convertUserPlotDataToCSV(userPlotData: string) {
     const lines = userPlotData.split('\n');
 
     // Create an array to store the CSV data
-    let csvData: string[] = [];
+    const csvData: string[] = [];
 
     // Iterate over each line in the userPlotData
     let lineNumber = 0;
@@ -27,9 +27,9 @@ export function userPlotToView(userPlotData: string, name: string, width: number
     // console.log("userPlotData", userPlotData);
             // Base64 encoded data
 
-    let userPlotDataCSV = convertUserPlotDataToCSV(userPlotData);
-    let blobURL = createBlobURL(userPlotDataCSV);
-    let domain = [0, 20];
+    const userPlotDataCSV = convertUserPlotDataToCSV(userPlotData);
+    const blobURL = createBlobURL(userPlotDataCSV);
+    const domain = [0, 20];
     return {
         "alignment": "overlay",
         "height": 100,
