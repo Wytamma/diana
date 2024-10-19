@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onDestroy, onMount } from 'svelte';
     import { embed, type GoslingSpec } from 'gosling.js';
-    import { gffStore, geneNames } from '$lib/stores/gffStore';
+    import { gffStore, geneNames } from '$lib/stores/annotationStore';
     import { Autocomplete, type PopupSettings, type AutocompleteOption } from '@skeletonlabs/skeleton';
     import { popup, modeCurrent } from '@skeletonlabs/skeleton';
 

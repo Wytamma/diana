@@ -8,3 +8,14 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+tests/data/chromosome_RRW_a.gff
+tests/data/Ef_aus0233_RRW.gff
+tests/data/GCF_009734005.1.gff
+tests/data/insert_site_plot_van0_1
+tests/data/insert_site_plot_van0_2
+tests/data/insert_site_plot_van4_1
+tests/data/insert_site_plot_van4_2
+tests/data/my_van0_1.userplot
+tests/data/my_van0_2.userplot
+tests/data/my_van128_1.userplot
+tests/data/my_van128_2.userplot

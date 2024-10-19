@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/generateGeneInsertSites';
-	import { gffStore } from '$lib/stores/gffStore';
+	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/utils/generateGeneInsertSites';
+	import { annotationStore } from '$lib/stores/annotationStore';
 	import { type ReadCountDataPoint, userPlotStore } from '$lib/stores/userPlotStore';
 	import Plotly from 'plotly.js-dist';
 	import { onMount, afterUpdate } from 'svelte';
@@ -17,7 +17,7 @@
 	// For each userPlotData, calculate total reads and generate GeneInsertResults
 	function getGeneInsertResultsForData(userPlotData: ReadCountDataPoint[]) {
 		const totalReads = userPlotData.map(data => data.minus + data.plus);
-		return generateGeneInsertSites($gffStore.features, totalReads, $taStore, 0, 0);
+		return generateGeneInsertSites($annotationStore.features, totalReads, $taStore, 0, 0);
 	}
 
 	// Function to render the plot for a given element ID
