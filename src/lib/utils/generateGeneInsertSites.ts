@@ -1,5 +1,5 @@
-import type { Feature } from "$lib/stores/gffStore";
-import { taStore } from "./stores/TAStore";
+import type { Feature } from "$lib/stores/annotationStore";
+import { taStore } from "../stores/TAStore";
 
 export interface GeneInsertResult {
   name: string;

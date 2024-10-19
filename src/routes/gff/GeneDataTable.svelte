@@ -6,9 +6,9 @@
 	import RowCount from '$lib/components/datatable/RowCount.svelte';
 	import Pagination from '$lib/components/datatable/Pagination.svelte';
     import { DataHandler } from '@vincjo/datatables';
-    import { gffStore, type Feature } from "$lib/stores/gffStore"; 
+    import { annotationStore, type Feature } from "$lib/stores/annotationStore"; 
 	
-	const features: Feature[] = $gffStore.features;
+	const features: Feature[] = $annotationStore.features;
     
     const handler = new DataHandler(features, { rowsPerPage: 5 });
     const rows = handler.getRows();

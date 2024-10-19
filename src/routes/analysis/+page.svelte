@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {tradisEssentiality} from '$lib/tradisEssentiality';
-    import {generateGeneInsertSites} from '$lib/generateGeneInsertSites';
-    import {gffStore} from '$lib/stores/gffStore';
+    import {tradisEssentiality} from '$lib/utils/tradisEssentiality';
+    import {generateGeneInsertSites} from '$lib/utils/generateGeneInsertSites';
+    import {annotationStore} from '$lib/stores/annotationStore';
     import {userPlotStore, type ReadCountDataPoint} from '$lib/stores/userPlotStore';
     import { onMount, onDestroy } from 'svelte';
     import ApexCharts from 'apexcharts';
@@ -16,7 +16,7 @@
     const userPlotData = data[0];
     const totalReads = userPlotData.map(data => data.minus + data.plus)
     console.log("totalReads", totalReads)
-    const generateGeneInsertSitesData = generateGeneInsertSites($gffStore.features, totalReads, $taStore, 0, 0)
+    const generateGeneInsertSitesData = generateGeneInsertSites($annotationStore.features, totalReads, $taStore, 0, 0)
     console.log("generateGeneInsertSitesData", generateGeneInsertSitesData)
     const essential = tradisEssentiality(generateGeneInsertSitesData)
     const plotData = essential.plotData

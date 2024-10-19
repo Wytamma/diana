@@ -2,8 +2,8 @@
     import DataTable from './InsertDataTable.svelte';
     import { TabGroup, Tab } from '@skeletonlabs/skeleton';
     import { userPlotStore } from '$lib/stores/userPlotStore';
-	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/generateGeneInsertSites';
-	import { gffStore } from '$lib/stores/gffStore';
+	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/utils/generateGeneInsertSites';
+	import { annotationStore } from '$lib/stores/annotationStore';
     import { taStore } from '$lib/stores/TAStore';
 
     let tabSet = 'insertIndex'
@@ -12,7 +12,7 @@
     const selectedData: Record<string, GeneInsertResult[]> = {};
     for (const [key, data] of $userPlotStore) {
         const totalReads = data.map(data => data.minus + data.plus)
-        const generateGeneInsertSitesData = generateGeneInsertSites($gffStore.features, totalReads, $taStore, 0, 0)
+        const generateGeneInsertSitesData = generateGeneInsertSites($annotationStore.features, totalReads, $taStore, 0, 0)
         selectedData[key] = generateGeneInsertSitesData
     }
 

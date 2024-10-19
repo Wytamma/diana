@@ -5,10 +5,13 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';  // Import page store from SvelteKit
-	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
+    import { referenceStore } from '$lib/stores/refStore';
+
+	initializeStores();
 
 
-	let currentTile = '/upload'; // Default to home page
+	let currentTile = '/data'; // Default to home page
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
@@ -20,14 +23,14 @@
 		goto(path);
 	}
 </script>
-
+<Toast position='br' />
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar shadow="drop-shadow-lg">
 			<svelte:fragment slot="lead">
-				<a href="/upload"><strong class="text-xl uppercase">Diana</strong></a>
+				<a href="/data"><strong class="text-xl uppercase">Diana</strong></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
@@ -44,13 +47,15 @@
 
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
-			<AppRailTile on:click={() => navigateTo('/upload')} bind:group={currentTile} name="tile-1" value="/upload" title="tile-1">
-				<span>Load</span>
+			<AppRailTile on:click={() => navigateTo('/data')} bind:group={currentTile} name="tile-1" value="/data" title="tile-1">
+				<span>Data</span>
 			</AppRailTile>
-			<AppRailTile disable on:click={() => navigateTo('/track')} bind:group={currentTile} name="tile-2" value="/track" title="tile-2">
-				<span>Track</span>
-			</AppRailTile>
-			<AppRailTile disable on:click={() => navigateTo('/statistics')} bind:group={currentTile} name="tile-4" value="/statistics" title="tile-4">
+			{#if $referenceStore.name}
+				<AppRailTile on:click={() => navigateTo('/tracks')} bind:group={currentTile} name="tile-2" value="/tracks" title="tile-2">
+					<span>Tracks</span>
+				</AppRailTile>
+			{/if}
+			<!-- <AppRailTile disable on:click={() => navigateTo('/statistics')} bind:group={currentTile} name="tile-4" value="/statistics" title="tile-4">
 				<span>Stats</span>
 			</AppRailTile>
 			<AppRailTile disable on:click={() => navigateTo('/plotly')} bind:group={currentTile} name="tile-4" value="/plotly" title="tile-4">
@@ -61,9 +66,9 @@
 			</AppRailTile>
 			<AppRailTile disable on:click={() => navigateTo('/gff')} bind:group={currentTile} name="tile-3" value="/gff" title="tile-3">
 				<span>GFF</span>
-			</AppRailTile>
+			</AppRailTile> -->
 			<svelte:fragment slot="trail">
-				<LightSwitch />
+				<!-- <LightSwitch /> -->
 			</svelte:fragment>
 		</AppRail>
 	</svelte:fragment>
