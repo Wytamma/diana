@@ -31,7 +31,7 @@
 					url: $taStore.url,
 					indexURL: $taStore.indexUrl,
 					visibilityWindow: 0,
-					color: "red"
+					color: "#34495e"
 				},
 				...Array.from( $userPlotStore ).map(([name, text]) => {
 					return {
