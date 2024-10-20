@@ -88,7 +88,7 @@ function onChangeHandler(e: Event): void {
                     await taStore.load(fasta);
                     resolve(0);
                     
-                } else if (name.endsWith('.userplot')) {
+                } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
                     await userPlotStore.load(name, text);
                 } else {
                     console.error('Unsupported file type:', name);
