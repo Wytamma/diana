@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { referenceStore } from "$lib/stores/refStore";
 	import { annotationStore } from "$lib/stores/annotationStore";
+	import { igvStore } from "$lib/stores/igvStore";
 	import igv from 'igv';
     import { onMount } from "svelte";
     import { taStore } from "$lib/stores/TAStore";
 	import { createBlobURL } from "$lib/utils/utils";
     import { userPlotStore } from "$lib/stores/userPlotStore";
-	let browser;
+    import { beforeNavigate } from "$app/navigation";
+	
+	let browser: any;
 	let mounted = false;
 
 	onMount(() => {
@@ -16,6 +19,7 @@
 	$: config = {
 		loadDefaultGenomes: false,
 		search: false,
+		locus: $igvStore.locus,
 		reference: {
 			"id": $referenceStore.name,
 			"name": $referenceStore.name,
@@ -42,6 +46,7 @@
 					logScale: true,
 					windowFunction: 'mean',
 					visibilityWindow: undefined,
+					autoscaleGroup: "insertPlots",
 					url: createBlobURL(text.replace('variableStep chrom=chrom span=2', `variableStep chrom=${$taStore.raw.keys().next().value} span=2`)),
 					autoscale: true,
 					color: "rgb(59, 61, 145)",
@@ -80,14 +85,30 @@
   	};
 	
 	async function  createBrowser() {
-		igv.removeAllBrowsers();
-		const div = document.getElementById('igv_div'); 
-		browser = await igv.createBrowser(div, config);
+		const div = document.getElementById('igv_div');
+		if (div === null) {
+			return;
+		}
+		igv.createBrowser(div, config).then((browser) => {
+			browser.on('locuschange', (referenceFrameList) => {
+				let loc = referenceFrameList.map((rf: { getLocusString: () => any; }) => rf.getLocusString()).join('%20')
+				$igvStore.locus = loc;
+			});
+		}).catch((e) => {
+			// bad locus can cause an error
+			$igvStore.locus = undefined;
+		});
 	}
 
 	$: if (mounted && browser == undefined && $referenceStore.url !== undefined && $annotationStore.url !== undefined && $taStore.url !== undefined) {
 		createBrowser();
 	}
+
+	beforeNavigate(() => {
+		if (browser !== undefined) {
+			igv.removeBrowser(browser)
+		}
+	});
 
 	
 </script>

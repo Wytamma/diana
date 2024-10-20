@@ -6,6 +6,7 @@ import { taStore } from "$lib/stores/TAStore";
 import { referenceStore } from "$lib/stores/refStore";
 import { getToastStore } from '@skeletonlabs/skeleton';
 import type { ToastSettings } from '@skeletonlabs/skeleton';
+import { igvStore } from "$lib/stores/igvStore";
 
 const toastStore = getToastStore();
 
@@ -83,6 +84,7 @@ function onChangeHandler(e: Event): void {
                         };
                         toastStore.trigger(t);
                     });
+                    $igvStore.locus = undefined; // Reset the locus
                     await taStore.load(fasta);
                     resolve(0);
                     
