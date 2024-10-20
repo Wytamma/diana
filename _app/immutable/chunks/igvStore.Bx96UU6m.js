@@ -1,0 +1,1 @@
+import{w as o}from"./index.BXt1N_H5.js";const r=o({locus:void 0});export{r as i};
