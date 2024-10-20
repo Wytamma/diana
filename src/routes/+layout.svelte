@@ -11,7 +11,7 @@
 	initializeStores();
 
 
-	let currentTile = '/data'; // Default to home page
+	let currentTile = '/'; // Default to home page
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
@@ -30,7 +30,7 @@
 		<!-- App Bar -->
 		<AppBar shadow="drop-shadow-lg">
 			<svelte:fragment slot="lead">
-				<a href="/data"><strong class="text-xl uppercase">Diana</strong></a>
+				<a href="/"><strong class="text-xl uppercase">Diana</strong></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
@@ -47,7 +47,7 @@
 
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
-			<AppRailTile on:click={() => navigateTo('/data')} bind:group={currentTile} name="tile-1" value="/data" title="tile-1">
+			<AppRailTile on:click={() => navigateTo('/')} bind:group={currentTile} name="tile-1" value="/" title="tile-1">
 				<span>Data</span>
 			</AppRailTile>
 			{#if $referenceStore.name}
