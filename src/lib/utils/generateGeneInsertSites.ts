@@ -16,7 +16,7 @@ export interface GeneInsertResult {
 
 export function generateGeneInsertSites(
   genes: Feature[],
-  plotData: number[],
+  insertData: number[],
   taSites: number[],
   trim5 = 0,
   trim3 = 0
@@ -39,9 +39,9 @@ export function generateGeneInsertSites(
 
     // Sum the read counts within the trimmed range
     for (let i = readStart; i <= readEnd; i++) {
-      if (plotData[i]) {
-        readCount += plotData[i];
-        if (plotData[i] > 0) {
+      if (insertData[i]) {
+        readCount += insertData[i];
+        if (insertData[i] > 0) {
           insertCount++;
         }
       }

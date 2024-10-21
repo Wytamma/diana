@@ -55,9 +55,10 @@
 					<span>Tracks</span>
 				</AppRailTile>
 			{/if}
-			<!-- <AppRailTile disable on:click={() => navigateTo('/statistics')} bind:group={currentTile} name="tile-4" value="/statistics" title="tile-4">
-				<span>Stats</span>
+			<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
+				<span>Plot</span>
 			</AppRailTile>
+			<!--
 			<AppRailTile disable on:click={() => navigateTo('/plotly')} bind:group={currentTile} name="tile-4" value="/plotly" title="tile-4">
 				<span>Plots</span>
 			</AppRailTile>

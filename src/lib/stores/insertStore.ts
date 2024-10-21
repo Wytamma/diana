@@ -7,7 +7,6 @@ export interface InsertCountData {
 }
 
 export interface InsertCountDataPoint {
-    loc: number;
     plus: number;
     minus: number;
 }
@@ -70,8 +69,7 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
         // Process each chunk synchronously to avoid creating too many promises
         chunk.forEach((line, index) => {
             const [plus, minus] = line.split(/\s+/).map((x) => parseInt(x, 10));
-            if (plus !== 0 || minus !== 0)
-                data.insertions.push({ loc: i + index, plus, minus });
+            data.insertions.push({ plus, minus });
             if (plus !== 0)
                 wigArray.push(`${i + index} ${plus}`);
             if (minus !== 0)
