@@ -1,12 +1,13 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, AppBar, AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, AppRail, AppRailTile } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';  // Import page store from SvelteKit
 	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
     import { referenceStore } from '$lib/stores/refStore';
+    import { insertStore } from '$lib/stores/insertStore';
 
 	initializeStores();
 
@@ -55,9 +56,11 @@
 					<span>Tracks</span>
 				</AppRailTile>
 			{/if}
-			<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
-				<span>Plot</span>
-			</AppRailTile>
+			{#if $referenceStore.name && $insertStore.size > 0}
+				<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
+					<span>Plot</span>
+				</AppRailTile>
+			{/if}
 			<!--
 			<AppRailTile disable on:click={() => navigateTo('/plotly')} bind:group={currentTile} name="tile-4" value="/plotly" title="tile-4">
 				<span>Plots</span>
