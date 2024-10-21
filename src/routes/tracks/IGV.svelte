@@ -89,14 +89,16 @@
 		if (div === null) {
 			return;
 		}
-		igv.createBrowser(div, config).then((browser) => {
-			browser.on('locuschange', (referenceFrameList) => {
-				let loc = referenceFrameList.map((rf: { getLocusString: () => any; }) => rf.getLocusString()).join('%20')
-				$igvStore.locus = loc;
-			});
-		}).catch((e) => {
+		browser = await igv.createBrowser(div, config).catch((e) => {
 			// bad locus can cause an error
 			$igvStore.locus = undefined;
+		});
+		if (browser === undefined) {
+			return;
+		}
+		browser.on('locuschange', (referenceFrameList) => {
+			let loc = referenceFrameList.map((rf: { getLocusString: () => any; }) => rf.getLocusString()).join('%20')
+			$igvStore.locus = loc;
 		});
 	}
 
@@ -106,7 +108,7 @@
 
 	beforeNavigate(() => {
 		if (browser !== undefined) {
-			igv.removeBrowser(browser)
+			igv.removeAllBrowsers()
 		}
 	});
 

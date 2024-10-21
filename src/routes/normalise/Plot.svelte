@@ -8,7 +8,7 @@
     import { onMount, onDestroy } from 'svelte';
 
     export let filename;
-    export let data: InsertCountDataPoint[];
+    export let data: number[];
 
     let plotId = `plotly-${filename}`;
     let isLoading = true;
@@ -24,8 +24,7 @@
     };
 
     onMount(async () => {
-        const insertTotals = data.map(d => d.minus + d.plus);
-        const geneInserts = await generateGeneInsertSites($annotationStore.features, insertTotals, [], 0, 0);
+        const geneInserts = await generateGeneInsertSites($annotationStore.features, data, [], 0, 0);
 
         const layout = {
             yaxis: { title: 'Insert Index' },

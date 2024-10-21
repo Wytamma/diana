@@ -2,13 +2,8 @@ import { writable } from 'svelte/store';
 
 export interface InsertCountData {
     wig: string;
-    insertions: InsertCountDataPoint[];
+    total: number[];
 
-}
-
-export interface InsertCountDataPoint {
-    plus: number;
-    minus: number;
 }
 
 function createInsertStore() {
@@ -38,26 +33,14 @@ function createInsertStore() {
     };
 }
 
-// let text = `track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on
-// variableStep chrom=1 span=2
-// 701 10.0
-// 701 -10.0
-// 901 12.5
-// 401 15.0
-// 601 17.5
-// 901 20.0
-// 081 17.5
-// 301 15.0
-// 691 12.5
-// 871 10.0`;
-
 // Helper function to parse text in smaller chunks to avoid freezing the main thread.
 async function parseTextInChunks(text: string, chunkSize: number = 50000): Promise<InsertCountData> {
     const lines = text.split('\n');
     const wigArray: string[] = [];
     const data: InsertCountData = {
         wig: '',
-        insertions: [],
+        // preallocate the array to avoid resizing
+        total: [],
     };
     wigArray.push('track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on');
     wigArray.push('variableStep chrom=chrom span=2');
@@ -69,7 +52,7 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
         // Process each chunk synchronously to avoid creating too many promises
         chunk.forEach((line, index) => {
             const [plus, minus] = line.split(/\s+/).map((x) => parseInt(x, 10));
-            data.insertions.push({ plus, minus });
+            data.total.push(plus + minus);
             if (plus !== 0)
                 wigArray.push(`${i + index} ${plus}`);
             if (minus !== 0)
