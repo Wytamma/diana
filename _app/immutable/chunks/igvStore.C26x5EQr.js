@@ -1,0 +1,1 @@
+import{w as o}from"./index.DsiQ7ewd.js";const r=o({locus:void 0});export{r as i};
