@@ -1,5 +1,4 @@
 import type { Feature } from "$lib/stores/annotationStore";
-import { taStore } from "../stores/TAStore";
 
 export interface GeneInsertResult {
   name: string;
@@ -14,16 +13,17 @@ export interface GeneInsertResult {
   numberTASites: number;
 }
 
-export function generateGeneInsertSites(
+export async function generateGeneInsertSites(
   genes: Feature[],
   insertData: number[],
   taSites: number[],
   trim5 = 0,
   trim3 = 0
-): GeneInsertResult[] {
+): Promise<GeneInsertResult[]> {
   const results: GeneInsertResult[] = [];
 
-  for (const gene of genes) {
+  for (let i = 0; i < genes.length; i++) {
+    const gene = genes[i];
     const geneLength = gene.end - gene.start + 1;
     
     // Calculate trimmed start and end positions
@@ -38,18 +38,18 @@ export function generateGeneInsertSites(
     let insertCount = 0;
 
     // Sum the read counts within the trimmed range
-    for (let i = readStart; i <= readEnd; i++) {
-      if (insertData[i]) {
-        readCount += insertData[i];
-        if (insertData[i] > 0) {
+    for (let j = readStart; j <= readEnd; j++) {
+      if (insertData[j]) {
+        readCount += insertData[j];
+        if (insertData[j] > 0) {
           insertCount++;
         }
       }
     }
 
     // Find the TA sites within the trimmed range
-    const geneTASites = []//taSites.filter((site) => site >= readStart && site <= readEnd);
-    const saturation = 0//insertCount / geneTASites.length;
+    const geneTASites = taSites.filter((site) => site >= readStart && site <= readEnd);
+    const saturation = geneTASites.length > 0 ? insertCount / geneTASites.length : 0;
 
     const insIndex = insertCount / (readEnd - readStart + 1);
 
@@ -66,6 +66,11 @@ export function generateGeneInsertSites(
       saturation,
       numberTASites: geneTASites.length
     });
+
+    // Yield control back to the event loop every few iterations to keep the UI responsive.
+    if (i % 100 === 0) {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    }
   }
 
   return results;

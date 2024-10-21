@@ -2,19 +2,16 @@
     import { annotationStore } from '$lib/stores/annotationStore';
     import { type InsertCountDataPoint } from '$lib/stores/insertStore';
     import { generateGeneInsertSites } from '$lib/utils/generateGeneInsertSites';
-    
+    import { ProgressRadial } from '@skeletonlabs/skeleton';
+
     import Plotly from 'plotly.js-dist';
     import { onMount, onDestroy } from 'svelte';
 
     export let filename;
     export let data: InsertCountDataPoint[];
 
-    const insertTotals = data.map(d => d.minus + d.plus);
-    const geneInserts = generateGeneInsertSites($annotationStore.features, insertTotals, [], 0, 0);
-
-    console.log(geneInserts);
-
     let plotId = `plotly-${filename}`;
+    let isLoading = true;
 
     const resizePlot = () => {
         const plotElement = document.getElementById(plotId);
@@ -26,7 +23,10 @@
         }
     };
 
-    onMount(() => {
+    onMount(async () => {
+        const insertTotals = data.map(d => d.minus + d.plus);
+        const geneInserts = await generateGeneInsertSites($annotationStore.features, insertTotals, [], 0, 0);
+
         const layout = {
             yaxis: { title: 'Insert Index' },
             margin: {
@@ -51,6 +51,8 @@
 
         // Add resize event listener
         window.addEventListener('resize', resizePlot);
+
+        isLoading = false;
     });
 
     onDestroy(() => {
@@ -63,6 +65,11 @@
     <header class="card-header">{filename}</header>
     <section class="p-4">
         <div id={plotId} style="width: 100%; height: 100%;"></div>
+        {#if isLoading}
+            <div class="flex items-center justify-center align-middle m-12">
+                <ProgressRadial value={undefined} width='w-14'  strokeLinecap="round" />
+            </div>
+        {/if}
     </section>
     <footer class="card-footer">
         The insert index is the number of inserts in a locus divided by the gene length.
