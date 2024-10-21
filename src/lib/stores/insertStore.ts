@@ -1,13 +1,19 @@
-import { createBlobURL } from '$lib/utils/utils';
 import { writable } from 'svelte/store';
 
-export interface ReadCountDataPoint {
+export interface InsertCountData {
+    wig: string;
+    insertions: InsertCountDataPoint[];
+
+}
+
+export interface InsertCountDataPoint {
+    loc: number;
     plus: number;
     minus: number;
 }
 
-function createUserPlotStore() {
-    const { subscribe, set, update } = writable<Map<string, string>>(new Map());
+function createInsertStore() {
+    const { subscribe, set, update } = writable<Map<string, InsertCountData>>(new Map());
 
     return {
         subscribe,
@@ -18,6 +24,7 @@ function createUserPlotStore() {
             // Process the text in chunks to prevent freezing.
             const data = await parseTextInChunks(text);
             // Update the store once parsing is complete.
+           
             console.log(data);
             
             update((store) => {
@@ -46,11 +53,16 @@ function createUserPlotStore() {
 // 871 10.0`;
 
 // Helper function to parse text in smaller chunks to avoid freezing the main thread.
-async function parseTextInChunks(text: string, chunkSize: number = 50000): Promise<string> {
+async function parseTextInChunks(text: string, chunkSize: number = 50000): Promise<InsertCountData> {
     const lines = text.split('\n');
-    const data: string[] = [];
-    data.push('track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on');
-    data.push('variableStep chrom=chrom span=2');
+    const wigArray: string[] = [];
+    const data: InsertCountData = {
+        wig: '',
+        insertions: [],
+    };
+    wigArray.push('track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on');
+    wigArray.push('variableStep chrom=chrom span=2');
+
     for (let i = 0; i < lines.length; i += chunkSize) {
         // Slice a chunk of lines
         const chunk = lines.slice(i, i + chunkSize);
@@ -58,17 +70,20 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
         // Process each chunk synchronously to avoid creating too many promises
         chunk.forEach((line, index) => {
             const [plus, minus] = line.split(/\s+/).map((x) => parseInt(x, 10));
+            if (plus !== 0 || minus !== 0)
+                data.insertions.push({ loc: i + index, plus, minus });
             if (plus !== 0)
-                data.push(`${i + index} ${plus}`);
+                wigArray.push(`${i + index} ${plus}`);
             if (minus !== 0)
-                data.push(`${i + index} -${minus}`);
+                wigArray.push(`${i + index} -${minus}`);
         });
         console.log(i);
         
         // Yield control back to the main thread every chunk to keep the UI responsive.
         await new Promise((resolve) => setTimeout(resolve, 0));
     }
-    return data.join('\n');
+    data.wig = wigArray.join('\n');
+    return data
 }
 
-export const userPlotStore = createUserPlotStore();
+export const insertStore = createInsertStore();

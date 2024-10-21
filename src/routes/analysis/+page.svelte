@@ -2,7 +2,7 @@
     import {tradisEssentiality} from '$lib/utils/tradisEssentiality';
     import {generateGeneInsertSites} from '$lib/utils/generateGeneInsertSites';
     import {annotationStore} from '$lib/stores/annotationStore';
-    import {userPlotStore, type ReadCountDataPoint} from '$lib/stores/userPlotStore';
+    import {insertStore, type ReadCountDataPoint} from '$lib/stores/insertStore';
     import { onMount, onDestroy } from 'svelte';
     import ApexCharts from 'apexcharts';
     import { taStore } from '$lib/stores/TAStore';
@@ -10,8 +10,8 @@
     
     // read_count: number;
     // ins_index: number;
-    console.log("userPlotStore", $userPlotStore)
-    const data: ReadCountDataPoint[][] = Array.from($userPlotStore.values())
+    console.log("insertStore", $insertStore)
+    const data: ReadCountDataPoint[][] = Array.from($insertStore.values())
     console.log(data)
     const userPlotData = data[0];
     const totalReads = userPlotData.map(data => data.minus + data.plus)

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/utils/generateGeneInsertSites';
 	import { annotationStore } from '$lib/stores/annotationStore';
-	import { type ReadCountDataPoint, userPlotStore } from '$lib/stores/userPlotStore';
+	import { type ReadCountDataPoint, insertStore } from '$lib/stores/insertStore';
 	import Plotly from 'plotly.js-dist';
 	import { onMount, afterUpdate } from 'svelte';
   import { TabGroup, Tab } from '@skeletonlabs/skeleton';
@@ -11,8 +11,8 @@
 	let tabSet = 'insertIndex'; // Default active tab
 
 	// Get the filenames and the data from the store
-	const filenames: string[] = Array.from($userPlotStore.keys());
-	const data: ReadCountDataPoint[][] = Array.from($userPlotStore.values());
+	const filenames: string[] = Array.from($insertStore.keys());
+	const data: ReadCountDataPoint[][] = Array.from($insertStore.values());
 	
 	// For each userPlotData, calculate total reads and generate GeneInsertResults
 	function getGeneInsertResultsForData(userPlotData: ReadCountDataPoint[]) {

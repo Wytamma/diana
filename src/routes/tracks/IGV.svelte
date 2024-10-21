@@ -6,7 +6,7 @@
     import { onMount } from "svelte";
     import { taStore } from "$lib/stores/TAStore";
 	import { createBlobURL } from "$lib/utils/utils";
-    import { userPlotStore } from "$lib/stores/userPlotStore";
+    import { insertStore } from "$lib/stores/insertStore";
     import { beforeNavigate } from "$app/navigation";
 	
 	let browser: any;
@@ -37,7 +37,7 @@
 					visibilityWindow: 0,
 					color: "#34495e"
 				},
-				...Array.from( $userPlotStore ).map(([name, text]) => {
+				...Array.from( $insertStore ).map(([name, data]) => {
 					return {
 					type: "wig",
 					name: name,
@@ -47,7 +47,7 @@
 					windowFunction: 'mean',
 					visibilityWindow: undefined,
 					autoscaleGroup: "insertPlots",
-					url: createBlobURL(text.replace('variableStep chrom=chrom span=2', `variableStep chrom=${$taStore.raw.keys().next().value} span=2`)),
+					url: createBlobURL(data.wig.replace('variableStep chrom=chrom span=2', `variableStep chrom=${$taStore.raw.keys().next().value} span=2`)),
 					autoscale: true,
 					color: "rgb(59, 61, 145)",
 					altColor: "rgb(236, 72, 153)",

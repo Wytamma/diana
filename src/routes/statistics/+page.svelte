@@ -1,7 +1,7 @@
 <script lang="ts">
     import DataTable from './InsertDataTable.svelte';
     import { TabGroup, Tab } from '@skeletonlabs/skeleton';
-    import { userPlotStore } from '$lib/stores/userPlotStore';
+    import { insertStore } from '$lib/stores/insertStore';
 	import { generateGeneInsertSites, type GeneInsertResult } from '$lib/utils/generateGeneInsertSites';
 	import { annotationStore } from '$lib/stores/annotationStore';
     import { taStore } from '$lib/stores/TAStore';
@@ -10,7 +10,7 @@
 
     // Reactive variable to store data associated with the selected tab
     const selectedData: Record<string, GeneInsertResult[]> = {};
-    for (const [key, data] of $userPlotStore) {
+    for (const [key, data] of $insertStore) {
         const totalReads = data.map(data => data.minus + data.plus)
         const generateGeneInsertSitesData = generateGeneInsertSites($annotationStore.features, totalReads, $taStore, 0, 0)
         selectedData[key] = generateGeneInsertSitesData
