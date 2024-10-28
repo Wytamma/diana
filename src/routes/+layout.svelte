@@ -58,7 +58,12 @@
 			{/if}
 			{#if $referenceStore.name && $insertStore.size > 0}
 				<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
-					<span>Plot</span>
+					<span>Normalise</span>
+				</AppRailTile>
+			{/if}
+			{#if $referenceStore.name && $insertStore.size > 0}
+				<AppRailTile disable on:click={() => navigateTo('/log2FC')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
+					<span>log2FC</span>
 				</AppRailTile>
 			{/if}
 			<!--
