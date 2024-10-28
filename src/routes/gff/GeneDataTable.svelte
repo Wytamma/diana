@@ -10,7 +10,7 @@
 	
 	const features: Feature[] = $annotationStore.features;
     
-    const handler = new DataHandler(features, { rowsPerPage: 5 });
+    const handler = new DataHandler(features, { rowsPerPage: 10 });
     const rows = handler.getRows();
 	
 </script>
