@@ -5,7 +5,6 @@
 	export let orderBy: string;
 
 	const sorted = handler.getSort();
-	console.log($sorted);
 </script>
 
 <th on:click={() => handler.sort(orderBy)} class="cursor-pointer select-none">

@@ -89,7 +89,6 @@ function createTAStore() {
       });
       
       const bedFile = taMapToBed(taMap);
-      console.log(bedFile);
       const CLI = await new Aioli([
         {
             tool: "tabix",

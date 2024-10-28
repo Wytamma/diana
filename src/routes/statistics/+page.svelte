@@ -38,7 +38,6 @@
         // Push the row to the result array
         insIndex.push(row);
     }
-    console.log(insIndex)
 </script>
 
 <div class="m-4">

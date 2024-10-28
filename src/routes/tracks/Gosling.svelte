@@ -50,9 +50,7 @@
             return;
         }
         embed(container, spec, opts).then((api) => {
-            console.log('Gosling API:', api);
             const trackIds = api.getTracks()
-            console.log('Track IDs:', trackIds);
             goslingApi = api;
 
         });
@@ -64,7 +62,6 @@
 
     function zoomToGene(geneName: string) {
         const gene = geneLookup[geneName];
-        console.log(gene);
         if (!gene) {
             return;
         }

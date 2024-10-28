@@ -65,7 +65,7 @@ function removeFasta(gffData: string): string {
 export async function gffToView(data:string, name:string, axis:string, width:number) {
     const filteredData = removeFasta(data);
     const processedData = sortGff(filteredData); 
-    console.log(processedData);
+
     const CLI = await new Aioli([
       {
         tool: "tabix",

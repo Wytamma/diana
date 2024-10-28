@@ -24,8 +24,6 @@ function convertUserPlotDataToCSV(userPlotData: string) {
 }
 
 export function userPlotToView(userPlotData: string, name: string, width: number) {
-    // console.log("userPlotData", userPlotData);
-            // Base64 encoded data
 
     const userPlotDataCSV = convertUserPlotDataToCSV(userPlotData);
     const blobURL = createBlobURL(userPlotDataCSV);

@@ -8,16 +8,10 @@
     import { taStore } from '$lib/stores/TAStore';
 
     
-    // read_count: number;
-    // ins_index: number;
-    console.log("insertStore", $insertStore)
     const data: ReadCountDataPoint[][] = Array.from($insertStore.values())
-    console.log(data)
     const userPlotData = data[0];
     const totalReads = userPlotData.map(data => data.minus + data.plus)
-    console.log("totalReads", totalReads)
     const generateGeneInsertSitesData = generateGeneInsertSites($annotationStore.features, totalReads, $taStore, 0, 0)
-    console.log("generateGeneInsertSitesData", generateGeneInsertSitesData)
     const essential = tradisEssentiality(generateGeneInsertSitesData)
     const plotData = essential.plotData
     

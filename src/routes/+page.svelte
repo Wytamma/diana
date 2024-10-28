@@ -55,7 +55,6 @@ function extractFastaFromGff(gff: string): string {
 }
 
 function onChangeHandler(e: Event): void {
-    console.log('Files dropped:', files);
     
     if (!files || files.length === 0) {
         return;

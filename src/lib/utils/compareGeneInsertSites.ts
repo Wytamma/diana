@@ -1,10 +1,11 @@
 import type { GeneInsertResult } from "$lib/utils/generateGeneInsertSites";
 
 export interface CompareResults {
+    id: number;
     name: string;
     start: number;
+    end: number;
     logFC?: number;      // Log Fold Change for comparison
-    qValue?: number;     // Adjusted p-value (FDR)
   }
   
   export async function compareGeneInsertSites(
@@ -14,15 +15,11 @@ export interface CompareResults {
   ): Promise<CompareResults[]> {
     const results: CompareResults[] = [];
   
-    // Ensure control and condition arrays are of the same length
-    if (controlData.length !== conditionData.length) {
-      throw new Error("Control and condition datasets must have the same number of samples.");
-    }
-  
     // Loop over each gene in the first dataset (assumes all datasets are aligned)
     for (let i = 0; i < controlData[0].length; i++) {
       const geneName = controlData[0][i].name;
       const start = controlData[0][i].start;
+      const end = controlData[0][i].end;
   
       // Aggregate read counts for controls and conditions across replicates
       let controlReadSum = 0;
@@ -30,6 +27,8 @@ export interface CompareResults {
   
       for (let j = 0; j < controlData.length; j++) {
         controlReadSum += controlData[j][i].readCount;
+      }
+      for (let j = 0; j < conditionData.length; j++) {
         conditionReadSum += conditionData[j][i].readCount;
       }
   
@@ -43,14 +42,15 @@ export interface CompareResults {
   
       // Placeholder for q-value calculation; could integrate with a stats library or server-side calculation
       // Example FDR correction would happen here after p-value calculation on all results
-      const qValue = undefined;  // Compute adjusted p-value as needed
+      // const qValue = undefined;  // Compute adjusted p-value as needed
   
       // Push the comparison result for this gene
       results.push({
+        id: i,
         name: geneName,
         start: start,
+        end: end,
         logFC: logFC,
-        qValue: qValue
       });
   
       // Yield control back to the event loop every few iterations to keep UI responsive

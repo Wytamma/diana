@@ -18,8 +18,6 @@ function createInsertStore() {
             // Process the text in chunks to prevent freezing.
             const data = await parseTextInChunks(text);
             // Update the store once parsing is complete.
-           
-            console.log(data);
             
             update((store) => {
                 store.set(filename, data);
@@ -58,7 +56,6 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
             if (minus !== 0)
                 wigArray.push(`${i + index} -${minus}`);
         });
-        console.log(i);
         
         // Yield control back to the main thread every chunk to keep the UI responsive.
         await new Promise((resolve) => setTimeout(resolve, 0));

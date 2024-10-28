@@ -26,11 +26,19 @@
         const geneInserts = await generateGeneInsertSites($annotationStore.features, data, [], 0, 0);
 
         const layout = {
-            yaxis: { title: 'Insert Index' },
-            margin: {
-                b: 25,  // Remove bottom margin
-                t: 25   // Remove top margin
+            yaxis: { title: 'Insert Index'},
+            xaxis: { zeroline: false, rangemode: 'nonnegative' },
+            margin: { b: 25, t: 25, r: 25 },
+            barmode: 'overlay',
+            modebar: {
+                // vertical modebar button layout
+                orientation: 'v',
             },
+        };
+        const config = { 
+            modeBarButtonsToRemove: ['autoScale2d'],
+            responsive: true, 
+            displaylogo: false, 
         };
 
         const plotData = {
@@ -45,7 +53,7 @@
             mode: 'markers'
         };
 
-        Plotly.newPlot(plotId, [plotData], layout);
+        Plotly.newPlot(plotId, [plotData], layout, config);
 
         // Add resize event listener
         window.addEventListener('resize', resizePlot);

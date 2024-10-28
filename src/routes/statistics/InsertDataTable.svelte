@@ -10,7 +10,6 @@
 	
 	export let data: Record<string, GeneInsertResult>[]
 	export let column: string
-	console.log(data);
 	
 	const files = Object.keys(data[0]).sort()
 	let processData = []

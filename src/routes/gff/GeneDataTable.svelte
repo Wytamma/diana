@@ -12,7 +12,6 @@
     
     const handler = new DataHandler(features, { rowsPerPage: 5 });
     const rows = handler.getRows();
-	console.log(handler.getFilters());
 	
 </script>
 
