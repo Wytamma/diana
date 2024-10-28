@@ -1,3 +1,0 @@
-import{w as h}from"./index.BuGhtYYs.js";function w(){const{subscribe:a,set:o,update:s}=h(new Map);return{subscribe:a,set:o,update:s,reset:()=>o(new Map),load:async(e,n)=>{const t=await f(n);console.log(t),s(r=>(r.set(e,t),r))},remove:e=>s(n=>(n.delete(e),n))}}async function f(a,o=5e4){const s=a.split(`
-`),e=[],n={wig:"",total:[]};e.push("track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on"),e.push("variableStep chrom=chrom span=2");for(let t=0;t<s.length;t+=o)s.slice(t,t+o).forEach((i,u)=>{const[c,l]=i.split(/\s+/).map(p=>parseInt(p,10));n.total.push(c+l),c!==0&&e.push(`${t+u} ${c}`),l!==0&&e.push(`${t+u} -${l}`)}),console.log(t),await new Promise(i=>setTimeout(i,0));return n.wig=e.join(`
-`),n}const g=w();export{g as i};
