@@ -38,7 +38,6 @@
         const comparisonResults = await compareGeneInsertSites(controlGeneInserts, conditionGeneInserts);
 
         const layout = {
-            xaxis: { title: 'Gene' },
             yaxis: { title: 'Log2 Fold Change (logFC)' },
             margin: {
                 b: 25,
