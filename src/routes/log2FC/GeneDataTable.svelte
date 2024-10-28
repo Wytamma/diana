@@ -9,7 +9,7 @@
     import type { CompareResults } from '$lib/utils/compareGeneInsertSites';
 
     export let comparisonResults: CompareResults[]; // The interface for CompareResults is as defined in the task
-    let handler = new DataHandler(comparisonResults, { rowsPerPage: 5 });
+    let handler = new DataHandler(comparisonResults, { rowsPerPage: 10 });
     let rows = handler.getRows();
     
     $: if (comparisonResults) {
