@@ -34,6 +34,7 @@
                 <ThSort {handler} orderBy="start">Start</ThSort>
                 <ThSort {handler} orderBy="end">End</ThSort>
                 <ThSort {handler} orderBy="logFC">Log2 Fold Change</ThSort>
+                <ThSort {handler} orderBy="logCPM">Log Count Per Million</ThSort>
                 <ThSort {handler} orderBy="pValue">P-Value</ThSort>
                 <ThSort {handler} orderBy="qValue">Q-Value</ThSort>
             </tr>
@@ -42,6 +43,7 @@
                 <ThFilter {handler} filterBy="start" />
                 <ThFilter {handler} filterBy="end" />
                 <ThFilter {handler} filterBy="logFC" />
+                <ThFilter {handler} filterBy="logCPM" />
                 <ThFilter {handler} filterBy="pValue" />
                 <ThFilter {handler} filterBy="qValue" />
             </tr>
@@ -53,6 +55,7 @@
                     <td>{row.start}</td>
                     <td>{row.end}</td>
                     <td>{row.logFC}</td>
+                    <td>{row.logCPM}</td>
                     <td>{row.pValue}</td>
                     <td>{row.qValue}</td>
                 </tr>
