@@ -34,8 +34,6 @@ export interface CompareResults {
     
     const controlDataConverted = controlData.map(group => group.map(item => ({ ...item })));
     const conditionDataConverted = conditionData.map(group => group.map(item => ({ ...item })));
-    console.log(controlDataConverted);
-    console.log(conditionDataConverted);
     // write a for loop that will append each group from the controlDataConverted and conditionDataConverted to the controlData and conditionData one at a time
     for (let i = 0; i < controlDataConverted.length; i++) {
       await webR.objs.globalEnv.bind(`controlDataPart`, controlDataConverted[i]);
@@ -68,7 +66,6 @@ export interface CompareResults {
         load_data <- function(control_list, condition_list) {
           # Merge control and condition data for filtering
           all_list <- c(control_list, condition_list)
-          print(length(all_list))
           read_counts <- do.call(cbind, lapply(all_list, function(x) { x$readCount }))
 
           # Apply filtering for non-zero counts
@@ -116,7 +113,6 @@ export async function compareGeneInsertSites(
   minReadCount = 0
 ): Promise<CompareResults[]> {
   const results = await evaluateR(controlData, conditionData, minReadCount);
-  console.log(results);
   // Format the output as an array of CompareResults objects
   return results.map((result: any, index: number) => ({
     id: index,
