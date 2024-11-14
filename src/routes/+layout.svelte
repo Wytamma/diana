@@ -62,10 +62,13 @@
 				</AppRailTile>
 			{/if}
 			{#if $referenceStore.name && $insertStore.size > 0}
-				<AppRailTile disable on:click={() => navigateTo('/log2FC')} bind:group={currentTile} name="tile-4" value="/log2FC" title="tile-4">
-					<span>log2FC</span>
+				<AppRailTile disable on:click={() => navigateTo('/compare')} bind:group={currentTile} name="tile-4" value="/compare" title="tile-4">
+					<span>Compare</span>
 				</AppRailTile>
 			{/if}
+			<!-- <AppRailTile disable on:click={() => navigateTo('/webR')} bind:group={currentTile} name="tile-4" value="/webR" title="tile-4">
+				<span>webR</span>
+			</AppRailTile> -->
 			<!--
 			<AppRailTile disable on:click={() => navigateTo('/plotly')} bind:group={currentTile} name="tile-4" value="/plotly" title="tile-4">
 				<span>Plots</span>

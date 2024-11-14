@@ -49,6 +49,7 @@
     "gosling.js": "^0.17.0",
     "igv": "^3.0.8",
     "jstat": "^1.9.6",
-    "plotly.js-dist": "^2.35.2"
+    "plotly.js-dist": "^2.35.2",
+    "webr": "^0.4.2"
   }
 }
