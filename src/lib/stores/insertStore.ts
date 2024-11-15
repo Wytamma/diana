@@ -49,7 +49,10 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
 
         // Process each chunk synchronously to avoid creating too many promises
         chunk.forEach((line, index) => {
-            const [plus, minus] = line.split(/\s+/).map((x) => parseInt(x, 10));
+            const [plus, minusValue] = line.split(/\s+/).map((x) => parseInt(x, 10));
+            let minus = minusValue;
+            // if minus undefined, set to 0 (some files only have one number)
+            if (isNaN(minus)) minus = 0;
             data.total.push(plus + minus);
             if (plus !== 0)
                 wigArray.push(`${i + index} ${plus}`);
