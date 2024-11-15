@@ -22,23 +22,37 @@
         }
     };
 
+    const exportAsSvg = () => {
+        Plotly.downloadImage(document.getElementById(plotId), {
+            format: 'svg',
+            filename: filename || 'plot'
+        });
+    };
+
     onMount(async () => {
         const geneInserts = await generateGeneInsertSites($annotationStore.features, data, [], 0, 0);
 
         const layout = {
-            yaxis: { title: 'Insert Index'},
+            yaxis: { title: 'Insert Index' },
             xaxis: { zeroline: false, rangemode: 'nonnegative' },
             margin: { b: 25, t: 25, r: 25 },
             barmode: 'overlay',
             modebar: {
-                // vertical modebar button layout
                 orientation: 'v',
             },
         };
+
         const config = { 
             modeBarButtonsToRemove: ['autoScale2d'],
             responsive: true, 
-            displaylogo: false, 
+            displaylogo: false,
+            modeBarButtonsToAdd: [
+                {
+                    name: 'Download plot as svg',
+                    icon: Plotly.Icons.camera,
+                    click: exportAsSvg
+                }
+            ]
         };
 
         const plotData = {
@@ -73,7 +87,7 @@
         <div id={plotId} style="width: 100%; height: 100%;"></div>
         {#if isLoading}
             <div class="flex items-center justify-center align-middle m-12">
-                <ProgressRadial value={undefined} width='w-14'  strokeLinecap="round" />
+                <ProgressRadial value={undefined} width='w-14' strokeLinecap="round" />
             </div>
         {/if}
     </section>

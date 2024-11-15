@@ -50,7 +50,7 @@
 </script>
 
 <div class="m-4">
-    <Plot {comparisonResults} {filterData} filename="log2FC"/>
+    <Plot {comparisonResults} {filterData} />
 </div>
 <div class="m-4">
     {#if tableData.length > 0}
