@@ -1,7 +1,7 @@
 <script lang="ts">
 import { FileDropzone, ProgressRadial } from "@skeletonlabs/skeleton";
 import { annotationStore } from "$lib/stores/annotationStore";
-import { insertStore, type InsertCountDataPoint } from "$lib/stores/insertStore";
+import { insertStore } from "$lib/stores/insertStore";
 import { taStore } from "$lib/stores/TAStore";
 import { referenceStore } from "$lib/stores/refStore";
 import { getToastStore } from '@skeletonlabs/skeleton';
@@ -78,8 +78,7 @@ function onChangeHandler(e: Event): void {
                         const error = 'Error loading reference: ' + e;
                         const t: ToastSettings = {
                             message: error,
-                            // Provide any utility or variant background style:
-                            background: 'variant-ghost-error',
+                            background: 'variant-glass-error',
                         };
                         toastStore.trigger(t);
                     });
@@ -95,7 +94,7 @@ function onChangeHandler(e: Event): void {
                     const t: ToastSettings = {
                         message: error,
                         // Provide any utility or variant background style:
-                        background: 'variant-ghost-error',
+                        background: 'variant-glass-error',
                     };
                     toastStore.trigger(t);
                     reject('Unsupported file type: ' + name);
