@@ -62,7 +62,7 @@ function createTAStore() {
             sequenceMap.set(currentSequenceName, currentSequence);
           }
           // Start a new sequence.
-          currentSequenceName = line.substring(1).trim(); // Get the sequence name from the header.
+          currentSequenceName = line.substring(1).split(/\s+/)[0].trim(); // Get the sequence name from the header.
           currentSequence = '';
         } else {
           currentSequence += line.trim(); // Accumulate sequence lines.
