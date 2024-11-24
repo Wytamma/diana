@@ -5,14 +5,14 @@
     import RowsPerPage from '$lib/components/datatable/RowsPerPage.svelte';
     import RowCount from '$lib/components/datatable/RowCount.svelte';
     import Pagination from '$lib/components/datatable/Pagination.svelte';
+    import DownloadButton from '$lib/components/datatable/DownloadButton.svelte';
     import { DataHandler } from '@vincjo/datatables';
     import type { CompareResults } from '$lib/utils/compareGeneInsertSites';
-    import { Th } from '@vincjo/datatables/local';
 
     export let comparisonResults: CompareResults[]; // The interface for CompareResults is as defined in the task
     let handler = new DataHandler(comparisonResults, { rowsPerPage: 10 });
     let rows = handler.getRows();
-    
+
     $: if (comparisonResults) {
         handler.setRows(comparisonResults);
     }
@@ -34,7 +34,7 @@
                 <ThSort {handler} orderBy="start">Start</ThSort>
                 <ThSort {handler} orderBy="end">End</ThSort>
                 <ThSort {handler} orderBy="logFC">Log2 Fold Change</ThSort>
-                <ThSort {handler} orderBy="logCPM">Log Count Per Million</ThSort>
+                <ThSort {handler} orderBy="logCPM">Log CPM</ThSort>
                 <ThSort {handler} orderBy="pValue">P-Value</ThSort>
                 <ThSort {handler} orderBy="qValue">Q-Value</ThSort>
             </tr>
@@ -65,6 +65,7 @@
     
     <!-- Footer -->
     <footer class="flex justify-between">
+        <DownloadButton {handler} />
         <RowCount {handler} />
         <Pagination {handler} />
     </footer>

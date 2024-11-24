@@ -86,7 +86,7 @@
 </script>
 
 <div class="card">
-  <header class="card-header">Comparison Plot</header>
+  <!-- <header class="card-header">Comparison Plot</header> -->
   <section class="p-4">
     <div id={plotId} style="width: 100%; height: 100%;"></div>
 
