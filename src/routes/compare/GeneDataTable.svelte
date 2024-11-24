@@ -23,7 +23,7 @@
     <!-- Header -->
     <header class="flex justify-between gap-4">
         <Search {handler} />
-        <RowsPerPage {handler} />
+        <DownloadButton {handler} />
     </header>
     
     <!-- Table -->
@@ -65,7 +65,7 @@
     
     <!-- Footer -->
     <footer class="flex justify-between">
-        <DownloadButton {handler} />
+        <RowsPerPage {handler} />
         <RowCount {handler} />
         <Pagination {handler} />
     </footer>

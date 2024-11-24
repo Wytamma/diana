@@ -28,7 +28,7 @@
 <button 
     type="button" 
     on:click={() => download('diana.csv')}
-    class="btn variant-ghost-surface mr-2 mb-2 hover:variant-soft-primary"
+    class="btn variant-ghost-surface mr-2 hover:variant-soft-primary"
 >
    Export CSV 
 </button>
