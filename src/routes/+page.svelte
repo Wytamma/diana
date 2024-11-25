@@ -71,23 +71,28 @@ function onChangeHandler(e: Event): void {
         fileReadPromises.push(new Promise((resolve, reject) => {
             reader.onload = async (e) => {
                 let text: string = e.target?.result?.toString() as string;
-                let isGff = false;
                 if (name.endsWith('.gff') || name.endsWith('.gff3')){
                     await annotationStore.load(name, text);
-                    const fasta = extractFastaFromGff(text);
-                    await referenceStore.load(name, fasta).catch((e) => {
-                        console.error('Error loading reference:', e);
-                        const error = 'Error loading reference: ' + e;
-                        const t: ToastSettings = {
-                            message: error,
-                            background: 'variant-glass-error',
-                        };
-                        toastStore.trigger(t);
-                    });
                     $igvStore.locus = undefined; // Reset the locus
-                    await taStore.load(fasta);
+                    const fasta = extractFastaFromGff(text);
+                    if (fasta.length > 0) {
+                            await referenceStore.load(name, fasta).catch((e) => {
+                            console.error('Error loading reference:', e);
+                            const error = 'Error loading reference: ' + e;
+                            const t: ToastSettings = {
+                                message: error,
+                                background: 'variant-glass-error',
+                            };
+                            toastStore.trigger(t);
+                        });
+                        await taStore.load(fasta);
+                        resolve(0);
+                    }
+                } else if (name.endsWith('.fasta') || name.endsWith('.fa')) {
+                    await referenceStore.load(name, text);
+                    await taStore.load(text);
+                    $igvStore.locus = undefined; // Reset the locus
                     resolve(0);
-                    
                 } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
                     await insertStore.load(name, text);
                 } else {
@@ -147,12 +152,19 @@ function resetDropzone() {
     </div>
 </div>
 <div class="flex flex-col justify-center items-center mb-6">
-    {#if $referenceStore.filename}
-    <div class="px-2 w-full md:w-auto">
-        <Reference filename={$referenceStore.filename} onRemove={referenceStore.reset}/> 
+    <div class="flex flex-wrap justify-center w-full">
+        {#if $referenceStore.filename}
+        <div class="m-2 w-full md:w-auto">
+            <Reference type="Reference" filename={$referenceStore.filename} onRemove={referenceStore.reset}/> 
+        </div>
+        {/if}
+        {#if $annotationStore.filename}
+        <div class="m-2 w-full md:w-auto">
+            <Reference type="Annotations" chip="variant-soft-warning" filename={$annotationStore.filename} onRemove={annotationStore.reset}/> 
+        </div>
+        {/if}
     </div>
-    {/if}
-    <div class="flex flex-wrap justify-center mt-2 ">
+    <div class="flex flex-wrap justify-center ">
         {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isTreatment }], i }
         <div class="m-2 w-full md:w-auto ">
             <File 
@@ -174,7 +186,7 @@ function resetDropzone() {
             </div>
         <!-- else -->
         {:else}
-            <FileDropzone padding="py-6" bind:files={files} on:change={onChangeHandler} name="files" multiple={true} on:click={resetDropzone} on:drop={resetDropzone} >
+            <FileDropzone padding="py-4" bind:files={files} on:change={onChangeHandler} name="files" multiple={true} on:click={resetDropzone} on:drop={resetDropzone} >
                 <svelte:fragment slot="lead">
                     <div class="flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">

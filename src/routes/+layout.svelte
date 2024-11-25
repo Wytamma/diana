@@ -7,6 +7,7 @@
 	import { page } from '$app/stores';  // Import page store from SvelteKit
 	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
     import { referenceStore } from '$lib/stores/refStore';
+	import { annotationStore } from "$lib/stores/annotationStore";
     import { insertStore, containsControlAndTreatment } from '$lib/stores/insertStore';
 
 	initializeStores();
@@ -51,17 +52,17 @@
 			<AppRailTile on:click={() => navigateTo('/')} bind:group={currentTile} name="tile-1" value="/" title="tile-1">
 				<span>Data</span>
 			</AppRailTile>
-			{#if $referenceStore.filename}
+			{#if $referenceStore.filename && $annotationStore.filename}
 				<AppRailTile on:click={() => navigateTo('/tracks')} bind:group={currentTile} name="tile-2" value="/tracks" title="tile-2">
 					<span>Tracks</span>
 				</AppRailTile>
 			{/if}
-			{#if $referenceStore.filename && $insertStore.size > 0}
+			{#if $referenceStore.filename && $annotationStore.filename && $insertStore.size > 0}
 				<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
 					<span>Normalise</span>
 				</AppRailTile>
 			{/if}
-			{#if $referenceStore.filename && $containsControlAndTreatment}
+			{#if $referenceStore.filename && $annotationStore.filename && $containsControlAndTreatment}
 				<AppRailTile disable on:click={() => navigateTo('/compare')} bind:group={currentTile} name="tile-4" value="/compare" title="tile-4">
 					<span>Compare</span>
 				</AppRailTile>
