@@ -15,11 +15,11 @@
     const insertEntries = Array.from($insertStore.entries());
 
     controlData = insertEntries
-        .filter(([name, _]) => name.toLowerCase().includes("0"))
+        .filter(([_, data]) => data.isControl)
         .map(([_, data]) => data.total);
 
     conditionData = insertEntries
-        .filter(([name, _]) => !name.toLowerCase().includes("0"))
+        .filter(([_, data]) => !data.isControl)
         .map(([_, data]) => data.total);
 
     $: if (controlData.length && conditionData.length) {
