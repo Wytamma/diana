@@ -7,7 +7,7 @@
 	import { page } from '$app/stores';  // Import page store from SvelteKit
 	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
     import { referenceStore } from '$lib/stores/refStore';
-    import { insertStore } from '$lib/stores/insertStore';
+    import { insertStore, containsControlAndCondition } from '$lib/stores/insertStore';
 
 	initializeStores();
 
@@ -61,7 +61,7 @@
 					<span>Normalise</span>
 				</AppRailTile>
 			{/if}
-			{#if $referenceStore.name && $insertStore.size > 0}
+			{#if $referenceStore.name && $containsControlAndCondition}
 				<AppRailTile disable on:click={() => navigateTo('/compare')} bind:group={currentTile} name="tile-4" value="/compare" title="tile-4">
 					<span>Compare</span>
 				</AppRailTile>

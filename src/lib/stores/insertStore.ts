@@ -1,6 +1,7 @@
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 export interface InsertCountData {
+    isControl: boolean
     wig: string;
     total: number[];
 
@@ -18,7 +19,9 @@ function createInsertStore() {
             // Process the text in chunks to prevent freezing.
             const data = await parseTextInChunks(text);
             // Update the store once parsing is complete.
-            
+            if (filename.toLowerCase().includes("0")) {
+                data.isControl = true;
+            }
             update((store) => {
                 store.set(filename, data);
                 return store;
@@ -28,6 +31,28 @@ function createInsertStore() {
             store.delete(name);
             return store;
         }),
+        setIsControl: (name: string, value: boolean) => update((store) => {
+            const data = store.get(name);
+            if (data) {
+                data.isControl = value;
+            }
+            return store;
+        }),
+        containsControlAndCondition: () => {
+            let control = false;
+            let condition = false;
+            subscribe((store) => {
+                store.forEach((data) => {
+                    console.log(data.isControl);
+                    if (data.isControl) {
+                        control = true;
+                    } else {
+                        condition = true;
+                    }
+                });
+            });
+            return control && condition;
+        }
     };
 }
 
@@ -39,6 +64,7 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
         wig: '',
         // preallocate the array to avoid resizing
         total: [],
+        isControl: false,
     };
     wigArray.push('track type=wiggle_0 visibility=full autoScale=on color=255,150,0 yLineMark=0 yLineOnOff=on');
     wigArray.push('variableStep chrom=chrom span=2');
@@ -68,3 +94,15 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
 }
 
 export const insertStore = createInsertStore();
+export const containsControlAndCondition = derived(insertStore, ($insertStore) => {
+    let control = false;
+    let condition = false;
+    $insertStore.forEach((data) => {
+        if (data.isControl) {
+            control = true;
+        } else {
+            condition = true;
+        }
+    });
+    return control && condition; 
+});
