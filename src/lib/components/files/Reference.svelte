@@ -5,9 +5,9 @@
 
 
 </script>
-<div class="card p-4 m-2">
+<div class="card p-4">
     <div class="flex justify-center items-center space-x-2">
-        <div class="flex flex-col space-y-2">
+        <div class="flex flex-col space-y-2 w-full">
             <p class="text-lg">{filename}</p>
             <div class="flex justify-between items-center min-w-64">
                 <span class="chip variant-soft-success">Reference</span>

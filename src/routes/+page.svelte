@@ -129,61 +129,78 @@ function resetDropzone() {
 </script>
 
 <div class="flex justify-center mb-6">
-    <div class="flex flex-col items-center align-baseline justify-center max-w-4xl  space-y-10 ">
+    <div class="flex flex-col items-center align-baseline justify-center max-w-4xl  space-y-8 ">
         <!-- Animated Logo -->
         <figure class="card-hover rounded-full">
 			<div>
 				<section class="img-bg" />
 			</div>
             <img 
-                class={`logo-img mt-16`} 
+                class={`logo-img mt-8`} 
                 src="/images/logo2.png" 
                 alt="Skeleton Logo" 
             />
         </figure>
-        <h1 class=" text-center text-3xl">
+        <h1 class=" text-center text-3xl mx-2">
             Transposon Sequencing Data Visualiser
         </h1>
-        <!-- / -->
-        <div class="px-2 w-full" >
-            <FileDropzone bind:files={files} on:change={onChangeHandler} name="files" multiple={true} on:click={resetDropzone} on:drop={resetDropzone} >
+    </div>
+</div>
+<div class="flex flex-col justify-center items-center mb-6">
+    {#if $referenceStore.name}
+    <div class="px-2 w-full md:w-auto">
+        <Reference filename={$referenceStore.name} onRemove={referenceStore.reset}/> 
+    </div>
+    {/if}
+    <div class="flex flex-wrap justify-center mt-2 ">
+        {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isTreatment }], i }
+        <div class="m-2 w-full md:w-auto ">
+            <File 
+                    isTreatment={isTreatment} 
+                    onToggle={(value) => insertStore.setIsTreatment(filename, value)} 
+                    onRemove={() => insertStore.remove(filename)} 
+                    filename={filename} 
+                />
+        </div>    
+        {/each}
+    </div>
+</div>
+<div class="flex justify-center ">
+    <div class="w-full max-w-3xl mx-4 mb-4" >
+        
+        {#if isLoading}
+            <div class="flex items-center justify-center align-middle">
+                <ProgressRadial value={undefined} width='w-16'  strokeLinecap="round" />
+            </div>
+        <!-- else -->
+        {:else}
+            <FileDropzone padding="py-6" bind:files={files} on:change={onChangeHandler} name="files" multiple={true} on:click={resetDropzone} on:drop={resetDropzone} >
+                <svelte:fragment slot="lead">
+                    <div class="flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                        </svg>
+                    </div>
+                </svelte:fragment>
                 <svelte:fragment slot="message"><p class="text-xl "><span class="font-semibold">Load files</span> or drag and drop</p></svelte:fragment>
                 <svelte:fragment slot="meta">Only GFF+FASTA and .userplot files allowed.</svelte:fragment>
             </FileDropzone>
-        </div>
+        {/if}
     </div>
 </div>
-<div class="flex flex-wrap space-4 justify-center">
-    {#if $referenceStore.name}
-       <Reference filename={$referenceStore.name} onRemove={referenceStore.reset}/> 
-    {/if}
-    {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isTreatment }], i }
-        <File 
-            isTreatment={isTreatment} 
-            onToggle={(value) => insertStore.setIsTreatment(filename, value)} 
-            onRemove={() => insertStore.remove(filename)} 
-            filename={filename} 
-        />
-    {/each}
-    {#if isLoading}
-        <div class="flex items-center justify-center align-middle ml-8">
-            <ProgressRadial value={undefined} width='w-14'  strokeLinecap="round" />
-        </div>
 
-    {/if}
-</div>
 
 <style lang="postcss">
     figure {
         @apply flex relative flex-col;
     }
     .img-bg {
-        @apply w-48 h-48 mt-20 md:w-64 md:h-64 absolute z-[-1] rounded-full blur-[50px] transition-all;
+        @apply w-48 h-48 mt-20 md:w-56 md:h-56 absolute z-[-1] rounded-full blur-[50px] transition-all;
         animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite,
             glow 5s linear infinite;
     }
     .logo-img {
-        @apply w-48 h-48 md:w-64 md:h-64 drop-shadow-lg rounded-full hover:drop-shadow-xl transition-all duration-500;
+        @apply w-48 h-48 md:w-56 md:h-56 drop-shadow-lg rounded-full hover:drop-shadow-xl transition-all duration-500;
     }
     .hide {
         @apply hidden mt-0 opacity-0;
