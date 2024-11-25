@@ -1,9 +1,9 @@
-import { derived, writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { createBlobURL } from '../utils/utils'
 import Aioli from "@biowasm/aioli";
 
 export interface ReferenceData {
-    name?: string;
+    filename?: string;
     text?: string;
     url?: string;
     indexUrl?: string;
@@ -11,7 +11,7 @@ export interface ReferenceData {
 
 export function createReferenceStore() {
     // Create a writable store to hold the gene data
-    const defaultReferenceData: ReferenceData = {text: undefined, url: undefined, indexUrl: undefined, name: undefined};
+    const defaultReferenceData: ReferenceData = {text: undefined, url: undefined, indexUrl: undefined, filename: undefined};
     const { subscribe, set, update } = writable<ReferenceData>(defaultReferenceData);
 
     return {
@@ -19,7 +19,7 @@ export function createReferenceStore() {
         set: set,
         update: update,
         reset: () => set(defaultReferenceData),
-        load: async (name:string, fastaText: string) => {
+        load: async (filename:string, fastaText: string) => {
             const CLI = await new Aioli(["samtools/1.17"]);
             const paths = await CLI.mount([{
                 name: "fasta.fa",
@@ -32,7 +32,7 @@ export function createReferenceStore() {
             const indexFileStat = await CLI.fs.stat("fasta.fai");
             const indexFile = await CLI.read({path:"fasta.fai", length: indexFileStat.size});
             const indexUrl = createBlobURL(indexFile);
-            set({name: name, text: fastaText, url: url, indexUrl: indexUrl});
+            set({filename: filename, text: fastaText, url: url, indexUrl: indexUrl});
         },
     };
 }

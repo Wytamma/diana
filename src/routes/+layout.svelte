@@ -51,17 +51,17 @@
 			<AppRailTile on:click={() => navigateTo('/')} bind:group={currentTile} name="tile-1" value="/" title="tile-1">
 				<span>Data</span>
 			</AppRailTile>
-			{#if $referenceStore.name}
+			{#if $referenceStore.filename}
 				<AppRailTile on:click={() => navigateTo('/tracks')} bind:group={currentTile} name="tile-2" value="/tracks" title="tile-2">
 					<span>Tracks</span>
 				</AppRailTile>
 			{/if}
-			{#if $referenceStore.name && $insertStore.size > 0}
+			{#if $referenceStore.filename && $insertStore.size > 0}
 				<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
 					<span>Normalise</span>
 				</AppRailTile>
 			{/if}
-			{#if $referenceStore.name && $containsControlAndTreatment}
+			{#if $referenceStore.filename && $containsControlAndTreatment}
 				<AppRailTile disable on:click={() => navigateTo('/compare')} bind:group={currentTile} name="tile-4" value="/compare" title="tile-4">
 					<span>Compare</span>
 				</AppRailTile>

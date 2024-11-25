@@ -21,8 +21,8 @@
 		search: false,
 		locus: $igvStore.locus,
 		reference: {
-			"id": $referenceStore.name,
-			"name": $referenceStore.name,
+			"id": $referenceStore.filename,
+			"name": $referenceStore.filename,
 			"fastaURL": $referenceStore.url,
 			"indexURL": $referenceStore.indexUrl,
 			"wholeGenomeView": false,

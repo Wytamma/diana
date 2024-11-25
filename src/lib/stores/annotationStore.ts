@@ -83,6 +83,7 @@ export interface Chromosome {
 }
 
 export interface AnnotationData {
+    filename?: string;
     features: Feature[];
     chromosomes: Chromosome[];
     url?: string;
@@ -107,7 +108,7 @@ export function createAnnotationStore() {
             store.chromosomes.push(chromosome);
             return store;
         }),
-        load: async (text: string) => {
+        load: async (filename:string, text: string) => {
             // Load from GFF3 text file format
             const lines = text.split('\n');
             const features: Feature[] = [];
@@ -163,7 +164,7 @@ export function createAnnotationStore() {
             const indexFileStat = await CLI.fs.stat(`${paths[0]}.gz.tbi`);
             const indexFile = await CLI.read({path:`${paths[0]}.gz.tbi`,  length: indexFileStat.size});
             const indexUrl = createBlobURL(indexFile);
-            set({features, chromosomes, url, indexUrl});
+            set({features, chromosomes, url, indexUrl, filename});
         }
     };
 }

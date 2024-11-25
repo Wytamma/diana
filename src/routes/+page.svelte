@@ -73,7 +73,7 @@ function onChangeHandler(e: Event): void {
                 let text: string = e.target?.result?.toString() as string;
                 let isGff = false;
                 if (name.endsWith('.gff') || name.endsWith('.gff3')){
-                    await annotationStore.load(text);
+                    await annotationStore.load(name, text);
                     const fasta = extractFastaFromGff(text);
                     await referenceStore.load(name, fasta).catch((e) => {
                         console.error('Error loading reference:', e);
@@ -147,9 +147,9 @@ function resetDropzone() {
     </div>
 </div>
 <div class="flex flex-col justify-center items-center mb-6">
-    {#if $referenceStore.name}
+    {#if $referenceStore.filename}
     <div class="px-2 w-full md:w-auto">
-        <Reference filename={$referenceStore.name} onRemove={referenceStore.reset}/> 
+        <Reference filename={$referenceStore.filename} onRemove={referenceStore.reset}/> 
     </div>
     {/if}
     <div class="flex flex-wrap justify-center mt-2 ">
