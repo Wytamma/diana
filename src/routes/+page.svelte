@@ -157,8 +157,13 @@ function resetDropzone() {
     {#if $referenceStore.name}
        <Reference filename={$referenceStore.name} onRemove={referenceStore.reset}/> 
     {/if}
-    {#each $insertStore as plotData, i }
-        <File isControl={plotData[1].isControl} onToggle={(value) => insertStore.setIsControl(plotData[0], value)} onRemove={() => insertStore.remove(plotData[0])} filename={plotData[0]}/>
+    {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isControl }], i }
+        <File 
+            isControl={isControl} 
+            onToggle={(value) => insertStore.setIsControl(filename, value)} 
+            onRemove={() => insertStore.remove(filename)} 
+            filename={filename} 
+        />
     {/each}
     {#if isLoading}
         <div class="flex items-center justify-center align-middle ml-8">
