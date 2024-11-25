@@ -157,10 +157,10 @@ function resetDropzone() {
     {#if $referenceStore.name}
        <Reference filename={$referenceStore.name} onRemove={referenceStore.reset}/> 
     {/if}
-    {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isControl }], i }
+    {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isTreatment }], i }
         <File 
-            isControl={isControl} 
-            onToggle={(value) => insertStore.setIsControl(filename, value)} 
+            isTreatment={isTreatment} 
+            onToggle={(value) => insertStore.setIsTreatment(filename, value)} 
             onRemove={() => insertStore.remove(filename)} 
             filename={filename} 
         />

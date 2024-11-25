@@ -16,7 +16,7 @@ export interface CompareResults {
 
   }
   
-  async function evaluateR(controlData: GeneInsertResult[][], conditionData: GeneInsertResult[][], minReadCount: number) {
+  async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneInsertResult[][], minReadCount: number) {
     const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
     const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
     await webR.init();
@@ -33,8 +33,8 @@ export interface CompareResults {
     `);
     
     const controlDataConverted = controlData.map(group => group.map(item => ({ ...item })));
-    const conditionDataConverted = conditionData.map(group => group.map(item => ({ ...item })));
-    // write a for loop that will append each group from the controlDataConverted and conditionDataConverted to the controlData and conditionData one at a time
+    const treatmentDataConverted = treatmentData.map(group => group.map(item => ({ ...item })));
+    // write a for loop that will append each group from the controlDataConverted and treatmentDataConverted to the controlData and treatmentData one at a time
     for (let i = 0; i < controlDataConverted.length; i++) {
       await webR.objs.globalEnv.bind(`controlDataPart`, controlDataConverted[i]);
       await webR.evalR(`
@@ -47,34 +47,34 @@ export interface CompareResults {
         rm(controlDataPart)
       `); 
     }
-    for (let i = 0; i < conditionDataConverted.length; i++) {
-      await webR.objs.globalEnv.bind(`conditionDataPart`, conditionDataConverted[i]);
+    for (let i = 0; i < treatmentDataConverted.length; i++) {
+      await webR.objs.globalEnv.bind(`treatmentDataPart`, treatmentDataConverted[i]);
       await webR.evalR(`
-        # check if conditionData exists
-        if (!exists("conditionData")) {
-          conditionData <- list()
+        # check if treatmentData exists
+        if (!exists("treatmentData")) {
+          treatmentData <- list()
         }
-        conditionData[[${i + 1}]] <- conditionDataPart
+        treatmentData[[${i + 1}]] <- treatmentDataPart
         # clean up
-        rm(conditionDataPart)
+        rm(treatmentDataPart)
       `);
     }
     
     try {
       const result = await webR.evalR(`
         # Function to process input data and perform differential expression analysis
-        load_data <- function(control_list, condition_list) {
-          # Merge control and condition data for filtering
-          all_list <- c(control_list, condition_list)
+        load_data <- function(control_list, treatment_list) {
+          # Merge control and treatment data for filtering
+          all_list <- c(control_list, treatment_list)
           read_counts <- do.call(cbind, lapply(all_list, function(x) { x$readCount }))
 
           # Apply filtering for non-zero counts
           zeros <- apply(apply(read_counts, 1, ">", 0), 2, any)
           noness_list <- lapply(all_list, function(x) { x[zeros, ] })
 
-          # Build count matrix and conditions factor
+          # Build count matrix and treatments factor
           count_mat <- do.call(cbind, lapply(noness_list, function(x) { x$readCount }))
-          conds <- factor(c(rep("ctrl", length(control_list)), rep("cond", length(condition_list))))
+          conds <- factor(c(rep("ctrl", length(control_list)), rep("cond", length(treatment_list))))
 
           list(count_mat = count_mat, conds = conds, noness_list = noness_list)
         }
@@ -94,7 +94,7 @@ export interface CompareResults {
             return(diff)
         }
 
-        data <- load_data(controlData, conditionData)
+        data <- load_data(controlData, treatmentData)
         diff_results <- perform_differential_expression(data$count_mat, data$conds, data$noness_list)
         diff_results
       `) as RList;
@@ -109,10 +109,10 @@ export interface CompareResults {
 // Main function to compare gene insert sites and return results in the specified format
 export async function compareGeneInsertSites(
   controlData: GeneInsertResult[][],
-  conditionData: GeneInsertResult[][],
+  treatmentData: GeneInsertResult[][],
   minReadCount = 0
 ): Promise<CompareResults[]> {
-  const results = await evaluateR(controlData, conditionData, minReadCount);
+  const results = await evaluateR(controlData, treatmentData, minReadCount);
   // Format the output as an array of CompareResults objects
   return results.map((result: any, index: number) => ({
     id: index,

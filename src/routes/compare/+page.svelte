@@ -7,7 +7,7 @@
     import GeneDataTable from './GeneDataTable.svelte';
 
     let controlData: number[][] = [];
-    let conditionData: number[][] = [];
+    let treatmentData: number[][] = [];
     let comparisonResults: CompareResults[] = [];
     let tableData: CompareResults[] = [];
 
@@ -15,14 +15,14 @@
     const insertEntries = Array.from($insertStore.entries());
 
     controlData = insertEntries
-        .filter(([_, data]) => data.isControl)
+        .filter(([_, data]) => !data.isTreatment)
         .map(([_, data]) => data.total);
 
-    conditionData = insertEntries
-        .filter(([_, data]) => !data.isControl)
+    treatmentData = insertEntries
+        .filter(([_, data]) => data.isTreatment)
         .map(([_, data]) => data.total);
 
-    $: if (controlData.length && conditionData.length) {
+    $: if (controlData.length && treatmentData.length) {
         calculateComparisonResults();
     }
 
@@ -31,11 +31,11 @@
             controlData.map(data => generateGeneInsertSites($annotationStore.features, data, [], 0, 0))
         );
 
-        const conditionGeneInserts = await Promise.all(
-            conditionData.map(data => generateGeneInsertSites($annotationStore.features, data, [], 0, 0))
+        const treatmentGeneInserts = await Promise.all(
+            treatmentData.map(data => generateGeneInsertSites($annotationStore.features, data, [], 0, 0))
         );
 
-        comparisonResults = await compareGeneInsertSites(controlGeneInserts, conditionGeneInserts);
+        comparisonResults = await compareGeneInsertSites(controlGeneInserts, treatmentGeneInserts);
 
         tableData = [...comparisonResults]; // Ensures tableData updates reactively
     }
