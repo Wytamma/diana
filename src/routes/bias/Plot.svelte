@@ -92,6 +92,6 @@
         {/if}
     </section>
     <footer class="card-footer">
-        The insert index is the number of inserts in a locus divided by the locus length.
+        The insert index is the number of inserts in a feature divided by the feature length.
     </footer>
 </div>

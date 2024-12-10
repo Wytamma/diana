@@ -58,8 +58,8 @@
 				</AppRailTile>
 			{/if}
 			{#if $referenceStore.filename && $annotationStore.filename && $insertStore.size > 0}
-				<AppRailTile disable on:click={() => navigateTo('/normalise')} bind:group={currentTile} name="tile-4" value="/normalise" title="tile-4">
-					<span>Normalise</span>
+				<AppRailTile disable on:click={() => navigateTo('/bias')} bind:group={currentTile} name="tile-4" value="/bias" title="tile-4">
+					<span>Bias</span>
 				</AppRailTile>
 			{/if}
 			{#if $referenceStore.filename && $annotationStore.filename && $containsControlAndTreatment}
