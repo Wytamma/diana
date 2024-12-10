@@ -71,7 +71,6 @@ function onChangeHandler(e: Event): void {
                 let text: string = e.target?.result?.toString() as string;
                 if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
                     const {gff, fasta} = genBankToGFFAndFasta(text);
-                    console.log('gff:', gff);
                     await annotationStore.load(name, gff);
                     $igvStore.locus = undefined; // Reset the locus
                     if (fasta.length > 0) {
