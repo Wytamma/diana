@@ -9,14 +9,12 @@ import type { ToastSettings } from '@skeletonlabs/skeleton';
 import { igvStore } from "$lib/stores/igvStore";
 import File from "$lib/components/files/File.svelte";
 import Reference from "$lib/components/files/Reference.svelte";
+import { genBankToGFFAndFasta } from "$lib/utils/gbkUtils";
 
 const toastStore = getToastStore();
 
 let files: FileList;
 let isLoading = false;
-let chromosome: string;
-let chromosomeLength: number;
-const width = 1000;
 
 function extractFastaFromGff(gff: string): string {
     const lines = gff.split('\n');
@@ -71,7 +69,25 @@ function onChangeHandler(e: Event): void {
         fileReadPromises.push(new Promise((resolve, reject) => {
             reader.onload = async (e) => {
                 let text: string = e.target?.result?.toString() as string;
-                if (name.endsWith('.gff') || name.endsWith('.gff3')){
+                if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
+                    const {gff, fasta} = genBankToGFFAndFasta(text);
+                    console.log('gff:', gff);
+                    await annotationStore.load(name, gff);
+                    $igvStore.locus = undefined; // Reset the locus
+                    if (fasta.length > 0) {
+                        await referenceStore.load(name, fasta).catch((e) => {
+                            console.error('Error loading reference:', e);
+                            const error = 'Error loading reference: ' + e;
+                            const t: ToastSettings = {
+                                message: error,
+                                background: 'variant-glass-error',
+                            };
+                            toastStore.trigger(t);
+                        });
+                        await taStore.load(fasta);
+                        resolve(0);
+                    }
+                } else if (name.endsWith('.gff') || name.endsWith('.gff3')){
                     await annotationStore.load(name, text);
                     $igvStore.locus = undefined; // Reset the locus
                     const fasta = extractFastaFromGff(text);

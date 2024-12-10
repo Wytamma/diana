@@ -1,5 +1,6 @@
 <script lang="ts">
     import { SlideToggle } from "@skeletonlabs/skeleton";
+    import { removeFileExtension } from "./utils";
 
     export let filename: string
     export let onRemove: () => void
@@ -7,11 +8,13 @@
 
     export let isTreatment: boolean = false;
 
+    
+
 </script>
 <div class="card p-4">
     <div class="flex justify-center items-center space-x-2">
         <div class="flex flex-col space-y-2 w-full">
-            <p class="text-lg">{filename}</p>
+            <p class="text-lg">{removeFileExtension(filename)}</p>
             <div class="flex justify-between items-center min-w-64">
                 <SlideToggle active="variant-soft-primary" size='sm' class="mr-2" name="slide" on:change={() => onToggle(isTreatment)} bind:checked={isTreatment}><span class={`chip ${isTreatment ?  'variant-soft-primary' : 'variant-soft-surface'}`}>{isTreatment ?  'Treatment' : 'Control'}</span></SlideToggle>
                 <button type="button" class="btn-icon hover:variant-ringed-tertiary" on:click={onRemove} >

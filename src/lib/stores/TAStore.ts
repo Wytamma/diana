@@ -80,8 +80,9 @@ function createTAStore() {
       // Iterate over each sequence to find TA indices.
       sequenceMap.forEach((sequence, name) => {
         const taIndices: number[] = [];
-        for (let i = 0; i < sequence.length - 1; i++) {
-          if (sequence[i] === 'T' && sequence[i + 1] === 'A') {
+        const sequenceUpper = sequence.toUpperCase();
+        for (let i = 0; i < sequenceUpper.length - 1; i++) {
+          if (sequenceUpper[i] === 'T' && sequenceUpper[i + 1] === 'A') {
             taIndices.push(i);
           }
         }
