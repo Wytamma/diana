@@ -211,7 +211,7 @@ function resetDropzone() {
                     </div>
                 </svelte:fragment>
                 <svelte:fragment slot="message"><p class="text-xl "><span class="font-semibold">Load files</span> or drag and drop</p></svelte:fragment>
-                <svelte:fragment slot="meta">Only GFF+FASTA and .userplot files allowed.</svelte:fragment>
+                <svelte:fragment slot="meta">GENBANK, GFF, FASTA and userplot files allowed.</svelte:fragment>
             </FileDropzone>
         {/if}
     </div>
