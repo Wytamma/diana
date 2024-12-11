@@ -43,7 +43,7 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
           feature.attributes["Name"] = feature.attributes["organism"]; 
         }
         const attributes = Object.entries(feature.attributes || {})
-          .map(([key, value]) => `${key}=${value}`)
+          .map(([key, value]) => `${key}=${value.replace('"', "")}`)
           .join(";");
         gffLines.push(
           `${currentLocus}\tdiana\t${feature.type}\t${feature.start}\t${feature.end}\t.\t${feature.strand}\t.\t${attributes}`

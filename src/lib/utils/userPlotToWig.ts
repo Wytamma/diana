@@ -12,10 +12,10 @@ export async function userPlotToWig(userPlot: string, chromosome: string, chunkS
     for (let i = 0; i < lines.length; i += chunkSize) {
         const chunk = lines.slice(i, i + chunkSize)
         chunk.forEach((line, index) => {
-            const [plus, minusValue] = line.split(/\s+/).map((x) => parseInt(x, 10));
+            let [plus, minus] = line.split(/\s+/).map((x) => parseInt(x, 10));
             // if minus undefined, set to 0 (some files only have one number)
-            let minus = minusValue;
             if (isNaN(minus)) minus = 0;
+            if (isNaN(plus)) plus = 0;
             if (plus !== 0)
                 wigLines.push(`${i + index} ${plus}`);
             if (minus !== 0)

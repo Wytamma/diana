@@ -47,7 +47,7 @@
 					windowFunction: 'mean',
 					visibilityWindow: undefined,
 					autoscaleGroup: "insertPlots",
-					url: createBlobURL(data.wig.replace('variableStep chrom=chrom span=2', `variableStep chrom=${$taStore.raw.keys().next().value} span=2`)),
+					url: createBlobURL(data.wig),
 					autoscale: true,
 					color: "rgb(59, 61, 145)",
 					altColor: "rgb(236, 72, 153)",

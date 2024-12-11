@@ -6,21 +6,20 @@
     import Plot from './Plot.svelte';
     import GeneDataTable from './GeneDataTable.svelte';
 
-    let controlData: number[][] = [];
-    let treatmentData: number[][] = [];
+ 
     let comparisonResults: CompareResults[] = [];
     let tableData: CompareResults[] = [];
 
 
     const insertEntries = Array.from($insertStore.entries());
 
-    controlData = insertEntries
+    let controlData = insertEntries
         .filter(([_, data]) => !data.isTreatment)
-        .map(([_, data]) => data.total);
+        .map(([_, data]) => data.chromosomes);
 
-    treatmentData = insertEntries
+    let treatmentData = insertEntries
         .filter(([_, data]) => data.isTreatment)
-        .map(([_, data]) => data.total);
+        .map(([_, data]) => data.chromosomes);
 
     $: if (controlData.length && treatmentData.length) {
         calculateComparisonResults();
@@ -28,11 +27,11 @@
 
     async function calculateComparisonResults() {
         const controlGeneInserts = await Promise.all(
-            controlData.map(data => generateGeneInsertSites($annotationStore.features, data, [], 0, 0))
+            controlData.map(data => generateGeneInsertSites($annotationStore.features, data))
         );
 
         const treatmentGeneInserts = await Promise.all(
-            treatmentData.map(data => generateGeneInsertSites($annotationStore.features, data, [], 0, 0))
+            treatmentData.map(data => generateGeneInsertSites($annotationStore.features, data))
         );
 
         comparisonResults = await compareGeneInsertSites(controlGeneInserts, treatmentGeneInserts);

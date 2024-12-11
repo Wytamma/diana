@@ -3,8 +3,7 @@ import { derived, writable } from 'svelte/store';
 export interface InsertCountData {
     isTreatment: boolean
     wig: string;
-    total: number[];
-
+    chromosomes: Map<string, number[]>;
 }
 
 function createInsertStore() {
@@ -61,26 +60,42 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
     const lines = text.split('\n');
     const data: InsertCountData = {
         wig: text,
-        total: [],
+        chromosomes: new Map(),
         isTreatment: false,
     };
-    const totals: Map<number, number> = new Map();
+    const totals: Record<string,Map<number, number>> = {};
+    let currentChrom: string | undefined = undefined;
     for (let i = 0; i < lines.length; i += chunkSize) {
         // Slice a chunk of lines
         const chunk = lines.slice(i, i + chunkSize);
 
         // Process each chunk synchronously to avoid creating too many promises
         chunk.forEach((line) => {
-            const [position, total] = line.split(/\s+/).map((x) => parseInt(x, 10));
-            totals.set(position, (totals.get(position) || 0) + Math.abs(total));
+            if (line.startsWith("variableStep")) {
+                currentChrom = line.split("chrom=")[1].split(/\s+/)[0];
+                totals[currentChrom] = new Map();
+            } else if (line.startsWith("fixedStep")) {
+                throw new Error("Fixed step WIG files are not supported");
+            } else if (/^\d/.test(line)) {
+                const [position, total] = line.split(/\s+/).map((x) => parseInt(x, 10));
+                if (currentChrom === undefined) {
+                    throw new Error("Invalid WIG file format: missing chromosome (chrom=) line");
+                }
+                totals[currentChrom].set(position, (totals[currentChrom].get(position) || 0) + Math.abs(total));
+            } else {
+                // Skip other lines
+            }
         });
         // Yield control back to the main thread every chunk to keep the UI responsive.
         await new Promise((resolve) => setTimeout(resolve, 0));
     }
     // convert totals to array where missing values are 0
-    const maxPosition = Math.max(...Array.from(totals.keys()));
-    for (let i = 0; i <= maxPosition; i++) {
-        data.total.push(totals.get(i) || 0);
+    for (const chrom in totals) {
+        const maxPosition = Math.max(...Array.from(totals[chrom].keys()));
+        for (let i = 0; i <= maxPosition; i++) {
+            data.chromosomes.set(chrom, data.chromosomes.get(chrom) || []);
+            data.chromosomes.get(chrom)?.push(totals[chrom].get(i) || 0);
+        }
     }
     return data
 }

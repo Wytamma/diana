@@ -3,6 +3,7 @@ import { WebR } from 'webr';
 import type { RList } from "webr";
 
 export interface CompareResults {
+    seqId: string;
     id: number;
     name: string;
     start: number;
@@ -12,11 +13,9 @@ export interface CompareResults {
     logCPM: number;     // Log Counts Per Million for comparison
     pValue: number;     // P-value for comparison
     qValue: number;     // Q-value for comparison
-
-
-  }
+}
   
-  async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneInsertResult[][], minReadCount: number) {
+async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneInsertResult[][]) {
     const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
     const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
     await webR.init();
@@ -89,7 +88,7 @@ export interface CompareResults {
 
             # Prepare differential expression results
             ctrl1_noness <- noness_list[[1]]
-            diff <- cbind(ctrl1_noness[, c("name", "start", "end", "strand")], de.tgw$table, QValue = p.adjust(de.tgw$table$PValue, "BH"))
+            diff <- cbind(ctrl1_noness[, c("seqId", "name", "start", "end", "strand")], de.tgw$table, QValue = p.adjust(de.tgw$table$PValue, "BH"))
 
             return(diff)
         }
@@ -110,12 +109,12 @@ export interface CompareResults {
 export async function compareGeneInsertSites(
   controlData: GeneInsertResult[][],
   treatmentData: GeneInsertResult[][],
-  minReadCount = 0
 ): Promise<CompareResults[]> {
-  const results = await evaluateR(controlData, treatmentData, minReadCount);
+  const results = await evaluateR(controlData, treatmentData);
   // Format the output as an array of CompareResults objects
   return results.map((result: any, index: number) => ({
     id: index,
+    seqId: result.seqId,
     name: result.name,
     start: result.start,
     stop: result.end,

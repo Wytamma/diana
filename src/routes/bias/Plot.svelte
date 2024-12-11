@@ -1,5 +1,6 @@
 <script lang="ts">
     import { annotationStore } from '$lib/stores/annotationStore';
+    import { taStore } from '$lib/stores/TAStore';
     import { generateGeneInsertSites } from '$lib/utils/generateGeneInsertSites';
     import { ProgressRadial } from '@skeletonlabs/skeleton';
 
@@ -7,7 +8,7 @@
     import { onMount, onDestroy } from 'svelte';
 
     export let filename;
-    export let data: number[];
+    export let data: Map<string, number[]>;
 
     let plotId = `plotly-${filename}`;
     let isLoading = true;
@@ -30,8 +31,34 @@
     };
 
     onMount(async () => {
-        const geneInserts = await generateGeneInsertSites($annotationStore.features, data, [], 0, 0);
+        const geneInserts = (await generateGeneInsertSites($annotationStore.features, data)).reduce((acc: { [key: string]: any[] }, curr) => {
+            // Use the `category` value as the key
+            const key = curr.seqId;
+            // If the key doesn't exist in the accumulator, initialize it as an array
+            if (!acc[key]) {
+                acc[key] = [];
+            }
+            // Push the current item into the correct group
+            acc[key].push(curr);
+            return acc;
+        }, {});
 
+        let plotData = [];
+        for (const [key, value] of Object.entries(geneInserts)) {
+            plotData.push({
+                x: value.map(gi => gi.start),
+                y: value.map(gi => gi.insIndex),
+                text: value.map(gi => gi.name),
+                textfont: {
+                    family: 'Times New Roman'
+                },
+                textposition: 'bottom center',
+                type: 'scatter',
+                mode: 'markers',
+                name: key,
+            });
+        }
+        
         const layout = {
             yaxis: { title: 'Insert Index' },
             xaxis: { zeroline: false, rangemode: 'nonnegative' },
@@ -40,6 +67,11 @@
             modebar: {
                 orientation: 'v',
             },
+            legend: {
+                x: 1,
+                xanchor: 'right',
+                y: 1
+            }
         };
 
         const config = { 
@@ -55,19 +87,9 @@
             ]
         };
 
-        const plotData = {
-            x: geneInserts.map(gi => gi.start),
-            y: geneInserts.map(gi => gi.insIndex),
-            text: geneInserts.map(gi => gi.name),
-            textfont: {
-                family: 'Times New Roman'
-            },
-            textposition: 'bottom center',
-            type: 'scatter',
-            mode: 'markers'
-        };
+        
 
-        Plotly.newPlot(plotId, [plotData], layout, config);
+        Plotly.newPlot(plotId, plotData, layout, config);
 
         // Add resize event listener
         window.addEventListener('resize', resizePlot);

@@ -9,7 +9,7 @@
         <!-- Loop through filenames and data to generate a plot div for each -->
         {#each $insertStore as [filename, insertData], index}
             <div class="m-4">
-                <Plot filename={filename} data={insertData.total} />
+                <Plot filename={filename} data={insertData.chromosomes} />
             </div>
         {/each}
     </div>

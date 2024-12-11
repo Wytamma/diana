@@ -30,6 +30,7 @@
     <table class="table table-hover table-compact w-full table-auto">
         <thead>
             <tr>
+                <ThSort {handler} orderBy="seqId">SeqId</ThSort>
                 <ThSort {handler} orderBy="name">Gene Name</ThSort>
                 <ThSort {handler} orderBy="start">Start</ThSort>
                 <ThSort {handler} orderBy="stop">End</ThSort>
@@ -39,6 +40,7 @@
                 <ThSort {handler} orderBy="qValue">Q-Value</ThSort>
             </tr>
             <tr>
+                <ThFilter {handler} filterBy="seqId" />
                 <ThFilter {handler} filterBy="name" />
                 <ThFilter {handler} filterBy="start" />
                 <ThFilter {handler} filterBy="stop" />
@@ -51,6 +53,7 @@
         <tbody>
             {#each $rows as row}
                 <tr>
+                    <td>{row.seqId}</td>
                     <td>{row.name}</td>
                     <td>{row.start}</td>
                     <td>{row.stop}</td>

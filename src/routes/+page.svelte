@@ -10,6 +10,7 @@ import { igvStore } from "$lib/stores/igvStore";
 import File from "$lib/components/files/File.svelte";
 import Reference from "$lib/components/files/Reference.svelte";
 import { genBankToGFFAndFasta } from "$lib/utils/gbkUtils";
+    import { userPlotToWig } from "$lib/utils/userPlotToWig";
 
 const toastStore = getToastStore();
 
@@ -110,7 +111,26 @@ function onChangeHandler(e: Event): void {
                     $igvStore.locus = undefined; // Reset the locus
                     resolve(0);
                 } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
-                    await insertStore.load(name, text);
+                    const firstChromosome = $annotationStore.chromosomes.keys().next().value;
+                    if (!firstChromosome) {
+                        console.error('No chromosome found in annotations');
+                        const error = 'Please load annotations before loading userplot files';
+                        const t: ToastSettings = {
+                            message: error,
+                            background: 'variant-glass-error',
+                        };
+                        toastStore.trigger(t);
+                        reject('No chromosome found in annotations');
+                    } else {
+                    const t: ToastSettings = {
+                            message: `Converting UserPlot file '${name}' to Wig Format. Assuming the first chromosome in the annotations is the reference chromosome`,
+                            background: 'variant-glass-warning',
+                        };
+                    toastStore.trigger(t); 
+                    const wig = await userPlotToWig(text, firstChromosome);
+                    await insertStore.load(name, wig);
+                    resolve(0);
+                    }
                 } else {
                     console.error('Unsupported file type:', name);
                     const error = 'Unsupported file type: ' + name;
@@ -211,7 +231,7 @@ function resetDropzone() {
                     </div>
                 </svelte:fragment>
                 <svelte:fragment slot="message"><p class="text-xl "><span class="font-semibold">Load files</span> or drag and drop</p></svelte:fragment>
-                <svelte:fragment slot="meta">GENBANK, GFF, FASTA and userplot files allowed.</svelte:fragment>
+                <svelte:fragment slot="meta">GENBANK, GFF, FASTA, WIG and userplot files allowed.</svelte:fragment>
             </FileDropzone>
         {/if}
     </div>
