@@ -50,6 +50,9 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
         );
       });
       currentSequence = "";
+      sequenceStarted = false;
+      currentFeature = null;
+      currentLocus = "";
       features.length = 0;
     }
   };
