@@ -5,8 +5,10 @@
     import { compareGeneInsertSites, type CompareResults } from '$lib/utils/compareGeneInsertSites';
     import Plot from './Plot.svelte';
     import GeneDataTable from './GeneDataTable.svelte';
+    import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 
- 
+    const toastStore = getToastStore();
+
     let comparisonResults: CompareResults[] = [];
     let tableData: CompareResults[] = [];
 
@@ -34,8 +36,17 @@
             treatmentData.map(data => generateGeneInsertSites($annotationStore.features, data))
         );
 
-        comparisonResults = await compareGeneInsertSites(controlGeneInserts, treatmentGeneInserts);
-
+        try {
+            comparisonResults = await compareGeneInsertSites(controlGeneInserts, treatmentGeneInserts);
+        } catch (error: any) {
+            console.error(error);
+            const message = `An error occurred while comparing gene insert sites. ${error.message}`;
+            const t: ToastSettings = {
+                message: message,
+                background: 'variant-glass-error',
+            };
+            toastStore.trigger(t);
+        }
         tableData = [...comparisonResults]; // Ensures tableData updates reactively
     }
 
