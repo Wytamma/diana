@@ -38,19 +38,6 @@ function sortGff(gffData: string): string {
     return result;
 }
 
-export function getAssembly(gffData: string): [string, number] {
-    const lines: string[] = gffData.split('\n');
-    for (const line of lines) {
-        if (line.startsWith('##sequence-region')) {
-            // split the line by whitespace
-            const parts: string[] = line.split(/\s+/);
-            const chromosome: string = parts[1];
-            const chromosomeLength: number = Number.parseInt(parts[3], 10);
-            return [chromosome, chromosomeLength];
-        }
-    }
-    throw new Error('Could not find the assembly information in the GFF file');
-}
 
 function removeFasta(gffData: string): string {
     const lines: string[] = gffData.split('\n');
