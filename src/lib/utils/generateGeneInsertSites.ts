@@ -1,6 +1,7 @@
 import type { Feature } from "$lib/stores/annotationStore";
 
 export interface GeneInsertResult {
+  seqId: string;
   name: string;
   start: number;
   end: number;
@@ -55,6 +56,7 @@ export async function generateGeneInsertSites(
 
     // Store the result for this gene
     results.push({
+      seqId: gene.seqId,
       name: gene.attributes.Name,
       start: gene.start,
       end: gene.stop,

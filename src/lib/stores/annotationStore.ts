@@ -85,14 +85,14 @@ export interface Chromosome {
 export interface AnnotationData {
     filename?: string;
     features: Feature[];
-    chromosomes: Chromosome[];
+    chromosomes: Map<string, Chromosome>;
     url?: string;
     indexUrl?: string;
 }
 
 export function createAnnotationStore() {
     // Create a writable store to hold the gene data
-    const defaultAnnotationData: AnnotationData = {features: [], chromosomes: []};
+    const defaultAnnotationData: AnnotationData = {features: [], chromosomes: new Map()};
     const { subscribe, set, update } = writable<AnnotationData>(defaultAnnotationData);
 
     return {
@@ -104,27 +104,17 @@ export function createAnnotationStore() {
             store.features.push(gene);
             return store;
         }),
-        addChromosome: (chromosome: Chromosome) => update((store) => {
-            store.chromosomes.push(chromosome);
-            return store;
-        }),
         load: async (filename:string, text: string) => {
             // Load from GFF3 text file format
             const lines = text.split('\n');
             const features: Feature[] = [];
-            const chromosomes: Chromosome[] = [];
+            const chromosomes: Map<string, Chromosome> = new Map();
             for (const line of lines) {
                 if (line.startsWith('##FASTA')) {
                     // Do nothing
                     break;
                 }
-                if (line.startsWith('##sequence-region')) {
-                    const [ , name, , stop] = line.split(/\s+/);
-                    if (name === undefined || stop === undefined) {
-                        throw new Error(`Invalid sequence-region line: ${line}`);
-                    }
-                    chromosomes.push({name, length: Number.parseInt(stop)});
-                } else if (!line.startsWith('#')) {
+                if (!line.startsWith('#')) {
                     const [seqId, source, type, start, stop, score, strand, phase, attributeString] = line.split('\t');
                     const attributes: { [key: string]: string } = {};
                     for (const attr of attributeString.split(';')) {
@@ -133,6 +123,17 @@ export function createAnnotationStore() {
                     }
                     if (strand !== "+" && strand !== "-") {
                         throw new Error(`Invalid strand value: ${strand}`);
+                    }
+                    // Add the chromosome to the map
+                    if (!chromosomes.has(seqId)) {
+                        chromosomes.set(seqId, {name: seqId, length: Number.parseInt(stop)});
+                    }
+                    // Update the chromosome length
+                    const chrom = chromosomes.get(seqId);
+                    if (chrom) {
+                        if (Number.parseInt(stop) > chrom.length) {
+                            chrom.length = Number.parseInt(stop);
+                        }
                     }
                     features.push({seqId, source, type, start: Number.parseInt(start), stop: Number.parseInt(stop), score: Number.parseFloat(score), strand, phase: Number.parseInt(phase), attributes: attributes});
                 }
