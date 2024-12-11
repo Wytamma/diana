@@ -25,7 +25,7 @@ function extractFastaFromGff(gff: string): string {
 
     for (const line of lines) {
         // Check if the line marks the start of the FASTA section
-        if (line.startsWith('##FASTA')) {
+        if (line.startsWith('##') && line.includes('FASTA')) {
             inFastaBlock = true;
             continue;
         }

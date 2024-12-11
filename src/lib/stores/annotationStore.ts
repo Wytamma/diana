@@ -43,7 +43,7 @@ function removeFasta(gffData: string): string {
     const lines: string[] = gffData.split('\n');
     const result: string[] = [];
     for (const line of lines) {
-        if (line.startsWith('##FASTA')) {
+        if (line.startsWith('##') && line.includes('FASTA')) {
             break;  
         }
         result.push(line);
@@ -97,7 +97,7 @@ export function createAnnotationStore() {
             const features: Feature[] = [];
             const chromosomes: Map<string, Chromosome> = new Map();
             for (const line of lines) {
-                if (line.startsWith('##FASTA')) {
+                if (line.startsWith('##') && line.includes('FASTA')) {
                     // Do nothing
                     break;
                 }
