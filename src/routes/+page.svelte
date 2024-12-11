@@ -72,7 +72,6 @@ function onChangeHandler(e: Event): void {
                 let text: string = e.target?.result?.toString() as string;
                 if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
                     const {gff, fasta} = genBankToGFFAndFasta(text);
-                    console.log('gff:', gff);
                     await annotationStore.load(name, gff);
                     $igvStore.locus = undefined; // Reset the locus
                     if (fasta.length > 0) {
@@ -105,10 +104,13 @@ function onChangeHandler(e: Event): void {
                         await taStore.load(fasta);
                         resolve(0);
                     }
-                } else if (name.endsWith('.fasta') || name.endsWith('.fa')) {
+                } else if (name.endsWith('.fasta') || name.endsWith('.fa') || name.endsWith('.fna')) {
                     await referenceStore.load(name, text);
                     await taStore.load(text);
                     $igvStore.locus = undefined; // Reset the locus
+                    resolve(0);
+                } else if (name.endsWith('.wig') || name.endsWith('.wiggle')) {
+                    await insertStore.load(name, text);
                     resolve(0);
                 } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
                     const firstChromosome = $annotationStore.chromosomes.keys().next().value;
@@ -231,7 +233,7 @@ function resetDropzone() {
                     </div>
                 </svelte:fragment>
                 <svelte:fragment slot="message"><p class="text-xl "><span class="font-semibold">Load files</span> or drag and drop</p></svelte:fragment>
-                <svelte:fragment slot="meta">GENBANK, GFF, FASTA, WIG and userplot files allowed.</svelte:fragment>
+                <svelte:fragment slot="meta">GENBANK, GFF, FASTA, WIG and UserPlot files allowed.</svelte:fragment>
             </FileDropzone>
         {/if}
     </div>
