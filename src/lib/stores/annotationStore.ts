@@ -65,14 +65,14 @@ function removeFasta(gffData: string): string {
 }
 
 export interface Feature {
-    seqname: string;
+    seqId: string;
     source: string;
     type: string;
     start: number;
-    end: number;
+    stop: number;
     score: number;
     strand: "+" | "-";
-    frame: number;
+    phase: number;
     // Attributes key value pairs
     attributes: { [key: string]: string};
 }
@@ -119,13 +119,13 @@ export function createAnnotationStore() {
                     break;
                 }
                 if (line.startsWith('##sequence-region')) {
-                    const [ , name, , end] = line.split(/\s+/);
-                    if (name === undefined || end === undefined) {
+                    const [ , name, , stop] = line.split(/\s+/);
+                    if (name === undefined || stop === undefined) {
                         throw new Error(`Invalid sequence-region line: ${line}`);
                     }
-                    chromosomes.push({name, length: Number.parseInt(end)});
+                    chromosomes.push({name, length: Number.parseInt(stop)});
                 } else if (!line.startsWith('#')) {
-                    const [seqname, source, type, start, end, score, strand, frame, attributeString] = line.split('\t');
+                    const [seqId, source, type, start, stop, score, strand, phase, attributeString] = line.split('\t');
                     const attributes: { [key: string]: string } = {};
                     for (const attr of attributeString.split(';')) {
                         const [key, value] = attr.split('=');
@@ -134,7 +134,7 @@ export function createAnnotationStore() {
                     if (strand !== "+" && strand !== "-") {
                         throw new Error(`Invalid strand value: ${strand}`);
                     }
-                    features.push({seqname, source, type, start: Number.parseInt(start), end: Number.parseInt(end), score: Number.parseFloat(score), strand, frame: Number.parseInt(frame), attributes: attributes});
+                    features.push({seqId, source, type, start: Number.parseInt(start), stop: Number.parseInt(stop), score: Number.parseFloat(score), strand, phase: Number.parseInt(phase), attributes: attributes});
                 }
             }
             const filteredData = removeFasta(text);

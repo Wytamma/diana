@@ -24,15 +24,15 @@ export async function generateGeneInsertSites(
 
   for (let i = 0; i < genes.length; i++) {
     const gene = genes[i];
-    const geneLength = gene.end - gene.start + 1;
+    const geneLength = gene.stop - gene.start + 1;
     
     // Calculate trimmed start and end positions
     const readStart = gene.strand === "+"
       ? gene.start + Math.floor(trim5 * geneLength)
       : gene.start + Math.floor(trim3 * geneLength);
     const readEnd = gene.strand === "+"
-      ? gene.end - Math.floor(trim3 * geneLength)
-      : gene.end - Math.floor(trim5 * geneLength);
+      ? gene.stop - Math.floor(trim3 * geneLength)
+      : gene.stop - Math.floor(trim5 * geneLength);
     
     let readCount = 0;
     let insertCount = 0;
@@ -57,7 +57,7 @@ export async function generateGeneInsertSites(
     results.push({
       name: gene.attributes.Name,
       start: gene.start,
-      end: gene.end,
+      end: gene.stop,
       strand: gene.strand,
       readCount,
       insIndex,

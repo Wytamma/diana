@@ -32,7 +32,7 @@
             <tr>
                 <ThSort {handler} orderBy="name">Gene Name</ThSort>
                 <ThSort {handler} orderBy="start">Start</ThSort>
-                <ThSort {handler} orderBy="end">End</ThSort>
+                <ThSort {handler} orderBy="stop">End</ThSort>
                 <ThSort {handler} orderBy="logFC">Log2 Fold Change</ThSort>
                 <ThSort {handler} orderBy="logCPM">Log CPM</ThSort>
                 <ThSort {handler} orderBy="pValue">P-Value</ThSort>
@@ -41,7 +41,7 @@
             <tr>
                 <ThFilter {handler} filterBy="name" />
                 <ThFilter {handler} filterBy="start" />
-                <ThFilter {handler} filterBy="end" />
+                <ThFilter {handler} filterBy="stop" />
                 <ThFilter {handler} filterBy="logFC" />
                 <ThFilter {handler} filterBy="logCPM" />
                 <ThFilter {handler} filterBy="pValue" />
@@ -53,7 +53,7 @@
                 <tr>
                     <td>{row.name}</td>
                     <td>{row.start}</td>
-                    <td>{row.end}</td>
+                    <td>{row.stop}</td>
                     <td>{row.logFC}</td>
                     <td>{row.logCPM}</td>
                     <td>{row.pValue}</td>

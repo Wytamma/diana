@@ -6,7 +6,7 @@ export interface CompareResults {
     id: number;
     name: string;
     start: number;
-    end: number;
+    stop: number;
     strand: string;
     logFC: number;      // Log Fold Change for comparison
     logCPM: number;     // Log Counts Per Million for comparison
@@ -118,7 +118,7 @@ export async function compareGeneInsertSites(
     id: index,
     name: result.name,
     start: result.start,
-    end: result.end,
+    stop: result.end,
     strand: result.strand,
     logFC: result.logFC,
     logCPM: result.logCPM,
