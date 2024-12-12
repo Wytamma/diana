@@ -5,6 +5,11 @@ export interface InsertCountData {
     wig: string;
     chromosomes: Map<string, number[]>;
 }
+const arrayMinMax = (arr: number[]) =>
+    arr.reduce(([min, max], val) => [Math.min(min, val), Math.max(max, val)], [
+      Number.POSITIVE_INFINITY,
+      Number.NEGATIVE_INFINITY,
+    ]);
 
 function createInsertStore() {
     const { subscribe, set, update } = writable<Map<string, InsertCountData>>(new Map());
@@ -91,8 +96,8 @@ async function parseTextInChunks(text: string, chunkSize: number = 50000): Promi
     }
     // convert totals to array where missing values are 0
     for (const chrom in totals) {
-        const maxPosition = Math.max(...Array.from(totals[chrom].keys()));
-        for (let i = 0; i <= maxPosition; i++) {
+        const [ , max] = arrayMinMax(Array.from(totals[chrom].keys()))
+        for (let i = 0; i <= max; i++) {
             data.chromosomes.set(chrom, data.chromosomes.get(chrom) || []);
             data.chromosomes.get(chrom)?.push(totals[chrom].get(i) || 0);
         }
