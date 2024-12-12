@@ -71,7 +71,22 @@ function onChangeHandler(e: Event): void {
             reader.onload = async (e) => {
                 let text: string = e.target?.result?.toString() as string;
                 if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
-                    const {gff, fasta} = genBankToGFFAndFasta(text);
+                    let gff = '';
+                    let fasta = '';
+                    try {
+                        const gffAndFasta = genBankToGFFAndFasta(text)
+                        gff = gffAndFasta.gff;
+                        fasta = gffAndFasta.fasta;
+                    } catch (e) {
+                        console.error('Error converting GenBank file:', e);
+                        const error = 'Error converting GenBank file: ' + e;
+                        const t: ToastSettings = {
+                            message: error,
+                            background: 'variant-glass-error',
+                        };
+                        toastStore.trigger(t);
+                        reject('Error converting GenBank file: ' + e);
+                    }
                     await annotationStore.load(name, gff);
                     $igvStore.locus = undefined; // Reset the locus
                     if (fasta.length > 0) {

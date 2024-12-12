@@ -57,7 +57,7 @@
 					name: 'Annotations',
 					format: "gff3",
 					displayMode: "expanded",
-					height: 150,
+					height: 160,
 					url: $annotationStore.url,
 					indexURL: $annotationStore.indexUrl,
 					visibilityWindow: 0,
