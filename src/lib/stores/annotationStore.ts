@@ -61,7 +61,7 @@ export interface Feature {
     strand: "+" | "-";
     phase: number;
     // Attributes key value pairs
-    attributes: { [key: string]: string};
+    attributes: { [key: string]: string | undefined};
 }
 
 export interface Chromosome {
@@ -101,7 +101,7 @@ export function createAnnotationStore() {
                     // Do nothing
                     break;
                 }
-                if (!line.startsWith('#')) {
+                if (!line.startsWith('#') && line.trim() !== '') {
                     const [seqId, source, type, start, stop, score, strand, phase, attributeString] = line.split('\t');
                     const attributes: { [key: string]: string } = {};
                     for (const attr of attributeString.split(';')) {

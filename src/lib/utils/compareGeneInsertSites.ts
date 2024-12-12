@@ -121,7 +121,7 @@ export async function compareGeneInsertSites(
     strand: result.strand,
     logFC: result.logFC,
     logCPM: result.logCPM,
-    pValue: result.PValue,
-    qValue: result.QValue
+    pValue: result.PValue || Number.MIN_VALUE,
+    qValue: result.QValue || Number.MIN_VALUE,
   }));
 }

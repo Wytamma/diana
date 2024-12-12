@@ -1,6 +1,5 @@
 <script lang="ts">
     import { annotationStore } from '$lib/stores/annotationStore';
-    import { taStore } from '$lib/stores/TAStore';
     import { generateGeneInsertSites } from '$lib/utils/generateGeneInsertSites';
     import { ProgressRadial } from '@skeletonlabs/skeleton';
 

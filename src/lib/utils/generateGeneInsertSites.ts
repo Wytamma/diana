@@ -42,7 +42,7 @@ export async function generateGeneInsertSites(
     // Store the result for this feature
     results.push({
       seqId: feature.seqId,
-      name: feature.attributes.Name,
+      name: feature.attributes.Name || "",
       start: feature.start,
       end: feature.stop,
       strand: feature.strand,

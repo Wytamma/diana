@@ -39,7 +39,9 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
         fastaLines.push(currentSequence.slice(i, i + 60));
       }
       features.forEach((feature) => {
-        if (feature.attributes["gene"]) {
+        if (feature.attributes["name"] || feature.attributes["Name"]) {
+          feature.attributes["Name"] = feature.attributes["name"] || feature.attributes["Name"];
+        } else if (feature.attributes["gene"]) {
           feature.attributes["Name"] = feature.attributes["gene"];
         } else if (feature.attributes["product"]) {
           feature.attributes["Name"] = feature.attributes["product"];
@@ -50,7 +52,7 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
           feature.attributes["Name"] = feature.attributes["organism"]; 
         }
         const attributes = Object.entries(feature.attributes || {})
-          .map(([key, value]) => `${key}=${value.replace(/"/g, "")}`)
+          .map(([key, value]) => `${key}=${value.replace(/"/g, "").replace(/;/g, ",")}`)
           .join(";");
         gffLines.push(
           `${currentLocus}\tdiana\t${feature.type}\t${feature.start}\t${feature.end}\t.\t${feature.strand}\t.\t${attributes}`
