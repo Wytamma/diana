@@ -16,10 +16,9 @@ export async function userPlotToWig(userPlot: string, chromosome: string, chunkS
             // if minus undefined, set to 0 (some files only have one number)
             if (isNaN(minus)) minus = 0;
             if (isNaN(plus)) plus = 0;
-            if (plus !== 0)
-                wigLines.push(`${i + index} ${plus}`);
-            if (minus !== 0)
-                wigLines.push(`${i + index} -${minus}`);
+            // Append WIG entries if values are non-zero
+            if (plus !== 0) wigLines.push(`${i + index + 1} ${plus}`); // +1 for 1-based indexing
+            if (minus !== 0) wigLines.push(`${i + index + 1} -${minus}`);
         });
         // Yield control back to the main thread every chunk to keep the UI responsive.
         await new Promise((resolve) => setTimeout(resolve, 0)); 
