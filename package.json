@@ -45,8 +45,6 @@
     "@biowasm/aioli": "^3.1.0",
     "@floating-ui/dom": "^1.6.5",
     "@vincjo/datatables": "^1.14.10",
-    "apexcharts": "^3.53.0",
-    "gosling.js": "^0.17.0",
     "igv": "^3.0.8",
     "jstat": "^1.9.6",
     "plotly.js-dist": "^2.35.2",
