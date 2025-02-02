@@ -67,7 +67,7 @@
 		<tbody>
 			{#each $rows as row}
 				<tr>
-					<td>
+					<td class=" text-center">
 						<input class="checkbox" type="checkbox"
 							on:click={() => select(row._id) } 
 							checked={$selected.includes(row._id)}

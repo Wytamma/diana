@@ -14,7 +14,7 @@
 
 </script>
 
-<th on:click={selectAll} class="cursor-pointer select-none">
+<th on:click={selectAll} class="cursor-pointer select-none text-center">
 	<input type="checkbox" class="checkbox"
 		checked={$isAllSelected}
 	>
