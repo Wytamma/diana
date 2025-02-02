@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, AppBar, AppRail, AppRailTile } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, AppRail, AppRailTile, TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
@@ -44,7 +44,7 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="sidebarLeft">
-		<AppRail>
+		<AppRail class="hidden md:block">
 			<AppRailTile
 				on:click={() => navigateTo('/')}
 				bind:group={currentTile}
@@ -85,6 +85,33 @@
 				<span>Compare</span>
 			</AppRailTile>
 		</AppRail>
+	</svelte:fragment>
+	<!-- Tabs Navigation for mobile (Footer) -->
+	<svelte:fragment slot="footer">
+		<TabGroup 
+			justify="justify-center"
+			active="variant-filled-primary"
+			hover="hover:variant-soft-primary"
+			rounded=""
+			flex="flex-1"
+			class="bg-surface-100-800-token w-full fixed bottom-0 left-0 right-0 block md:hidden"
+		>
+			<TabAnchor href="/" selected={$page.url.pathname === '/'}>
+				<span>Data</span>
+			</TabAnchor>
+
+			<TabAnchor href="/tracks" selected={$page.url.pathname === '/tracks'} class={(!$referenceStore.filename || !$annotationStore.filename) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+				<span>Tracks</span>
+			</TabAnchor>
+
+			<TabAnchor href="/bias" selected={$page.url.pathname === '/bias'} class={(!$referenceStore.filename || !$annotationStore.filename || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+				<span>Bias</span>
+			</TabAnchor>
+
+			<TabAnchor href="/compare" selected={$page.url.pathname === '/compare'} class={(!$referenceStore.filename || !$annotationStore.filename || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+				<span>Compare</span>
+			</TabAnchor>
+		</TabGroup>
 	</svelte:fragment>
 
 	<slot />
