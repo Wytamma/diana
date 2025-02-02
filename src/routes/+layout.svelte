@@ -19,7 +19,9 @@
 	$: currentTile = $page.url.pathname;
 
 	function navigateTo(path: string) {
-		goto(path);
+		if ($page.url.pathname !== path) {
+			goto(path);
+		}
 	}
 </script>
 <Toast position="br" />
@@ -48,39 +50,44 @@
 			<AppRailTile
 				on:click={() => navigateTo('/')}
 				bind:group={currentTile}
-				name="tile-1"
 				value="/"
-				title="tile-1"
+				name="data"
 			>
 				<span>Data</span>
 			</AppRailTile>
 			<AppRailTile
+				on:click={() => navigateTo('/annotations')}
+				bind:group={currentTile}
+				value="/annotations"
+				name="annotations"
+				class={(!$annotationStore.filename) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+			>
+				<span>Annotations</span>
+			</AppRailTile>
+			<AppRailTile
 				on:click={() => navigateTo('/tracks')}
 				bind:group={currentTile}
-				name="tile-2"
 				value="/tracks"
-				title="tile-2"
-				class={(!$referenceStore.filename || !$annotationStore.filename) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				name="tracks"
+				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Tracks</span>
 			</AppRailTile>
 			<AppRailTile
 				on:click={() => navigateTo('/bias')}
 				bind:group={currentTile}
-				name="tile-4"
 				value="/bias"
-				title="tile-4"
-				class={(!$referenceStore.filename || !$annotationStore.filename || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				name="bias"
+				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Bias</span>
 			</AppRailTile>
 			<AppRailTile
 				on:click={() => navigateTo('/compare')}
 				bind:group={currentTile}
-				name="tile-4"
 				value="/compare"
-				title="tile-4"
-				class={(!$referenceStore.filename || !$annotationStore.filename || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				name="compare"
+				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Compare</span>
 			</AppRailTile>
@@ -94,21 +101,25 @@
 			hover="hover:variant-soft-primary"
 			rounded=""
 			flex="flex-1"
-			class="bg-surface-100-800-token w-full fixed bottom-0 left-0 right-0 block md:hidden"
+			class="bg-surface-100-800-token w-full fixed bottom-0 left-0 right-0 block md:hidden z-50"
 		>
-			<TabAnchor href="/" selected={$page.url.pathname === '/'}>
+			<TabAnchor on:click={() => navigateTo('/')} selected={$page.url.pathname === '/'}>
 				<span>Data</span>
 			</TabAnchor>
 
-			<TabAnchor href="/tracks" selected={$page.url.pathname === '/tracks'} class={(!$referenceStore.filename || !$annotationStore.filename) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/annotations')} selected={$page.url.pathname === '/annotations'} class={(!$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+				<span>Annotations</span>
+			</TabAnchor>
+
+			<TabAnchor on:click={() => navigateTo('/tracks')} selected={$page.url.pathname === '/tracks'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Tracks</span>
 			</TabAnchor>
 
-			<TabAnchor href="/bias" selected={$page.url.pathname === '/bias'} class={(!$referenceStore.filename || !$annotationStore.filename || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/bias')} selected={$page.url.pathname === '/bias'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Bias</span>
 			</TabAnchor>
 
-			<TabAnchor href="/compare" selected={$page.url.pathname === '/compare'} class={(!$referenceStore.filename || !$annotationStore.filename || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/compare')} selected={$page.url.pathname === '/compare'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Compare</span>
 			</TabAnchor>
 		</TabGroup>

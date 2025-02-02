@@ -7,12 +7,29 @@
 	import Pagination from '$lib/components/datatable/Pagination.svelte';
     import { DataHandler } from '@vincjo/datatables';
     import { annotationStore, type Feature } from "$lib/stores/annotationStore"; 
+    import AttributeChip from '$lib/components/AttributeChip.svelte';
+    import ThSelectAll from '$lib/components/datatable/ThSelectAll.svelte';
 	
 	const features: Feature[] = $annotationStore.features;
     
-    const handler = new DataHandler(features, { rowsPerPage: 10 });
+    const handler = new DataHandler(features, { rowsPerPage: 5 });
     const rows = handler.getRows();
-	
+	const selected = handler.getSelected();
+
+	handler.on('change', () => {
+		selected.set($annotationStore.filteredFeatures.map((f) => f._id));
+	});
+
+
+	// selected.set($annotationStore.filteredFeatures.map((f) => f._id));
+	annotationStore.subscribe((value) => {
+		selected.set(value.filteredFeatures.map((f) => f._id));
+	});
+
+	function select(id: number) {
+		handler.select(id);
+		annotationStore.setFilteredFeatures($selected as number[]);
+	}
 </script>
 
 
@@ -27,8 +44,8 @@
 		<thead>
 			<tr>
 				<!-- seqname: string; source: string; -->
-				<ThSort {handler} orderBy="seqname">Seqname</ThSort>
-				<ThSort {handler} orderBy="source">Source</ThSort>
+				<ThSelectAll {handler} />
+				<ThSort {handler} orderBy="seqId">Chromosome</ThSort>
 				<ThSort {handler} orderBy="attributes">Name</ThSort>
 				<ThSort {handler} orderBy="type">Type</ThSort>
 				<ThSort {handler} orderBy="start">Start</ThSort>
@@ -37,8 +54,8 @@
 				<ThSort {handler} orderBy="attributes">Attributes</ThSort>
 			</tr>
 			<tr>
-				<ThFilter {handler} filterBy="seqname" />
-				<ThFilter {handler} filterBy="source" />
+				<th class=" text-center">{$selected.length}</th>
+				<ThFilter {handler} filterBy="seqId" />
 				<ThFilter {handler} filterBy="attributes" />
 				<ThFilter {handler} filterBy="type" />
 				<ThFilter {handler} filterBy="start" />
@@ -50,19 +67,22 @@
 		<tbody>
 			{#each $rows as row}
 				<tr>
-					<td>{row.seqname}</td>
-					<td>{row.source}</td>
+					<td>
+						<input class="checkbox" type="checkbox"
+							on:click={() => select(row._id) } 
+							checked={$selected.includes(row._id)}
+						>
+					</td>
+					<td>{row.seqId}</td>
 					<td>{row.attributes.Name}</td>
 					<td>{row.type}</td>
 					<td>{row.start}</td>
-					<td>{row.end}</td>
+					<td>{row.stop}</td>
 					<td>{row.strand}</td>
 					<td>
-						<ul>
-							{#each Object.keys(row.attributes) as attribute}
-								<li>{attribute}: {row.attributes[attribute]}</li>
-							{/each}
-						</ul>
+						{#each Object.entries(row.attributes) as [attrKey, attrValue]}
+							<AttributeChip keyName={attrKey} value={attrValue ? attrValue : ""} maxLength={15} />
+						{/each}
 					</td>
 				</tr>
 			{/each}

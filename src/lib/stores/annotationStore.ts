@@ -3,6 +3,7 @@ import Aioli from "@biowasm/aioli";
 import { createBlobURL } from '../utils/utils';
 
 export interface Feature {
+    _id: number;
     seqId: string;
     source: string;
     type: string;
@@ -133,6 +134,7 @@ export function createAnnotationStore() {
             const lines = text.split('\n');
             const features: Feature[] = [];
             const chromosomes: Map<string, Chromosome> = new Map();
+            let currentId = 0;
             for (const line of lines) {
                 if (line.startsWith('##') && line.includes('FASTA')) break;
                 if (!line.startsWith('#') && line.trim() !== '') {
@@ -148,6 +150,7 @@ export function createAnnotationStore() {
                         chrom.length = Number.parseInt(stop);
                     }
                     features.push({
+                        _id: currentId++,
                         seqId,
                         source,
                         type,
@@ -168,10 +171,10 @@ export function createAnnotationStore() {
         /**
          * Filters features based on filterFn and then regenerates the URLs.
          */
-        setFilteredFeatures: async (filterFn: (feature: Feature) => boolean) => {
+        setFilteredFeatures: async (featureIds: number[]) => {
             // First, update the store with the filtered features.
             update(store => {
-                store.filteredFeatures = store.features.filter(filterFn);
+                store.filteredFeatures = store.features.filter(feature => featureIds.includes(feature._id));
                 // Clear out the URLs before computing new ones.
                 store.url = undefined;
                 store.indexUrl = undefined;
@@ -190,7 +193,17 @@ export function createAnnotationStore() {
                 store.indexUrl = indexUrl;
                 return store;
             });
-        }
+        },
+        selectAll: () => {
+            update(store => {
+                if (store.features.length === store.filteredFeatures.length) {
+                    store.filteredFeatures = [];
+                } else {
+                    store.filteredFeatures = store.features;
+                }
+                return store;
+            });
+        },
     };
 }
 
