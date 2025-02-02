@@ -30,8 +30,8 @@
     <table class="table table-hover table-compact w-full table-auto">
         <thead>
             <tr>
-                <ThSort {handler} orderBy="seqId">SeqId</ThSort>
-                <ThSort {handler} orderBy="name">Gene Name</ThSort>
+                <ThSort {handler} orderBy="seqId">Chromosome</ThSort>
+                <ThSort {handler} orderBy="name">Name</ThSort>
                 <ThSort {handler} orderBy="start">Start</ThSort>
                 <ThSort {handler} orderBy="stop">End</ThSort>
                 <ThSort {handler} orderBy="logFC">Log2 Fold Change</ThSort>
