@@ -30,7 +30,8 @@
 	<svelte:fragment slot="header">
 		<AppBar shadow="drop-shadow-lg">
 			<svelte:fragment slot="lead">
-				<a href="/"><strong class="text-xl uppercase">Diana</strong></a>
+  				<!-- svelte-ignore missing-declaration -->
+				<a href="/"><strong class="text-xl uppercase">Diana</strong> v{__VERSION__}</a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
