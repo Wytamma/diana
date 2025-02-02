@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { referenceStore } from "$lib/stores/refStore";
-	import { annotationStore } from "$lib/stores/annotationStore";
+	import { annotationStore, type Feature } from "$lib/stores/annotationStore";
 	import { igvStore } from "$lib/stores/igvStore";
 	import igv from 'igv';
     import { onMount } from "svelte";
@@ -61,20 +61,12 @@
 					url: $annotationStore.url,
 					indexURL: $annotationStore.indexUrl,
 					visibilityWindow: 0,
-					color: (feature) => {						
+					color: (feature: Feature) => {						
 						switch (feature.strand) {
 							case "-":
 								return "blueviolet"
 							case "+":
 								return "blue"
-							case "retained_intron":
-								return "rgb(0, 150, 150)"
-							case "processed_transcript":
-								return "purple"
-							case "processed_pseudogene":
-								return "#7fff00"
-							case "unprocessed_pseudogene":
-								return "#d2691e"
 							default:
 								return "black"
 						}
