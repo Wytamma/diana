@@ -29,11 +29,11 @@
 
     async function calculateComparisonResults() {
         const controlGeneInserts = await Promise.all(
-            controlData.map(data => generateGeneInsertSites($annotationStore.features, data))
+            controlData.map(data => generateGeneInsertSites($annotationStore.filteredFeatures, data))
         );
 
         const treatmentGeneInserts = await Promise.all(
-            treatmentData.map(data => generateGeneInsertSites($annotationStore.features, data))
+            treatmentData.map(data => generateGeneInsertSites($annotationStore.filteredFeatures, data))
         );
 
         try {
@@ -58,12 +58,17 @@
         tableData = comparisonResults.filter((result) => data.includes(result.name));
     };
 </script>
-
 <div class="m-4">
-    <Plot {comparisonResults} {filterData} />
-</div>
-<div class="m-4">
-    {#if tableData.length > 0}
-        <GeneDataTable comparisonResults={tableData} />
-    {/if}
+    <div class="mb-4">
+        <h1 class="h1 mb-1">Compare gene insert sites</h1>
+        <p>Perform edgeR differential expression analysis to compare the gene insert sites between your control and treatment datasets.</p>
+    </div>
+    <div class="mb-4">
+        <Plot {comparisonResults} {filterData} />
+    </div>
+    <div >
+        {#if tableData.length > 0}
+            <GeneDataTable comparisonResults={tableData} />
+        {/if}
+    </div>
 </div>

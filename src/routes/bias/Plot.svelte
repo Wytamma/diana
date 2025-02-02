@@ -30,7 +30,7 @@
     };
 
     onMount(async () => {
-        const geneInserts = (await generateGeneInsertSites($annotationStore.features, data)).reduce((acc: { [key: string]: any[] }, curr) => {
+        const geneInserts = (await generateGeneInsertSites($annotationStore.filteredFeatures, data)).reduce((acc: { [key: string]: any[] }, curr) => {
             // Use the `category` value as the key
             const key = curr.seqId;
             // If the key doesn't exist in the accumulator, initialize it as an array
