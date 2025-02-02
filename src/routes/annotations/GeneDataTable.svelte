@@ -46,7 +46,7 @@
 			<tr>
 				<!-- seqname: string; source: string; -->
 				<ThSelectAll {handler} />
-				<ThSort {handler} orderBy="seqId">Chromosome</ThSort>
+				<ThSort {handler} orderBy="seqId">Seqname</ThSort>
 				<ThSort {handler} orderBy="attributes">Name</ThSort>
 				<ThSort {handler} orderBy="type">Type</ThSort>
 				<ThSort {handler} orderBy="start">Start</ThSort>
@@ -55,7 +55,7 @@
 				<ThSort {handler} orderBy="attributes">Attributes</ThSort>
 			</tr>
 			<tr>
-				<th class=" text-center">{$selected.length}</th>
+				<th class="text-center">{$selected.length}</th>
 				<ThFilter {handler} filterBy="seqId" />
 				<ThFilter {handler} filterBy="attributes" />
 				<ThFilter {handler} filterBy="type" />
@@ -67,8 +67,8 @@
 		</thead>
 		<tbody>
 			{#each $rows as row}
-				<tr>
-					<td class=" text-center">
+				<tr class="text-center">
+					<td >
 						<input class="checkbox" type="checkbox"
 							on:click={() => select(row._id) } 
 							checked={$selected.includes(row._id)}
@@ -80,7 +80,7 @@
 					<td>{row.start}</td>
 					<td>{row.stop}</td>
 					<td>{row.strand}</td>
-					<td>
+					<td class="text-left">
 						{#each Object.entries(row.attributes) as [attrKey, attrValue]}
 							<AttributeChip keyName={attrKey} value={attrValue ? attrValue : ""} maxLength={15} />
 						{/each}
