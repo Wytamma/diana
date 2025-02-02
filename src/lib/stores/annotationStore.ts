@@ -9,9 +9,7 @@ export interface Feature {
     type: string;
     start: number;
     stop: number;
-    score: number;
     strand: "+" | "-";
-    phase: number;
     attributes: { [key: string]: string | undefined };
 }
 
@@ -138,7 +136,7 @@ export function createAnnotationStore() {
             for (const line of lines) {
                 if (line.startsWith('##') && line.includes('FASTA')) break;
                 if (!line.startsWith('#') && line.trim() !== '') {
-                    const [seqId, source, type, start, stop, score, strand, phase, attributeString] = line.split('\t');
+                    const [seqId, source, type, start, stop, , strand, , attributeString] = line.split('\t');
                     const attributes: { [key: string]: string | undefined } =
                         Object.fromEntries(attributeString.split(';').map(attr => attr.split('=')));
                     if (strand !== '+' && strand !== '-') throw new Error(`Invalid strand value: ${strand}`);
@@ -156,9 +154,7 @@ export function createAnnotationStore() {
                         type,
                         start: Number.parseInt(start),
                         stop: Number.parseInt(stop),
-                        score: Number.parseFloat(score),
                         strand,
-                        phase: Number.parseInt(phase),
                         attributes
                     });
                 }

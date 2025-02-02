@@ -6,7 +6,16 @@
     
     function createCSV(): string {
         const headers = Object.keys($rowData[0])
-        const rows: string[] = $rowData.map((row) => Object.values(row).join(','))
+        const rows: string[] = $rowData.map((row) => {
+            return Object.entries(row).map(([key, value]) => {
+                if (key === 'attributes') {
+                    return Object.entries(value as Record<string, string>).map(([k, v]) => {
+                        return `${k}=${v}`
+                    }).join(';')
+                }
+                return value
+            }).join(',')
+        })
         rows.unshift(headers.join(','))
         return rows.join('\r\n')
     } 

@@ -9,6 +9,7 @@
     import { annotationStore, type Feature } from "$lib/stores/annotationStore"; 
     import AttributeChip from '$lib/components/AttributeChip.svelte';
     import ThSelectAll from '$lib/components/datatable/ThSelectAll.svelte';
+    import DownloadButton from '$lib/components/datatable/DownloadButton.svelte';
 	
 	const features: Feature[] = $annotationStore.features;
     
@@ -37,7 +38,7 @@
 	<!-- Header -->
 	<header class="flex justify-between gap-4">
 		<Search {handler} />
-		<RowsPerPage {handler} />
+		<DownloadButton {handler} />
 	</header>
 	<!-- Table -->
 	<table class="table table-hover table-compact w-full table-auto">
@@ -90,8 +91,9 @@
 	</table>
 	<!-- Footer -->
 	<footer class="flex justify-between">
-		<RowCount {handler} />
-		<Pagination {handler} />
+		<RowsPerPage {handler} />
+        <RowCount {handler} />
+        <Pagination {handler} />
 	</footer>
 </div>
         
