@@ -195,7 +195,7 @@ function resetDropzone() {
 			</div>
             <img 
                 class={`logo-img mt-8`} 
-                src="/images/logo2.png" 
+                src="/images/logo.webp" 
                 alt="Skeleton Logo" 
             />
         </figure>
