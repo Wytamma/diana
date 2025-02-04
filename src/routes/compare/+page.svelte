@@ -50,12 +50,13 @@
         tableData = [...comparisonResults]; // Ensures tableData updates reactively
     }
 
-    const filterData = (data: string[]) => {
+    const filterData = (data: number[]) => {
         if (data.length === 0) {
             tableData = comparisonResults;
             return;
         }
-        tableData = comparisonResults.filter((result) => data.includes(result.name));
+        // for each result in comparisonResults, check if the id is in the data array
+        tableData = comparisonResults.filter((result) => data.includes(result.id));
     };
 </script>
 <div class="m-4">

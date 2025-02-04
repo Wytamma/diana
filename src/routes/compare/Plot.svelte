@@ -5,7 +5,7 @@
   import { onDestroy } from 'svelte';
 
   export let comparisonResults: CompareResults[];
-  export let filterData: (data: string[]) => void;
+  export let filterData: (data: number[]) => void;
 
   let plotId = `plotly`;
   let hasRendered = false;
@@ -58,6 +58,7 @@
       x: comparisonResults.map((cr) => cr.logFC),
       y: comparisonResults.map((cr) => -Math.log10(cr.qValue)),
       text: comparisonResults.map((cr) => cr.name),
+      customdata: comparisonResults.map((cr) => cr.id),
       type: 'scatter',
       mode: 'markers'
     };
@@ -69,7 +70,7 @@
 
     plotDIV?.on('plotly_selected', function (data) {
       if (data === undefined) return;
-      const selectedData = data.points.map((point) => point.text);
+      const selectedData = data.points.map((point) => point.customdata);
       filterData(selectedData);
     });
 
