@@ -19,7 +19,6 @@ async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneI
     const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
     const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
     await webR.init();
-    console.log('R is ready');
     // Load necessary packages
     await webR.evalR(`
         webr::mount(mountpoint = "/usr/lib/R/library/statmod", source = "${baseUrl}/packages/statmod_1.5.0.tgz");

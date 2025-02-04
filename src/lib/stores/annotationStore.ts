@@ -81,17 +81,15 @@ async function generateFilteredUrls(filteredFeatures: Feature[]): Promise<{ url:
         { tool: "tabix", version: "1.17", urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/tabix` },
         { tool: "bgzip", version: "1.17", urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/bgzip` }
     ]);
-    console.log('Generating filtered annotation URLs...');
-    console.log(filteredFeatures);
 
-    const filteredData = filteredFeatures.map(feature =>
-        `${feature.seqId}\t${feature.source}\t${feature.type}\t${feature.start}\t${feature.stop}\t${feature.score}\t${feature.strand}\t${feature.phase}\t` +
+    const gffFileText = filteredFeatures.map(feature =>
+        `${feature.seqId}\t${feature.source}\t${feature.type}\t${feature.start}\t${feature.stop}\t.\t${feature.strand}\t.\t` +
         Object.entries(feature.attributes)
               .map(([key, value]) => `${key}=${value}`)
               .join(';')
     ).join('\n');
 
-    const paths = await CLI.mount([{ name: 'filtered_data.gff', data: filteredData }]);
+    const paths = await CLI.mount([{ name: 'filtered_data.gff', data: gffFileText }]);
     await CLI.exec(`bgzip ${paths[0]}`);
     await CLI.exec(`tabix -p gff ${paths[0]}.gz`);
 
@@ -103,10 +101,8 @@ async function generateFilteredUrls(filteredFeatures: Feature[]): Promise<{ url:
         path: `${paths[0]}.gz.tbi`,
         length: (await CLI.fs.stat(`${paths[0]}.gz.tbi`)).size
     });
-    console.log('Done generating filtered annotation URLs');
     const url = createBlobURL(bgzipFile);
     const indexUrl = createBlobURL(indexFile);
-    console.log({ url, indexUrl });
     return { url, indexUrl };
 }
 

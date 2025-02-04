@@ -47,7 +47,6 @@ function createInsertStore() {
             let treatment = false;
             subscribe((store) => {
                 store.forEach((data) => {
-                    console.log(data.isTreatment);
                     if (data.isTreatment) {
                         control = true;
                     } else {
