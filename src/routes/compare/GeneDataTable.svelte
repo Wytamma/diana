@@ -23,7 +23,7 @@
     <!-- Header -->
     <header class="flex justify-between gap-4">
         <Search {handler} />
-        <DownloadButton {handler} />
+        <DownloadButton {handler} filename="comparisons.csv" />
     </header>
     
     <!-- Table -->

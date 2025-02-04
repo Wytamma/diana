@@ -38,7 +38,7 @@
 	<!-- Header -->
 	<header class="flex justify-between gap-4">
 		<Search {handler} />
-		<DownloadButton {handler} />
+		<DownloadButton {handler} filename="annotations.csv" />
 	</header>
 	<!-- Table -->
 	<table class="table table-hover table-compact w-full table-auto">
