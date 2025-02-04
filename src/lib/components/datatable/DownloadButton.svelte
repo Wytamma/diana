@@ -2,6 +2,8 @@
     import type { DataHandler } from '@vincjo/datatables';
 
 	export let handler: DataHandler;
+    export let filename: string = 'diana.csv';
+
     let rowData = handler.getAllRows();
     
     function createCSV(): string {
@@ -36,7 +38,7 @@
 
 <button 
     type="button" 
-    on:click={() => download('diana.csv')}
+    on:click={() => download(filename)}
     class="btn variant-ghost-surface mr-2 hover:variant-soft-primary"
 >
    Export CSV 

@@ -1,13 +1,16 @@
 <script lang="ts">
-    import { annotationStore } from '$lib/stores/annotationStore';
+    import DownloadButton from '$lib/components/datatable/DownloadButton.svelte';
+import { annotationStore } from '$lib/stores/annotationStore';
     import { generateGeneInsertSites } from '$lib/utils/generateGeneInsertSites';
     import { ProgressRadial } from '@skeletonlabs/skeleton';
+    import { DataHandler } from '@vincjo/datatables';
 
     import Plotly from 'plotly.js-dist';
     import { onMount, onDestroy } from 'svelte';
 
     export let filename;
     export let data: Map<string, number[]>;
+    let handler: DataHandler;
 
     let plotId = `plotly-${filename}`;
     let isLoading = true;
@@ -30,8 +33,12 @@
     };
 
     onMount(async () => {
-        const geneInserts = (await generateGeneInsertSites($annotationStore.filteredFeatures, data)).reduce((acc: { [key: string]: any[] }, curr) => {
-            // Use the `category` value as the key
+        const geneInserts = await generateGeneInsertSites($annotationStore.filteredFeatures, data); 
+        handler = new DataHandler(geneInserts, { rowsPerPage: 5 });
+
+        const groupedGeneInserts = geneInserts.reduce((acc: { [key: string]: any[] }, curr) => {
+            // Use the `chromosome` value as the key
+            // this lets us group the data by chromosome
             const key = curr.seqId;
             // If the key doesn't exist in the accumulator, initialize it as an array
             if (!acc[key]) {
@@ -43,7 +50,7 @@
         }, {});
 
         let plotData = [];
-        for (const [key, value] of Object.entries(geneInserts)) {
+        for (const [key, value] of Object.entries(groupedGeneInserts)) {
             plotData.push({
                 x: value.map(gi => gi.start),
                 y: value.map(gi => gi.insIndex),
@@ -103,7 +110,16 @@
 </script>
 
 <div class="card">
-    <header class="card-header">{filename}</header>
+    <header class="card-header">
+        <div class="flex justify-between align-middle">
+            <h2 class="h3">{filename}</h2>
+            <div>
+                {#if handler}
+                    <DownloadButton handler={handler} filename={`${filename}.csv`} />
+                {/if}
+            </div>
+        </div> 
+    </header>
     <section class="p-4">
         <div id={plotId} style="width: 100%; height: 100%;"></div>
         {#if isLoading}
