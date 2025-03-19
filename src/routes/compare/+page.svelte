@@ -11,6 +11,8 @@
 
     let comparisonResults: CompareResults[] = [];
     let tableData: CompareResults[] = [];
+    let isErrored = false;
+    let errorMessage: null | string = null;
 
 
     const insertEntries = Array.from($insertStore.entries());
@@ -46,6 +48,12 @@
                 background: 'variant-glass-error',
             };
             toastStore.trigger(t);
+            isErrored = true;
+            // check if error message contains the error message from the server
+            if (error.message.includes('dispersions must be finite non-negative values')) {
+                errorMessage = 'Could not estimate dispersion for the data. Please increase the number of replicates or adjust the data.';
+            }
+            
         }
         tableData = [...comparisonResults]; // Ensures tableData updates reactively
     }
@@ -65,7 +73,14 @@
         <p>Perform edgeR differential expression analysis to compare the gene insert sites between your control and treatment datasets.</p>
     </div>
     <div class="mb-4">
-        <Plot {comparisonResults} {filterData} />
+        {#if isErrored}
+            <div class="block card p-4 variant-ghost-error">
+                <p class="font-bold">An error occurred while comparing gene insert sites. Please try again.</p>
+                <p>{errorMessage ? errorMessage : ''}</p>
+            </div>
+        {:else}
+            <Plot {comparisonResults} {filterData} />
+        {/if}
     </div>
     <div >
         {#if tableData.length > 0}
