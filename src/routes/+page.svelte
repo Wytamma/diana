@@ -10,7 +10,7 @@ import { igvStore } from "$lib/stores/igvStore";
 import File from "$lib/components/files/File.svelte";
 import Reference from "$lib/components/files/Reference.svelte";
 import { genBankToGFFAndFasta } from "$lib/utils/gbkUtils";
-    import { userPlotToWig } from "$lib/utils/userPlotToWig";
+import { userPlotToWig } from "$lib/utils/userPlotToWig";
 
 const toastStore = getToastStore();
 
