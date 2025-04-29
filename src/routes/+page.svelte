@@ -103,7 +103,16 @@ function onChangeHandler(e: Event): void {
                         resolve(0);
                     }
                 } else if (name.endsWith('.gff') || name.endsWith('.gff3')){
-                    await annotationStore.load(name, text);
+                    await annotationStore.load(name, text).catch((e) => {
+                        console.error('Error loading annotations:', e);
+                        const error = 'Error loading annotations: ' + e;
+                        const t: ToastSettings = {
+                            message: error,
+                            background: 'variant-glass-error',
+                        };
+                        toastStore.trigger(t);
+                        reject('Error loading annotations: ' + e);
+                    });
                     $igvStore.locus = undefined; // Reset the locus
                     const fasta = extractFastaFromGff(text);
                     if (fasta.length > 0) {
@@ -163,7 +172,6 @@ function onChangeHandler(e: Event): void {
                 // resolve(view);
                 resolve(0);
             };
-            reader.onerror = reject;
             reader.readAsText(file);
         }));
     }
