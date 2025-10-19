@@ -194,8 +194,8 @@ function resetDropzone() {
 }
 </script>
 
-<div class="flex justify-center mb-6">
-    <div class="flex flex-col items-center align-baseline justify-center max-w-4xl  space-y-8 ">
+<div class="flex justify-center mb-2">
+    <div class="flex flex-col items-center align-baseline justify-center max-w-5xl  space-y-4 ">
         <!-- Animated Logo -->
         <figure class="card-hover rounded-full">
 			<div>
@@ -207,12 +207,17 @@ function resetDropzone() {
                 alt="Skeleton Logo" 
             />
         </figure>
-        <h1 class=" text-center text-3xl mx-2">
-            Transposon Sequencing Data Visualiser
-        </h1>
+        <div class="text-center mx-2">
+            <h1 class="text-6xl mb-1">
+                Diana
+            </h1>
+            <p class="text-xl">
+                A WebAssembly-Powered Tool for Transposon-Insertion Sequencing Data Exploration and Analysis
+            </p>
+        </div>
     </div>
 </div>
-<div class="flex flex-col justify-center items-center mb-6">
+<div class="flex flex-col justify-center items-center mb-4">
     <div class="flex flex-wrap justify-center w-full">
         {#if $referenceStore.filename}
         <div class="m-2 w-full md:w-auto">
