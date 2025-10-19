@@ -1,0 +1,40 @@
+
+site_name: Diana
+repo_url: https://github.com/Wytamma/diana
+
+theme:
+  name: "material"
+  homepage: https://diana.wytamma.com
+  # logo: assets/logo.png
+  # favicon: images/favicon.png
+  palette: 
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - toc.follow
+    - content.action.edit
+
+nav:
+  - Introduction: index.md
+  - Features:
+    - Loading Data: data.md
+    - Annotations: annotations.md
+    - Insert Tracks: tracks.md
+    - Bias Detection: bias.md
+    - Gene Essentiality: compare.md
+  - Citation: citation.md
+
+
+markdown_extensions:
+  - admonition
+  
+plugins:
+- search
