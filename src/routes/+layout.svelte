@@ -35,13 +35,20 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
-					class="btn btn-sm variant-ghost-surface"
+					class="btn btn-sm"
 					href="https://github.com/Wytamma/diana"
 					target="_blank"
 					rel="noreferrer"
 				>
 					GitHub
 				</a>
+				<a
+					class="btn btn-sm"
+					href="/docs/"
+				>
+					Docs
+				</a>
+
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
