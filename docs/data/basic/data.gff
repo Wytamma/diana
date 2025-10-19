@@ -1,0 +1,12 @@
+##gff-version	3
+chromosome	NCBI	gene	1	10	.	+	.	ID=gene1;Name=gene1
+chromosome	NCBI	gene	11	20	.	+	.	ID=gene2;Name=gene2
+chromosome	NCBI	gene	21	30	.	+	.	ID=gene3;Name=gene3
+plasmid	NCBI	gene	1	10	.	+	.	ID=gene4;Name=gene4
+plasmid	NCBI	gene	11	20	.	+	.	ID=gene5;Name=gene5
+plasmid	NCBI	gene	21	30	.	+	.	ID=gene6;Name=gene6
+##FASTA
+>chromosome
+ATGCGTACGTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAG
+>plasmid
+ATGCGTACGTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAG

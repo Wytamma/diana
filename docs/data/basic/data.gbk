@@ -1,0 +1,26 @@
+LOCUS       chromosome             60 bp    DNA     linear   UNA 01-JAN-1980
+FEATURES             Location/Qualifiers
+     gene            0..10
+                     /ID="gene1"
+                     /Name="gene1"
+     gene            10..20
+                     /ID="gene2"
+                     /Name="gene2"
+     gene            20..30
+                     /ID="gene3"
+                     /Name="gene3"
+ORIGIN
+        1 atgcgtacgt agctagctag ctagctagct agctagctag ctagctagct agctagctag
+LOCUS       plasmid                60 bp    DNA     linear   UNA 01-JAN-1980
+FEATURES             Location/Qualifiers
+     gene            0..10
+                     /ID="gene4"
+                     /Name="gene4"
+     gene            10..20
+                     /ID="gene5"
+                     /Name="gene5"
+     gene            20..30
+                     /ID="gene6"
+                     /Name="gene6"
+ORIGIN
+        1 atgcgtacgt agctagctag ctagctagct agctagctag ctagctagct agctagctag
