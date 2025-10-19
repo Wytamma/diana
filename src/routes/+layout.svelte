@@ -6,7 +6,6 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
-	import { referenceStore } from '$lib/stores/refStore';
 	import { annotationStore } from "$lib/stores/annotationStore";
 	import { insertStore, containsControlAndTreatment } from '$lib/stores/insertStore';
 
@@ -35,7 +34,7 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
-					class="btn btn-sm"
+					class="btn btn-sm hover:underline"
 					href="https://github.com/Wytamma/diana"
 					target="_blank"
 					rel="noreferrer"
@@ -43,7 +42,7 @@
 					GitHub
 				</a>
 				<a
-					class="btn btn-sm"
+					class="btn btn-sm hover:underline"
 					href="/docs/"
 				>
 					Docs
@@ -77,7 +76,7 @@
 				bind:group={currentTile}
 				value="/tracks"
 				name="tracks"
-				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				class={(!$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Tracks</span>
 			</AppRailTile>
@@ -86,7 +85,7 @@
 				bind:group={currentTile}
 				value="/bias"
 				name="bias"
-				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				class={(!$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Bias</span>
 			</AppRailTile>
@@ -95,7 +94,7 @@
 				bind:group={currentTile}
 				value="/compare"
 				name="compare"
-				class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				class={(!$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Compare</span>
 			</AppRailTile>
@@ -119,15 +118,15 @@
 				<span>Annotations</span>
 			</TabAnchor>
 
-			<TabAnchor on:click={() => navigateTo('/tracks')} selected={$page.url.pathname === '/tracks'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/tracks')} selected={$page.url.pathname === '/tracks'} class={(!$annotationStore.filteredFeatures.length) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Tracks</span>
 			</TabAnchor>
 
-			<TabAnchor on:click={() => navigateTo('/bias')} selected={$page.url.pathname === '/bias'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/bias')} selected={$page.url.pathname === '/bias'} class={(!$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Bias</span>
 			</TabAnchor>
 
-			<TabAnchor on:click={() => navigateTo('/compare')} selected={$page.url.pathname === '/compare'} class={(!$referenceStore.filename || !$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
+			<TabAnchor on:click={() => navigateTo('/compare')} selected={$page.url.pathname === '/compare'} class={(!$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}>
 				<span>Compare</span>
 			</TabAnchor>
 		</TabGroup>
