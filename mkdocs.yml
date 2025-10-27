@@ -4,7 +4,7 @@ repo_url: https://github.com/Wytamma/diana
 
 theme:
   name: "material"
-  homepage: https://diana.wytamma.com
+  homepage: https://diana.cpg.org.au/
   # logo: assets/logo.png
   # favicon: images/favicon.png
   palette: 
@@ -31,6 +31,7 @@ nav:
     - Bias Detection: bias.md
     - Gene Essentiality: compare.md
   - Citation: citation.md
+  - App: https://diana.cpg.org.au/
 
 
 markdown_extensions:
