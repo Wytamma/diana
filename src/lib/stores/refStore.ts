@@ -20,7 +20,9 @@ export function createReferenceStore() {
         update: update,
         reset: () => set(defaultReferenceData),
         load: async (filename:string, fastaText: string) => {
-            const CLI = await new Aioli(["samtools/1.17"]);
+            const CLI = await new Aioli([
+                { tool: "samtools", version: "1.17", urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/samtools` }
+            ]);
             const paths = await CLI.mount([{
                 name: "fasta.fa",
                 data: fastaText
