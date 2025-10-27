@@ -8,3 +8,8 @@ export function createBlobURL(data: string) {
   // Return the URL
   return url;
 }
+
+  // Helper function to strip .gz extension
+export function stripGzExtension(filename: string): string {
+    return filename.endsWith('.gz') ? filename.slice(0, -3) : filename;
+}

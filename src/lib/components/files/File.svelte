@@ -1,6 +1,6 @@
 <script lang="ts">
   import { SlideToggle } from '@skeletonlabs/skeleton';
-  import { removeFileExtension } from './utils';
+  import { stripGzExtension } from '$lib/utils/utils';
 
   export let filename: string;
   export let onRemove: () => void;
@@ -12,7 +12,7 @@
 <div class="card p-4">
   <div class="flex justify-center items-center space-x-2">
     <div class="flex flex-col space-y-2 w-full">
-      <p class="text-lg">{removeFileExtension(filename)}</p>
+      <p class="text-lg">{stripGzExtension(filename)}</p>
       <div class="flex justify-between items-center min-w-64">
         <SlideToggle
           active="variant-soft-primary"
