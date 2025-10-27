@@ -103,7 +103,7 @@ Once loaded, the "Annotations" tab lets you:
 - Select features for analysis.
 - Filter features by various criteria.
 
-See [Annotations](/annotations) for details.
+See [Annotations](/docs/annotations/) for details.
 
 ---
 
