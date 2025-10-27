@@ -11,6 +11,7 @@ import File from "$lib/components/files/File.svelte";
 import Reference from "$lib/components/files/Reference.svelte";
 import { genBankToGFFAndFasta } from "$lib/utils/gbkUtils";
 import { userPlotToWig } from "$lib/utils/userPlotToWig";
+import { onMount } from 'svelte';
 
 const toastStore = getToastStore();
 
@@ -55,6 +56,149 @@ function extractFastaFromGff(gff: string): string {
     return fasta.trim();
 }
 
+async function processFile(name: string, text: string): Promise<void> {
+    if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
+        let gff = '';
+        let fasta = '';
+        try {
+            const gffAndFasta = genBankToGFFAndFasta(text)
+            gff = gffAndFasta.gff;
+            fasta = gffAndFasta.fasta;
+        } catch (e) {
+            console.error('Error converting GenBank file:', e);
+            const error = 'Error converting GenBank file: ' + e;
+            const t: ToastSettings = {
+                message: error,
+                background: 'variant-glass-error',
+            };
+            toastStore.trigger(t);
+            throw new Error('Error converting GenBank file: ' + e);
+        }
+        await annotationStore.load(name, gff);
+        $igvStore.locus = undefined; // Reset the locus
+        if (fasta.length > 0) {
+            await referenceStore.load(name, fasta).catch((e) => {
+                console.error('Error loading reference:', e);
+                const error = 'Error loading reference: ' + e;
+                const t: ToastSettings = {
+                    message: error,
+                    background: 'variant-glass-error',
+                };
+                toastStore.trigger(t);
+            });
+            await taStore.load(fasta);
+        }
+    } else if (name.endsWith('.gff') || name.endsWith('.gff3')){
+        await annotationStore.load(name, text).catch((e) => {
+            console.error('Error loading annotations:', e);
+            const error = 'Error loading annotations: ' + e;
+            const t: ToastSettings = {
+                message: error,
+                background: 'variant-glass-error',
+            };
+            toastStore.trigger(t);
+            throw new Error('Error loading annotations: ' + e);
+        });
+        $igvStore.locus = undefined; // Reset the locus
+        const fasta = extractFastaFromGff(text);
+        if (fasta.length > 0) {
+                await referenceStore.load(name, fasta).catch((e) => {
+                console.error('Error loading reference:', e);
+                const error = 'Error loading reference: ' + e;
+                const t: ToastSettings = {
+                    message: error,
+                    background: 'variant-glass-error',
+                };
+                toastStore.trigger(t);
+            });
+            await taStore.load(fasta);
+        }
+    } else if (name.endsWith('.fasta') || name.endsWith('.fa') || name.endsWith('.fna')) {
+        await referenceStore.load(name, text);
+        await taStore.load(text);
+        $igvStore.locus = undefined; // Reset the locus
+    } else if (name.endsWith('.wig') || name.endsWith('.wiggle')) {
+        await insertStore.load(name, text);
+    } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
+        const firstChromosome = $annotationStore.chromosomes.keys().next().value;
+        if (!firstChromosome) {
+            console.error('No chromosome found in annotations');
+            const error = 'Please load annotations before loading userplot files';
+            const t: ToastSettings = {
+                message: error,
+                background: 'variant-glass-error',
+            };
+            toastStore.trigger(t);
+            throw new Error('No chromosome found in annotations');
+        } else {
+        const t: ToastSettings = {
+                message: `Converting UserPlot file '${name}' to Wig Format. Assuming the first chromosome in the annotations is the reference chromosome`,
+                background: 'variant-glass-warning',
+            };
+        toastStore.trigger(t); 
+        const wig = await userPlotToWig(text, firstChromosome);
+        await insertStore.load(name, wig);
+        }
+    } else {
+        console.error('Unsupported file type:', name);
+        const error = 'Unsupported file type: ' + name;
+        const t: ToastSettings = {
+            message: error,
+            background: 'variant-glass-error',
+        };
+        toastStore.trigger(t);
+        throw new Error('Unsupported file type: ' + name);
+    }
+}
+
+async function loadFromUrl(url: string): Promise<void> {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+        }
+        const text = await response.text();
+        const filename = url.split('/').pop() || url;
+        await processFile(filename, text);
+    } catch (e) {
+        console.error('Error loading file from URL:', e);
+        const error = 'Error loading file from URL: ' + e;
+        const t: ToastSettings = {
+            message: error,
+            background: 'variant-glass-error',
+        };
+        toastStore.trigger(t);
+        throw e;
+    }
+}
+
+async function loadFilesFromUrls(urls: string[]): Promise<void> {
+    isLoading = true;
+    const loadPromises = urls.map(url => loadFromUrl(url));
+    
+    try {
+        await Promise.all(loadPromises);
+    } catch (error) {
+        console.error("Error loading files from URLs:", error);
+    } finally {
+        isLoading = false;
+    }
+}
+
+onMount(() => {
+    if (typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataParam = urlParams.get('data');
+        
+        if (dataParam) {
+            const urls = dataParam.split(',').map(url => url.trim()).filter(url => url.length > 0);
+            if (urls.length > 0) {
+                loadFilesFromUrls(urls);
+            }
+        }
+    }
+});
+
 function onChangeHandler(e: Event): void {
     
     if (!files || files.length === 0) {
@@ -70,107 +214,12 @@ function onChangeHandler(e: Event): void {
         fileReadPromises.push(new Promise((resolve, reject) => {
             reader.onload = async (e) => {
                 let text: string = e.target?.result?.toString() as string;
-                if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank')) {
-                    let gff = '';
-                    let fasta = '';
-                    try {
-                        const gffAndFasta = genBankToGFFAndFasta(text)
-                        gff = gffAndFasta.gff;
-                        fasta = gffAndFasta.fasta;
-                    } catch (e) {
-                        console.error('Error converting GenBank file:', e);
-                        const error = 'Error converting GenBank file: ' + e;
-                        const t: ToastSettings = {
-                            message: error,
-                            background: 'variant-glass-error',
-                        };
-                        toastStore.trigger(t);
-                        reject('Error converting GenBank file: ' + e);
-                    }
-                    await annotationStore.load(name, gff);
-                    $igvStore.locus = undefined; // Reset the locus
-                    if (fasta.length > 0) {
-                        await referenceStore.load(name, fasta).catch((e) => {
-                            console.error('Error loading reference:', e);
-                            const error = 'Error loading reference: ' + e;
-                            const t: ToastSettings = {
-                                message: error,
-                                background: 'variant-glass-error',
-                            };
-                            toastStore.trigger(t);
-                        });
-                        await taStore.load(fasta);
-                        resolve(0);
-                    }
-                } else if (name.endsWith('.gff') || name.endsWith('.gff3')){
-                    await annotationStore.load(name, text).catch((e) => {
-                        console.error('Error loading annotations:', e);
-                        const error = 'Error loading annotations: ' + e;
-                        const t: ToastSettings = {
-                            message: error,
-                            background: 'variant-glass-error',
-                        };
-                        toastStore.trigger(t);
-                        reject('Error loading annotations: ' + e);
-                    });
-                    $igvStore.locus = undefined; // Reset the locus
-                    const fasta = extractFastaFromGff(text);
-                    if (fasta.length > 0) {
-                            await referenceStore.load(name, fasta).catch((e) => {
-                            console.error('Error loading reference:', e);
-                            const error = 'Error loading reference: ' + e;
-                            const t: ToastSettings = {
-                                message: error,
-                                background: 'variant-glass-error',
-                            };
-                            toastStore.trigger(t);
-                        });
-                        await taStore.load(fasta);
-                        resolve(0);
-                    }
-                } else if (name.endsWith('.fasta') || name.endsWith('.fa') || name.endsWith('.fna')) {
-                    await referenceStore.load(name, text);
-                    await taStore.load(text);
-                    $igvStore.locus = undefined; // Reset the locus
+                try {
+                    await processFile(name, text);
                     resolve(0);
-                } else if (name.endsWith('.wig') || name.endsWith('.wiggle')) {
-                    await insertStore.load(name, text);
-                    resolve(0);
-                } else if (name.endsWith('.userplot') || name.endsWith('.plot')) {
-                    const firstChromosome = $annotationStore.chromosomes.keys().next().value;
-                    if (!firstChromosome) {
-                        console.error('No chromosome found in annotations');
-                        const error = 'Please load annotations before loading userplot files';
-                        const t: ToastSettings = {
-                            message: error,
-                            background: 'variant-glass-error',
-                        };
-                        toastStore.trigger(t);
-                        reject('No chromosome found in annotations');
-                    } else {
-                    const t: ToastSettings = {
-                            message: `Converting UserPlot file '${name}' to Wig Format. Assuming the first chromosome in the annotations is the reference chromosome`,
-                            background: 'variant-glass-warning',
-                        };
-                    toastStore.trigger(t); 
-                    const wig = await userPlotToWig(text, firstChromosome);
-                    await insertStore.load(name, wig);
-                    resolve(0);
-                    }
-                } else {
-                    console.error('Unsupported file type:', name);
-                    const error = 'Unsupported file type: ' + name;
-                    const t: ToastSettings = {
-                        message: error,
-                        // Provide any utility or variant background style:
-                        background: 'variant-glass-error',
-                    };
-                    toastStore.trigger(t);
-                    reject('Unsupported file type: ' + name);
-                }               
-                // const view = userPlotToView(text, name, width);
-                // resolve(view);
-                resolve(0);
+                } catch (error) {
+                    reject(error);
+                }
             };
             reader.readAsText(file);
         }));
