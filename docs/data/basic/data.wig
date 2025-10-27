@@ -1,0 +1,12 @@
+variableStep chrom=chromosome
+1 -2
+2 -1
+2 1
+3 -2
+5 20
+5 -1
+variableStep chrom=plasmid
+1 1
+1 -3
+2 1
+2 -10
