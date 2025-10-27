@@ -16,7 +16,7 @@ export interface CompareResults {
 }
 
 async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneInsertResult[][]) {
-  const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
+  const baseUrl = `${window.location.origin}/tools/webR`;
   const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
   await webR.init();
   // Load necessary packages

@@ -83,12 +83,12 @@ async function generateFilteredUrls(
     {
       tool: 'tabix',
       version: '1.17',
-      urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/tabix`
+      urlPrefix: `${window.location.origin}/tools/tabix`
     },
     {
       tool: 'bgzip',
       version: '1.17',
-      urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/bgzip`
+      urlPrefix: `${window.location.origin}/tools/bgzip`
     }
   ]);
 

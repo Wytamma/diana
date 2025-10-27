@@ -29,7 +29,7 @@ export function createReferenceStore() {
         {
           tool: 'samtools',
           version: '1.17',
-          urlPrefix: `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/samtools`
+          urlPrefix: `${window.location.origin}/tools/samtools`
         }
       ]);
       const paths = await CLI.mount([
