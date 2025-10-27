@@ -4,47 +4,60 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined")
-    return require.apply(this, arguments);
+var __require = /* @__PURE__ */ ((x) =>
+  typeof require !== 'undefined'
+    ? require
+    : typeof Proxy !== 'undefined'
+      ? new Proxy(x, {
+          get: (a, b) => (typeof require !== 'undefined' ? require : a)[b]
+        })
+      : x)(function (x) {
+  if (typeof require !== 'undefined') return require.apply(this, arguments);
   throw new Error('Dynamic require of "' + x + '" is not supported');
 });
-var __commonJS = (cb, mod) => function __require2() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
+var __commonJS = (cb, mod) =>
+  function __require2() {
+    return (
+      mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports
+    );
+  };
 var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
+  if ((from && typeof from === 'object') || typeof from === 'function') {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+        __defProp(to, key, {
+          get: () => from[key],
+          enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+        });
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
+var __toESM = (mod, isNodeMode, target) => (
+  (target = mod != null ? __create(__getProtoOf(mod)) : {}),
+  __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule
+      ? __defProp(target, 'default', { value: mod, enumerable: true })
+      : target,
+    mod
+  )
+);
 var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
+  if (!member.has(obj)) throw TypeError('Cannot ' + msg);
 };
 var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
+  __accessCheck(obj, member, 'read from private field');
   return getter ? getter.call(obj) : member.get(obj);
 };
 var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
+  if (member.has(obj)) throw TypeError('Cannot add the same private member more than once');
   member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
 };
 var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
+  __accessCheck(obj, member, 'write to private field');
   setter ? setter.call(obj, value) : member.set(obj, value);
   return value;
 };
@@ -57,16 +70,21 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   }
 });
 var __privateMethod = (obj, member, method) => {
-  __accessCheck(obj, member, "access private method");
+  __accessCheck(obj, member, 'access private method');
   return method;
 };
 
 // node_modules/@msgpack/msgpack/dist/utils/int.js
 var require_int = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/int.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getUint64 = exports.getInt64 = exports.setInt64 = exports.setUint64 = exports.UINT32_MAX = void 0;
+  'node_modules/@msgpack/msgpack/dist/utils/int.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.getUint64 =
+      exports.getInt64 =
+      exports.setInt64 =
+      exports.setUint64 =
+      exports.UINT32_MAX =
+        void 0;
     exports.UINT32_MAX = 4294967295;
     function setUint64(view, offset, value) {
       const high = value / 4294967296;
@@ -99,15 +117,29 @@ var require_int = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/utf8.js
 var require_utf8 = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/utf8.js"(exports) {
-    "use strict";
+  'node_modules/@msgpack/msgpack/dist/utils/utf8.js'(exports) {
+    'use strict';
     var _a;
     var _b;
     var _c;
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.utf8DecodeTD = exports.TEXT_DECODER_THRESHOLD = exports.utf8DecodeJs = exports.utf8EncodeTE = exports.TEXT_ENCODER_THRESHOLD = exports.utf8EncodeJs = exports.utf8Count = void 0;
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.utf8DecodeTD =
+      exports.TEXT_DECODER_THRESHOLD =
+      exports.utf8DecodeJs =
+      exports.utf8EncodeTE =
+      exports.TEXT_ENCODER_THRESHOLD =
+      exports.utf8EncodeJs =
+      exports.utf8Count =
+        void 0;
     var int_1 = require_int();
-    var TEXT_ENCODING_AVAILABLE = (typeof process === "undefined" || ((_a = process === null || process === void 0 ? void 0 : process.env) === null || _a === void 0 ? void 0 : _a["TEXT_ENCODING"]) !== "never") && typeof TextEncoder !== "undefined" && typeof TextDecoder !== "undefined";
+    var TEXT_ENCODING_AVAILABLE =
+      (typeof process === 'undefined' ||
+        ((_a = process === null || process === void 0 ? void 0 : process.env) === null ||
+        _a === void 0
+          ? void 0
+          : _a['TEXT_ENCODING']) !== 'never') &&
+      typeof TextEncoder !== 'undefined' &&
+      typeof TextDecoder !== 'undefined';
     function utf8Count(str) {
       const strLength = str.length;
       let byteLength = 0;
@@ -149,7 +181,7 @@ var require_utf8 = __commonJS({
           output[offset++] = value;
           continue;
         } else if ((value & 4294965248) === 0) {
-          output[offset++] = value >> 6 & 31 | 192;
+          output[offset++] = ((value >> 6) & 31) | 192;
         } else {
           if (value >= 55296 && value <= 56319) {
             if (pos < strLength) {
@@ -161,53 +193,67 @@ var require_utf8 = __commonJS({
             }
           }
           if ((value & 4294901760) === 0) {
-            output[offset++] = value >> 12 & 15 | 224;
-            output[offset++] = value >> 6 & 63 | 128;
+            output[offset++] = ((value >> 12) & 15) | 224;
+            output[offset++] = ((value >> 6) & 63) | 128;
           } else {
-            output[offset++] = value >> 18 & 7 | 240;
-            output[offset++] = value >> 12 & 63 | 128;
-            output[offset++] = value >> 6 & 63 | 128;
+            output[offset++] = ((value >> 18) & 7) | 240;
+            output[offset++] = ((value >> 12) & 63) | 128;
+            output[offset++] = ((value >> 6) & 63) | 128;
           }
         }
-        output[offset++] = value & 63 | 128;
+        output[offset++] = (value & 63) | 128;
       }
     }
     exports.utf8EncodeJs = utf8EncodeJs;
     var sharedTextEncoder = TEXT_ENCODING_AVAILABLE ? new TextEncoder() : void 0;
-    exports.TEXT_ENCODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE ? int_1.UINT32_MAX : typeof process !== "undefined" && ((_b = process === null || process === void 0 ? void 0 : process.env) === null || _b === void 0 ? void 0 : _b["TEXT_ENCODING"]) !== "force" ? 200 : 0;
+    exports.TEXT_ENCODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE
+      ? int_1.UINT32_MAX
+      : typeof process !== 'undefined' &&
+          ((_b = process === null || process === void 0 ? void 0 : process.env) === null ||
+          _b === void 0
+            ? void 0
+            : _b['TEXT_ENCODING']) !== 'force'
+        ? 200
+        : 0;
     function utf8EncodeTEencode(str, output, outputOffset) {
       output.set(sharedTextEncoder.encode(str), outputOffset);
     }
     function utf8EncodeTEencodeInto(str, output, outputOffset) {
       sharedTextEncoder.encodeInto(str, output.subarray(outputOffset));
     }
-    exports.utf8EncodeTE = (sharedTextEncoder === null || sharedTextEncoder === void 0 ? void 0 : sharedTextEncoder.encodeInto) ? utf8EncodeTEencodeInto : utf8EncodeTEencode;
+    exports.utf8EncodeTE = (
+      sharedTextEncoder === null || sharedTextEncoder === void 0
+        ? void 0
+        : sharedTextEncoder.encodeInto
+    )
+      ? utf8EncodeTEencodeInto
+      : utf8EncodeTEencode;
     var CHUNK_SIZE = 4096;
     function utf8DecodeJs(bytes, inputOffset, byteLength) {
       let offset = inputOffset;
       const end = offset + byteLength;
       const units = [];
-      let result = "";
+      let result = '';
       while (offset < end) {
         const byte1 = bytes[offset++];
         if ((byte1 & 128) === 0) {
           units.push(byte1);
         } else if ((byte1 & 224) === 192) {
           const byte2 = bytes[offset++] & 63;
-          units.push((byte1 & 31) << 6 | byte2);
+          units.push(((byte1 & 31) << 6) | byte2);
         } else if ((byte1 & 240) === 224) {
           const byte2 = bytes[offset++] & 63;
           const byte3 = bytes[offset++] & 63;
-          units.push((byte1 & 31) << 12 | byte2 << 6 | byte3);
+          units.push(((byte1 & 31) << 12) | (byte2 << 6) | byte3);
         } else if ((byte1 & 248) === 240) {
           const byte2 = bytes[offset++] & 63;
           const byte3 = bytes[offset++] & 63;
           const byte4 = bytes[offset++] & 63;
-          let unit = (byte1 & 7) << 18 | byte2 << 12 | byte3 << 6 | byte4;
+          let unit = ((byte1 & 7) << 18) | (byte2 << 12) | (byte3 << 6) | byte4;
           if (unit > 65535) {
             unit -= 65536;
-            units.push(unit >>> 10 & 1023 | 55296);
-            unit = 56320 | unit & 1023;
+            units.push(((unit >>> 10) & 1023) | 55296);
+            unit = 56320 | (unit & 1023);
           }
           units.push(unit);
         } else {
@@ -225,7 +271,15 @@ var require_utf8 = __commonJS({
     }
     exports.utf8DecodeJs = utf8DecodeJs;
     var sharedTextDecoder = TEXT_ENCODING_AVAILABLE ? new TextDecoder() : null;
-    exports.TEXT_DECODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE ? int_1.UINT32_MAX : typeof process !== "undefined" && ((_c = process === null || process === void 0 ? void 0 : process.env) === null || _c === void 0 ? void 0 : _c["TEXT_DECODER"]) !== "force" ? 200 : 0;
+    exports.TEXT_DECODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE
+      ? int_1.UINT32_MAX
+      : typeof process !== 'undefined' &&
+          ((_c = process === null || process === void 0 ? void 0 : process.env) === null ||
+          _c === void 0
+            ? void 0
+            : _c['TEXT_DECODER']) !== 'force'
+        ? 200
+        : 0;
     function utf8DecodeTD(bytes, inputOffset, byteLength) {
       const stringBytes = bytes.subarray(inputOffset, inputOffset + byteLength);
       return sharedTextDecoder.decode(stringBytes);
@@ -236,9 +290,9 @@ var require_utf8 = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/ExtData.js
 var require_ExtData = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/ExtData.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/ExtData.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.ExtData = void 0;
     var ExtData = class {
       constructor(type, data) {
@@ -252,16 +306,16 @@ var require_ExtData = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/DecodeError.js
 var require_DecodeError = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/DecodeError.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/DecodeError.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.DecodeError = void 0;
     var DecodeError = class extends Error {
       constructor(message) {
         super(message);
         const proto = Object.create(DecodeError.prototype);
         Object.setPrototypeOf(this, proto);
-        Object.defineProperty(this, "name", {
+        Object.defineProperty(this, 'name', {
           configurable: true,
           enumerable: false,
           value: DecodeError.name
@@ -274,10 +328,17 @@ var require_DecodeError = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/timestamp.js
 var require_timestamp = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/timestamp.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.timestampExtension = exports.decodeTimestampExtension = exports.decodeTimestampToTimeSpec = exports.encodeTimestampExtension = exports.encodeDateToTimeSpec = exports.encodeTimeSpecToTimestamp = exports.EXT_TIMESTAMP = void 0;
+  'node_modules/@msgpack/msgpack/dist/timestamp.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.timestampExtension =
+      exports.decodeTimestampExtension =
+      exports.decodeTimestampToTimeSpec =
+      exports.encodeTimestampExtension =
+      exports.encodeDateToTimeSpec =
+      exports.encodeTimeSpecToTimestamp =
+      exports.EXT_TIMESTAMP =
+        void 0;
     var DecodeError_1 = require_DecodeError();
     var int_1 = require_int();
     exports.EXT_TIMESTAMP = -1;
@@ -295,7 +356,7 @@ var require_timestamp = __commonJS({
           const secLow = sec & 4294967295;
           const rv = new Uint8Array(8);
           const view = new DataView(rv.buffer);
-          view.setUint32(0, nsec << 2 | secHigh & 3);
+          view.setUint32(0, (nsec << 2) | (secHigh & 3));
           view.setUint32(4, secLow);
           return rv;
         }
@@ -349,7 +410,9 @@ var require_timestamp = __commonJS({
           return { sec, nsec };
         }
         default:
-          throw new DecodeError_1.DecodeError(`Unrecognized data size for timestamp (expected 4, 8, or 12): ${data.length}`);
+          throw new DecodeError_1.DecodeError(
+            `Unrecognized data size for timestamp (expected 4, 8, or 12): ${data.length}`
+          );
       }
     }
     exports.decodeTimestampToTimeSpec = decodeTimestampToTimeSpec;
@@ -368,9 +431,9 @@ var require_timestamp = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/ExtensionCodec.js
 var require_ExtensionCodec = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/ExtensionCodec.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/ExtensionCodec.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.ExtensionCodec = void 0;
     var ExtData_1 = require_ExtData();
     var timestamp_1 = require_timestamp();
@@ -434,9 +497,9 @@ var require_ExtensionCodec = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/typedArrays.js
 var require_typedArrays = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/typedArrays.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/utils/typedArrays.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.createDataView = exports.ensureUint8Array = void 0;
     function ensureUint8Array(buffer) {
       if (buffer instanceof Uint8Array) {
@@ -463,9 +526,9 @@ var require_typedArrays = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/Encoder.js
 var require_Encoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/Encoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/Encoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.Encoder = exports.DEFAULT_INITIAL_BUFFER_SIZE = exports.DEFAULT_MAX_DEPTH = void 0;
     var utf8_1 = require_utf8();
     var ExtensionCodec_1 = require_ExtensionCodec();
@@ -474,7 +537,16 @@ var require_Encoder = __commonJS({
     exports.DEFAULT_MAX_DEPTH = 100;
     exports.DEFAULT_INITIAL_BUFFER_SIZE = 2048;
     var Encoder = class {
-      constructor(extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec, context = void 0, maxDepth = exports.DEFAULT_MAX_DEPTH, initialBufferSize = exports.DEFAULT_INITIAL_BUFFER_SIZE, sortKeys = false, forceFloat32 = false, ignoreUndefined = false, forceIntegerToFloat = false) {
+      constructor(
+        extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec,
+        context = void 0,
+        maxDepth = exports.DEFAULT_MAX_DEPTH,
+        initialBufferSize = exports.DEFAULT_INITIAL_BUFFER_SIZE,
+        sortKeys = false,
+        forceFloat32 = false,
+        ignoreUndefined = false,
+        forceIntegerToFloat = false
+      ) {
         this.extensionCodec = extensionCodec;
         this.context = context;
         this.maxDepth = maxDepth;
@@ -514,11 +586,11 @@ var require_Encoder = __commonJS({
         }
         if (object == null) {
           this.encodeNil();
-        } else if (typeof object === "boolean") {
+        } else if (typeof object === 'boolean') {
           this.encodeBoolean(object);
-        } else if (typeof object === "number") {
+        } else if (typeof object === 'number') {
           this.encodeNumber(object);
-        } else if (typeof object === "string") {
+        } else if (typeof object === 'string') {
           this.encodeString(object);
         } else {
           this.encodeObject(object, depth);
@@ -568,7 +640,7 @@ var require_Encoder = __commonJS({
             }
           } else {
             if (object >= -32) {
-              this.writeU8(224 | object + 32);
+              this.writeU8(224 | (object + 32));
             } else if (object >= -128) {
               this.writeU8(208);
               this.writeI8(object);
@@ -634,7 +706,7 @@ var require_Encoder = __commonJS({
           this.encodeArray(object, depth);
         } else if (ArrayBuffer.isView(object)) {
           this.encodeBinary(object);
-        } else if (typeof object === "object") {
+        } else if (typeof object === 'object') {
           this.encodeMap(object, depth);
         } else {
           throw new Error(`Unrecognized object: ${Object.prototype.toString.apply(object)}`);
@@ -798,14 +870,23 @@ var require_Encoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/encode.js
 var require_encode = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/encode.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/encode.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.encode = void 0;
     var Encoder_1 = require_Encoder();
     var defaultEncodeOptions = {};
     function encode3(value, options = defaultEncodeOptions) {
-      const encoder2 = new Encoder_1.Encoder(options.extensionCodec, options.context, options.maxDepth, options.initialBufferSize, options.sortKeys, options.forceFloat32, options.ignoreUndefined, options.forceIntegerToFloat);
+      const encoder2 = new Encoder_1.Encoder(
+        options.extensionCodec,
+        options.context,
+        options.maxDepth,
+        options.initialBufferSize,
+        options.sortKeys,
+        options.forceFloat32,
+        options.ignoreUndefined,
+        options.forceIntegerToFloat
+      );
       return encoder2.encodeSharedRef(value);
     }
     exports.encode = encode3;
@@ -814,12 +895,12 @@ var require_encode = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/prettyByte.js
 var require_prettyByte = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/prettyByte.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/utils/prettyByte.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.prettyByte = void 0;
     function prettyByte(byte) {
-      return `${byte < 0 ? "-" : ""}0x${Math.abs(byte).toString(16).padStart(2, "0")}`;
+      return `${byte < 0 ? '-' : ''}0x${Math.abs(byte).toString(16).padStart(2, '0')}`;
     }
     exports.prettyByte = prettyByte;
   }
@@ -827,15 +908,18 @@ var require_prettyByte = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js
 var require_CachedKeyDecoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.CachedKeyDecoder = void 0;
     var utf8_1 = require_utf8();
     var DEFAULT_MAX_KEY_LENGTH = 16;
     var DEFAULT_MAX_LENGTH_PER_KEY = 16;
     var CachedKeyDecoder = class {
-      constructor(maxKeyLength = DEFAULT_MAX_KEY_LENGTH, maxLengthPerKey = DEFAULT_MAX_LENGTH_PER_KEY) {
+      constructor(
+        maxKeyLength = DEFAULT_MAX_KEY_LENGTH,
+        maxLengthPerKey = DEFAULT_MAX_LENGTH_PER_KEY
+      ) {
         this.maxKeyLength = maxKeyLength;
         this.maxLengthPerKey = maxLengthPerKey;
         this.hit = 0;
@@ -850,23 +934,22 @@ var require_CachedKeyDecoder = __commonJS({
       }
       find(bytes, inputOffset, byteLength) {
         const records = this.caches[byteLength - 1];
-        FIND_CHUNK:
-          for (const record of records) {
-            const recordBytes = record.bytes;
-            for (let j = 0; j < byteLength; j++) {
-              if (recordBytes[j] !== bytes[inputOffset + j]) {
-                continue FIND_CHUNK;
-              }
+        FIND_CHUNK: for (const record of records) {
+          const recordBytes = record.bytes;
+          for (let j = 0; j < byteLength; j++) {
+            if (recordBytes[j] !== bytes[inputOffset + j]) {
+              continue FIND_CHUNK;
             }
-            return record.str;
           }
+          return record.str;
+        }
         return null;
       }
       store(bytes, value) {
         const records = this.caches[bytes.length - 1];
         const record = { bytes, str: value };
         if (records.length >= this.maxLengthPerKey) {
-          records[Math.random() * records.length | 0] = record;
+          records[(Math.random() * records.length) | 0] = record;
         } else {
           records.push(record);
         }
@@ -879,7 +962,11 @@ var require_CachedKeyDecoder = __commonJS({
         }
         this.miss++;
         const str = (0, utf8_1.utf8DecodeJs)(bytes, inputOffset, byteLength);
-        const slicedCopyOfBytes = Uint8Array.prototype.slice.call(bytes, inputOffset, inputOffset + byteLength);
+        const slicedCopyOfBytes = Uint8Array.prototype.slice.call(
+          bytes,
+          inputOffset,
+          inputOffset + byteLength
+        );
         this.store(slicedCopyOfBytes, str);
         return str;
       }
@@ -890,9 +977,9 @@ var require_CachedKeyDecoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/Decoder.js
 var require_Decoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/Decoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/Decoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.Decoder = exports.DataViewIndexOutOfBoundsError = void 0;
     var prettyByte_1 = require_prettyByte();
     var ExtensionCodec_1 = require_ExtensionCodec();
@@ -903,7 +990,7 @@ var require_Decoder = __commonJS({
     var DecodeError_1 = require_DecodeError();
     var isValidMapKeyType = (key) => {
       const keyType = typeof key;
-      return keyType === "string" || keyType === "number";
+      return keyType === 'string' || keyType === 'number';
     };
     var HEAD_BYTE_REQUIRED = -1;
     var EMPTY_VIEW = new DataView(new ArrayBuffer(0));
@@ -914,12 +1001,21 @@ var require_Decoder = __commonJS({
       } catch (e) {
         return e.constructor;
       }
-      throw new Error("never reached");
+      throw new Error('never reached');
     })();
-    var MORE_DATA = new exports.DataViewIndexOutOfBoundsError("Insufficient data");
+    var MORE_DATA = new exports.DataViewIndexOutOfBoundsError('Insufficient data');
     var sharedCachedKeyDecoder = new CachedKeyDecoder_1.CachedKeyDecoder();
     var Decoder = class {
-      constructor(extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec, context = void 0, maxStrLength = int_1.UINT32_MAX, maxBinLength = int_1.UINT32_MAX, maxArrayLength = int_1.UINT32_MAX, maxMapLength = int_1.UINT32_MAX, maxExtLength = int_1.UINT32_MAX, keyDecoder = sharedCachedKeyDecoder) {
+      constructor(
+        extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec,
+        context = void 0,
+        maxStrLength = int_1.UINT32_MAX,
+        maxBinLength = int_1.UINT32_MAX,
+        maxArrayLength = int_1.UINT32_MAX,
+        maxMapLength = int_1.UINT32_MAX,
+        maxExtLength = int_1.UINT32_MAX,
+        keyDecoder = sharedCachedKeyDecoder
+      ) {
         this.extensionCodec = extensionCodec;
         this.context = context;
         this.maxStrLength = maxStrLength;
@@ -962,7 +1058,9 @@ var require_Decoder = __commonJS({
       }
       createExtraByteError(posToShow) {
         const { view, pos } = this;
-        return new RangeError(`Extra ${view.byteLength - pos} of ${view.byteLength} byte(s) found at buffer[${posToShow}]`);
+        return new RangeError(
+          `Extra ${view.byteLength - pos} of ${view.byteLength} byte(s) found at buffer[${posToShow}]`
+        );
       }
       /**
        * @throws {@link DecodeError}
@@ -1009,7 +1107,9 @@ var require_Decoder = __commonJS({
           return object;
         }
         const { headByte, pos, totalPos } = this;
-        throw new RangeError(`Insufficient data in parsing ${(0, prettyByte_1.prettyByte)(headByte)} at ${totalPos} (${pos} in the current buffer)`);
+        throw new RangeError(
+          `Insufficient data in parsing ${(0, prettyByte_1.prettyByte)(headByte)} at ${totalPos} (${pos} in the current buffer)`
+        );
       }
       decodeArrayStream(stream) {
         return this.decodeMultiAsync(stream, true);
@@ -1046,92 +1146,16 @@ var require_Decoder = __commonJS({
         }
       }
       doDecodeSync() {
-        DECODE:
-          while (true) {
-            const headByte = this.readHeadByte();
-            let object;
-            if (headByte >= 224) {
-              object = headByte - 256;
-            } else if (headByte < 192) {
-              if (headByte < 128) {
-                object = headByte;
-              } else if (headByte < 144) {
-                const size = headByte - 128;
-                if (size !== 0) {
-                  this.pushMapState(size);
-                  this.complete();
-                  continue DECODE;
-                } else {
-                  object = {};
-                }
-              } else if (headByte < 160) {
-                const size = headByte - 144;
-                if (size !== 0) {
-                  this.pushArrayState(size);
-                  this.complete();
-                  continue DECODE;
-                } else {
-                  object = [];
-                }
-              } else {
-                const byteLength = headByte - 160;
-                object = this.decodeUtf8String(byteLength, 0);
-              }
-            } else if (headByte === 192) {
-              object = null;
-            } else if (headByte === 194) {
-              object = false;
-            } else if (headByte === 195) {
-              object = true;
-            } else if (headByte === 202) {
-              object = this.readF32();
-            } else if (headByte === 203) {
-              object = this.readF64();
-            } else if (headByte === 204) {
-              object = this.readU8();
-            } else if (headByte === 205) {
-              object = this.readU16();
-            } else if (headByte === 206) {
-              object = this.readU32();
-            } else if (headByte === 207) {
-              object = this.readU64();
-            } else if (headByte === 208) {
-              object = this.readI8();
-            } else if (headByte === 209) {
-              object = this.readI16();
-            } else if (headByte === 210) {
-              object = this.readI32();
-            } else if (headByte === 211) {
-              object = this.readI64();
-            } else if (headByte === 217) {
-              const byteLength = this.lookU8();
-              object = this.decodeUtf8String(byteLength, 1);
-            } else if (headByte === 218) {
-              const byteLength = this.lookU16();
-              object = this.decodeUtf8String(byteLength, 2);
-            } else if (headByte === 219) {
-              const byteLength = this.lookU32();
-              object = this.decodeUtf8String(byteLength, 4);
-            } else if (headByte === 220) {
-              const size = this.readU16();
-              if (size !== 0) {
-                this.pushArrayState(size);
-                this.complete();
-                continue DECODE;
-              } else {
-                object = [];
-              }
-            } else if (headByte === 221) {
-              const size = this.readU32();
-              if (size !== 0) {
-                this.pushArrayState(size);
-                this.complete();
-                continue DECODE;
-              } else {
-                object = [];
-              }
-            } else if (headByte === 222) {
-              const size = this.readU16();
+        DECODE: while (true) {
+          const headByte = this.readHeadByte();
+          let object;
+          if (headByte >= 224) {
+            object = headByte - 256;
+          } else if (headByte < 192) {
+            if (headByte < 128) {
+              object = headByte;
+            } else if (headByte < 144) {
+              const size = headByte - 128;
               if (size !== 0) {
                 this.pushMapState(size);
                 this.complete();
@@ -1139,84 +1163,163 @@ var require_Decoder = __commonJS({
               } else {
                 object = {};
               }
-            } else if (headByte === 223) {
-              const size = this.readU32();
+            } else if (headByte < 160) {
+              const size = headByte - 144;
               if (size !== 0) {
-                this.pushMapState(size);
+                this.pushArrayState(size);
                 this.complete();
                 continue DECODE;
               } else {
-                object = {};
+                object = [];
               }
-            } else if (headByte === 196) {
-              const size = this.lookU8();
-              object = this.decodeBinary(size, 1);
-            } else if (headByte === 197) {
-              const size = this.lookU16();
-              object = this.decodeBinary(size, 2);
-            } else if (headByte === 198) {
-              const size = this.lookU32();
-              object = this.decodeBinary(size, 4);
-            } else if (headByte === 212) {
-              object = this.decodeExtension(1, 0);
-            } else if (headByte === 213) {
-              object = this.decodeExtension(2, 0);
-            } else if (headByte === 214) {
-              object = this.decodeExtension(4, 0);
-            } else if (headByte === 215) {
-              object = this.decodeExtension(8, 0);
-            } else if (headByte === 216) {
-              object = this.decodeExtension(16, 0);
-            } else if (headByte === 199) {
-              const size = this.lookU8();
-              object = this.decodeExtension(size, 1);
-            } else if (headByte === 200) {
-              const size = this.lookU16();
-              object = this.decodeExtension(size, 2);
-            } else if (headByte === 201) {
-              const size = this.lookU32();
-              object = this.decodeExtension(size, 4);
             } else {
-              throw new DecodeError_1.DecodeError(`Unrecognized type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`);
+              const byteLength = headByte - 160;
+              object = this.decodeUtf8String(byteLength, 0);
             }
-            this.complete();
-            const stack = this.stack;
-            while (stack.length > 0) {
-              const state = stack[stack.length - 1];
-              if (state.type === 0) {
-                state.array[state.position] = object;
-                state.position++;
-                if (state.position === state.size) {
-                  stack.pop();
-                  object = state.array;
-                } else {
-                  continue DECODE;
-                }
-              } else if (state.type === 1) {
-                if (!isValidMapKeyType(object)) {
-                  throw new DecodeError_1.DecodeError("The type of key must be string or number but " + typeof object);
-                }
-                if (object === "__proto__") {
-                  throw new DecodeError_1.DecodeError("The key __proto__ is not allowed");
-                }
-                state.key = object;
-                state.type = 2;
-                continue DECODE;
+          } else if (headByte === 192) {
+            object = null;
+          } else if (headByte === 194) {
+            object = false;
+          } else if (headByte === 195) {
+            object = true;
+          } else if (headByte === 202) {
+            object = this.readF32();
+          } else if (headByte === 203) {
+            object = this.readF64();
+          } else if (headByte === 204) {
+            object = this.readU8();
+          } else if (headByte === 205) {
+            object = this.readU16();
+          } else if (headByte === 206) {
+            object = this.readU32();
+          } else if (headByte === 207) {
+            object = this.readU64();
+          } else if (headByte === 208) {
+            object = this.readI8();
+          } else if (headByte === 209) {
+            object = this.readI16();
+          } else if (headByte === 210) {
+            object = this.readI32();
+          } else if (headByte === 211) {
+            object = this.readI64();
+          } else if (headByte === 217) {
+            const byteLength = this.lookU8();
+            object = this.decodeUtf8String(byteLength, 1);
+          } else if (headByte === 218) {
+            const byteLength = this.lookU16();
+            object = this.decodeUtf8String(byteLength, 2);
+          } else if (headByte === 219) {
+            const byteLength = this.lookU32();
+            object = this.decodeUtf8String(byteLength, 4);
+          } else if (headByte === 220) {
+            const size = this.readU16();
+            if (size !== 0) {
+              this.pushArrayState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = [];
+            }
+          } else if (headByte === 221) {
+            const size = this.readU32();
+            if (size !== 0) {
+              this.pushArrayState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = [];
+            }
+          } else if (headByte === 222) {
+            const size = this.readU16();
+            if (size !== 0) {
+              this.pushMapState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = {};
+            }
+          } else if (headByte === 223) {
+            const size = this.readU32();
+            if (size !== 0) {
+              this.pushMapState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = {};
+            }
+          } else if (headByte === 196) {
+            const size = this.lookU8();
+            object = this.decodeBinary(size, 1);
+          } else if (headByte === 197) {
+            const size = this.lookU16();
+            object = this.decodeBinary(size, 2);
+          } else if (headByte === 198) {
+            const size = this.lookU32();
+            object = this.decodeBinary(size, 4);
+          } else if (headByte === 212) {
+            object = this.decodeExtension(1, 0);
+          } else if (headByte === 213) {
+            object = this.decodeExtension(2, 0);
+          } else if (headByte === 214) {
+            object = this.decodeExtension(4, 0);
+          } else if (headByte === 215) {
+            object = this.decodeExtension(8, 0);
+          } else if (headByte === 216) {
+            object = this.decodeExtension(16, 0);
+          } else if (headByte === 199) {
+            const size = this.lookU8();
+            object = this.decodeExtension(size, 1);
+          } else if (headByte === 200) {
+            const size = this.lookU16();
+            object = this.decodeExtension(size, 2);
+          } else if (headByte === 201) {
+            const size = this.lookU32();
+            object = this.decodeExtension(size, 4);
+          } else {
+            throw new DecodeError_1.DecodeError(
+              `Unrecognized type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`
+            );
+          }
+          this.complete();
+          const stack = this.stack;
+          while (stack.length > 0) {
+            const state = stack[stack.length - 1];
+            if (state.type === 0) {
+              state.array[state.position] = object;
+              state.position++;
+              if (state.position === state.size) {
+                stack.pop();
+                object = state.array;
               } else {
-                state.map[state.key] = object;
-                state.readCount++;
-                if (state.readCount === state.size) {
-                  stack.pop();
-                  object = state.map;
-                } else {
-                  state.key = null;
-                  state.type = 1;
-                  continue DECODE;
-                }
+                continue DECODE;
+              }
+            } else if (state.type === 1) {
+              if (!isValidMapKeyType(object)) {
+                throw new DecodeError_1.DecodeError(
+                  'The type of key must be string or number but ' + typeof object
+                );
+              }
+              if (object === '__proto__') {
+                throw new DecodeError_1.DecodeError('The key __proto__ is not allowed');
+              }
+              state.key = object;
+              state.type = 2;
+              continue DECODE;
+            } else {
+              state.map[state.key] = object;
+              state.readCount++;
+              if (state.readCount === state.size) {
+                stack.pop();
+                object = state.map;
+              } else {
+                state.key = null;
+                state.type = 1;
+                continue DECODE;
               }
             }
-            return object;
           }
+          return object;
+        }
       }
       readHeadByte() {
         if (this.headByte === HEAD_BYTE_REQUIRED) {
@@ -1238,14 +1341,18 @@ var require_Decoder = __commonJS({
             if (headByte < 160) {
               return headByte - 144;
             } else {
-              throw new DecodeError_1.DecodeError(`Unrecognized array type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`);
+              throw new DecodeError_1.DecodeError(
+                `Unrecognized array type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`
+              );
             }
           }
         }
       }
       pushMapState(size) {
         if (size > this.maxMapLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: map length (${size}) > maxMapLengthLength (${this.maxMapLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: map length (${size}) > maxMapLengthLength (${this.maxMapLength})`
+          );
         }
         this.stack.push({
           type: 1,
@@ -1257,7 +1364,9 @@ var require_Decoder = __commonJS({
       }
       pushArrayState(size) {
         if (size > this.maxArrayLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: array length (${size}) > maxArrayLength (${this.maxArrayLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: array length (${size}) > maxArrayLength (${this.maxArrayLength})`
+          );
         }
         this.stack.push({
           type: 0,
@@ -1269,14 +1378,19 @@ var require_Decoder = __commonJS({
       decodeUtf8String(byteLength, headerOffset) {
         var _a;
         if (byteLength > this.maxStrLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: UTF-8 byte length (${byteLength}) > maxStrLength (${this.maxStrLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: UTF-8 byte length (${byteLength}) > maxStrLength (${this.maxStrLength})`
+          );
         }
         if (this.bytes.byteLength < this.pos + headerOffset + byteLength) {
           throw MORE_DATA;
         }
         const offset = this.pos + headerOffset;
         let object;
-        if (this.stateIsMapKey() && ((_a = this.keyDecoder) === null || _a === void 0 ? void 0 : _a.canBeCached(byteLength))) {
+        if (
+          this.stateIsMapKey() &&
+          ((_a = this.keyDecoder) === null || _a === void 0 ? void 0 : _a.canBeCached(byteLength))
+        ) {
           object = this.keyDecoder.decode(this.bytes, offset, byteLength);
         } else if (byteLength > utf8_1.TEXT_DECODER_THRESHOLD) {
           object = (0, utf8_1.utf8DecodeTD)(this.bytes, offset, byteLength);
@@ -1295,7 +1409,9 @@ var require_Decoder = __commonJS({
       }
       decodeBinary(byteLength, headOffset) {
         if (byteLength > this.maxBinLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: bin length (${byteLength}) > maxBinLength (${this.maxBinLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: bin length (${byteLength}) > maxBinLength (${this.maxBinLength})`
+          );
         }
         if (!this.hasRemaining(byteLength + headOffset)) {
           throw MORE_DATA;
@@ -1307,7 +1423,9 @@ var require_Decoder = __commonJS({
       }
       decodeExtension(size, headOffset) {
         if (size > this.maxExtLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: ext length (${size}) > maxExtLength (${this.maxExtLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: ext length (${size}) > maxExtLength (${this.maxExtLength})`
+          );
         }
         const extType = this.view.getInt8(this.pos + headOffset);
         const data = this.decodeBinary(
@@ -1383,19 +1501,35 @@ var require_Decoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/decode.js
 var require_decode = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/decode.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/decode.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.decodeMulti = exports.decode = exports.defaultDecodeOptions = void 0;
     var Decoder_1 = require_Decoder();
     exports.defaultDecodeOptions = {};
     function decode3(buffer, options = exports.defaultDecodeOptions) {
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decode(buffer);
     }
     exports.decode = decode3;
     function decodeMulti(buffer, options = exports.defaultDecodeOptions) {
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeMulti(buffer);
     }
     exports.decodeMulti = decodeMulti;
@@ -1404,17 +1538,20 @@ var require_decode = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/stream.js
 var require_stream = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/stream.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ensureAsyncIterable = exports.asyncIterableFromStream = exports.isAsyncIterable = void 0;
+  'node_modules/@msgpack/msgpack/dist/utils/stream.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.ensureAsyncIterable =
+      exports.asyncIterableFromStream =
+      exports.isAsyncIterable =
+        void 0;
     function isAsyncIterable(object) {
       return object[Symbol.asyncIterator] != null;
     }
     exports.isAsyncIterable = isAsyncIterable;
     function assertNonNull(value) {
       if (value == null) {
-        throw new Error("Assertion Failure: value must not be null nor undefined");
+        throw new Error('Assertion Failure: value must not be null nor undefined');
       }
     }
     async function* asyncIterableFromStream(stream) {
@@ -1446,28 +1583,56 @@ var require_stream = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/decodeAsync.js
 var require_decodeAsync = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/decodeAsync.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.decodeStream = exports.decodeMultiStream = exports.decodeArrayStream = exports.decodeAsync = void 0;
+  'node_modules/@msgpack/msgpack/dist/decodeAsync.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.decodeStream =
+      exports.decodeMultiStream =
+      exports.decodeArrayStream =
+      exports.decodeAsync =
+        void 0;
     var Decoder_1 = require_Decoder();
     var stream_1 = require_stream();
     var decode_1 = require_decode();
     async function decodeAsync(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeAsync(stream);
     }
     exports.decodeAsync = decodeAsync;
     function decodeArrayStream(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeArrayStream(stream);
     }
     exports.decodeArrayStream = decodeArrayStream;
     function decodeMultiStream(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeStream(stream);
     }
     exports.decodeMultiStream = decodeMultiStream;
@@ -1480,76 +1645,152 @@ var require_decodeAsync = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/index.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.decodeTimestampExtension = exports.encodeTimestampExtension = exports.decodeTimestampToTimeSpec = exports.encodeTimeSpecToTimestamp = exports.encodeDateToTimeSpec = exports.EXT_TIMESTAMP = exports.ExtData = exports.ExtensionCodec = exports.Encoder = exports.DataViewIndexOutOfBoundsError = exports.DecodeError = exports.Decoder = exports.decodeStream = exports.decodeMultiStream = exports.decodeArrayStream = exports.decodeAsync = exports.decodeMulti = exports.decode = exports.encode = void 0;
+  'node_modules/@msgpack/msgpack/dist/index.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.decodeTimestampExtension =
+      exports.encodeTimestampExtension =
+      exports.decodeTimestampToTimeSpec =
+      exports.encodeTimeSpecToTimestamp =
+      exports.encodeDateToTimeSpec =
+      exports.EXT_TIMESTAMP =
+      exports.ExtData =
+      exports.ExtensionCodec =
+      exports.Encoder =
+      exports.DataViewIndexOutOfBoundsError =
+      exports.DecodeError =
+      exports.Decoder =
+      exports.decodeStream =
+      exports.decodeMultiStream =
+      exports.decodeArrayStream =
+      exports.decodeAsync =
+      exports.decodeMulti =
+      exports.decode =
+      exports.encode =
+        void 0;
     var encode_1 = require_encode();
-    Object.defineProperty(exports, "encode", { enumerable: true, get: function() {
-      return encode_1.encode;
-    } });
+    Object.defineProperty(exports, 'encode', {
+      enumerable: true,
+      get: function () {
+        return encode_1.encode;
+      }
+    });
     var decode_1 = require_decode();
-    Object.defineProperty(exports, "decode", { enumerable: true, get: function() {
-      return decode_1.decode;
-    } });
-    Object.defineProperty(exports, "decodeMulti", { enumerable: true, get: function() {
-      return decode_1.decodeMulti;
-    } });
+    Object.defineProperty(exports, 'decode', {
+      enumerable: true,
+      get: function () {
+        return decode_1.decode;
+      }
+    });
+    Object.defineProperty(exports, 'decodeMulti', {
+      enumerable: true,
+      get: function () {
+        return decode_1.decodeMulti;
+      }
+    });
     var decodeAsync_1 = require_decodeAsync();
-    Object.defineProperty(exports, "decodeAsync", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeAsync;
-    } });
-    Object.defineProperty(exports, "decodeArrayStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeArrayStream;
-    } });
-    Object.defineProperty(exports, "decodeMultiStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeMultiStream;
-    } });
-    Object.defineProperty(exports, "decodeStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeStream;
-    } });
+    Object.defineProperty(exports, 'decodeAsync', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeAsync;
+      }
+    });
+    Object.defineProperty(exports, 'decodeArrayStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeArrayStream;
+      }
+    });
+    Object.defineProperty(exports, 'decodeMultiStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeMultiStream;
+      }
+    });
+    Object.defineProperty(exports, 'decodeStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeStream;
+      }
+    });
     var Decoder_1 = require_Decoder();
-    Object.defineProperty(exports, "Decoder", { enumerable: true, get: function() {
-      return Decoder_1.Decoder;
-    } });
-    Object.defineProperty(exports, "DataViewIndexOutOfBoundsError", { enumerable: true, get: function() {
-      return Decoder_1.DataViewIndexOutOfBoundsError;
-    } });
+    Object.defineProperty(exports, 'Decoder', {
+      enumerable: true,
+      get: function () {
+        return Decoder_1.Decoder;
+      }
+    });
+    Object.defineProperty(exports, 'DataViewIndexOutOfBoundsError', {
+      enumerable: true,
+      get: function () {
+        return Decoder_1.DataViewIndexOutOfBoundsError;
+      }
+    });
     var DecodeError_1 = require_DecodeError();
-    Object.defineProperty(exports, "DecodeError", { enumerable: true, get: function() {
-      return DecodeError_1.DecodeError;
-    } });
+    Object.defineProperty(exports, 'DecodeError', {
+      enumerable: true,
+      get: function () {
+        return DecodeError_1.DecodeError;
+      }
+    });
     var Encoder_1 = require_Encoder();
-    Object.defineProperty(exports, "Encoder", { enumerable: true, get: function() {
-      return Encoder_1.Encoder;
-    } });
+    Object.defineProperty(exports, 'Encoder', {
+      enumerable: true,
+      get: function () {
+        return Encoder_1.Encoder;
+      }
+    });
     var ExtensionCodec_1 = require_ExtensionCodec();
-    Object.defineProperty(exports, "ExtensionCodec", { enumerable: true, get: function() {
-      return ExtensionCodec_1.ExtensionCodec;
-    } });
+    Object.defineProperty(exports, 'ExtensionCodec', {
+      enumerable: true,
+      get: function () {
+        return ExtensionCodec_1.ExtensionCodec;
+      }
+    });
     var ExtData_1 = require_ExtData();
-    Object.defineProperty(exports, "ExtData", { enumerable: true, get: function() {
-      return ExtData_1.ExtData;
-    } });
+    Object.defineProperty(exports, 'ExtData', {
+      enumerable: true,
+      get: function () {
+        return ExtData_1.ExtData;
+      }
+    });
     var timestamp_1 = require_timestamp();
-    Object.defineProperty(exports, "EXT_TIMESTAMP", { enumerable: true, get: function() {
-      return timestamp_1.EXT_TIMESTAMP;
-    } });
-    Object.defineProperty(exports, "encodeDateToTimeSpec", { enumerable: true, get: function() {
-      return timestamp_1.encodeDateToTimeSpec;
-    } });
-    Object.defineProperty(exports, "encodeTimeSpecToTimestamp", { enumerable: true, get: function() {
-      return timestamp_1.encodeTimeSpecToTimestamp;
-    } });
-    Object.defineProperty(exports, "decodeTimestampToTimeSpec", { enumerable: true, get: function() {
-      return timestamp_1.decodeTimestampToTimeSpec;
-    } });
-    Object.defineProperty(exports, "encodeTimestampExtension", { enumerable: true, get: function() {
-      return timestamp_1.encodeTimestampExtension;
-    } });
-    Object.defineProperty(exports, "decodeTimestampExtension", { enumerable: true, get: function() {
-      return timestamp_1.decodeTimestampExtension;
-    } });
+    Object.defineProperty(exports, 'EXT_TIMESTAMP', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.EXT_TIMESTAMP;
+      }
+    });
+    Object.defineProperty(exports, 'encodeDateToTimeSpec', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeDateToTimeSpec;
+      }
+    });
+    Object.defineProperty(exports, 'encodeTimeSpecToTimestamp', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeTimeSpecToTimestamp;
+      }
+    });
+    Object.defineProperty(exports, 'decodeTimestampToTimeSpec', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.decodeTimestampToTimeSpec;
+      }
+    });
+    Object.defineProperty(exports, 'encodeTimestampExtension', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeTimestampExtension;
+      }
+    });
+    Object.defineProperty(exports, 'decodeTimestampExtension', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.decodeTimestampExtension;
+      }
+    });
   }
 });
 
@@ -1561,24 +1802,22 @@ var WebRError = class extends Error {
     Object.setPrototypeOf(this, new.target.prototype);
   }
 };
-var WebRWorkerError = class extends WebRError {
-};
-var WebRChannelError = class extends WebRError {
-};
-var WebRPayloadError = class extends WebRError {
-};
+var WebRWorkerError = class extends WebRError {};
+var WebRChannelError = class extends WebRError {};
+var WebRPayloadError = class extends WebRError {};
 
 // webR/compat.ts
-var IN_NODE = typeof process !== "undefined" && process.release && process.release.name === "node";
+var IN_NODE = typeof process !== 'undefined' && process.release && process.release.name === 'node';
 var loadScript;
 if (globalThis.document) {
-  loadScript = (url) => new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.onload = () => resolve();
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
+  loadScript = (url) =>
+    new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = url;
+      script.onload = () => resolve();
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
 } else if (globalThis.importScripts) {
   loadScript = async (url) => {
     try {
@@ -1593,11 +1832,11 @@ if (globalThis.document) {
   };
 } else if (IN_NODE) {
   loadScript = async (url) => {
-    const nodePathMod = (await Promise.resolve().then(() => __toESM(__require("path")))).default;
+    const nodePathMod = (await Promise.resolve().then(() => __toESM(__require('path')))).default;
     await Promise.resolve().then(() => __toESM(__require(nodePathMod.resolve(url))));
   };
 } else {
-  throw new WebRError("Cannot determine runtime environment");
+  throw new WebRError('Cannot determine runtime environment');
 }
 
 // webR/emscripten.ts
@@ -1637,10 +1876,10 @@ var RTypeMap = {
   function: 99
 };
 function isWebRDataJs(value) {
-  return !!value && typeof value === "object" && Object.keys(RTypeMap).includes(value.type);
+  return !!value && typeof value === 'object' && Object.keys(RTypeMap).includes(value.type);
 }
 function isComplex(value) {
-  return !!value && typeof value === "object" && "re" in value && "im" in value;
+  return !!value && typeof value === 'object' && 're' in value && 'im' in value;
 }
 
 // webR/utils-r.ts
@@ -1656,7 +1895,7 @@ function protectInc(x, prot) {
 function protectWithIndex(x) {
   const pLoc = Module2._malloc(4);
   Module2._R_ProtectWithIndex(handlePtr(x), pLoc);
-  const loc = Module2.getValue(pLoc, "i32");
+  const loc = Module2.getValue(pLoc, 'i32');
   return { loc, ptr: pLoc };
 }
 function unprotectIndex(index) {
@@ -1704,13 +1943,13 @@ function transfer(obj, transfers) {
   return obj;
 }
 function isUUID(x) {
-  return typeof x === "string" && x.length === UUID_LENGTH;
+  return typeof x === 'string' && x.length === UUID_LENGTH;
 }
 var UUID_LENGTH = 63;
 function generateUUID() {
-  const result = Array.from({ length: 4 }, randomSegment).join("-");
+  const result = Array.from({ length: 4 }, randomSegment).join('-');
   if (result.length !== UUID_LENGTH) {
-    throw new Error("comlink internal error: UUID has the wrong length");
+    throw new Error('comlink internal error: UUID has the wrong length');
   }
   return result;
 }
@@ -1718,7 +1957,7 @@ function randomSegment() {
   let result = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
   const pad = 15 - result.length;
   if (pad > 0) {
-    result = Array.from({ length: pad }, () => 0).join("") + result;
+    result = Array.from({ length: pad }, () => 0).join('') + result;
   }
   return result;
 }
@@ -1740,19 +1979,19 @@ function newObjectFromData(obj) {
   if (isWebRDataJs(obj)) {
     return new (getRWorkerClass(obj.type))(obj);
   }
-  if (obj && typeof obj === "object" && "type" in obj && obj.type === "null") {
+  if (obj && typeof obj === 'object' && 'type' in obj && obj.type === 'null') {
     return new RNull();
   }
   if (obj === null) {
-    return new RLogical({ type: "logical", names: null, values: [null] });
+    return new RLogical({ type: 'logical', names: null, values: [null] });
   }
-  if (typeof obj === "boolean") {
+  if (typeof obj === 'boolean') {
     return new RLogical(obj);
   }
-  if (typeof obj === "number") {
+  if (typeof obj === 'number') {
     return new RDouble(obj);
   }
-  if (typeof obj === "string") {
+  if (typeof obj === 'string') {
     return new RCharacter(obj);
   }
   if (isComplex(obj)) {
@@ -1764,37 +2003,42 @@ function newObjectFromData(obj) {
   if (Array.isArray(obj)) {
     return newObjectFromArray(obj);
   }
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     return RDataFrame.fromObject(obj);
   }
-  throw new Error("Robj construction for this JS object is not yet supported");
+  throw new Error('Robj construction for this JS object is not yet supported');
 }
 function newObjectFromArray(arr) {
   const prot = { n: 0 };
-  const hasObjects = arr.every((v) => v && typeof v === "object" && !isRObject(v) && !isComplex(v));
+  const hasObjects = arr.every((v) => v && typeof v === 'object' && !isRObject(v) && !isComplex(v));
   if (hasObjects) {
     const _arr = arr;
     const isConsistent = _arr.every((a) => {
-      return Object.keys(a).filter((k) => !Object.keys(_arr[0]).includes(k)).length === 0 && Object.keys(_arr[0]).filter((k) => !Object.keys(a).includes(k)).length === 0;
+      return (
+        Object.keys(a).filter((k) => !Object.keys(_arr[0]).includes(k)).length === 0 &&
+        Object.keys(_arr[0]).filter((k) => !Object.keys(a).includes(k)).length === 0
+      );
     });
-    const isAtomic = _arr.every((a) => Object.values(a).every((v) => {
-      return isAtomicType(v) || isRVectorAtomic(v);
-    }));
+    const isAtomic = _arr.every((a) =>
+      Object.values(a).every((v) => {
+        return isAtomicType(v) || isRVectorAtomic(v);
+      })
+    );
     if (isConsistent && isAtomic) {
       return RDataFrame.fromD3(_arr);
     }
   }
-  if (arr.every((v) => typeof v === "boolean" || v === null)) {
+  if (arr.every((v) => typeof v === 'boolean' || v === null)) {
     return new RLogical(arr);
   }
-  if (arr.every((v) => typeof v === "number" || v === null)) {
+  if (arr.every((v) => typeof v === 'number' || v === null)) {
     return new RDouble(arr);
   }
-  if (arr.every((v) => typeof v === "string" || v === null)) {
+  if (arr.every((v) => typeof v === 'string' || v === null)) {
     return new RCharacter(arr);
   }
   try {
-    const call = new RCall([new RSymbol("c"), ...arr]);
+    const call = new RCall([new RSymbol('c'), ...arr]);
     protectInc(call, prot);
     return call.eval();
   } finally {
@@ -1807,9 +2051,7 @@ var RObjectBase = class {
   }
   type() {
     const typeNumber = Module2._TYPEOF(this.ptr);
-    const type = Object.keys(RTypeMap).find(
-      (typeName) => RTypeMap[typeName] === typeNumber
-    );
+    const type = Object.keys(RTypeMap).find((typeName) => RTypeMap[typeName] === typeNumber);
     return type;
   }
 };
@@ -1839,14 +2081,14 @@ var _RObject = class extends RObjectBase {
     return this[prop];
   }
   inspect() {
-    parseEvalBare(".Internal(inspect(x))", { x: this });
+    parseEvalBare('.Internal(inspect(x))', { x: this });
   }
   isNull() {
     return Module2._TYPEOF(this.ptr) === RTypeMap.null;
   }
   isNa() {
     try {
-      const result = parseEvalBare("is.na(x)", { x: this });
+      const result = parseEvalBare('is.na(x)', { x: this });
       protect(result);
       return result.toBoolean();
     } finally {
@@ -1861,7 +2103,7 @@ var _RObject = class extends RObjectBase {
   }
   class() {
     const prot = { n: 0 };
-    const classCall = new RCall([new RSymbol("class"), this]);
+    const classCall = new RCall([new RSymbol('class'), this]);
     protectInc(classCall, prot);
     try {
       return classCall.eval();
@@ -1873,10 +2115,10 @@ var _RObject = class extends RObjectBase {
     let namesObj;
     if (values === null) {
       namesObj = objs.null;
-    } else if (Array.isArray(values) && values.every((v) => typeof v === "string" || v === null)) {
+    } else if (Array.isArray(values) && values.every((v) => typeof v === 'string' || v === null)) {
       namesObj = new RCharacter(values);
     } else {
-      throw new Error("Argument to setNames must be null or an Array of strings or null");
+      throw new Error('Argument to setNames must be null or an Array of strings or null');
     }
     Module2._Rf_setAttrib(this.ptr, objs.namesSymbol.ptr, namesObj.ptr);
     return this;
@@ -1895,7 +2137,7 @@ var _RObject = class extends RObjectBase {
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   toJs(options = { depth: 0 }, depth = 1) {
-    throw new Error("This R object cannot be converted to JS");
+    throw new Error('This R object cannot be converted to JS');
   }
   subset(prop) {
     return __privateMethod(this, _slice, slice_fn).call(this, prop, objs.bracketSymbol.ptr);
@@ -1926,7 +2168,7 @@ var _RObject = class extends RObjectBase {
       protectInc(idx, prot);
       const valueObj = new _RObject(value);
       protectInc(valueObj, prot);
-      const assign = new RSymbol("[[<-");
+      const assign = new RSymbol('[[<-');
       const call = Module2._Rf_lang4(assign.ptr, this.ptr, idx.ptr, valueObj.ptr);
       protectInc(call, prot);
       return _RObject.wrap(safeEval(call, objs.baseEnv));
@@ -1940,13 +2182,13 @@ var _RObject = class extends RObjectBase {
     let cur = obj;
     do {
       Object.getOwnPropertyNames(cur).map((p) => props.add(p));
-    } while (cur = Object.getPrototypeOf(cur));
-    return [...props.keys()].filter((i) => typeof obj[i] === "function");
+    } while ((cur = Object.getPrototypeOf(cur)));
+    return [...props.keys()].filter((i) => typeof obj[i] === 'function');
   }
 };
 var RObject = _RObject;
 _slice = new WeakSet();
-slice_fn = function(prop, op) {
+slice_fn = function (prop, op) {
   const prot = { n: 0 };
   try {
     const idx = new _RObject(prop);
@@ -1960,11 +2202,11 @@ slice_fn = function(prop, op) {
 };
 var RNull = class extends RObject {
   constructor() {
-    super(new RObjectBase(Module2.getValue(Module2._R_NilValue, "*")));
+    super(new RObjectBase(Module2.getValue(Module2._R_NilValue, '*')));
     return this;
   }
   toJs() {
-    return { type: "null" };
+    return { type: 'null' };
   }
 };
 var RSymbol = class extends RObject {
@@ -1973,7 +2215,7 @@ var RSymbol = class extends RObject {
   // bad idea because this leaks memory.
   constructor(x) {
     if (x instanceof RObjectBase) {
-      assertRType(x, "symbol");
+      assertRType(x, 'symbol');
       super(x);
       return;
     }
@@ -1987,7 +2229,7 @@ var RSymbol = class extends RObject {
   toJs() {
     const obj = this.toObject();
     return {
-      type: "symbol",
+      type: 'symbol',
       printname: obj.printname,
       symvalue: obj.symvalue,
       internal: obj.internal
@@ -2016,7 +2258,7 @@ var RSymbol = class extends RObject {
 var RPairlist = class extends RObject {
   constructor(val) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "pairlist");
+      assertRType(val, 'pairlist');
       super(val);
       return this;
     }
@@ -2040,18 +2282,14 @@ var RPairlist = class extends RObject {
   toArray(options = { depth: 1 }) {
     return this.toJs(options).values;
   }
-  toObject({
-    allowDuplicateKey = true,
-    allowEmptyKey = false,
-    depth = -1
-  } = {}) {
+  toObject({ allowDuplicateKey = true, allowEmptyKey = false, depth = -1 } = {}) {
     const entries = this.entries({ depth });
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
-      throw new Error("Duplicate key when converting pairlist without allowDuplicateKey enabled");
+      throw new Error('Duplicate key when converting pairlist without allowDuplicateKey enabled');
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
-      throw new Error("Empty or null key when converting pairlist without allowEmptyKey enabled");
+      throw new Error('Empty or null key when converting pairlist without allowEmptyKey enabled');
     }
     return Object.fromEntries(
       entries.filter((u, idx) => entries.findIndex((v) => v[0] === u[0]) === idx)
@@ -2068,7 +2306,7 @@ var RPairlist = class extends RObject {
     for (let next = this; !next.isNull(); next = next.cdr()) {
       const symbol = next.tag();
       if (symbol.isNull()) {
-        namesArray.push("");
+        namesArray.push('');
       } else {
         hasNames = true;
         namesArray.push(symbol.toString());
@@ -2080,7 +2318,7 @@ var RPairlist = class extends RObject {
       }
     }
     const names = hasNames ? namesArray : null;
-    return { type: "pairlist", names, values };
+    return { type: 'pairlist', names, values };
   }
   includes(name) {
     return name in this.toObject();
@@ -2101,7 +2339,7 @@ var RPairlist = class extends RObject {
 var RCall = class extends RObject {
   constructor(val) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "call");
+      assertRType(val, 'call');
       super(val);
       return this;
     }
@@ -2138,8 +2376,8 @@ var RCall = class extends RObject {
     const prot = { n: 0 };
     try {
       const call = Module2._Rf_lang2(
-        new RSymbol("deparse1").ptr,
-        Module2._Rf_lang2(new RSymbol("quote").ptr, this.ptr)
+        new RSymbol('deparse1').ptr,
+        Module2._Rf_lang2(new RSymbol('quote').ptr, this.ptr)
       );
       protectInc(call, prot);
       const val = RCharacter.wrap(safeEval(call, objs.baseEnv));
@@ -2153,7 +2391,7 @@ var RCall = class extends RObject {
 var RList = class extends RObject {
   constructor(val, names = null) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "list");
+      assertRType(val, 'list');
       super(val);
       if (names) {
         if (names.length !== this.length) {
@@ -2189,24 +2427,20 @@ var RList = class extends RObject {
     return Module2._LENGTH(this.ptr);
   }
   isDataFrame() {
-    const classes = RPairlist.wrap(Module2._ATTRIB(this.ptr)).get("class");
-    return !classes.isNull() && classes.toArray().includes("data.frame");
+    const classes = RPairlist.wrap(Module2._ATTRIB(this.ptr)).get('class');
+    return !classes.isNull() && classes.toArray().includes('data.frame');
   }
   toArray(options = { depth: 1 }) {
     return this.toJs(options).values;
   }
-  toObject({
-    allowDuplicateKey = true,
-    allowEmptyKey = false,
-    depth = -1
-  } = {}) {
+  toObject({ allowDuplicateKey = true, allowEmptyKey = false, depth = -1 } = {}) {
     const entries = this.entries({ depth });
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
-      throw new Error("Duplicate key when converting list without allowDuplicateKey enabled");
+      throw new Error('Duplicate key when converting list without allowDuplicateKey enabled');
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
-      throw new Error("Empty or null key when converting list without allowEmptyKey enabled");
+      throw new Error('Empty or null key when converting list without allowEmptyKey enabled');
     }
     return Object.fromEntries(
       entries.filter((u, idx) => entries.findIndex((v) => v[0] === u[0]) === idx)
@@ -2220,7 +2454,7 @@ var RList = class extends RObject {
     }
     const entries = this.entries();
     return entries.reduce((a, entry) => {
-      entry[1].forEach((v, j) => a[j] = Object.assign(a[j] || {}, { [entry[0]]: v }));
+      entry[1].forEach((v, j) => (a[j] = Object.assign(a[j] || {}, { [entry[0]]: v })));
       return a;
     }, []);
   }
@@ -2233,7 +2467,7 @@ var RList = class extends RObject {
   }
   toJs(options = { depth: 0 }, depth = 1) {
     return {
-      type: "list",
+      type: 'list',
       names: this.names(),
       values: [...Array(this.length).keys()].map((i) => {
         if (options.depth && depth >= options.depth) {
@@ -2261,9 +2495,11 @@ var RDataFrame = class extends RList {
     const prot = { n: 0 };
     try {
       const hasNames = !!names && names.length > 0 && names.every((v) => v);
-      const hasArrays = values.length > 0 && values.every((v) => {
-        return Array.isArray(v) || ArrayBuffer.isView(v) || v instanceof ArrayBuffer;
-      });
+      const hasArrays =
+        values.length > 0 &&
+        values.every((v) => {
+          return Array.isArray(v) || ArrayBuffer.isView(v) || v instanceof ArrayBuffer;
+        });
       if (hasNames && hasArrays) {
         const _values = values;
         const isConsistentLength = _values.every((a) => a.length === _values[0].length);
@@ -2272,12 +2508,12 @@ var RDataFrame = class extends RList {
         });
         if (isConsistentLength && isAtomic) {
           const listObj = new RList({
-            type: "list",
+            type: 'list',
             names,
             values: _values.map((a) => newObjectFromData(a))
           });
           protectInc(listObj, prot);
-          const asDataFrame = new RCall([new RSymbol("as.data.frame"), listObj]);
+          const asDataFrame = new RCall([new RSymbol('as.data.frame'), listObj]);
           protectInc(asDataFrame, prot);
           return new RDataFrame(asDataFrame.eval());
         }
@@ -2319,7 +2555,7 @@ var RString = class extends RObject {
   // Unlike symbols, strings are not cached and must thus be protected
   constructor(x) {
     if (x instanceof RObjectBase) {
-      assertRType(x, "string");
+      assertRType(x, 'string');
       super(x);
       return;
     }
@@ -2335,7 +2571,7 @@ var RString = class extends RObject {
   }
   toJs() {
     return {
-      type: "string",
+      type: 'string',
       value: this.toString()
     };
   }
@@ -2343,7 +2579,7 @@ var RString = class extends RObject {
 var REnvironment = class extends RObject {
   constructor(val = {}) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "environment");
+      assertRType(val, 'environment');
       super(val);
       return this;
     }
@@ -2390,8 +2626,8 @@ var REnvironment = class extends RObject {
     return RObject.wrap(Module2._FRAME(this.ptr));
   }
   subset(prop) {
-    if (typeof prop === "number") {
-      throw new Error("Object of type environment is not subsettable");
+    if (typeof prop === 'number') {
+      throw new Error('Object of type environment is not subsettable');
     }
     return this.getDollar(prop);
   }
@@ -2414,7 +2650,7 @@ var REnvironment = class extends RObject {
       }
     });
     return {
-      type: "environment",
+      type: 'environment',
       names,
       values
     };
@@ -2449,12 +2685,12 @@ var RVectorAtomic = class extends RObject {
     return super.subset(prop);
   }
   getDollar() {
-    throw new Error("$ operator is invalid for atomic vectors");
+    throw new Error('$ operator is invalid for atomic vectors');
   }
   detectMissing() {
     const prot = { n: 0 };
     try {
-      const call = Module2._Rf_lang2(new RSymbol("is.na").ptr, this.ptr);
+      const call = Module2._Rf_lang2(new RSymbol('is.na').ptr, this.ptr);
       protectInc(call, prot);
       const val = RLogical.wrap(safeEval(call, objs.baseEnv));
       protectInc(val, prot);
@@ -2466,19 +2702,19 @@ var RVectorAtomic = class extends RObject {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map((m, idx) => m ? null : arr[idx]);
+    return this.detectMissing().map((m, idx) => (m ? null : arr[idx]));
   }
   toObject({ allowDuplicateKey = true, allowEmptyKey = false } = {}) {
     const entries = this.entries();
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
       throw new Error(
-        "Duplicate key when converting atomic vector without allowDuplicateKey enabled"
+        'Duplicate key when converting atomic vector without allowDuplicateKey enabled'
       );
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
       throw new Error(
-        "Empty or null key when converting atomic vector without allowEmptyKey enabled"
+        'Empty or null key when converting atomic vector without allowEmptyKey enabled'
       );
     }
     return Object.fromEntries(
@@ -2501,7 +2737,7 @@ var RVectorAtomic = class extends RObject {
 var _newSetter;
 var _RLogical = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "logical", __privateGet(_RLogical, _newSetter));
+    super(val, 'logical', __privateGet(_RLogical, _newSetter));
   }
   getBoolean(idx) {
     return this.get(idx).toArray()[0];
@@ -2526,22 +2762,22 @@ var _RLogical = class extends RVectorAtomic {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map((m, idx) => m ? null : Boolean(arr[idx]));
+    return this.detectMissing().map((m, idx) => (m ? null : Boolean(arr[idx])));
   }
 };
 var RLogical = _RLogical;
 _newSetter = new WeakMap();
 __privateAdd(RLogical, _newSetter, (ptr) => {
   const data = Module2._LOGICAL(ptr);
-  const naLogical = Module2.getValue(Module2._R_NaInt, "i32");
+  const naLogical = Module2.getValue(Module2._R_NaInt, 'i32');
   return (v, i) => {
-    Module2.setValue(data + 4 * i, v === null ? naLogical : Boolean(v), "i32");
+    Module2.setValue(data + 4 * i, v === null ? naLogical : Boolean(v), 'i32');
   };
 });
 var _newSetter2;
 var _RInteger = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "integer", __privateGet(_RInteger, _newSetter2));
+    super(val, 'integer', __privateGet(_RInteger, _newSetter2));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -2569,15 +2805,15 @@ var RInteger = _RInteger;
 _newSetter2 = new WeakMap();
 __privateAdd(RInteger, _newSetter2, (ptr) => {
   const data = Module2._INTEGER(ptr);
-  const naInteger = Module2.getValue(Module2._R_NaInt, "i32");
+  const naInteger = Module2.getValue(Module2._R_NaInt, 'i32');
   return (v, i) => {
-    Module2.setValue(data + 4 * i, v === null ? naInteger : Math.round(Number(v)), "i32");
+    Module2.setValue(data + 4 * i, v === null ? naInteger : Math.round(Number(v)), 'i32');
   };
 });
 var _newSetter3;
 var _RDouble = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "double", __privateGet(_RDouble, _newSetter3));
+    super(val, 'double', __privateGet(_RDouble, _newSetter3));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -2594,7 +2830,10 @@ var _RDouble = class extends RVectorAtomic {
   }
   toTypedArray() {
     return new Float64Array(
-      Module2.HEAPF64.subarray(Module2._REAL(this.ptr) / 8, Module2._REAL(this.ptr) / 8 + this.length)
+      Module2.HEAPF64.subarray(
+        Module2._REAL(this.ptr) / 8,
+        Module2._REAL(this.ptr) / 8 + this.length
+      )
     );
   }
 };
@@ -2602,15 +2841,15 @@ var RDouble = _RDouble;
 _newSetter3 = new WeakMap();
 __privateAdd(RDouble, _newSetter3, (ptr) => {
   const data = Module2._REAL(ptr);
-  const naDouble = Module2.getValue(Module2._R_NaReal, "double");
+  const naDouble = Module2.getValue(Module2._R_NaReal, 'double');
   return (v, i) => {
-    Module2.setValue(data + 8 * i, v === null ? naDouble : v, "double");
+    Module2.setValue(data + 8 * i, v === null ? naDouble : v, 'double');
   };
 });
 var _newSetter4;
 var _RComplex = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "complex", __privateGet(_RComplex, _newSetter4));
+    super(val, 'complex', __privateGet(_RComplex, _newSetter4));
   }
   getComplex(idx) {
     return this.get(idx).toArray()[0];
@@ -2635,8 +2874,8 @@ var _RComplex = class extends RVectorAtomic {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map(
-      (m, idx) => m ? null : { re: arr[2 * idx], im: arr[2 * idx + 1] }
+    return this.detectMissing().map((m, idx) =>
+      m ? null : { re: arr[2 * idx], im: arr[2 * idx + 1] }
     );
   }
 };
@@ -2644,16 +2883,16 @@ var RComplex = _RComplex;
 _newSetter4 = new WeakMap();
 __privateAdd(RComplex, _newSetter4, (ptr) => {
   const data = Module2._COMPLEX(ptr);
-  const naDouble = Module2.getValue(Module2._R_NaReal, "double");
+  const naDouble = Module2.getValue(Module2._R_NaReal, 'double');
   return (v, i) => {
-    Module2.setValue(data + 8 * (2 * i), v === null ? naDouble : v.re, "double");
-    Module2.setValue(data + 8 * (2 * i + 1), v === null ? naDouble : v.im, "double");
+    Module2.setValue(data + 8 * (2 * i), v === null ? naDouble : v.re, 'double');
+    Module2.setValue(data + 8 * (2 * i + 1), v === null ? naDouble : v.im, 'double');
   };
 });
 var _newSetter5;
 var _RCharacter = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "character", __privateGet(_RCharacter, _newSetter5));
+    super(val, 'character', __privateGet(_RCharacter, _newSetter5));
   }
   getString(idx) {
     return this.get(idx).toArray()[0];
@@ -2677,8 +2916,8 @@ var _RCharacter = class extends RVectorAtomic {
     );
   }
   toArray() {
-    return this.detectMissing().map(
-      (m, idx) => m ? null : Module2.UTF8ToString(Module2._R_CHAR(Module2._STRING_ELT(this.ptr, idx)))
+    return this.detectMissing().map((m, idx) =>
+      m ? null : Module2.UTF8ToString(Module2._R_CHAR(Module2._STRING_ELT(this.ptr, idx)))
     );
   }
 };
@@ -2699,7 +2938,7 @@ var _RRaw = class extends RVectorAtomic {
     if (val instanceof ArrayBuffer) {
       val = new Uint8Array(val);
     }
-    super(val, "raw", __privateGet(_RRaw, _newSetter6));
+    super(val, 'raw', __privateGet(_RRaw, _newSetter6));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -2725,7 +2964,7 @@ _newSetter6 = new WeakMap();
 __privateAdd(RRaw, _newSetter6, (ptr) => {
   const data = Module2._RAW(ptr);
   return (v, i) => {
-    Module2.setValue(data + i, Number(v), "i8");
+    Module2.setValue(data + i, Number(v), 'i8');
   };
 });
 function toWebRData(jsObj) {
@@ -2733,7 +2972,7 @@ function toWebRData(jsObj) {
     return jsObj;
   } else if (Array.isArray(jsObj) || ArrayBuffer.isView(jsObj)) {
     return { names: null, values: jsObj };
-  } else if (jsObj && typeof jsObj === "object" && !isComplex(jsObj)) {
+  } else if (jsObj && typeof jsObj === 'object' && !isComplex(jsObj)) {
     return {
       names: Object.keys(jsObj),
       values: Object.values(jsObj)
@@ -2772,11 +3011,19 @@ function isRObject(value) {
   return value instanceof RObject;
 }
 function isRVectorAtomic(value) {
-  const atomicRTypes = ["logical", "integer", "double", "complex", "character"];
-  return isRObject(value) && atomicRTypes.includes(value.type()) || isRObject(value) && value.isNa();
+  const atomicRTypes = ['logical', 'integer', 'double', 'complex', 'character'];
+  return (
+    (isRObject(value) && atomicRTypes.includes(value.type())) || (isRObject(value) && value.isNa())
+  );
 }
 function isAtomicType(value) {
-  return value === null || typeof value === "number" || typeof value === "boolean" || typeof value === "string" || isComplex(value);
+  return (
+    value === null ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    typeof value === 'string' ||
+    isComplex(value)
+  );
 }
 var objs;
 
@@ -2812,14 +3059,12 @@ function replaceInObject(obj, test, replacer, ...replacerArgs) {
     return replacer(obj, ...replacerArgs);
   }
   if (Array.isArray(obj) || ArrayBuffer.isView(obj)) {
-    return obj.map(
-      (v) => replaceInObject(v, test, replacer, ...replacerArgs)
-    );
+    return obj.map((v) => replaceInObject(v, test, replacer, ...replacerArgs));
   }
   if (obj instanceof RObjectBase) {
     return obj;
   }
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     return Object.fromEntries(
       Object.entries(obj).map(([k, v]) => [k, replaceInObject(v, test, replacer, ...replacerArgs)])
     );
@@ -2828,7 +3073,7 @@ function replaceInObject(obj, test, replacer, ...replacerArgs) {
 }
 function newCrossOriginWorker(url, cb) {
   const req = new XMLHttpRequest();
-  req.open("get", url, true);
+  req.open('get', url, true);
   req.onload = () => {
     const worker = new Worker(URL.createObjectURL(new Blob([req.responseText])));
     cb(worker);
@@ -2836,8 +3081,7 @@ function newCrossOriginWorker(url, cb) {
   req.send();
 }
 function isCrossOrigin(urlString) {
-  if (IN_NODE)
-    return false;
+  if (IN_NODE) return false;
   const url1 = new URL(location.href);
   const url2 = new URL(urlString, location.origin);
   if (url1.host === url2.host && url1.port === url2.port && url1.protocol === url2.protocol) {
@@ -2846,7 +3090,7 @@ function isCrossOrigin(urlString) {
   return true;
 }
 function isImageBitmap(value) {
-  return typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap;
+  return typeof ImageBitmap !== 'undefined' && value instanceof ImageBitmap;
 }
 
 // webR/chan/task-main.ts
@@ -2878,18 +3122,18 @@ function requestResponseMessage(ep) {
     id,
     new Promise((resolve) => {
       if (IN_NODE) {
-        ep.once("message", (message) => {
+        ep.once('message', (message) => {
           if (!message.id || message.id !== id) {
             return;
           }
           resolve(message);
         });
       } else {
-        ep.addEventListener("message", function l(ev) {
+        ep.addEventListener('message', function l(ev) {
           if (!ev.data || !ev.data.id || ev.data.id !== id) {
             return;
           }
-          ep.removeEventListener("message", l);
+          ep.removeEventListener('message', l);
           resolve(ev.data);
         });
       }
@@ -2953,7 +3197,7 @@ var AsyncQueue = class {
 _promises = new WeakMap();
 _resolvers = new WeakMap();
 _add = new WeakSet();
-add_fn = function() {
+add_fn = function () {
   __privateGet(this, _promises).push(
     new Promise((resolve) => {
       __privateGet(this, _resolvers).push(resolve);
@@ -2965,7 +3209,7 @@ add_fn = function() {
 function newRequest(msg, transferables) {
   return newRequestResponseMessage(
     {
-      type: "request",
+      type: 'request',
       data: {
         uuid: generateUUID(),
         msg
@@ -2977,7 +3221,7 @@ function newRequest(msg, transferables) {
 function newResponse(uuid, resp, transferables) {
   return newRequestResponseMessage(
     {
-      type: "response",
+      type: 'response',
       data: {
         uuid,
         resp
@@ -2994,7 +3238,7 @@ function newRequestResponseMessage(msg, transferables) {
 }
 function newSyncRequest(msg, data) {
   return {
-    type: "sync-request",
+    type: 'sync-request',
     data: { msg, reqData: data }
   };
 }
@@ -3002,17 +3246,17 @@ function newSyncRequest(msg, data) {
 // webR/payload.ts
 function webRPayloadAsError(payload) {
   const e = new WebRWorkerError(payload.obj.message);
-  if (payload.obj.name !== "Error") {
+  if (payload.obj.name !== 'Error') {
     e.name = payload.obj.name;
   }
   e.stack = payload.obj.stack;
   return e;
 }
 function isWebRPayload(value) {
-  return !!value && typeof value === "object" && "payloadType" in value && "obj" in value;
+  return !!value && typeof value === 'object' && 'payloadType' in value && 'obj' in value;
 }
 function isWebRPayloadPtr(value) {
-  return isWebRPayload(value) && value.payloadType === "ptr";
+  return isWebRPayload(value) && value.payloadType === 'ptr';
 }
 
 // webR/chan/channel.ts
@@ -3040,7 +3284,7 @@ var ChannelMain = class {
   }
   write(msg) {
     if (__privateGet(this, _closed)) {
-      throw new WebRChannelError("The webR communication channel has been closed.");
+      throw new WebRChannelError('The webR communication channel has been closed.');
     }
     this.inputQueue.put(msg);
   }
@@ -3053,7 +3297,7 @@ var ChannelMain = class {
   }
   putClosedMessage() {
     __privateSet(this, _closed, true);
-    this.outputQueue.put({ type: "closed" });
+    this.outputQueue.put({ type: 'closed' });
   }
   resolveResponse(msg) {
     const uuid = msg.data.uuid;
@@ -3061,7 +3305,7 @@ var ChannelMain = class {
     if (handles) {
       const payload = msg.data.resp;
       __privateGet(this, _parked).delete(uuid);
-      if (payload.payloadType === "err") {
+      if (payload.payloadType === 'err') {
         handles.reject(webRPayloadAsError(payload));
       } else {
         handles.resolve(payload);
@@ -3076,7 +3320,7 @@ _closed = new WeakMap();
 
 // webR/chan/task-worker.ts
 var import_msgpack2 = __toESM(require_dist());
-var decoder = new TextDecoder("utf-8");
+var decoder = new TextDecoder('utf-8');
 var _scheduled, _resolved, _result, _exception, _syncGen;
 var SyncTask = class {
   constructor(endpoint, msg, transfers = []) {
@@ -3103,7 +3347,7 @@ var SyncTask = class {
   }
   poll() {
     if (!__privateGet(this, _scheduled)) {
-      throw new Error("Task not synchronously scheduled");
+      throw new Error('Task not synchronously scheduled');
     }
     const { done, value } = __privateGet(this, _syncGen).next();
     if (!done) {
@@ -3145,7 +3389,7 @@ var SyncTask = class {
     if (__privateGet(this, _resolved)) {
       return __privateGet(this, _result);
     }
-    throw new Error("Not ready.");
+    throw new Error('Not ready.');
   }
   syncify() {
     this.scheduleSync();
@@ -3172,19 +3416,19 @@ var _Syncifier = class {
   }
   waitOnSignalBuffer() {
     const timeout = 50;
-    for (; ; ) {
+    for (;;) {
       const status = Atomics.wait(this.signalBuffer, 0, 0, timeout);
       switch (status) {
-        case "ok":
-        case "not-equal":
+        case 'ok':
+        case 'not-equal':
           return;
-        case "timed-out":
+        case 'timed-out':
           if (interruptBuffer[0] !== 0) {
             handleInterrupt();
           }
           break;
         default:
-          throw new Error("Unreachable");
+          throw new Error('Unreachable');
       }
     }
   }
@@ -3216,7 +3460,7 @@ var _Syncifier = class {
     return result;
   }
   syncifyTask(task) {
-    for (; ; ) {
+    for (;;) {
       this.waitOnSignalBuffer();
       if (this.pollTasks(task)) {
         return;
@@ -3244,7 +3488,7 @@ function releaseDataBuffer(buffer) {
 var interruptBuffer = new Int32Array(new ArrayBuffer(4));
 var handleInterrupt = () => {
   interruptBuffer[0] = 0;
-  throw new Error("Interrupted!");
+  throw new Error('Interrupted!');
 };
 function setInterruptHandler(handler) {
   handleInterrupt = handler;
@@ -3255,7 +3499,7 @@ function setInterruptBuffer(buffer) {
 
 // webR/chan/channel-shared.ts
 if (IN_NODE) {
-  globalThis.Worker = __require("worker_threads").Worker;
+  globalThis.Worker = __require('worker_threads').Worker;
 }
 var _interruptBuffer, _handleEventsFromWorker, handleEventsFromWorker_fn, _onMessageFromWorker;
 var SharedBufferChannelMain = class extends ChannelMain {
@@ -3271,25 +3515,25 @@ var SharedBufferChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           __privateSet(this, _interruptBuffer, new Int32Array(message.data));
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "sync-request": {
+        case 'sync-request': {
           const msg = message;
           const payload = msg.data.msg;
           const reqData = msg.data.reqData;
           switch (payload.type) {
-            case "read": {
+            case 'read': {
               const response = await this.inputQueue.get();
               await syncResponse(worker, reqData, response);
               break;
@@ -3299,7 +3543,7 @@ var SharedBufferChannelMain = class extends ChannelMain {
           }
           return;
         }
-        case "request":
+        case 'request':
           throw new WebRChannelError(
             "Can't send messages of type 'request' from a worker. Please Use 'sync-request' instead."
           );
@@ -3313,16 +3557,13 @@ var SharedBufferChannelMain = class extends ChannelMain {
         this.putClosedMessage();
       };
       const msg = {
-        type: "init",
+        type: 'init',
         data: { config, channelType: ChannelType.SharedArrayBuffer }
       };
       worker.postMessage(msg);
     };
     if (isCrossOrigin(config.baseUrl)) {
-      newCrossOriginWorker(
-        `${config.baseUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
-      );
+      newCrossOriginWorker(`${config.baseUrl}webr-worker.js`, (worker) => initWorker(worker));
     } else {
       const worker = new Worker(`${config.baseUrl}webr-worker.js`);
       initWorker(worker);
@@ -3330,7 +3571,7 @@ var SharedBufferChannelMain = class extends ChannelMain {
   }
   interrupt() {
     if (!__privateGet(this, _interruptBuffer)) {
-      throw new WebRChannelError("Failed attempt to interrupt before initialising interruptBuffer");
+      throw new WebRChannelError('Failed attempt to interrupt before initialising interruptBuffer');
     }
     this.inputQueue.reset();
     __privateGet(this, _interruptBuffer)[0] = 1;
@@ -3338,24 +3579,24 @@ var SharedBufferChannelMain = class extends ChannelMain {
 };
 _interruptBuffer = new WeakMap();
 _handleEventsFromWorker = new WeakSet();
-handleEventsFromWorker_fn = function(worker) {
+handleEventsFromWorker_fn = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       void __privateGet(this, _onMessageFromWorker).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR SharedBufferChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR SharedBufferChannel worker.')
+      );
     });
   } else {
     worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR SharedBufferChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR SharedBufferChannel worker.')
+      );
     };
   }
 };
@@ -3372,28 +3613,28 @@ var SharedBufferChannelWorker = class {
     this.onMessageFromMainThread = () => {
       return;
     };
-    __privateSet(this, _ep, IN_NODE ? __require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep, IN_NODE ? __require('worker_threads').parentPort : globalThis);
     setInterruptBuffer(__privateGet(this, _interruptBuffer2).buffer);
     setInterruptHandler(() => this.handleInterrupt());
   }
   resolve() {
-    this.write({ type: "resolve", data: __privateGet(this, _interruptBuffer2).buffer });
+    this.write({ type: 'resolve', data: __privateGet(this, _interruptBuffer2).buffer });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep).postMessage({ type: 'system', data: msg }, transfer2);
   }
   read() {
-    const msg = { type: "read" };
+    const msg = { type: 'read' };
     const task = new SyncTask(__privateGet(this, _ep), msg);
     return task.syncify();
   }
   inputOrDispatch() {
-    for (; ; ) {
+    for (;;) {
       const msg = this.read();
-      if (msg.type === "stdin") {
+      if (msg.type === 'stdin') {
         return Module2.allocateUTF8(msg.data);
       }
       __privateGet(this, _dispatch).call(this, msg);
@@ -3404,12 +3645,12 @@ var SharedBufferChannelWorker = class {
       Module2.callMain(args);
     } catch (e) {
       if (e instanceof WebAssembly.RuntimeError) {
-        this.writeSystem({ type: "console.error", data: e.message });
+        this.writeSystem({ type: 'console.error', data: e.message });
         this.writeSystem({
-          type: "console.error",
-          data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+          type: 'console.error',
+          data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
         });
-        this.writeSystem({ type: "close" });
+        this.writeSystem({ type: 'close' });
       }
       throw e;
     }
@@ -3435,9 +3676,18 @@ _interrupt = new WeakMap();
 // webR/chan/channel-service.ts
 var import_msgpack3 = __toESM(require_dist());
 if (IN_NODE) {
-  globalThis.Worker = __require("worker_threads").Worker;
+  globalThis.Worker = __require('worker_threads').Worker;
 }
-var _syncMessageCache, _registration, _interrupted, _registerServiceWorker, registerServiceWorker_fn, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn, _handleEventsFromWorker2, handleEventsFromWorker_fn2, _onMessageFromWorker2;
+var _syncMessageCache,
+  _registration,
+  _interrupted,
+  _registerServiceWorker,
+  registerServiceWorker_fn,
+  _onMessageFromServiceWorker,
+  onMessageFromServiceWorker_fn,
+  _handleEventsFromWorker2,
+  handleEventsFromWorker_fn2,
+  _onMessageFromWorker2;
 var ServiceWorkerChannelMain = class extends ChannelMain {
   constructor(config) {
     super();
@@ -3455,24 +3705,24 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "sync-request": {
+        case 'sync-request': {
           const request = message.data;
           __privateGet(this, _syncMessageCache).set(request.data.uuid, request.data.msg);
           return;
         }
-        case "request":
+        case 'request':
           throw new WebRChannelError(
             "Can't send messages of type 'request' from a worker.Use service worker fetch request instead."
           );
@@ -3480,18 +3730,22 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
     });
     ({ resolve: this.resolve, reject: this.reject, promise: this.initialised } = promiseHandles());
     console.warn(
-      "The ServiceWorker communication channel is deprecated and will be removed in a future version of webR. Consider using the PostMessage channel instead. If blocking input is required (for example, `browser()`) the SharedArrayBuffer channel should be used. See https://docs.r-wasm.org/webr/latest/serving.html for further information."
+      'The ServiceWorker communication channel is deprecated and will be removed in a future version of webR. Consider using the PostMessage channel instead. If blocking input is required (for example, `browser()`) the SharedArrayBuffer channel should be used. See https://docs.r-wasm.org/webr/latest/serving.html for further information.'
     );
     const initWorker = (worker) => {
-      __privateMethod(this, _handleEventsFromWorker2, handleEventsFromWorker_fn2).call(this, worker);
+      __privateMethod(this, _handleEventsFromWorker2, handleEventsFromWorker_fn2).call(
+        this,
+        worker
+      );
       this.close = () => {
         worker.terminate();
         this.putClosedMessage();
       };
-      void __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn).call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`).then(
-        (clientId) => {
+      void __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn)
+        .call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`)
+        .then((clientId) => {
           const msg = {
-            type: "init",
+            type: 'init',
             data: {
               config,
               channelType: ChannelType.ServiceWorker,
@@ -3500,13 +3754,11 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
             }
           };
           worker.postMessage(msg);
-        }
-      );
+        });
     };
     if (isCrossOrigin(config.serviceWorkerUrl)) {
-      newCrossOriginWorker(
-        `${config.serviceWorkerUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
+      newCrossOriginWorker(`${config.serviceWorkerUrl}webr-worker.js`, (worker) =>
+        initWorker(worker)
       );
     } else {
       const worker = new Worker(`${config.serviceWorkerUrl}webr-worker.js`);
@@ -3516,7 +3768,7 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
   activeRegistration() {
     var _a;
     if (!((_a = __privateGet(this, _registration)) == null ? void 0 : _a.active)) {
-      throw new WebRChannelError("Attempted to obtain a non-existent active registration.");
+      throw new WebRChannelError('Attempted to obtain a non-existent active registration.');
     }
     return __privateGet(this, _registration).active;
   }
@@ -3528,53 +3780,53 @@ _syncMessageCache = new WeakMap();
 _registration = new WeakMap();
 _interrupted = new WeakMap();
 _registerServiceWorker = new WeakSet();
-registerServiceWorker_fn = async function(url) {
+registerServiceWorker_fn = async function (url) {
   __privateSet(this, _registration, await navigator.serviceWorker.register(url));
   await navigator.serviceWorker.ready;
-  window.addEventListener("beforeunload", () => {
+  window.addEventListener('beforeunload', () => {
     var _a;
     void ((_a = __privateGet(this, _registration)) == null ? void 0 : _a.unregister());
   });
   const clientId = await new Promise((resolve) => {
-    navigator.serviceWorker.addEventListener(
-      "message",
-      function listener(event) {
-        if (event.data.type === "registration-successful") {
-          navigator.serviceWorker.removeEventListener("message", listener);
-          resolve(event.data.clientId);
-        }
+    navigator.serviceWorker.addEventListener('message', function listener(event) {
+      if (event.data.type === 'registration-successful') {
+        navigator.serviceWorker.removeEventListener('message', listener);
+        resolve(event.data.clientId);
       }
-    );
-    this.activeRegistration().postMessage({ type: "register-client-main" });
+    });
+    this.activeRegistration().postMessage({ type: 'register-client-main' });
   });
-  navigator.serviceWorker.addEventListener("message", (event) => {
-    void __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(this, event);
+  navigator.serviceWorker.addEventListener('message', (event) => {
+    void __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(
+      this,
+      event
+    );
   });
   return clientId;
 };
 _onMessageFromServiceWorker = new WeakSet();
-onMessageFromServiceWorker_fn = async function(event) {
-  if (event.data.type === "request") {
+onMessageFromServiceWorker_fn = async function (event) {
+  if (event.data.type === 'request') {
     const uuid = event.data.data;
     const message = __privateGet(this, _syncMessageCache).get(uuid);
     if (!message) {
-      throw new WebRChannelError("Request not found during service worker XHR request");
+      throw new WebRChannelError('Request not found during service worker XHR request');
     }
     __privateGet(this, _syncMessageCache).delete(uuid);
     switch (message.type) {
-      case "read": {
+      case 'read': {
         const response = await this.inputQueue.get();
         this.activeRegistration().postMessage({
-          type: "wasm-webr-fetch-response",
+          type: 'wasm-webr-fetch-response',
           uuid,
           response: newResponse(uuid, response)
         });
         break;
       }
-      case "interrupt": {
+      case 'interrupt': {
         const response = __privateGet(this, _interrupted);
         this.activeRegistration().postMessage({
-          type: "wasm-webr-fetch-response",
+          type: 'wasm-webr-fetch-response',
           uuid,
           response: newResponse(uuid, response)
         });
@@ -3589,24 +3841,25 @@ onMessageFromServiceWorker_fn = async function(event) {
   }
 };
 _handleEventsFromWorker2 = new WeakSet();
-handleEventsFromWorker_fn2 = function(worker) {
+handleEventsFromWorker_fn2 = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       __privateGet(this, _onMessageFromWorker2).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR ServiceWorkerChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR ServiceWorkerChannel worker.')
+      );
     });
   } else {
-    worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker2).call(this, worker, ev.data);
+    worker.onmessage = (ev) =>
+      __privateGet(this, _onMessageFromWorker2).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR ServiceWorkerChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR ServiceWorkerChannel worker.')
+      );
     };
   }
 };
@@ -3630,28 +3883,28 @@ var ServiceWorkerChannelWorker = class {
     }
     __privateSet(this, _mainThreadId, data.clientId);
     __privateSet(this, _location, data.location);
-    __privateSet(this, _ep2, IN_NODE ? __require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep2, IN_NODE ? __require('worker_threads').parentPort : globalThis);
   }
   resolve() {
-    this.write({ type: "resolve" });
+    this.write({ type: 'resolve' });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep2).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep2).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep2).postMessage({ type: 'system', data: msg }, transfer2);
   }
   syncRequest(message) {
     const request = newRequest(message);
-    this.write({ type: "sync-request", data: request });
+    this.write({ type: 'sync-request', data: request });
     let retryCount = 0;
-    for (; ; ) {
+    for (;;) {
       try {
-        const url = new URL("__wasm__/webr-fetch-request/", __privateGet(this, _location));
+        const url = new URL('__wasm__/webr-fetch-request/', __privateGet(this, _location));
         const xhr = new XMLHttpRequest();
         xhr.timeout = 6e4;
-        xhr.responseType = "arraybuffer";
-        xhr.open("POST", url, false);
+        xhr.responseType = 'arraybuffer';
+        xhr.open('POST', url, false);
         const fetchReqBody = {
           clientId: __privateGet(this, _mainThreadId),
           uuid: request.data.uuid
@@ -3660,7 +3913,7 @@ var ServiceWorkerChannelWorker = class {
         return (0, import_msgpack3.decode)(xhr.response);
       } catch (e) {
         if (e instanceof DOMException && retryCount++ < 1e3) {
-          console.log("Service worker request failed - resending request");
+          console.log('Service worker request failed - resending request');
         } else {
           throw e;
         }
@@ -3668,13 +3921,13 @@ var ServiceWorkerChannelWorker = class {
     }
   }
   read() {
-    const response = this.syncRequest({ type: "read" });
+    const response = this.syncRequest({ type: 'read' });
     return response.data.resp;
   }
   inputOrDispatch() {
-    for (; ; ) {
+    for (;;) {
       const msg = this.read();
-      if (msg.type === "stdin") {
+      if (msg.type === 'stdin') {
         return Module2.allocateUTF8(msg.data);
       }
       __privateGet(this, _dispatch2).call(this, msg);
@@ -3685,12 +3938,12 @@ var ServiceWorkerChannelWorker = class {
       Module2.callMain(args);
     } catch (e) {
       if (e instanceof WebAssembly.RuntimeError) {
-        this.writeSystem({ type: "console.error", data: e.message });
+        this.writeSystem({ type: 'console.error', data: e.message });
         this.writeSystem({
-          type: "console.error",
-          data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+          type: 'console.error',
+          data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
         });
-        this.writeSystem({ type: "close" });
+        this.writeSystem({ type: 'close' });
       }
       throw e;
     }
@@ -3701,7 +3954,7 @@ var ServiceWorkerChannelWorker = class {
   handleInterrupt() {
     if (Date.now() > __privateGet(this, _lastInterruptReq) + 1e3) {
       __privateSet(this, _lastInterruptReq, Date.now());
-      const response = this.syncRequest({ type: "interrupt" });
+      const response = this.syncRequest({ type: 'interrupt' });
       const interrupted = response.data.resp;
       if (interrupted) {
         __privateGet(this, _interrupt2).call(this);
@@ -3721,7 +3974,7 @@ _interrupt2 = new WeakMap();
 
 // webR/chan/channel-postmessage.ts
 if (IN_NODE) {
-  globalThis.Worker = __require("worker_threads").Worker;
+  globalThis.Worker = __require('worker_threads').Worker;
 }
 var _worker, _handleEventsFromWorker3, handleEventsFromWorker_fn3, _onMessageFromWorker3;
 var PostMessageChannelMain = class extends ChannelMain {
@@ -3737,23 +3990,23 @@ var PostMessageChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "request": {
+        case 'request': {
           const msg = message;
           const payload = msg.data.msg;
           switch (payload.type) {
-            case "read": {
+            case 'read': {
               const input = await this.inputQueue.get();
               if (__privateGet(this, _worker)) {
                 const response = newResponse(msg.data.uuid, input);
@@ -3766,7 +4019,7 @@ var PostMessageChannelMain = class extends ChannelMain {
           }
           return;
         }
-        case "sync-request":
+        case 'sync-request':
           throw new WebRChannelError(
             "Can't send messages of type 'sync-request' in PostMessage mode. Use 'request' instead."
           );
@@ -3775,51 +4028,52 @@ var PostMessageChannelMain = class extends ChannelMain {
     ({ resolve: this.resolve, reject: this.reject, promise: this.initialised } = promiseHandles());
     const initWorker = (worker) => {
       __privateSet(this, _worker, worker);
-      __privateMethod(this, _handleEventsFromWorker3, handleEventsFromWorker_fn3).call(this, worker);
+      __privateMethod(this, _handleEventsFromWorker3, handleEventsFromWorker_fn3).call(
+        this,
+        worker
+      );
       this.close = () => {
         worker.terminate();
         this.putClosedMessage();
       };
       const msg = {
-        type: "init",
+        type: 'init',
         data: { config, channelType: ChannelType.PostMessage }
       };
       worker.postMessage(msg);
     };
     if (isCrossOrigin(config.baseUrl)) {
-      newCrossOriginWorker(
-        `${config.baseUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
-      );
+      newCrossOriginWorker(`${config.baseUrl}webr-worker.js`, (worker) => initWorker(worker));
     } else {
       const worker = new Worker(`${config.baseUrl}webr-worker.js`);
       initWorker(worker);
     }
   }
   interrupt() {
-    console.error("Interrupting R execution is not available when using the PostMessage channel");
+    console.error('Interrupting R execution is not available when using the PostMessage channel');
   }
 };
 _worker = new WeakMap();
 _handleEventsFromWorker3 = new WeakSet();
-handleEventsFromWorker_fn3 = function(worker) {
+handleEventsFromWorker_fn3 = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       void __privateGet(this, _onMessageFromWorker3).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR PostMessageChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR PostMessageChannel worker.')
+      );
     });
   } else {
-    worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker3).call(this, worker, ev.data);
+    worker.onmessage = (ev) =>
+      __privateGet(this, _onMessageFromWorker3).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR PostMessageChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR PostMessageChannel worker.')
+      );
     };
   }
 };
@@ -3844,18 +4098,17 @@ var PostMessageChannelWorker = class {
      * top level. Any other JS errors are re-thrown.
      */
     __privateAdd(this, _asyncREPL, async () => {
-      for (; ; ) {
+      for (;;) {
         try {
           __privateSet(this, _promptDepth, 0);
-          const msg = await this.request({ type: "read" });
-          if (msg.type === "stdin") {
+          const msg = await this.request({ type: 'read' });
+          if (msg.type === 'stdin') {
             const str = Module.allocateUTF8(msg.data);
             Module._strcpy(Module._DLLbuf, str);
-            Module.setValue(Module._DLLbufp, Module._DLLbuf, "*");
+            Module.setValue(Module._DLLbufp, Module._DLLbuf, '*');
             Module._free(str);
             try {
-              while (Module._R_ReplDLLdo1() > 0)
-                ;
+              while (Module._R_ReplDLLdo1() > 0);
             } catch (e) {
               if (e instanceof WebAssembly.Exception) {
                 Module._R_ReplDLLinit();
@@ -3869,12 +4122,12 @@ var PostMessageChannelWorker = class {
           }
         } catch (e) {
           if (e instanceof WebAssembly.RuntimeError) {
-            this.writeSystem({ type: "console.error", data: e.message });
+            this.writeSystem({ type: 'console.error', data: e.message });
             this.writeSystem({
-              type: "console.error",
-              data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+              type: 'console.error',
+              data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
             });
-            this.writeSystem({ type: "close" });
+            this.writeSystem({ type: 'close' });
           }
           if (!(e instanceof WebAssembly.Exception)) {
             throw e;
@@ -3882,20 +4135,20 @@ var PostMessageChannelWorker = class {
         }
       }
     });
-    __privateSet(this, _ep3, IN_NODE ? __require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep3, IN_NODE ? __require('worker_threads').parentPort : globalThis);
   }
   resolve() {
-    this.write({ type: "resolve" });
+    this.write({ type: 'resolve' });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep3).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep3).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep3).postMessage({ type: 'system', data: msg }, transfer2);
   }
   read() {
     throw new WebRChannelError(
-      "Unable to synchronously read when using the `PostMessage` channel."
+      'Unable to synchronously read when using the `PostMessage` channel.'
     );
   }
   inputOrDispatch() {
@@ -3911,17 +4164,17 @@ var PostMessageChannelWorker = class {
   }
   run(_args) {
     const args = _args || [];
-    args.unshift("R");
+    args.unshift('R');
     const argc = args.length;
     const argv = Module._malloc(4 * (argc + 1));
     args.forEach((arg, idx) => {
       const argvPtr = argv + 4 * idx;
       const argPtr = Module.allocateUTF8(arg);
-      Module.setValue(argvPtr, argPtr, "*");
+      Module.setValue(argvPtr, argPtr, '*');
     });
     this.writeSystem({
-      type: "console.warn",
-      data: "WebR is using `PostMessage` communication channel, nested R REPLs are not available."
+      type: 'console.warn',
+      data: 'WebR is using `PostMessage` communication channel, nested R REPLs are not available.'
     });
     Module._Rf_initialize_R(argc, argv);
     Module._setup_Rmainloop();
@@ -3980,7 +4233,7 @@ function newChannelMain(data) {
       return new PostMessageChannelMain(data);
     case ChannelType.Automatic:
     default:
-      if (typeof SharedArrayBuffer !== "undefined") {
+      if (typeof SharedArrayBuffer !== 'undefined') {
         return new SharedBufferChannelMain(data);
       } else {
         return new PostMessageChannelMain(data);
@@ -3989,53 +4242,60 @@ function newChannelMain(data) {
 }
 
 // webR/config.ts
-var BASE_URL = IN_NODE ? __dirname + "/" : "./";
-var PKG_BASE_URL = "https://repo.r-wasm.org";
-var WEBR_VERSION = "0.4.3-dev";
+var BASE_URL = IN_NODE ? __dirname + '/' : './';
+var PKG_BASE_URL = 'https://repo.r-wasm.org';
+var WEBR_VERSION = '0.4.3-dev';
 
 // webR/robj-main.ts
 function isRObject2(value) {
-  return !!value && (typeof value === "object" || typeof value === "function") && "payloadType" in value && isWebRPayloadPtr(value._payload);
+  return (
+    !!value &&
+    (typeof value === 'object' || typeof value === 'function') &&
+    'payloadType' in value &&
+    isWebRPayloadPtr(value._payload)
+  );
 }
 function isRNull(value) {
-  return isRObject2(value) && value._payload.obj.type === "null";
+  return isRObject2(value) && value._payload.obj.type === 'null';
 }
 function isRSymbol(value) {
-  return isRObject2(value) && value._payload.obj.type === "symbol";
+  return isRObject2(value) && value._payload.obj.type === 'symbol';
 }
 function isRPairlist(value) {
-  return isRObject2(value) && value._payload.obj.type === "pairlist";
+  return isRObject2(value) && value._payload.obj.type === 'pairlist';
 }
 function isREnvironment(value) {
-  return isRObject2(value) && value._payload.obj.type === "environment";
+  return isRObject2(value) && value._payload.obj.type === 'environment';
 }
 function isRLogical(value) {
-  return isRObject2(value) && value._payload.obj.type === "logical";
+  return isRObject2(value) && value._payload.obj.type === 'logical';
 }
 function isRInteger(value) {
-  return isRObject2(value) && value._payload.obj.type === "integer";
+  return isRObject2(value) && value._payload.obj.type === 'integer';
 }
 function isRDouble(value) {
-  return isRObject2(value) && value._payload.obj.type === "double";
+  return isRObject2(value) && value._payload.obj.type === 'double';
 }
 function isRComplex(value) {
-  return isRObject2(value) && value._payload.obj.type === "complex";
+  return isRObject2(value) && value._payload.obj.type === 'complex';
 }
 function isRCharacter(value) {
-  return isRObject2(value) && value._payload.obj.type === "character";
+  return isRObject2(value) && value._payload.obj.type === 'character';
 }
 function isRList(value) {
-  return isRObject2(value) && value._payload.obj.type === "list";
+  return isRObject2(value) && value._payload.obj.type === 'list';
 }
 function isRRaw(value) {
-  return isRObject2(value) && value._payload.obj.type === "raw";
+  return isRObject2(value) && value._payload.obj.type === 'raw';
 }
 function isRCall(value) {
-  return isRObject2(value) && value._payload.obj.type === "call";
+  return isRObject2(value) && value._payload.obj.type === 'call';
 }
 function isRFunction(value) {
   var _a;
-  return Boolean(isRObject2(value) && ((_a = value._payload.obj.methods) == null ? void 0 : _a.includes("exec")));
+  return Boolean(
+    isRObject2(value) && ((_a = value._payload.obj.methods) == null ? void 0 : _a.includes('exec'))
+  );
 }
 
 // webR/proxy.ts
@@ -4045,18 +4305,18 @@ function empty() {
 function targetAsyncIterator(chan, proxy) {
   return async function* () {
     const msg = {
-      type: "callRObjectMethod",
+      type: 'callRObjectMethod',
       data: {
         payload: proxy._payload,
-        prop: "getPropertyValue",
-        args: [{ payloadType: "raw", obj: "length" }],
+        prop: 'getPropertyValue',
+        args: [{ payloadType: 'raw', obj: 'length' }],
         shelter: void 0
         // TODO
       }
     };
     const reply = await chan.request(msg);
-    if (typeof reply.obj !== "number") {
-      throw new WebRError("Cannot iterate over object, unexpected type for length property.");
+    if (typeof reply.obj !== 'number') {
+      throw new WebRError('Cannot iterate over object, unexpected type for length property.');
     }
     for (let i = 1; i <= reply.obj; i++) {
       yield proxy.get(i);
@@ -4071,18 +4331,18 @@ function targetMethod(chan, prop, payload) {
       }
       return {
         obj: replaceInObject(arg, isRObject2, (obj) => obj._payload),
-        payloadType: "raw"
+        payloadType: 'raw'
       };
     });
     const msg = {
-      type: "callRObjectMethod",
+      type: 'callRObjectMethod',
       data: { payload, prop, args }
     };
     const reply = await chan.request(msg);
     switch (reply.payloadType) {
-      case "ptr":
+      case 'ptr':
         return newRProxy(chan, reply);
-      case "raw": {
+      case 'raw': {
         const proxyReply = replaceInObject(
           reply,
           isWebRPayloadPtr,
@@ -4096,7 +4356,7 @@ function targetMethod(chan, prop, payload) {
 }
 async function newRObject(chan, objType, shelter, ...args) {
   const msg = {
-    type: "newRObject",
+    type: 'newRObject',
     data: {
       objType,
       args: replaceInObject(args, isRObject2, (obj) => obj._payload),
@@ -4105,9 +4365,9 @@ async function newRObject(chan, objType, shelter, ...args) {
   };
   const payload = await chan.request(msg);
   switch (payload.payloadType) {
-    case "raw":
-      throw new WebRPayloadError("Unexpected raw payload type returned from newRObject");
-    case "ptr":
+    case 'raw':
+      throw new WebRPayloadError('Unexpected raw payload type returned from newRObject');
+    case 'ptr':
       return newRProxy(chan, payload);
   }
 }
@@ -4115,11 +4375,13 @@ function newRProxy(chan, payload) {
   var _a;
   const proxy = new Proxy(
     // Assume we are proxying an RFunction if the methods list contains 'exec'.
-    ((_a = payload.obj.methods) == null ? void 0 : _a.includes("exec")) ? Object.assign(empty, { ...payload }) : payload,
+    ((_a = payload.obj.methods) == null ? void 0 : _a.includes('exec'))
+      ? Object.assign(empty, { ...payload })
+      : payload,
     {
       get: (_, prop) => {
         var _a2;
-        if (prop === "_payload") {
+        if (prop === '_payload') {
           return payload;
         } else if (prop === Symbol.asyncIterator) {
           return targetAsyncIterator(chan, proxy);
@@ -4145,7 +4407,18 @@ function newRClassProxy(chan, shelter, objType) {
 }
 
 // webR/console.ts
-var _stdout, _stderr, _prompt, _canvasImage, _canvasNewPage, _defaultStdout, _defaultStderr, _defaultPrompt, _defaultCanvasImage, _defaultCanvasNewPage, _run, run_fn;
+var _stdout,
+  _stderr,
+  _prompt,
+  _canvasImage,
+  _canvasNewPage,
+  _defaultStdout,
+  _defaultStderr,
+  _defaultPrompt,
+  _defaultCanvasImage,
+  _defaultCanvasNewPage,
+  _run,
+  run_fn;
 var Console = class {
   /**
    * @param {ConsoleCallbacks} callbacks A list of webR Console callbacks to
@@ -4153,13 +4426,16 @@ var Console = class {
    * @param {WebROptions} options The options to use for the new instance of
    * webR started to support this console.
    */
-  constructor(callbacks = {}, options = {
-    REnv: {
-      R_HOME: "/usr/lib/R",
-      FONTCONFIG_PATH: "/etc/fonts",
-      R_ENABLE_JIT: "0"
+  constructor(
+    callbacks = {},
+    options = {
+      REnv: {
+        R_HOME: '/usr/lib/R',
+        FONTCONFIG_PATH: '/etc/fonts',
+        R_ENABLE_JIT: '0'
+      }
     }
-  }) {
+  ) {
     /*
      * Start the asynchronous infinite loop
      *
@@ -4210,31 +4486,39 @@ var Console = class {
      */
     __privateAdd(this, _defaultCanvasImage, (image) => {
       if (IN_NODE) {
-        throw new Error("Plotting with HTML canvas is not yet supported under Node");
+        throw new Error('Plotting with HTML canvas is not yet supported under Node');
       }
-      this.canvas.getContext("2d").drawImage(image, 0, 0);
+      this.canvas.getContext('2d').drawImage(image, 0, 0);
     });
     /**
      * The default function called when webR creates a new plot
      */
     __privateAdd(this, _defaultCanvasNewPage, () => {
       if (IN_NODE) {
-        throw new Error("Plotting with HTML canvas is not yet supported under Node");
+        throw new Error('Plotting with HTML canvas is not yet supported under Node');
       }
-      this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
     });
     this.webR = new WebR(options);
     if (!IN_NODE) {
-      this.canvas = document.createElement("canvas");
-      this.canvas.setAttribute("width", "1008");
-      this.canvas.setAttribute("height", "1008");
+      this.canvas = document.createElement('canvas');
+      this.canvas.setAttribute('width', '1008');
+      this.canvas.setAttribute('height', '1008');
     }
     __privateSet(this, _stdout, callbacks.stdout || __privateGet(this, _defaultStdout));
     __privateSet(this, _stderr, callbacks.stderr || __privateGet(this, _defaultStderr));
     __privateSet(this, _prompt, callbacks.prompt || __privateGet(this, _defaultPrompt));
-    __privateSet(this, _canvasImage, callbacks.canvasImage || __privateGet(this, _defaultCanvasImage));
-    __privateSet(this, _canvasNewPage, callbacks.canvasNewPage || __privateGet(this, _defaultCanvasNewPage));
-    void this.webR.evalRVoid("options(device=webr::canvas)");
+    __privateSet(
+      this,
+      _canvasImage,
+      callbacks.canvasImage || __privateGet(this, _defaultCanvasImage)
+    );
+    __privateSet(
+      this,
+      _canvasNewPage,
+      callbacks.canvasNewPage || __privateGet(this, _defaultCanvasNewPage)
+    );
+    void this.webR.evalRVoid('options(device=webr::canvas)');
   }
   /**
    * Write a line of input to webR's REPL through ``stdin``
@@ -4267,27 +4551,27 @@ _defaultPrompt = new WeakMap();
 _defaultCanvasImage = new WeakMap();
 _defaultCanvasNewPage = new WeakMap();
 _run = new WeakSet();
-run_fn = async function() {
-  for (; ; ) {
+run_fn = async function () {
+  for (;;) {
     const output = await this.webR.read();
     switch (output.type) {
-      case "stdout":
+      case 'stdout':
         __privateGet(this, _stdout).call(this, output.data);
         break;
-      case "stderr":
+      case 'stderr':
         __privateGet(this, _stderr).call(this, output.data);
         break;
-      case "prompt":
+      case 'prompt':
         __privateGet(this, _prompt).call(this, output.data);
         break;
-      case "canvas":
-        if (output.data.event === "canvasImage") {
+      case 'canvas':
+        if (output.data.event === 'canvasImage') {
           __privateGet(this, _canvasImage).call(this, output.data.image);
-        } else if (output.data.event === "canvasNewPage") {
+        } else if (output.data.event === 'canvasNewPage') {
           __privateGet(this, _canvasNewPage).call(this);
         }
         break;
-      case "closed":
+      case 'closed':
         return;
       default:
         console.warn(`Unhandled output type for webR Console: ${output.type}.`);
@@ -4297,19 +4581,19 @@ run_fn = async function() {
 
 // webR/webr-main.ts
 var defaultEnv = {
-  FONTCONFIG_PATH: "/etc/fonts",
-  R_HOME: "/usr/lib/R",
-  R_ENABLE_JIT: "0",
-  WEBR: "1",
+  FONTCONFIG_PATH: '/etc/fonts',
+  R_HOME: '/usr/lib/R',
+  R_ENABLE_JIT: '0',
+  WEBR: '1',
   WEBR_VERSION
 };
 var defaultOptions = {
   RArgs: [],
   REnv: defaultEnv,
   baseUrl: BASE_URL,
-  serviceWorkerUrl: "",
+  serviceWorkerUrl: '',
   repoUrl: PKG_BASE_URL,
-  homedir: "/home/web_user",
+  homedir: '/home/web_user',
   interactive: true,
   channelType: ChannelType.Automatic,
   createLazyFilesystem: true
@@ -4323,66 +4607,72 @@ var WebR = class {
     this.version = WEBR_VERSION;
     this.FS = {
       lookupPath: async (path) => {
-        const msg = { type: "lookupPath", data: { path } };
+        const msg = { type: 'lookupPath', data: { path } };
         const payload = await __privateGet(this, _chan).request(msg);
         return payload.obj;
       },
       mkdir: async (path) => {
-        const msg = { type: "mkdir", data: { path } };
+        const msg = { type: 'mkdir', data: { path } };
         const payload = await __privateGet(this, _chan).request(msg);
         return payload.obj;
       },
       mount: async (type, options, mountpoint) => {
         let promises = [];
-        if ("blobs" in options && options.blobs) {
-          promises = [...promises, ...options.blobs.map((item) => {
-            if (item.data instanceof Blob) {
-              return item.data.arrayBuffer().then((data) => {
-                item.data = new Uint8Array(data);
-              });
-            } else {
-              return Promise.resolve();
-            }
-          })];
+        if ('blobs' in options && options.blobs) {
+          promises = [
+            ...promises,
+            ...options.blobs.map((item) => {
+              if (item.data instanceof Blob) {
+                return item.data.arrayBuffer().then((data) => {
+                  item.data = new Uint8Array(data);
+                });
+              } else {
+                return Promise.resolve();
+              }
+            })
+          ];
         }
-        if ("packages" in options && options.packages) {
-          promises = [...promises, ...options.packages.map((pkg) => {
-            if (pkg.blob instanceof Blob) {
-              return pkg.blob.arrayBuffer().then((data) => {
-                pkg.blob = new Uint8Array(data);
-              });
-            } else {
-              return Promise.resolve();
-            }
-          })];
+        if ('packages' in options && options.packages) {
+          promises = [
+            ...promises,
+            ...options.packages.map((pkg) => {
+              if (pkg.blob instanceof Blob) {
+                return pkg.blob.arrayBuffer().then((data) => {
+                  pkg.blob = new Uint8Array(data);
+                });
+              } else {
+                return Promise.resolve();
+              }
+            })
+          ];
         }
         await Promise.all(promises);
-        const msg = { type: "mount", data: { type, options, mountpoint } };
+        const msg = { type: 'mount', data: { type, options, mountpoint } };
         await __privateGet(this, _chan).request(msg);
       },
       syncfs: async (populate) => {
-        const msg = { type: "syncfs", data: { populate } };
+        const msg = { type: 'syncfs', data: { populate } };
         await __privateGet(this, _chan).request(msg);
       },
       readFile: async (path, flags) => {
-        const msg = { type: "readFile", data: { path, flags } };
+        const msg = { type: 'readFile', data: { path, flags } };
         const payload = await __privateGet(this, _chan).request(msg);
         return payload.obj;
       },
       rmdir: async (path) => {
-        const msg = { type: "rmdir", data: { path } };
+        const msg = { type: 'rmdir', data: { path } };
         await __privateGet(this, _chan).request(msg);
       },
       writeFile: async (path, data, flags) => {
-        const msg = { type: "writeFile", data: { path, data, flags } };
+        const msg = { type: 'writeFile', data: { path, data, flags } };
         await __privateGet(this, _chan).request(msg);
       },
       unlink: async (path) => {
-        const msg = { type: "unlink", data: { path } };
+        const msg = { type: 'unlink', data: { path } };
         await __privateGet(this, _chan).request(msg);
       },
       unmount: async (mountpoint) => {
-        const msg = { type: "unmount", data: { path: mountpoint } };
+        const msg = { type: 'unmount', data: { path: mountpoint } };
         await __privateGet(this, _chan).request(msg);
       }
     };
@@ -4397,32 +4687,36 @@ var WebR = class {
     __privateSet(this, _chan, newChannelMain(config));
     this.objs = {};
     this.Shelter = newShelterProxy(__privateGet(this, _chan));
-    __privateSet(this, _initialised, __privateGet(this, _chan).initialised.then(async () => {
-      this.globalShelter = await new this.Shelter();
-      this.RObject = this.globalShelter.RObject;
-      this.RLogical = this.globalShelter.RLogical;
-      this.RInteger = this.globalShelter.RInteger;
-      this.RDouble = this.globalShelter.RDouble;
-      this.RComplex = this.globalShelter.RComplex;
-      this.RCharacter = this.globalShelter.RCharacter;
-      this.RRaw = this.globalShelter.RRaw;
-      this.RList = this.globalShelter.RList;
-      this.RDataFrame = this.globalShelter.RDataFrame;
-      this.RPairlist = this.globalShelter.RPairlist;
-      this.REnvironment = this.globalShelter.REnvironment;
-      this.RSymbol = this.globalShelter.RSymbol;
-      this.RString = this.globalShelter.RString;
-      this.RCall = this.globalShelter.RCall;
-      this.objs = {
-        baseEnv: await this.RObject.getPersistentObject("baseEnv"),
-        globalEnv: await this.RObject.getPersistentObject("globalEnv"),
-        null: await this.RObject.getPersistentObject("null"),
-        true: await this.RObject.getPersistentObject("true"),
-        false: await this.RObject.getPersistentObject("false"),
-        na: await this.RObject.getPersistentObject("na")
-      };
-      void __privateMethod(this, _handleSystemMessages, handleSystemMessages_fn).call(this);
-    }));
+    __privateSet(
+      this,
+      _initialised,
+      __privateGet(this, _chan).initialised.then(async () => {
+        this.globalShelter = await new this.Shelter();
+        this.RObject = this.globalShelter.RObject;
+        this.RLogical = this.globalShelter.RLogical;
+        this.RInteger = this.globalShelter.RInteger;
+        this.RDouble = this.globalShelter.RDouble;
+        this.RComplex = this.globalShelter.RComplex;
+        this.RCharacter = this.globalShelter.RCharacter;
+        this.RRaw = this.globalShelter.RRaw;
+        this.RList = this.globalShelter.RList;
+        this.RDataFrame = this.globalShelter.RDataFrame;
+        this.RPairlist = this.globalShelter.RPairlist;
+        this.REnvironment = this.globalShelter.REnvironment;
+        this.RSymbol = this.globalShelter.RSymbol;
+        this.RString = this.globalShelter.RString;
+        this.RCall = this.globalShelter.RCall;
+        this.objs = {
+          baseEnv: await this.RObject.getPersistentObject('baseEnv'),
+          globalEnv: await this.RObject.getPersistentObject('globalEnv'),
+          null: await this.RObject.getPersistentObject('null'),
+          true: await this.RObject.getPersistentObject('true'),
+          false: await this.RObject.getPersistentObject('false'),
+          na: await this.RObject.getPersistentObject('na')
+        };
+        void __privateMethod(this, _handleSystemMessages, handleSystemMessages_fn).call(this);
+      })
+    );
   }
   /**
    * @returns {Promise<void>} A promise that resolves once webR has been
@@ -4466,7 +4760,7 @@ var WebR = class {
    * @param {string} input Message to be added to the input queue.
    */
   writeConsole(input) {
-    this.write({ type: "stdin", data: input + "\n" });
+    this.write({ type: 'stdin', data: input + '\n' });
   }
   /** Attempt to interrupt a running R computation. */
   interrupt() {
@@ -4480,11 +4774,14 @@ var WebR = class {
    *   installing webR packages.
    */
   async installPackages(packages, options) {
-    const op = Object.assign({
-      quiet: false,
-      mount: true
-    }, options);
-    const msg = { type: "installPackages", data: { name: packages, options: op } };
+    const op = Object.assign(
+      {
+        quiet: false,
+        mount: true
+      },
+      options
+    );
+    const msg = { type: 'installPackages', data: { name: packages, options: op } };
     await __privateGet(this, _chan).request(msg);
   }
   /**
@@ -4507,34 +4804,34 @@ var WebR = class {
     return this.globalShelter.evalR(code, options);
   }
   async evalRVoid(code, options) {
-    return this.evalRRaw(code, "void", options);
+    return this.evalRRaw(code, 'void', options);
   }
   async evalRBoolean(code, options) {
-    return this.evalRRaw(code, "boolean", options);
+    return this.evalRRaw(code, 'boolean', options);
   }
   async evalRNumber(code, options) {
-    return this.evalRRaw(code, "number", options);
+    return this.evalRRaw(code, 'number', options);
   }
   async evalRString(code, options) {
-    return this.evalRRaw(code, "string", options);
+    return this.evalRRaw(code, 'string', options);
   }
   async evalRRaw(code, outputType, options = {}) {
     const opts = replaceInObject(options, isRObject2, (obj) => obj._payload);
     const msg = {
-      type: "evalRRaw",
+      type: 'evalRRaw',
       data: { code, options: opts, outputType }
     };
     const payload = await __privateGet(this, _chan).request(msg);
     switch (payload.payloadType) {
-      case "raw":
+      case 'raw':
         return payload.obj;
-      case "ptr":
-        throw new WebRPayloadError("Unexpected ptr payload type returned from evalRVoid");
+      case 'ptr':
+        throw new WebRPayloadError('Unexpected ptr payload type returned from evalRVoid');
     }
   }
   async invokeWasmFunction(ptr, ...args) {
     const msg = {
-      type: "invokeWasmFunction",
+      type: 'invokeWasmFunction',
       data: { ptr, args }
     };
     const resp = await __privateGet(this, _chan).request(msg);
@@ -4544,11 +4841,11 @@ var WebR = class {
 _chan = new WeakMap();
 _initialised = new WeakMap();
 _handleSystemMessages = new WeakSet();
-handleSystemMessages_fn = async function() {
-  for (; ; ) {
+handleSystemMessages_fn = async function () {
+  for (;;) {
     const msg = await __privateGet(this, _chan).readSystem();
     switch (msg.type) {
-      case "setTimeoutWasm":
+      case 'setTimeoutWasm':
         setTimeout(
           (ptr, args) => {
             void this.invokeWasmFunction(ptr, ...args);
@@ -4558,20 +4855,20 @@ handleSystemMessages_fn = async function() {
           msg.data.args
         );
         break;
-      case "console.log":
+      case 'console.log':
         console.log(msg.data);
         break;
-      case "console.warn":
+      case 'console.warn':
         console.warn(msg.data);
         break;
-      case "console.error":
+      case 'console.error':
         console.error(msg.data);
         break;
-      case "close":
+      case 'close':
         __privateGet(this, _chan).close();
         break;
       default:
-        throw new WebRError("Unknown system message type `" + msg.type + "`");
+        throw new WebRError('Unknown system message type `' + msg.type + '`');
     }
   }
 };
@@ -4579,7 +4876,7 @@ var _id, _chan2, _initialised2;
 var Shelter = class {
   /** @internal */
   constructor(chan) {
-    __privateAdd(this, _id, "");
+    __privateAdd(this, _id, '');
     __privateAdd(this, _chan2, void 0);
     __privateAdd(this, _initialised2, false);
     __privateSet(this, _chan2, chan);
@@ -4589,42 +4886,58 @@ var Shelter = class {
     if (__privateGet(this, _initialised2)) {
       return;
     }
-    const msg = { type: "newShelter" };
+    const msg = { type: 'newShelter' };
     const payload = await __privateGet(this, _chan2).request(msg);
     __privateSet(this, _id, payload.obj);
-    this.RObject = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "object");
-    this.RLogical = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "logical");
-    this.RInteger = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "integer");
-    this.RDouble = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "double");
-    this.RComplex = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "complex");
-    this.RCharacter = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "character");
-    this.RRaw = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "raw");
-    this.RList = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "list");
-    this.RDataFrame = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "dataframe");
-    this.RPairlist = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "pairlist");
-    this.REnvironment = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "environment");
-    this.RSymbol = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "symbol");
-    this.RString = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "string");
-    this.RCall = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), "call");
+    this.RObject = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'object');
+    this.RLogical = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'logical');
+    this.RInteger = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'integer');
+    this.RDouble = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'double');
+    this.RComplex = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'complex');
+    this.RCharacter = newRClassProxy(
+      __privateGet(this, _chan2),
+      __privateGet(this, _id),
+      'character'
+    );
+    this.RRaw = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'raw');
+    this.RList = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'list');
+    this.RDataFrame = newRClassProxy(
+      __privateGet(this, _chan2),
+      __privateGet(this, _id),
+      'dataframe'
+    );
+    this.RPairlist = newRClassProxy(
+      __privateGet(this, _chan2),
+      __privateGet(this, _id),
+      'pairlist'
+    );
+    this.REnvironment = newRClassProxy(
+      __privateGet(this, _chan2),
+      __privateGet(this, _id),
+      'environment'
+    );
+    this.RSymbol = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'symbol');
+    this.RString = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'string');
+    this.RCall = newRClassProxy(__privateGet(this, _chan2), __privateGet(this, _id), 'call');
     __privateSet(this, _initialised2, true);
   }
   async purge() {
     const msg = {
-      type: "shelterPurge",
+      type: 'shelterPurge',
       data: __privateGet(this, _id)
     };
     await __privateGet(this, _chan2).request(msg);
   }
   async destroy(x) {
     const msg = {
-      type: "shelterDestroy",
+      type: 'shelterDestroy',
       data: { id: __privateGet(this, _id), obj: x._payload }
     };
     await __privateGet(this, _chan2).request(msg);
   }
   async size() {
     const msg = {
-      type: "shelterSize",
+      type: 'shelterSize',
       data: __privateGet(this, _id)
     };
     const payload = await __privateGet(this, _chan2).request(msg);
@@ -4642,13 +4955,13 @@ var Shelter = class {
   async evalR(code, options = {}) {
     const opts = replaceInObject(options, isRObject2, (obj) => obj._payload);
     const msg = {
-      type: "evalR",
+      type: 'evalR',
       data: { code, options: opts, shelter: __privateGet(this, _id) }
     };
     const payload = await __privateGet(this, _chan2).request(msg);
     switch (payload.payloadType) {
-      case "raw":
-        throw new WebRPayloadError("Unexpected payload type returned from evalR");
+      case 'raw':
+        throw new WebRPayloadError('Unexpected payload type returned from evalR');
       default:
         return newRProxy(__privateGet(this, _chan2), payload);
     }
@@ -4671,7 +4984,7 @@ var Shelter = class {
   async captureR(code, options = {}) {
     const opts = replaceInObject(options, isRObject2, (obj) => obj._payload);
     const msg = {
-      type: "captureR",
+      type: 'captureR',
       data: {
         code,
         options: opts,
@@ -4680,15 +4993,15 @@ var Shelter = class {
     };
     const payload = await __privateGet(this, _chan2).request(msg);
     switch (payload.payloadType) {
-      case "ptr":
-        throw new WebRPayloadError("Unexpected payload type returned from evalR");
-      case "raw": {
+      case 'ptr':
+        throw new WebRPayloadError('Unexpected payload type returned from evalR');
+      case 'raw': {
         const data = payload.obj;
         const result = newRProxy(__privateGet(this, _chan2), data.result);
         const output = data.output;
         const images = data.images;
         for (let i = 0; i < output.length; ++i) {
-          if (output[i].type !== "stdout" && output[i].type !== "stderr") {
+          if (output[i].type !== 'stdout' && output[i].type !== 'stderr') {
             output[i].data = newRProxy(__privateGet(this, _chan2), output[i].data);
           }
         }
