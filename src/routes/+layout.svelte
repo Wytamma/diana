@@ -35,6 +35,14 @@
 			<svelte:fragment slot="trail">
 				<a
 					class="btn btn-sm hover:underline"
+					href="/?data=https://raw.githubusercontent.com/Wytamma/diana/refs/heads/main/docs/data/real/Ef_aus0233_delta_tetM-1.gbk,https://raw.githubusercontent.com/Wytamma/diana/refs/heads/main/docs/data/real/control_01.wig,https://raw.githubusercontent.com/Wytamma/diana/refs/heads/main/docs/data/real/control_02.wig,https://raw.githubusercontent.com/Wytamma/diana/refs/heads/main/docs/data/real/treatment_1.wig,https://raw.githubusercontent.com/Wytamma/diana/refs/heads/main/docs/data/real/treatment_2.wig"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Example
+				</a>
+				<a
+					class="btn btn-sm hover:underline"
 					href="https://github.com/Wytamma/diana"
 					target="_blank"
 					rel="noreferrer"
