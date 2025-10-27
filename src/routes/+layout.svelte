@@ -52,6 +52,8 @@
 				<a
 					class="btn btn-sm hover:underline"
 					href="/docs/"
+					target="_blank"
+					rel="noreferrer"
 				>
 					Docs
 				</a>
