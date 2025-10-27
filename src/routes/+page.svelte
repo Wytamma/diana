@@ -7,7 +7,7 @@ import { referenceStore } from "$lib/stores/refStore";
 import { getToastStore } from '@skeletonlabs/skeleton';
 import type { ToastSettings } from '@skeletonlabs/skeleton';
 import { igvStore } from "$lib/stores/igvStore";
-import File from "$lib/components/files/File.svelte";
+import FileCard from "$lib/components/files/File.svelte";
 import Reference from "$lib/components/files/Reference.svelte";
 import { genBankToGFFAndFasta } from "$lib/utils/gbkUtils";
 import { userPlotToWig } from "$lib/utils/userPlotToWig";
@@ -174,10 +174,45 @@ async function loadFromUrl(url: string): Promise<void> {
 
 async function loadFilesFromUrls(urls: string[]): Promise<void> {
     isLoading = true;
-    const loadPromises = urls.map(url => loadFromUrl(url));
     
     try {
-        await Promise.all(loadPromises);
+        // Separate URLs by file type priority
+        const referenceUrls: string[] = [];
+        const annotationUrls: string[] = [];
+        const insertUrls: string[] = [];
+        
+        for (const url of urls) {
+            const filename = url.split('/').pop()?.toLowerCase() || '';
+            
+            // Reference files (FASTA)
+            if (filename.endsWith('.fasta') || filename.endsWith('.fa') || filename.endsWith('.fna')) {
+                referenceUrls.push(url);
+            }
+            // Annotation files (GenBank, GFF)
+            else if (filename.endsWith('.gb') || filename.endsWith('.gbk') || filename.endsWith('.genbank') ||
+                     filename.endsWith('.gff') || filename.endsWith('.gff3')) {
+                annotationUrls.push(url);
+            }
+            // Insert data files (WIG, UserPlot)
+            else if (filename.endsWith('.wig') || filename.endsWith('.wiggle') ||
+                     filename.endsWith('.userplot') || filename.endsWith('.plot')) {
+                insertUrls.push(url);
+            }
+            // Unknown file type - add to the end
+            else {
+                insertUrls.push(url);
+            }
+        }
+        
+        // Load in order: references and annotations first (in parallel), then insert data
+        await Promise.all([
+            ...referenceUrls.map(url => loadFromUrl(url)),
+            ...annotationUrls.map(url => loadFromUrl(url))
+        ]);
+        
+        // Then load insert data after references/annotations are loaded
+        await Promise.all(insertUrls.map(url => loadFromUrl(url)));
+        
     } catch (error) {
         console.error("Error loading files from URLs:", error);
     } finally {
@@ -206,32 +241,60 @@ function onChangeHandler(e: Event): void {
     }
     isLoading = true;
 
-    let fileReadPromises = [];
+    // Separate files by type priority
+    const referenceFiles: File[] = [];
+    const annotationFiles: File[] = [];
+    const insertFiles: File[] = [];
+    
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const name = file.name;
-        const reader = new FileReader();
-        fileReadPromises.push(new Promise((resolve, reject) => {
+        const name = file.name.toLowerCase();
+        
+        // Reference files (FASTA)
+        if (name.endsWith('.fasta') || name.endsWith('.fa') || name.endsWith('.fna')) {
+            referenceFiles.push(file);
+        }
+        // Annotation files (GenBank, GFF)
+        else if (name.endsWith('.gb') || name.endsWith('.gbk') || name.endsWith('.genbank') ||
+                 name.endsWith('.gff') || name.endsWith('.gff3')) {
+            annotationFiles.push(file);
+        }
+        // Insert data files (WIG, UserPlot)
+        else {
+            insertFiles.push(file);
+        }
+    }
+
+    // Helper function to read and process a file
+    const readAndProcessFile = (file: File): Promise<void> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
             reader.onload = async (e) => {
-                let text: string = e.target?.result?.toString() as string;
+                const text: string = e.target?.result?.toString() as string;
                 try {
-                    await processFile(name, text);
-                    resolve(0);
+                    await processFile(file.name, text);
+                    resolve();
                 } catch (error) {
                     reject(error);
                 }
             };
             reader.readAsText(file);
-        }));
-    }
+        });
+    };
 
-    Promise.all(fileReadPromises).then((resultingViews) => {
-        isLoading = false;
-        
-    }).catch((error) => {
-        console.error("Error reading files:", error);
-        isLoading = false;
-    });
+    // Load files in order: references and annotations first, then insert data
+    Promise.all([
+        ...referenceFiles.map(file => readAndProcessFile(file)),
+        ...annotationFiles.map(file => readAndProcessFile(file))
+    ])
+        .then(() => Promise.all(insertFiles.map(file => readAndProcessFile(file))))
+        .then(() => {
+            isLoading = false;
+        })
+        .catch((error) => {
+            console.error("Error reading files:", error);
+            isLoading = false;
+        });
 }
 
 function resetDropzone() {
@@ -282,7 +345,7 @@ function resetDropzone() {
     <div class="flex flex-wrap justify-center ">
         {#each Array.from($insertStore.entries()).sort(([filenameA], [filenameB]) => filenameA.localeCompare(filenameB)) as [filename, { isTreatment }], i }
         <div class="m-2 w-full md:w-auto ">
-            <File 
+            <FileCard 
                     isTreatment={isTreatment} 
                     onToggle={(value) => insertStore.setIsTreatment(filename, value)} 
                     onRemove={() => insertStore.remove(filename)} 
