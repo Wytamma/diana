@@ -19,7 +19,8 @@ const config = {
 			assets: 'build',
 			fallback: undefined,
 			precompress: true,
-			strict: true
+			strict: true,
+			trailingSlash: 'always'
 		})
 	}
 };
