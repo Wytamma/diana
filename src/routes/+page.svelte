@@ -10,6 +10,7 @@
   import FileCard from '$lib/components/files/File.svelte';
   import Reference from '$lib/components/files/Reference.svelte';
   import { genBankToGFFAndFasta } from '$lib/utils/gbkUtils';
+  import { stripGzExtension } from '$lib/utils/utils';
   import { userPlotToWig } from '$lib/utils/userPlotToWig';
   import { onMount } from 'svelte';
   import * as pako from 'pako';
@@ -18,11 +19,6 @@
 
   let files: FileList;
   let isLoading = false;
-
-  // Helper function to strip .gz extension
-  function stripGzExtension(filename: string): string {
-    return filename.endsWith('.gz') ? filename.slice(0, -3) : filename;
-  }
 
   // Helper function to decompress gzipped data
   function decompressGzip(data: Uint8Array): string {
