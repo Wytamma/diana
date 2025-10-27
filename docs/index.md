@@ -18,7 +18,7 @@ Although TIS methods differ in methods, they all rely on the same basic principl
 
 There are many ways to generate TIS data e.g. TraDIS, HITS, INSeq, Tn-Seq. See [Krause et al. (2025)](https://www.biorxiv.org/content/10.1101/2025.03.03.641140v1.abstract) for our recommended pipeline for generating transposon-directed insertion-site sequencing data using Nanopore sequencing. 
 
-Once you have generated TIS count data is the [Loading data](/docs/data/) section for information on how to load your data into Diana.
+Once you have generated TIS count data see the [Loading data](/docs/data/) section for information on how to load your data into Diana.
 
 ## Citation
 
