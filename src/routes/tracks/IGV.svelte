@@ -26,7 +26,8 @@
 			"fastaURL": $referenceStore.url,
 			"indexURL": $referenceStore.indexUrl,
 			"wholeGenomeView": false,
-			"tracks": [
+		},
+		tracks: [
 				{
 					name: 'TA Sites',
 					format: "bed",
@@ -73,7 +74,6 @@
 					}
 				},
 			]
-		},
   	};
 	
 	async function  createBrowser() {
@@ -107,8 +107,5 @@
 	
 </script>
 
-{#if $referenceStore.url === undefined}
-<p>Reference genome not loaded</p>
-{/if}
 <div id="igv_div"></div>
 
