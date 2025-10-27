@@ -94,7 +94,7 @@
 				bind:group={currentTile}
 				value="/compare"
 				name="compare"
-				class={(!$annotationStore.filteredFeatures.length || !$containsControlAndTreatment) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
+				class={(!$annotationStore.filteredFeatures.length || $insertStore.size === 0) ? "opacity-50 pointer-events-none cursor-not-allowed" : ""}
 			>
 				<span>Compare</span>
 			</AppRailTile>

@@ -25,7 +25,7 @@
         .filter(([_, data]) => data.isTreatment)
         .map(([_, data]) => data.chromosomes);
 
-    $: if (controlData.length && treatmentData.length) {
+    $: if (controlData.length > 1 && treatmentData.length > 1) {
         calculateComparisonResults();
     }
 
@@ -77,6 +77,11 @@
             <div class="block card p-4 variant-ghost-error">
                 <p class="font-bold">An error occurred while comparing gene insert sites. Please try again.</p>
                 <p>{errorMessage ? errorMessage : ''}</p>
+            </div>
+        {:else if controlData.length < 2 || treatmentData.length < 2}
+            <div class="block card p-4 variant-ghost-error">
+                <p class="font-bold">Insufficient replicates</p>
+                <p>Please use the <a class="underline" href="/">Data Panel</a> to ensure that you have at least two control and two treatment datasets to perform a valid comparison.</p>
             </div>
         {:else}
             <Plot {comparisonResults} {filterData} />
