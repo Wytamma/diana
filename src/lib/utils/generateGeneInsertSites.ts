@@ -1,11 +1,11 @@
-import type { Feature } from "$lib/stores/annotationStore";
+import type { Feature } from '$lib/stores/annotationStore';
 
 export interface GeneInsertResult {
   seqId: string;
   name: string;
   start: number;
   end: number;
-  strand: "+" | "-";
+  strand: '+' | '-';
   readCount: number;
   insIndex: number;
   featureLength: number;
@@ -14,7 +14,7 @@ export interface GeneInsertResult {
 
 export async function generateGeneInsertSites(
   features: Feature[],
-  insertData: Map<string, number[]>,
+  insertData: Map<string, number[]>
 ): Promise<GeneInsertResult[]> {
   const results: GeneInsertResult[] = [];
 
@@ -22,8 +22,8 @@ export async function generateGeneInsertSites(
     const feature = features[i];
     const chromosome = feature.seqId;
     const featureLength = feature.stop - feature.start + 1;
-    
-    let readCount = 0; 
+
+    let readCount = 0;
     let insertCount = 0;
 
     // Sum the read counts within the range
@@ -42,7 +42,7 @@ export async function generateGeneInsertSites(
     // Store the result for this feature
     results.push({
       seqId: feature.seqId,
-      name: feature.attributes.Name || "",
+      name: feature.attributes.Name || '',
       start: feature.start,
       end: feature.stop,
       strand: feature.strand,

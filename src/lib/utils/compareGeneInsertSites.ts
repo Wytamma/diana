@@ -1,26 +1,26 @@
-import type { GeneInsertResult } from "$lib/utils/generateGeneInsertSites";
+import type { GeneInsertResult } from '$lib/utils/generateGeneInsertSites';
 import { WebR } from 'webr';
-import type { RList } from "webr";
+import type { RList } from 'webr';
 
 export interface CompareResults {
-    seqId: string;
-    id: number;
-    name: string;
-    start: number;
-    stop: number;
-    strand: string;
-    logFC: number;      // Log Fold Change for comparison
-    logCPM: number;     // Log Counts Per Million for comparison
-    pValue: number;     // P-value for comparison
-    qValue: number;     // Q-value for comparison
+  seqId: string;
+  id: number;
+  name: string;
+  start: number;
+  stop: number;
+  strand: string;
+  logFC: number; // Log Fold Change for comparison
+  logCPM: number; // Log Counts Per Million for comparison
+  pValue: number; // P-value for comparison
+  qValue: number; // Q-value for comparison
 }
-  
+
 async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneInsertResult[][]) {
-    const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
-    const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
-    await webR.init();
-    // Load necessary packages
-    await webR.evalR(`
+  const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL || ''}tools/webR`;
+  const webR = new WebR({ baseUrl: `${baseUrl}/webr-0.4.2/` });
+  await webR.init();
+  // Load necessary packages
+  await webR.evalR(`
         webr::mount(mountpoint = "/usr/lib/R/library/statmod", source = "${baseUrl}/packages/statmod_1.5.0.tgz");
         webr::mount(mountpoint = "/usr/lib/R/library/Rcpp", source = "${baseUrl}/packages/Rcpp_1.0.13.tgz");
         webr::mount(mountpoint = "/usr/lib/R/library/limma", source = "${baseUrl}/packages/limma_3.61.12.tgz");
@@ -29,13 +29,13 @@ async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneI
         library(edgeR);
         message("Running differential analysis with edgeR")
     `);
-    
-    const controlDataConverted = controlData.map(group => group.map(item => ({ ...item })));
-    const treatmentDataConverted = treatmentData.map(group => group.map(item => ({ ...item })));
-    // write a for loop that will append each group from the controlDataConverted and treatmentDataConverted to the controlData and treatmentData one at a time
-    for (let i = 0; i < controlDataConverted.length; i++) {
-      await webR.objs.globalEnv.bind(`controlDataPart`, controlDataConverted[i]);
-      await webR.evalR(`
+
+  const controlDataConverted = controlData.map((group) => group.map((item) => ({ ...item })));
+  const treatmentDataConverted = treatmentData.map((group) => group.map((item) => ({ ...item })));
+  // write a for loop that will append each group from the controlDataConverted and treatmentDataConverted to the controlData and treatmentData one at a time
+  for (let i = 0; i < controlDataConverted.length; i++) {
+    await webR.objs.globalEnv.bind(`controlDataPart`, controlDataConverted[i]);
+    await webR.evalR(`
         # check if controlData exists
         if (!exists("controlData")) {
           controlData <- list()
@@ -43,11 +43,11 @@ async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneI
         controlData[[${i + 1}]] <- controlDataPart
         # clean up
         rm(controlDataPart)
-      `); 
-    }
-    for (let i = 0; i < treatmentDataConverted.length; i++) {
-      await webR.objs.globalEnv.bind(`treatmentDataPart`, treatmentDataConverted[i]);
-      await webR.evalR(`
+      `);
+  }
+  for (let i = 0; i < treatmentDataConverted.length; i++) {
+    await webR.objs.globalEnv.bind(`treatmentDataPart`, treatmentDataConverted[i]);
+    await webR.evalR(`
         # check if treatmentData exists
         if (!exists("treatmentData")) {
           treatmentData <- list()
@@ -56,10 +56,10 @@ async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneI
         # clean up
         rm(treatmentDataPart)
       `);
-    }
-    
-    try {
-      const result = await webR.evalR(`
+  }
+
+  try {
+    const result = (await webR.evalR(`
         # Function to process input data and perform differential expression analysis
         load_data <- function(control_list, treatment_list) {
           # Merge control and treatment data for filtering
@@ -95,19 +95,17 @@ async function evaluateR(controlData: GeneInsertResult[][], treatmentData: GeneI
         data <- load_data(controlData, treatmentData)
         diff_results <- perform_differential_expression(data$count_mat, data$conds, data$noness_list)
         diff_results
-      `) as RList;
-      return await result.toD3();
-      } finally {
-      webR.close();
-    }
-
-    
+      `)) as RList;
+    return await result.toD3();
+  } finally {
+    webR.close();
+  }
 }
 
 // Main function to compare gene insert sites and return results in the specified format
 export async function compareGeneInsertSites(
   controlData: GeneInsertResult[][],
-  treatmentData: GeneInsertResult[][],
+  treatmentData: GeneInsertResult[][]
 ): Promise<CompareResults[]> {
   const results = await evaluateR(controlData, treatmentData);
   // Format the output as an array of CompareResults objects
@@ -121,6 +119,6 @@ export async function compareGeneInsertSites(
     logFC: result.logFC,
     logCPM: result.logCPM,
     pValue: result.PValue || Number.MIN_VALUE,
-    qValue: result.QValue || Number.MIN_VALUE,
+    qValue: result.QValue || Number.MIN_VALUE
   }));
 }

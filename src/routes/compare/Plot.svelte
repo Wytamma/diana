@@ -36,14 +36,14 @@
       margin: { b: 25, t: 25, r: 25 },
       barmode: 'overlay',
       modebar: {
-        orientation: 'v',
+        orientation: 'v'
       },
-      dragmode: 'select',
+      dragmode: 'select'
     };
 
-    const config = { 
+    const config = {
       modeBarButtonsToRemove: ['autoScale2d'],
-      responsive: true, 
+      responsive: true,
       displaylogo: false,
       modeBarButtonsToAdd: [
         {
@@ -97,6 +97,10 @@
     {/if}
   </section>
   <footer class="card-footer">
-    This plot shows the comparison between the log2 fold-change (x-axis) and the -log10(Q-Value) for each gene. The logFC represents the log2 fold-change between control and treatment read counts for each gene. The -log10(Q-Value) represents the negative log10 of the Q-Value, which is a measure of the significance of the difference in expression between control and treatment samples.
+    This plot shows the comparison between the log2 fold-change (x-axis) and the -log10(Q-Value) for
+    each gene. The logFC represents the log2 fold-change between control and treatment read counts
+    for each gene. The -log10(Q-Value) represents the negative log10 of the Q-Value, which is a
+    measure of the significance of the difference in expression between control and treatment
+    samples.
   </footer>
 </div>

@@ -1,21 +1,18 @@
 <script lang="ts">
-	import type { DataHandler } from '@vincjo/datatables';
-	import { annotationStore} from "$lib/stores/annotationStore"; 
+  import type { DataHandler } from '@vincjo/datatables';
+  import { annotationStore } from '$lib/stores/annotationStore';
 
-	export let handler: DataHandler;
+  export let handler: DataHandler;
 
-	const isAllSelected = handler.isAllSelected();
-	const selected = handler.getSelected();
+  const isAllSelected = handler.isAllSelected();
+  const selected = handler.getSelected();
 
-	function selectAll() {
-		handler.selectAll({ selectBy: '_id' });
-		annotationStore.setFilteredFeatures($selected as number[]);
-	}
-
+  function selectAll() {
+    handler.selectAll({ selectBy: '_id' });
+    annotationStore.setFilteredFeatures($selected as number[]);
+  }
 </script>
 
 <th on:click={selectAll} class="cursor-pointer select-none text-center">
-	<input type="checkbox" class="checkbox"
-		checked={$isAllSelected}
-	>
+  <input type="checkbox" class="checkbox" checked={$isAllSelected} />
 </th>

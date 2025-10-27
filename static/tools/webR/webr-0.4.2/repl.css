@@ -42,7 +42,7 @@
 }
 .xterm .composition-view {
   background: #000;
-  color: #FFF;
+  color: #fff;
   display: none;
   position: absolute;
   white-space: nowrap;
@@ -190,7 +190,7 @@
     overflow: clip;
     text-overflow: ellipsis;
     outline: none;
-    &[aria-selected=true] {
+    &[aria-selected='true'] {
       outline: 2px solid var(--rdg-selection-color);
       outline-offset: -2px;
     }
@@ -223,7 +223,7 @@
 }
 .cf71kmq7-0-0-beta-44 {
   @layer rdg.CheckboxIcon {
-    content: "";
+    content: '';
     inline-size: 20px;
     block-size: 20px;
     border: 2px solid var(--rdg-border-color);
@@ -337,7 +337,7 @@
     &:hover {
       background-color: var(--rdg-row-hover-background-color);
     }
-    &[aria-selected=true] {
+    &[aria-selected='true'] {
       background-color: var(--rdg-row-selected-background-color);
       &:hover {
         background-color: var(--rdg-row-selected-hover-background-color);
@@ -354,7 +354,7 @@
 .r139qu9m7-0-0-beta-44 {
   @layer rdg.FocusSink {
     &::before {
-      content: "";
+      content: '';
       display: inline-block;
       height: 100%;
       position: sticky;
@@ -436,7 +436,7 @@
     color: var(--rdg-color);
     font-size: var(--rdg-font-size);
     &::before {
-      content: "";
+      content: '';
       grid-column: 1/-1;
       grid-row: 1/-1;
     }
@@ -534,7 +534,7 @@
 }
 .g1yxluv37-0-0-beta-44 {
   @layer rdg.GroupedRow {
-    &:not([aria-selected="true"]) {
+    &:not([aria-selected='true']) {
       background-color: var(--rdg-header-background-color);
     }
     > .cj343x07-0-0-beta-44:not(:last-child, .csofj7r7-0-0-beta-44),
@@ -626,7 +626,7 @@
   border-bottom-color: transparent;
 }
 .editor-file.active::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 4px;
@@ -796,12 +796,12 @@ body {
   overflow: hidden;
 }
 :root {
-  --bg-primary: #FFF;
-  --bg-secondary: #EEE;
-  --bg-dark: #AAA;
+  --bg-primary: #fff;
+  --bg-secondary: #eee;
+  --bg-dark: #aaa;
   --primary: #111;
   --secondary: #777;
-  --disabled: #AAA;
+  --disabled: #aaa;
 }
 .repl {
   width: 100vw;

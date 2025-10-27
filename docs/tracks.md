@@ -2,11 +2,11 @@
 
 The simplest way to visualise TIS data is using a insert count plot. This plot shows the number of insertions at each position in the genome. The insert count plot is useful for identifying regions of the genome that are enriched or depleted for insertions, which can indicate important functional elements such as genes or regulatory regions.
 
-Diana uses the JavaScript version of the [integrative genomics viewer](https://igv.org/doc/igvjs/#) (IGV) to visualise the insert count data. 
+Diana uses the JavaScript version of the [integrative genomics viewer](https://igv.org/doc/igvjs/#) (IGV) to visualise the insert count data.
 
 ![](./images/tracks.png)
 
-The IGV interface in Diana allows you to navigate the genome and view the insert count data. Count data is displayed as bar plots, with the height of the bars representing the number of insertions at each position in the genome. Inserts on the positive strand are shown above the x-axis, and inserts on the negative strand are shown below the x-axis. 
+The IGV interface in Diana allows you to navigate the genome and view the insert count data. Count data is displayed as bar plots, with the height of the bars representing the number of insertions at each position in the genome. Inserts on the positive strand are shown above the x-axis, and inserts on the negative strand are shown below the x-axis.
 
 ![](./images/van-inserts.png)
 

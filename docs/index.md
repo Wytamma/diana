@@ -5,7 +5,7 @@
 Diana ([diana.cpg.org.au](https://diana.cpg.org.au/)) is a browser-based tool for the visualisation, exploration, and differential analysis of Transposon-Insertion Sequencing (TIS) data, such as TraDIS.
 
 !!! info
-    
+
     Diana runs entirely in the browser using WebAssembly (Wasm) and webR (R compiled to Wasm), enabling interactive, private, and installation-free analysis of large genomic datasets. You data never leaves your computer!
 
 ## What is Transposon-Insertion Sequencing?
@@ -16,7 +16,7 @@ Although TIS methods differ in methods, they all rely on the same basic principl
 
 ## How can I create TIS data?
 
-There are many ways to generate TIS data e.g. TraDIS, HITS, INSeq, Tn-Seq. See [Krause et al. (2025)](https://www.biorxiv.org/content/10.1101/2025.03.03.641140v1.abstract) for our recommended pipeline for generating transposon-directed insertion-site sequencing data using Nanopore sequencing. 
+There are many ways to generate TIS data e.g. TraDIS, HITS, INSeq, Tn-Seq. See [Krause et al. (2025)](https://www.biorxiv.org/content/10.1101/2025.03.03.641140v1.abstract) for our recommended pipeline for generating transposon-directed insertion-site sequencing data using Nanopore sequencing.
 
 Once you have generated TIS count data see the [Loading data](/docs/data/) section for information on how to load your data into Diana.
 
@@ -25,9 +25,10 @@ Once you have generated TIS count data see the [Loading data](/docs/data/) secti
 Citation in progress...
 
 ## Used by Diana
+
 Diana is built using a number of open-source components, including:
 
 - webR: R language compiled to Wasm for in-browser analysis
 - IGV.js: Embeddable genomic visualization component based on the Integrative Genomics Viewer
 - edgeR: Differential expression and insertion analysis
-- biowasm: Run C/C++ genomics tools in the browser 
+- biowasm: Run C/C++ genomics tools in the browser

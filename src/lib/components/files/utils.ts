@@ -1,3 +1,3 @@
 export const removeFileExtension = (filename: string) => {
-    return filename.replace(/\.[^/.]+$/, "");
-}
+  return filename.replace(/\.[^/.]+$/, '');
+};

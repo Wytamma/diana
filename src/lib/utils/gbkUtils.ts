@@ -16,14 +16,14 @@ type LocusRecord = {
  * Parses a GenBank location string (e.g. "complement(<123..>456)") into numeric boundaries and strand.
  */
 const parseLocation = (location: string): { start: number; end: number; strand: string } => {
-  let strand = "+";
-  if (location.startsWith("complement(")) {
-    strand = "-";
-    location = location.replace("complement(", "").replace(")", "");
+  let strand = '+';
+  if (location.startsWith('complement(')) {
+    strand = '-';
+    location = location.replace('complement(', '').replace(')', '');
   }
   // Remove uncertainty markers.
-  location = location.replace(/</g, "").replace(/>/g, "");
-  const [startStr, endStr] = location.split("..");
+  location = location.replace(/</g, '').replace(/>/g, '');
+  const [startStr, endStr] = location.split('..');
   const start = parseInt(startStr, 10);
   const end = parseInt(endStr, 10);
   if (isNaN(start) || isNaN(end)) {
@@ -36,7 +36,7 @@ const parseLocation = (location: string): { start: number; end: number; strand: 
  * Parses the FEATURES section
  */
 function parseFeatures(featureText: string): Feature[] {
-  const lines = featureText.split("\n");
+  const lines = featureText.split('\n');
 
   // Accumulator interface for our reducer.
   interface FeatureAcc {
@@ -64,16 +64,16 @@ function parseFeatures(featureText: string): Feature[] {
           start,
           end,
           strand,
-          attributes: {},
+          attributes: {}
         };
       }
       acc.multiline = false;
-    } else if (line.trim().startsWith("/")) {
+    } else if (line.trim().startsWith('/')) {
       // Process a qualifier line (e.g. /gene="abc")
       const qualifierMatch = line.trim().match(/^\/(\S+?)=(?:"([^"]+)"|(.+))/);
       if (qualifierMatch && acc.currentFeature) {
         const [, key, quotedValue, unquotedValue] = qualifierMatch;
-        const value = quotedValue || unquotedValue || "";
+        const value = quotedValue || unquotedValue || '';
         acc.currentFeature.attributes![key] = value;
         // If the qualifier appears to span multiple lines.
         acc.multiline =
@@ -110,19 +110,19 @@ function parseFeatures(featureText: string): Feature[] {
  * Parses a single GenBank record into a pure data structure.
  */
 function parseLocusRecord(recordText: string): LocusRecord {
-  const lines = recordText.split("\n");
-  const locusLine = lines.find(line => line.startsWith("LOCUS"));
-  const locusId = locusLine ? locusLine.split(/\s+/)[1] : "";
+  const lines = recordText.split('\n');
+  const locusLine = lines.find((line) => line.startsWith('LOCUS'));
+  const locusId = locusLine ? locusLine.split(/\s+/)[1] : '';
 
   // Extract the FEATURES section (everything between FEATURES and ORIGIN).
   const featuresSectionMatch = recordText.match(/FEATURES\s+([\s\S]+?)ORIGIN/);
-  const featureText = featuresSectionMatch ? featuresSectionMatch[1] : "";
+  const featureText = featuresSectionMatch ? featuresSectionMatch[1] : '';
   const features = parseFeatures(featureText);
 
   // Extract and clean the sequence from the ORIGIN section.
   const originMatch = recordText.match(/ORIGIN\s+([\s\S]+)/);
-  const rawSequence = originMatch ? originMatch[1] : "";
-  const sequence = rawSequence.replace(/[^a-zA-Z]/g, "");
+  const rawSequence = originMatch ? originMatch[1] : '';
+  const sequence = rawSequence.replace(/[^a-zA-Z]/g, '');
 
   return { locusId, sequence, features };
 }
@@ -138,35 +138,35 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
   const records = recordsText.map(parseLocusRecord);
 
   // Build the FASTA output.
-  const fastaOutput = records.map(record => {
+  const fastaOutput = records.map((record) => {
     const lines = [`>${record.locusId}`];
     for (let i = 0; i < record.sequence.length; i += 60) {
       lines.push(record.sequence.slice(i, i + 60));
     }
-    return lines.join("\n");
+    return lines.join('\n');
   });
 
   // Build the GFF output.
-  const gffOutput = ["##gff-version 3"];
-  records.forEach(record => {
-    record.features.forEach(feature => {
+  const gffOutput = ['##gff-version 3'];
+  records.forEach((record) => {
+    record.features.forEach((feature) => {
       // Normalize the "Name" attribute from various possible qualifiers.
       const attrs = { ...feature.attributes };
-      if (attrs["name"] || attrs["Name"]) {
-        attrs["Name"] = attrs["name"] || attrs["Name"];
-      } else if (attrs["gene"]) {
-        attrs["Name"] = attrs["gene"];
-      } else if (attrs["product"]) {
-        attrs["Name"] = attrs["product"];
-      } else if (attrs["locus_tag"]) {
-        attrs["Name"] = attrs["locus_tag"];
+      if (attrs['name'] || attrs['Name']) {
+        attrs['Name'] = attrs['name'] || attrs['Name'];
+      } else if (attrs['gene']) {
+        attrs['Name'] = attrs['gene'];
+      } else if (attrs['product']) {
+        attrs['Name'] = attrs['product'];
+      } else if (attrs['locus_tag']) {
+        attrs['Name'] = attrs['locus_tag'];
       }
-      if (feature.type === "source" && attrs["organism"]) {
-        attrs["Name"] = attrs["organism"];
+      if (feature.type === 'source' && attrs['organism']) {
+        attrs['Name'] = attrs['organism'];
       }
       const attributeString = Object.entries(attrs)
-        .map(([key, value]) => `${key}=${value.replace(/"/g, "").replace(/;/g, ",")}`)
-        .join(";");
+        .map(([key, value]) => `${key}=${value.replace(/"/g, '').replace(/;/g, ',')}`)
+        .join(';');
       gffOutput.push(
         `${record.locusId}\tdiana\t${feature.type}\t${feature.start}\t${feature.end}\t.\t${feature.strand}\t.\t${attributeString}`
       );
@@ -174,7 +174,7 @@ export function genBankToGFFAndFasta(genBankText: string): { gff: string; fasta:
   });
 
   return {
-    gff: gffOutput.join("\n"),
-    fasta: fastaOutput.join("\n"),
+    gff: gffOutput.join('\n'),
+    fasta: fastaOutput.join('\n')
   };
 }

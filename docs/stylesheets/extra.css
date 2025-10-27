@@ -1,10 +1,10 @@
-[data-md-color-scheme="diana-dark"] {
-    --md-primary-fg-color:        rgb(55 61 145);
-    --md-primary-fg-color--light: #ECB7B7;
-    --md-primary-fg-color--dark:  #90030C;
-  }
-[data-md-color-scheme="diana-light"] {
-    --md-primary-fg-color:        #EE0F0F;
-    --md-primary-fg-color--light: #ECB7B7;
-    --md-primary-fg-color--dark:  #90030C;
-  }
+[data-md-color-scheme='diana-dark'] {
+  --md-primary-fg-color: rgb(55 61 145);
+  --md-primary-fg-color--light: #ecb7b7;
+  --md-primary-fg-color--dark: #90030c;
+}
+[data-md-color-scheme='diana-light'] {
+  --md-primary-fg-color: #ee0f0f;
+  --md-primary-fg-color--light: #ecb7b7;
+  --md-primary-fg-color--dark: #90030c;
+}

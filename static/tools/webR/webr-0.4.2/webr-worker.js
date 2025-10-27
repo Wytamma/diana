@@ -1,44 +1,53 @@
-"use strict";
+'use strict';
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
+var __commonJS = (cb, mod) =>
+  function __require() {
+    return (
+      mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports
+    );
+  };
 var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
+  if ((from && typeof from === 'object') || typeof from === 'function') {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+        __defProp(to, key, {
+          get: () => from[key],
+          enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+        });
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
+var __toESM = (mod, isNodeMode, target) => (
+  (target = mod != null ? __create(__getProtoOf(mod)) : {}),
+  __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule
+      ? __defProp(target, 'default', { value: mod, enumerable: true })
+      : target,
+    mod
+  )
+);
 var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
+  if (!member.has(obj)) throw TypeError('Cannot ' + msg);
 };
 var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
+  __accessCheck(obj, member, 'read from private field');
   return getter ? getter.call(obj) : member.get(obj);
 };
 var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
+  if (member.has(obj)) throw TypeError('Cannot add the same private member more than once');
   member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
 };
 var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
+  __accessCheck(obj, member, 'write to private field');
   setter ? setter.call(obj, value) : member.set(obj, value);
   return value;
 };
@@ -51,16 +60,21 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   }
 });
 var __privateMethod = (obj, member, method) => {
-  __accessCheck(obj, member, "access private method");
+  __accessCheck(obj, member, 'access private method');
   return method;
 };
 
 // node_modules/@msgpack/msgpack/dist/utils/int.js
 var require_int = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/int.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getUint64 = exports.getInt64 = exports.setInt64 = exports.setUint64 = exports.UINT32_MAX = void 0;
+  'node_modules/@msgpack/msgpack/dist/utils/int.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.getUint64 =
+      exports.getInt64 =
+      exports.setInt64 =
+      exports.setUint64 =
+      exports.UINT32_MAX =
+        void 0;
     exports.UINT32_MAX = 4294967295;
     function setUint64(view, offset, value) {
       const high = value / 4294967296;
@@ -93,15 +107,29 @@ var require_int = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/utf8.js
 var require_utf8 = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/utf8.js"(exports) {
-    "use strict";
+  'node_modules/@msgpack/msgpack/dist/utils/utf8.js'(exports) {
+    'use strict';
     var _a;
     var _b;
     var _c;
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.utf8DecodeTD = exports.TEXT_DECODER_THRESHOLD = exports.utf8DecodeJs = exports.utf8EncodeTE = exports.TEXT_ENCODER_THRESHOLD = exports.utf8EncodeJs = exports.utf8Count = void 0;
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.utf8DecodeTD =
+      exports.TEXT_DECODER_THRESHOLD =
+      exports.utf8DecodeJs =
+      exports.utf8EncodeTE =
+      exports.TEXT_ENCODER_THRESHOLD =
+      exports.utf8EncodeJs =
+      exports.utf8Count =
+        void 0;
     var int_1 = require_int();
-    var TEXT_ENCODING_AVAILABLE = (typeof process === "undefined" || ((_a = process === null || process === void 0 ? void 0 : process.env) === null || _a === void 0 ? void 0 : _a["TEXT_ENCODING"]) !== "never") && typeof TextEncoder !== "undefined" && typeof TextDecoder !== "undefined";
+    var TEXT_ENCODING_AVAILABLE =
+      (typeof process === 'undefined' ||
+        ((_a = process === null || process === void 0 ? void 0 : process.env) === null ||
+        _a === void 0
+          ? void 0
+          : _a['TEXT_ENCODING']) !== 'never') &&
+      typeof TextEncoder !== 'undefined' &&
+      typeof TextDecoder !== 'undefined';
     function utf8Count(str) {
       const strLength = str.length;
       let byteLength = 0;
@@ -143,7 +171,7 @@ var require_utf8 = __commonJS({
           output[offset++] = value;
           continue;
         } else if ((value & 4294965248) === 0) {
-          output[offset++] = value >> 6 & 31 | 192;
+          output[offset++] = ((value >> 6) & 31) | 192;
         } else {
           if (value >= 55296 && value <= 56319) {
             if (pos < strLength) {
@@ -155,53 +183,67 @@ var require_utf8 = __commonJS({
             }
           }
           if ((value & 4294901760) === 0) {
-            output[offset++] = value >> 12 & 15 | 224;
-            output[offset++] = value >> 6 & 63 | 128;
+            output[offset++] = ((value >> 12) & 15) | 224;
+            output[offset++] = ((value >> 6) & 63) | 128;
           } else {
-            output[offset++] = value >> 18 & 7 | 240;
-            output[offset++] = value >> 12 & 63 | 128;
-            output[offset++] = value >> 6 & 63 | 128;
+            output[offset++] = ((value >> 18) & 7) | 240;
+            output[offset++] = ((value >> 12) & 63) | 128;
+            output[offset++] = ((value >> 6) & 63) | 128;
           }
         }
-        output[offset++] = value & 63 | 128;
+        output[offset++] = (value & 63) | 128;
       }
     }
     exports.utf8EncodeJs = utf8EncodeJs;
     var sharedTextEncoder = TEXT_ENCODING_AVAILABLE ? new TextEncoder() : void 0;
-    exports.TEXT_ENCODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE ? int_1.UINT32_MAX : typeof process !== "undefined" && ((_b = process === null || process === void 0 ? void 0 : process.env) === null || _b === void 0 ? void 0 : _b["TEXT_ENCODING"]) !== "force" ? 200 : 0;
+    exports.TEXT_ENCODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE
+      ? int_1.UINT32_MAX
+      : typeof process !== 'undefined' &&
+          ((_b = process === null || process === void 0 ? void 0 : process.env) === null ||
+          _b === void 0
+            ? void 0
+            : _b['TEXT_ENCODING']) !== 'force'
+        ? 200
+        : 0;
     function utf8EncodeTEencode(str, output, outputOffset) {
       output.set(sharedTextEncoder.encode(str), outputOffset);
     }
     function utf8EncodeTEencodeInto(str, output, outputOffset) {
       sharedTextEncoder.encodeInto(str, output.subarray(outputOffset));
     }
-    exports.utf8EncodeTE = (sharedTextEncoder === null || sharedTextEncoder === void 0 ? void 0 : sharedTextEncoder.encodeInto) ? utf8EncodeTEencodeInto : utf8EncodeTEencode;
+    exports.utf8EncodeTE = (
+      sharedTextEncoder === null || sharedTextEncoder === void 0
+        ? void 0
+        : sharedTextEncoder.encodeInto
+    )
+      ? utf8EncodeTEencodeInto
+      : utf8EncodeTEencode;
     var CHUNK_SIZE = 4096;
     function utf8DecodeJs(bytes, inputOffset, byteLength) {
       let offset = inputOffset;
       const end = offset + byteLength;
       const units = [];
-      let result = "";
+      let result = '';
       while (offset < end) {
         const byte1 = bytes[offset++];
         if ((byte1 & 128) === 0) {
           units.push(byte1);
         } else if ((byte1 & 224) === 192) {
           const byte2 = bytes[offset++] & 63;
-          units.push((byte1 & 31) << 6 | byte2);
+          units.push(((byte1 & 31) << 6) | byte2);
         } else if ((byte1 & 240) === 224) {
           const byte2 = bytes[offset++] & 63;
           const byte3 = bytes[offset++] & 63;
-          units.push((byte1 & 31) << 12 | byte2 << 6 | byte3);
+          units.push(((byte1 & 31) << 12) | (byte2 << 6) | byte3);
         } else if ((byte1 & 248) === 240) {
           const byte2 = bytes[offset++] & 63;
           const byte3 = bytes[offset++] & 63;
           const byte4 = bytes[offset++] & 63;
-          let unit = (byte1 & 7) << 18 | byte2 << 12 | byte3 << 6 | byte4;
+          let unit = ((byte1 & 7) << 18) | (byte2 << 12) | (byte3 << 6) | byte4;
           if (unit > 65535) {
             unit -= 65536;
-            units.push(unit >>> 10 & 1023 | 55296);
-            unit = 56320 | unit & 1023;
+            units.push(((unit >>> 10) & 1023) | 55296);
+            unit = 56320 | (unit & 1023);
           }
           units.push(unit);
         } else {
@@ -219,7 +261,15 @@ var require_utf8 = __commonJS({
     }
     exports.utf8DecodeJs = utf8DecodeJs;
     var sharedTextDecoder = TEXT_ENCODING_AVAILABLE ? new TextDecoder() : null;
-    exports.TEXT_DECODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE ? int_1.UINT32_MAX : typeof process !== "undefined" && ((_c = process === null || process === void 0 ? void 0 : process.env) === null || _c === void 0 ? void 0 : _c["TEXT_DECODER"]) !== "force" ? 200 : 0;
+    exports.TEXT_DECODER_THRESHOLD = !TEXT_ENCODING_AVAILABLE
+      ? int_1.UINT32_MAX
+      : typeof process !== 'undefined' &&
+          ((_c = process === null || process === void 0 ? void 0 : process.env) === null ||
+          _c === void 0
+            ? void 0
+            : _c['TEXT_DECODER']) !== 'force'
+        ? 200
+        : 0;
     function utf8DecodeTD(bytes, inputOffset, byteLength) {
       const stringBytes = bytes.subarray(inputOffset, inputOffset + byteLength);
       return sharedTextDecoder.decode(stringBytes);
@@ -230,9 +280,9 @@ var require_utf8 = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/ExtData.js
 var require_ExtData = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/ExtData.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/ExtData.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.ExtData = void 0;
     var ExtData = class {
       constructor(type, data) {
@@ -246,16 +296,16 @@ var require_ExtData = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/DecodeError.js
 var require_DecodeError = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/DecodeError.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/DecodeError.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.DecodeError = void 0;
     var DecodeError = class extends Error {
       constructor(message) {
         super(message);
         const proto = Object.create(DecodeError.prototype);
         Object.setPrototypeOf(this, proto);
-        Object.defineProperty(this, "name", {
+        Object.defineProperty(this, 'name', {
           configurable: true,
           enumerable: false,
           value: DecodeError.name
@@ -268,10 +318,17 @@ var require_DecodeError = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/timestamp.js
 var require_timestamp = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/timestamp.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.timestampExtension = exports.decodeTimestampExtension = exports.decodeTimestampToTimeSpec = exports.encodeTimestampExtension = exports.encodeDateToTimeSpec = exports.encodeTimeSpecToTimestamp = exports.EXT_TIMESTAMP = void 0;
+  'node_modules/@msgpack/msgpack/dist/timestamp.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.timestampExtension =
+      exports.decodeTimestampExtension =
+      exports.decodeTimestampToTimeSpec =
+      exports.encodeTimestampExtension =
+      exports.encodeDateToTimeSpec =
+      exports.encodeTimeSpecToTimestamp =
+      exports.EXT_TIMESTAMP =
+        void 0;
     var DecodeError_1 = require_DecodeError();
     var int_1 = require_int();
     exports.EXT_TIMESTAMP = -1;
@@ -289,7 +346,7 @@ var require_timestamp = __commonJS({
           const secLow = sec & 4294967295;
           const rv = new Uint8Array(8);
           const view = new DataView(rv.buffer);
-          view.setUint32(0, nsec << 2 | secHigh & 3);
+          view.setUint32(0, (nsec << 2) | (secHigh & 3));
           view.setUint32(4, secLow);
           return rv;
         }
@@ -343,7 +400,9 @@ var require_timestamp = __commonJS({
           return { sec, nsec };
         }
         default:
-          throw new DecodeError_1.DecodeError(`Unrecognized data size for timestamp (expected 4, 8, or 12): ${data.length}`);
+          throw new DecodeError_1.DecodeError(
+            `Unrecognized data size for timestamp (expected 4, 8, or 12): ${data.length}`
+          );
       }
     }
     exports.decodeTimestampToTimeSpec = decodeTimestampToTimeSpec;
@@ -362,9 +421,9 @@ var require_timestamp = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/ExtensionCodec.js
 var require_ExtensionCodec = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/ExtensionCodec.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/ExtensionCodec.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.ExtensionCodec = void 0;
     var ExtData_1 = require_ExtData();
     var timestamp_1 = require_timestamp();
@@ -428,9 +487,9 @@ var require_ExtensionCodec = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/typedArrays.js
 var require_typedArrays = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/typedArrays.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/utils/typedArrays.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.createDataView = exports.ensureUint8Array = void 0;
     function ensureUint8Array(buffer) {
       if (buffer instanceof Uint8Array) {
@@ -457,9 +516,9 @@ var require_typedArrays = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/Encoder.js
 var require_Encoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/Encoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/Encoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.Encoder = exports.DEFAULT_INITIAL_BUFFER_SIZE = exports.DEFAULT_MAX_DEPTH = void 0;
     var utf8_1 = require_utf8();
     var ExtensionCodec_1 = require_ExtensionCodec();
@@ -468,7 +527,16 @@ var require_Encoder = __commonJS({
     exports.DEFAULT_MAX_DEPTH = 100;
     exports.DEFAULT_INITIAL_BUFFER_SIZE = 2048;
     var Encoder = class {
-      constructor(extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec, context = void 0, maxDepth = exports.DEFAULT_MAX_DEPTH, initialBufferSize = exports.DEFAULT_INITIAL_BUFFER_SIZE, sortKeys = false, forceFloat32 = false, ignoreUndefined = false, forceIntegerToFloat = false) {
+      constructor(
+        extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec,
+        context = void 0,
+        maxDepth = exports.DEFAULT_MAX_DEPTH,
+        initialBufferSize = exports.DEFAULT_INITIAL_BUFFER_SIZE,
+        sortKeys = false,
+        forceFloat32 = false,
+        ignoreUndefined = false,
+        forceIntegerToFloat = false
+      ) {
         this.extensionCodec = extensionCodec;
         this.context = context;
         this.maxDepth = maxDepth;
@@ -508,11 +576,11 @@ var require_Encoder = __commonJS({
         }
         if (object == null) {
           this.encodeNil();
-        } else if (typeof object === "boolean") {
+        } else if (typeof object === 'boolean') {
           this.encodeBoolean(object);
-        } else if (typeof object === "number") {
+        } else if (typeof object === 'number') {
           this.encodeNumber(object);
-        } else if (typeof object === "string") {
+        } else if (typeof object === 'string') {
           this.encodeString(object);
         } else {
           this.encodeObject(object, depth);
@@ -562,7 +630,7 @@ var require_Encoder = __commonJS({
             }
           } else {
             if (object >= -32) {
-              this.writeU8(224 | object + 32);
+              this.writeU8(224 | (object + 32));
             } else if (object >= -128) {
               this.writeU8(208);
               this.writeI8(object);
@@ -628,7 +696,7 @@ var require_Encoder = __commonJS({
           this.encodeArray(object, depth);
         } else if (ArrayBuffer.isView(object)) {
           this.encodeBinary(object);
-        } else if (typeof object === "object") {
+        } else if (typeof object === 'object') {
           this.encodeMap(object, depth);
         } else {
           throw new Error(`Unrecognized object: ${Object.prototype.toString.apply(object)}`);
@@ -792,14 +860,23 @@ var require_Encoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/encode.js
 var require_encode = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/encode.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/encode.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.encode = void 0;
     var Encoder_1 = require_Encoder();
     var defaultEncodeOptions = {};
     function encode3(value, options = defaultEncodeOptions) {
-      const encoder2 = new Encoder_1.Encoder(options.extensionCodec, options.context, options.maxDepth, options.initialBufferSize, options.sortKeys, options.forceFloat32, options.ignoreUndefined, options.forceIntegerToFloat);
+      const encoder2 = new Encoder_1.Encoder(
+        options.extensionCodec,
+        options.context,
+        options.maxDepth,
+        options.initialBufferSize,
+        options.sortKeys,
+        options.forceFloat32,
+        options.ignoreUndefined,
+        options.forceIntegerToFloat
+      );
       return encoder2.encodeSharedRef(value);
     }
     exports.encode = encode3;
@@ -808,12 +885,12 @@ var require_encode = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/prettyByte.js
 var require_prettyByte = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/prettyByte.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/utils/prettyByte.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.prettyByte = void 0;
     function prettyByte(byte) {
-      return `${byte < 0 ? "-" : ""}0x${Math.abs(byte).toString(16).padStart(2, "0")}`;
+      return `${byte < 0 ? '-' : ''}0x${Math.abs(byte).toString(16).padStart(2, '0')}`;
     }
     exports.prettyByte = prettyByte;
   }
@@ -821,15 +898,18 @@ var require_prettyByte = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js
 var require_CachedKeyDecoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/CachedKeyDecoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.CachedKeyDecoder = void 0;
     var utf8_1 = require_utf8();
     var DEFAULT_MAX_KEY_LENGTH = 16;
     var DEFAULT_MAX_LENGTH_PER_KEY = 16;
     var CachedKeyDecoder = class {
-      constructor(maxKeyLength = DEFAULT_MAX_KEY_LENGTH, maxLengthPerKey = DEFAULT_MAX_LENGTH_PER_KEY) {
+      constructor(
+        maxKeyLength = DEFAULT_MAX_KEY_LENGTH,
+        maxLengthPerKey = DEFAULT_MAX_LENGTH_PER_KEY
+      ) {
         this.maxKeyLength = maxKeyLength;
         this.maxLengthPerKey = maxLengthPerKey;
         this.hit = 0;
@@ -844,23 +924,22 @@ var require_CachedKeyDecoder = __commonJS({
       }
       find(bytes, inputOffset, byteLength) {
         const records = this.caches[byteLength - 1];
-        FIND_CHUNK:
-          for (const record of records) {
-            const recordBytes = record.bytes;
-            for (let j = 0; j < byteLength; j++) {
-              if (recordBytes[j] !== bytes[inputOffset + j]) {
-                continue FIND_CHUNK;
-              }
+        FIND_CHUNK: for (const record of records) {
+          const recordBytes = record.bytes;
+          for (let j = 0; j < byteLength; j++) {
+            if (recordBytes[j] !== bytes[inputOffset + j]) {
+              continue FIND_CHUNK;
             }
-            return record.str;
           }
+          return record.str;
+        }
         return null;
       }
       store(bytes, value) {
         const records = this.caches[bytes.length - 1];
         const record = { bytes, str: value };
         if (records.length >= this.maxLengthPerKey) {
-          records[Math.random() * records.length | 0] = record;
+          records[(Math.random() * records.length) | 0] = record;
         } else {
           records.push(record);
         }
@@ -873,7 +952,11 @@ var require_CachedKeyDecoder = __commonJS({
         }
         this.miss++;
         const str = (0, utf8_1.utf8DecodeJs)(bytes, inputOffset, byteLength);
-        const slicedCopyOfBytes = Uint8Array.prototype.slice.call(bytes, inputOffset, inputOffset + byteLength);
+        const slicedCopyOfBytes = Uint8Array.prototype.slice.call(
+          bytes,
+          inputOffset,
+          inputOffset + byteLength
+        );
         this.store(slicedCopyOfBytes, str);
         return str;
       }
@@ -884,9 +967,9 @@ var require_CachedKeyDecoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/Decoder.js
 var require_Decoder = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/Decoder.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/Decoder.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.Decoder = exports.DataViewIndexOutOfBoundsError = void 0;
     var prettyByte_1 = require_prettyByte();
     var ExtensionCodec_1 = require_ExtensionCodec();
@@ -897,7 +980,7 @@ var require_Decoder = __commonJS({
     var DecodeError_1 = require_DecodeError();
     var isValidMapKeyType = (key) => {
       const keyType = typeof key;
-      return keyType === "string" || keyType === "number";
+      return keyType === 'string' || keyType === 'number';
     };
     var HEAD_BYTE_REQUIRED = -1;
     var EMPTY_VIEW = new DataView(new ArrayBuffer(0));
@@ -908,12 +991,21 @@ var require_Decoder = __commonJS({
       } catch (e) {
         return e.constructor;
       }
-      throw new Error("never reached");
+      throw new Error('never reached');
     })();
-    var MORE_DATA = new exports.DataViewIndexOutOfBoundsError("Insufficient data");
+    var MORE_DATA = new exports.DataViewIndexOutOfBoundsError('Insufficient data');
     var sharedCachedKeyDecoder = new CachedKeyDecoder_1.CachedKeyDecoder();
     var Decoder = class {
-      constructor(extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec, context = void 0, maxStrLength = int_1.UINT32_MAX, maxBinLength = int_1.UINT32_MAX, maxArrayLength = int_1.UINT32_MAX, maxMapLength = int_1.UINT32_MAX, maxExtLength = int_1.UINT32_MAX, keyDecoder = sharedCachedKeyDecoder) {
+      constructor(
+        extensionCodec = ExtensionCodec_1.ExtensionCodec.defaultCodec,
+        context = void 0,
+        maxStrLength = int_1.UINT32_MAX,
+        maxBinLength = int_1.UINT32_MAX,
+        maxArrayLength = int_1.UINT32_MAX,
+        maxMapLength = int_1.UINT32_MAX,
+        maxExtLength = int_1.UINT32_MAX,
+        keyDecoder = sharedCachedKeyDecoder
+      ) {
         this.extensionCodec = extensionCodec;
         this.context = context;
         this.maxStrLength = maxStrLength;
@@ -956,7 +1048,9 @@ var require_Decoder = __commonJS({
       }
       createExtraByteError(posToShow) {
         const { view, pos } = this;
-        return new RangeError(`Extra ${view.byteLength - pos} of ${view.byteLength} byte(s) found at buffer[${posToShow}]`);
+        return new RangeError(
+          `Extra ${view.byteLength - pos} of ${view.byteLength} byte(s) found at buffer[${posToShow}]`
+        );
       }
       /**
        * @throws {@link DecodeError}
@@ -1003,7 +1097,9 @@ var require_Decoder = __commonJS({
           return object;
         }
         const { headByte, pos, totalPos } = this;
-        throw new RangeError(`Insufficient data in parsing ${(0, prettyByte_1.prettyByte)(headByte)} at ${totalPos} (${pos} in the current buffer)`);
+        throw new RangeError(
+          `Insufficient data in parsing ${(0, prettyByte_1.prettyByte)(headByte)} at ${totalPos} (${pos} in the current buffer)`
+        );
       }
       decodeArrayStream(stream) {
         return this.decodeMultiAsync(stream, true);
@@ -1040,92 +1136,16 @@ var require_Decoder = __commonJS({
         }
       }
       doDecodeSync() {
-        DECODE:
-          while (true) {
-            const headByte = this.readHeadByte();
-            let object;
-            if (headByte >= 224) {
-              object = headByte - 256;
-            } else if (headByte < 192) {
-              if (headByte < 128) {
-                object = headByte;
-              } else if (headByte < 144) {
-                const size = headByte - 128;
-                if (size !== 0) {
-                  this.pushMapState(size);
-                  this.complete();
-                  continue DECODE;
-                } else {
-                  object = {};
-                }
-              } else if (headByte < 160) {
-                const size = headByte - 144;
-                if (size !== 0) {
-                  this.pushArrayState(size);
-                  this.complete();
-                  continue DECODE;
-                } else {
-                  object = [];
-                }
-              } else {
-                const byteLength = headByte - 160;
-                object = this.decodeUtf8String(byteLength, 0);
-              }
-            } else if (headByte === 192) {
-              object = null;
-            } else if (headByte === 194) {
-              object = false;
-            } else if (headByte === 195) {
-              object = true;
-            } else if (headByte === 202) {
-              object = this.readF32();
-            } else if (headByte === 203) {
-              object = this.readF64();
-            } else if (headByte === 204) {
-              object = this.readU8();
-            } else if (headByte === 205) {
-              object = this.readU16();
-            } else if (headByte === 206) {
-              object = this.readU32();
-            } else if (headByte === 207) {
-              object = this.readU64();
-            } else if (headByte === 208) {
-              object = this.readI8();
-            } else if (headByte === 209) {
-              object = this.readI16();
-            } else if (headByte === 210) {
-              object = this.readI32();
-            } else if (headByte === 211) {
-              object = this.readI64();
-            } else if (headByte === 217) {
-              const byteLength = this.lookU8();
-              object = this.decodeUtf8String(byteLength, 1);
-            } else if (headByte === 218) {
-              const byteLength = this.lookU16();
-              object = this.decodeUtf8String(byteLength, 2);
-            } else if (headByte === 219) {
-              const byteLength = this.lookU32();
-              object = this.decodeUtf8String(byteLength, 4);
-            } else if (headByte === 220) {
-              const size = this.readU16();
-              if (size !== 0) {
-                this.pushArrayState(size);
-                this.complete();
-                continue DECODE;
-              } else {
-                object = [];
-              }
-            } else if (headByte === 221) {
-              const size = this.readU32();
-              if (size !== 0) {
-                this.pushArrayState(size);
-                this.complete();
-                continue DECODE;
-              } else {
-                object = [];
-              }
-            } else if (headByte === 222) {
-              const size = this.readU16();
+        DECODE: while (true) {
+          const headByte = this.readHeadByte();
+          let object;
+          if (headByte >= 224) {
+            object = headByte - 256;
+          } else if (headByte < 192) {
+            if (headByte < 128) {
+              object = headByte;
+            } else if (headByte < 144) {
+              const size = headByte - 128;
               if (size !== 0) {
                 this.pushMapState(size);
                 this.complete();
@@ -1133,84 +1153,163 @@ var require_Decoder = __commonJS({
               } else {
                 object = {};
               }
-            } else if (headByte === 223) {
-              const size = this.readU32();
+            } else if (headByte < 160) {
+              const size = headByte - 144;
               if (size !== 0) {
-                this.pushMapState(size);
+                this.pushArrayState(size);
                 this.complete();
                 continue DECODE;
               } else {
-                object = {};
+                object = [];
               }
-            } else if (headByte === 196) {
-              const size = this.lookU8();
-              object = this.decodeBinary(size, 1);
-            } else if (headByte === 197) {
-              const size = this.lookU16();
-              object = this.decodeBinary(size, 2);
-            } else if (headByte === 198) {
-              const size = this.lookU32();
-              object = this.decodeBinary(size, 4);
-            } else if (headByte === 212) {
-              object = this.decodeExtension(1, 0);
-            } else if (headByte === 213) {
-              object = this.decodeExtension(2, 0);
-            } else if (headByte === 214) {
-              object = this.decodeExtension(4, 0);
-            } else if (headByte === 215) {
-              object = this.decodeExtension(8, 0);
-            } else if (headByte === 216) {
-              object = this.decodeExtension(16, 0);
-            } else if (headByte === 199) {
-              const size = this.lookU8();
-              object = this.decodeExtension(size, 1);
-            } else if (headByte === 200) {
-              const size = this.lookU16();
-              object = this.decodeExtension(size, 2);
-            } else if (headByte === 201) {
-              const size = this.lookU32();
-              object = this.decodeExtension(size, 4);
             } else {
-              throw new DecodeError_1.DecodeError(`Unrecognized type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`);
+              const byteLength = headByte - 160;
+              object = this.decodeUtf8String(byteLength, 0);
             }
-            this.complete();
-            const stack = this.stack;
-            while (stack.length > 0) {
-              const state = stack[stack.length - 1];
-              if (state.type === 0) {
-                state.array[state.position] = object;
-                state.position++;
-                if (state.position === state.size) {
-                  stack.pop();
-                  object = state.array;
-                } else {
-                  continue DECODE;
-                }
-              } else if (state.type === 1) {
-                if (!isValidMapKeyType(object)) {
-                  throw new DecodeError_1.DecodeError("The type of key must be string or number but " + typeof object);
-                }
-                if (object === "__proto__") {
-                  throw new DecodeError_1.DecodeError("The key __proto__ is not allowed");
-                }
-                state.key = object;
-                state.type = 2;
-                continue DECODE;
+          } else if (headByte === 192) {
+            object = null;
+          } else if (headByte === 194) {
+            object = false;
+          } else if (headByte === 195) {
+            object = true;
+          } else if (headByte === 202) {
+            object = this.readF32();
+          } else if (headByte === 203) {
+            object = this.readF64();
+          } else if (headByte === 204) {
+            object = this.readU8();
+          } else if (headByte === 205) {
+            object = this.readU16();
+          } else if (headByte === 206) {
+            object = this.readU32();
+          } else if (headByte === 207) {
+            object = this.readU64();
+          } else if (headByte === 208) {
+            object = this.readI8();
+          } else if (headByte === 209) {
+            object = this.readI16();
+          } else if (headByte === 210) {
+            object = this.readI32();
+          } else if (headByte === 211) {
+            object = this.readI64();
+          } else if (headByte === 217) {
+            const byteLength = this.lookU8();
+            object = this.decodeUtf8String(byteLength, 1);
+          } else if (headByte === 218) {
+            const byteLength = this.lookU16();
+            object = this.decodeUtf8String(byteLength, 2);
+          } else if (headByte === 219) {
+            const byteLength = this.lookU32();
+            object = this.decodeUtf8String(byteLength, 4);
+          } else if (headByte === 220) {
+            const size = this.readU16();
+            if (size !== 0) {
+              this.pushArrayState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = [];
+            }
+          } else if (headByte === 221) {
+            const size = this.readU32();
+            if (size !== 0) {
+              this.pushArrayState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = [];
+            }
+          } else if (headByte === 222) {
+            const size = this.readU16();
+            if (size !== 0) {
+              this.pushMapState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = {};
+            }
+          } else if (headByte === 223) {
+            const size = this.readU32();
+            if (size !== 0) {
+              this.pushMapState(size);
+              this.complete();
+              continue DECODE;
+            } else {
+              object = {};
+            }
+          } else if (headByte === 196) {
+            const size = this.lookU8();
+            object = this.decodeBinary(size, 1);
+          } else if (headByte === 197) {
+            const size = this.lookU16();
+            object = this.decodeBinary(size, 2);
+          } else if (headByte === 198) {
+            const size = this.lookU32();
+            object = this.decodeBinary(size, 4);
+          } else if (headByte === 212) {
+            object = this.decodeExtension(1, 0);
+          } else if (headByte === 213) {
+            object = this.decodeExtension(2, 0);
+          } else if (headByte === 214) {
+            object = this.decodeExtension(4, 0);
+          } else if (headByte === 215) {
+            object = this.decodeExtension(8, 0);
+          } else if (headByte === 216) {
+            object = this.decodeExtension(16, 0);
+          } else if (headByte === 199) {
+            const size = this.lookU8();
+            object = this.decodeExtension(size, 1);
+          } else if (headByte === 200) {
+            const size = this.lookU16();
+            object = this.decodeExtension(size, 2);
+          } else if (headByte === 201) {
+            const size = this.lookU32();
+            object = this.decodeExtension(size, 4);
+          } else {
+            throw new DecodeError_1.DecodeError(
+              `Unrecognized type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`
+            );
+          }
+          this.complete();
+          const stack = this.stack;
+          while (stack.length > 0) {
+            const state = stack[stack.length - 1];
+            if (state.type === 0) {
+              state.array[state.position] = object;
+              state.position++;
+              if (state.position === state.size) {
+                stack.pop();
+                object = state.array;
               } else {
-                state.map[state.key] = object;
-                state.readCount++;
-                if (state.readCount === state.size) {
-                  stack.pop();
-                  object = state.map;
-                } else {
-                  state.key = null;
-                  state.type = 1;
-                  continue DECODE;
-                }
+                continue DECODE;
+              }
+            } else if (state.type === 1) {
+              if (!isValidMapKeyType(object)) {
+                throw new DecodeError_1.DecodeError(
+                  'The type of key must be string or number but ' + typeof object
+                );
+              }
+              if (object === '__proto__') {
+                throw new DecodeError_1.DecodeError('The key __proto__ is not allowed');
+              }
+              state.key = object;
+              state.type = 2;
+              continue DECODE;
+            } else {
+              state.map[state.key] = object;
+              state.readCount++;
+              if (state.readCount === state.size) {
+                stack.pop();
+                object = state.map;
+              } else {
+                state.key = null;
+                state.type = 1;
+                continue DECODE;
               }
             }
-            return object;
           }
+          return object;
+        }
       }
       readHeadByte() {
         if (this.headByte === HEAD_BYTE_REQUIRED) {
@@ -1232,14 +1331,18 @@ var require_Decoder = __commonJS({
             if (headByte < 160) {
               return headByte - 144;
             } else {
-              throw new DecodeError_1.DecodeError(`Unrecognized array type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`);
+              throw new DecodeError_1.DecodeError(
+                `Unrecognized array type byte: ${(0, prettyByte_1.prettyByte)(headByte)}`
+              );
             }
           }
         }
       }
       pushMapState(size) {
         if (size > this.maxMapLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: map length (${size}) > maxMapLengthLength (${this.maxMapLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: map length (${size}) > maxMapLengthLength (${this.maxMapLength})`
+          );
         }
         this.stack.push({
           type: 1,
@@ -1251,7 +1354,9 @@ var require_Decoder = __commonJS({
       }
       pushArrayState(size) {
         if (size > this.maxArrayLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: array length (${size}) > maxArrayLength (${this.maxArrayLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: array length (${size}) > maxArrayLength (${this.maxArrayLength})`
+          );
         }
         this.stack.push({
           type: 0,
@@ -1263,14 +1368,19 @@ var require_Decoder = __commonJS({
       decodeUtf8String(byteLength, headerOffset) {
         var _a;
         if (byteLength > this.maxStrLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: UTF-8 byte length (${byteLength}) > maxStrLength (${this.maxStrLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: UTF-8 byte length (${byteLength}) > maxStrLength (${this.maxStrLength})`
+          );
         }
         if (this.bytes.byteLength < this.pos + headerOffset + byteLength) {
           throw MORE_DATA;
         }
         const offset = this.pos + headerOffset;
         let object;
-        if (this.stateIsMapKey() && ((_a = this.keyDecoder) === null || _a === void 0 ? void 0 : _a.canBeCached(byteLength))) {
+        if (
+          this.stateIsMapKey() &&
+          ((_a = this.keyDecoder) === null || _a === void 0 ? void 0 : _a.canBeCached(byteLength))
+        ) {
           object = this.keyDecoder.decode(this.bytes, offset, byteLength);
         } else if (byteLength > utf8_1.TEXT_DECODER_THRESHOLD) {
           object = (0, utf8_1.utf8DecodeTD)(this.bytes, offset, byteLength);
@@ -1289,7 +1399,9 @@ var require_Decoder = __commonJS({
       }
       decodeBinary(byteLength, headOffset) {
         if (byteLength > this.maxBinLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: bin length (${byteLength}) > maxBinLength (${this.maxBinLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: bin length (${byteLength}) > maxBinLength (${this.maxBinLength})`
+          );
         }
         if (!this.hasRemaining(byteLength + headOffset)) {
           throw MORE_DATA;
@@ -1301,7 +1413,9 @@ var require_Decoder = __commonJS({
       }
       decodeExtension(size, headOffset) {
         if (size > this.maxExtLength) {
-          throw new DecodeError_1.DecodeError(`Max length exceeded: ext length (${size}) > maxExtLength (${this.maxExtLength})`);
+          throw new DecodeError_1.DecodeError(
+            `Max length exceeded: ext length (${size}) > maxExtLength (${this.maxExtLength})`
+          );
         }
         const extType = this.view.getInt8(this.pos + headOffset);
         const data = this.decodeBinary(
@@ -1377,19 +1491,35 @@ var require_Decoder = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/decode.js
 var require_decode = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/decode.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
+  'node_modules/@msgpack/msgpack/dist/decode.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
     exports.decodeMulti = exports.decode = exports.defaultDecodeOptions = void 0;
     var Decoder_1 = require_Decoder();
     exports.defaultDecodeOptions = {};
     function decode3(buffer, options = exports.defaultDecodeOptions) {
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decode(buffer);
     }
     exports.decode = decode3;
     function decodeMulti(buffer, options = exports.defaultDecodeOptions) {
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeMulti(buffer);
     }
     exports.decodeMulti = decodeMulti;
@@ -1398,17 +1528,20 @@ var require_decode = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/utils/stream.js
 var require_stream = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/utils/stream.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ensureAsyncIterable = exports.asyncIterableFromStream = exports.isAsyncIterable = void 0;
+  'node_modules/@msgpack/msgpack/dist/utils/stream.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.ensureAsyncIterable =
+      exports.asyncIterableFromStream =
+      exports.isAsyncIterable =
+        void 0;
     function isAsyncIterable(object) {
       return object[Symbol.asyncIterator] != null;
     }
     exports.isAsyncIterable = isAsyncIterable;
     function assertNonNull(value) {
       if (value == null) {
-        throw new Error("Assertion Failure: value must not be null nor undefined");
+        throw new Error('Assertion Failure: value must not be null nor undefined');
       }
     }
     async function* asyncIterableFromStream(stream) {
@@ -1440,28 +1573,56 @@ var require_stream = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/decodeAsync.js
 var require_decodeAsync = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/decodeAsync.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.decodeStream = exports.decodeMultiStream = exports.decodeArrayStream = exports.decodeAsync = void 0;
+  'node_modules/@msgpack/msgpack/dist/decodeAsync.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.decodeStream =
+      exports.decodeMultiStream =
+      exports.decodeArrayStream =
+      exports.decodeAsync =
+        void 0;
     var Decoder_1 = require_Decoder();
     var stream_1 = require_stream();
     var decode_1 = require_decode();
     async function decodeAsync(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeAsync(stream);
     }
     exports.decodeAsync = decodeAsync;
     function decodeArrayStream(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeArrayStream(stream);
     }
     exports.decodeArrayStream = decodeArrayStream;
     function decodeMultiStream(streamLike, options = decode_1.defaultDecodeOptions) {
       const stream = (0, stream_1.ensureAsyncIterable)(streamLike);
-      const decoder2 = new Decoder_1.Decoder(options.extensionCodec, options.context, options.maxStrLength, options.maxBinLength, options.maxArrayLength, options.maxMapLength, options.maxExtLength);
+      const decoder2 = new Decoder_1.Decoder(
+        options.extensionCodec,
+        options.context,
+        options.maxStrLength,
+        options.maxBinLength,
+        options.maxArrayLength,
+        options.maxMapLength,
+        options.maxExtLength
+      );
       return decoder2.decodeStream(stream);
     }
     exports.decodeMultiStream = decodeMultiStream;
@@ -1474,129 +1635,201 @@ var require_decodeAsync = __commonJS({
 
 // node_modules/@msgpack/msgpack/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/@msgpack/msgpack/dist/index.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.decodeTimestampExtension = exports.encodeTimestampExtension = exports.decodeTimestampToTimeSpec = exports.encodeTimeSpecToTimestamp = exports.encodeDateToTimeSpec = exports.EXT_TIMESTAMP = exports.ExtData = exports.ExtensionCodec = exports.Encoder = exports.DataViewIndexOutOfBoundsError = exports.DecodeError = exports.Decoder = exports.decodeStream = exports.decodeMultiStream = exports.decodeArrayStream = exports.decodeAsync = exports.decodeMulti = exports.decode = exports.encode = void 0;
+  'node_modules/@msgpack/msgpack/dist/index.js'(exports) {
+    'use strict';
+    Object.defineProperty(exports, '__esModule', { value: true });
+    exports.decodeTimestampExtension =
+      exports.encodeTimestampExtension =
+      exports.decodeTimestampToTimeSpec =
+      exports.encodeTimeSpecToTimestamp =
+      exports.encodeDateToTimeSpec =
+      exports.EXT_TIMESTAMP =
+      exports.ExtData =
+      exports.ExtensionCodec =
+      exports.Encoder =
+      exports.DataViewIndexOutOfBoundsError =
+      exports.DecodeError =
+      exports.Decoder =
+      exports.decodeStream =
+      exports.decodeMultiStream =
+      exports.decodeArrayStream =
+      exports.decodeAsync =
+      exports.decodeMulti =
+      exports.decode =
+      exports.encode =
+        void 0;
     var encode_1 = require_encode();
-    Object.defineProperty(exports, "encode", { enumerable: true, get: function() {
-      return encode_1.encode;
-    } });
+    Object.defineProperty(exports, 'encode', {
+      enumerable: true,
+      get: function () {
+        return encode_1.encode;
+      }
+    });
     var decode_1 = require_decode();
-    Object.defineProperty(exports, "decode", { enumerable: true, get: function() {
-      return decode_1.decode;
-    } });
-    Object.defineProperty(exports, "decodeMulti", { enumerable: true, get: function() {
-      return decode_1.decodeMulti;
-    } });
+    Object.defineProperty(exports, 'decode', {
+      enumerable: true,
+      get: function () {
+        return decode_1.decode;
+      }
+    });
+    Object.defineProperty(exports, 'decodeMulti', {
+      enumerable: true,
+      get: function () {
+        return decode_1.decodeMulti;
+      }
+    });
     var decodeAsync_1 = require_decodeAsync();
-    Object.defineProperty(exports, "decodeAsync", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeAsync;
-    } });
-    Object.defineProperty(exports, "decodeArrayStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeArrayStream;
-    } });
-    Object.defineProperty(exports, "decodeMultiStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeMultiStream;
-    } });
-    Object.defineProperty(exports, "decodeStream", { enumerable: true, get: function() {
-      return decodeAsync_1.decodeStream;
-    } });
+    Object.defineProperty(exports, 'decodeAsync', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeAsync;
+      }
+    });
+    Object.defineProperty(exports, 'decodeArrayStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeArrayStream;
+      }
+    });
+    Object.defineProperty(exports, 'decodeMultiStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeMultiStream;
+      }
+    });
+    Object.defineProperty(exports, 'decodeStream', {
+      enumerable: true,
+      get: function () {
+        return decodeAsync_1.decodeStream;
+      }
+    });
     var Decoder_1 = require_Decoder();
-    Object.defineProperty(exports, "Decoder", { enumerable: true, get: function() {
-      return Decoder_1.Decoder;
-    } });
-    Object.defineProperty(exports, "DataViewIndexOutOfBoundsError", { enumerable: true, get: function() {
-      return Decoder_1.DataViewIndexOutOfBoundsError;
-    } });
+    Object.defineProperty(exports, 'Decoder', {
+      enumerable: true,
+      get: function () {
+        return Decoder_1.Decoder;
+      }
+    });
+    Object.defineProperty(exports, 'DataViewIndexOutOfBoundsError', {
+      enumerable: true,
+      get: function () {
+        return Decoder_1.DataViewIndexOutOfBoundsError;
+      }
+    });
     var DecodeError_1 = require_DecodeError();
-    Object.defineProperty(exports, "DecodeError", { enumerable: true, get: function() {
-      return DecodeError_1.DecodeError;
-    } });
+    Object.defineProperty(exports, 'DecodeError', {
+      enumerable: true,
+      get: function () {
+        return DecodeError_1.DecodeError;
+      }
+    });
     var Encoder_1 = require_Encoder();
-    Object.defineProperty(exports, "Encoder", { enumerable: true, get: function() {
-      return Encoder_1.Encoder;
-    } });
+    Object.defineProperty(exports, 'Encoder', {
+      enumerable: true,
+      get: function () {
+        return Encoder_1.Encoder;
+      }
+    });
     var ExtensionCodec_1 = require_ExtensionCodec();
-    Object.defineProperty(exports, "ExtensionCodec", { enumerable: true, get: function() {
-      return ExtensionCodec_1.ExtensionCodec;
-    } });
+    Object.defineProperty(exports, 'ExtensionCodec', {
+      enumerable: true,
+      get: function () {
+        return ExtensionCodec_1.ExtensionCodec;
+      }
+    });
     var ExtData_1 = require_ExtData();
-    Object.defineProperty(exports, "ExtData", { enumerable: true, get: function() {
-      return ExtData_1.ExtData;
-    } });
+    Object.defineProperty(exports, 'ExtData', {
+      enumerable: true,
+      get: function () {
+        return ExtData_1.ExtData;
+      }
+    });
     var timestamp_1 = require_timestamp();
-    Object.defineProperty(exports, "EXT_TIMESTAMP", { enumerable: true, get: function() {
-      return timestamp_1.EXT_TIMESTAMP;
-    } });
-    Object.defineProperty(exports, "encodeDateToTimeSpec", { enumerable: true, get: function() {
-      return timestamp_1.encodeDateToTimeSpec;
-    } });
-    Object.defineProperty(exports, "encodeTimeSpecToTimestamp", { enumerable: true, get: function() {
-      return timestamp_1.encodeTimeSpecToTimestamp;
-    } });
-    Object.defineProperty(exports, "decodeTimestampToTimeSpec", { enumerable: true, get: function() {
-      return timestamp_1.decodeTimestampToTimeSpec;
-    } });
-    Object.defineProperty(exports, "encodeTimestampExtension", { enumerable: true, get: function() {
-      return timestamp_1.encodeTimestampExtension;
-    } });
-    Object.defineProperty(exports, "decodeTimestampExtension", { enumerable: true, get: function() {
-      return timestamp_1.decodeTimestampExtension;
-    } });
+    Object.defineProperty(exports, 'EXT_TIMESTAMP', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.EXT_TIMESTAMP;
+      }
+    });
+    Object.defineProperty(exports, 'encodeDateToTimeSpec', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeDateToTimeSpec;
+      }
+    });
+    Object.defineProperty(exports, 'encodeTimeSpecToTimestamp', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeTimeSpecToTimestamp;
+      }
+    });
+    Object.defineProperty(exports, 'decodeTimestampToTimeSpec', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.decodeTimestampToTimeSpec;
+      }
+    });
+    Object.defineProperty(exports, 'encodeTimestampExtension', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.encodeTimestampExtension;
+      }
+    });
+    Object.defineProperty(exports, 'decodeTimestampExtension', {
+      enumerable: true,
+      get: function () {
+        return timestamp_1.decodeTimestampExtension;
+      }
+    });
   }
 });
 
 // node_modules/xmlhttprequest-ssl/lib/XMLHttpRequest.js
 var require_XMLHttpRequest = __commonJS({
-  "node_modules/xmlhttprequest-ssl/lib/XMLHttpRequest.js"(exports, module2) {
-    var fs = require("fs");
-    var Url = require("url");
-    var spawn = require("child_process").spawn;
+  'node_modules/xmlhttprequest-ssl/lib/XMLHttpRequest.js'(exports, module2) {
+    var fs = require('fs');
+    var Url = require('url');
+    var spawn = require('child_process').spawn;
     module2.exports = XMLHttpRequest2;
     XMLHttpRequest2.XMLHttpRequest = XMLHttpRequest2;
     function XMLHttpRequest2(opts) {
-      "use strict";
+      'use strict';
       opts = opts || {};
       var self = this;
-      var http = require("http");
-      var https = require("https");
+      var http = require('http');
+      var https = require('https');
       var request;
       var response;
       var settings = {};
       var disableHeaderCheck = false;
       var defaultHeaders = {
-        "User-Agent": "node-XMLHttpRequest",
-        "Accept": "*/*"
+        'User-Agent': 'node-XMLHttpRequest',
+        Accept: '*/*'
       };
       var headers = Object.assign({}, defaultHeaders);
       var forbiddenRequestHeaders = [
-        "accept-charset",
-        "accept-encoding",
-        "access-control-request-headers",
-        "access-control-request-method",
-        "connection",
-        "content-length",
-        "content-transfer-encoding",
-        "cookie",
-        "cookie2",
-        "date",
-        "expect",
-        "host",
-        "keep-alive",
-        "origin",
-        "referer",
-        "te",
-        "trailer",
-        "transfer-encoding",
-        "upgrade",
-        "via"
+        'accept-charset',
+        'accept-encoding',
+        'access-control-request-headers',
+        'access-control-request-method',
+        'connection',
+        'content-length',
+        'content-transfer-encoding',
+        'cookie',
+        'cookie2',
+        'date',
+        'expect',
+        'host',
+        'keep-alive',
+        'origin',
+        'referer',
+        'te',
+        'trailer',
+        'transfer-encoding',
+        'upgrade',
+        'via'
       ];
-      var forbiddenRequestMethods = [
-        "TRACE",
-        "TRACK",
-        "CONNECT"
-      ];
+      var forbiddenRequestMethods = ['TRACE', 'TRACK', 'CONNECT'];
       var sendFlag = false;
       var errorFlag = false;
       var abortedFlag = false;
@@ -1608,111 +1841,122 @@ var require_XMLHttpRequest = __commonJS({
       this.DONE = 4;
       this.readyState = this.UNSENT;
       this.onreadystatechange = null;
-      this.responseText = "";
-      this.responseXML = "";
+      this.responseText = '';
+      this.responseXML = '';
       this.response = Buffer.alloc(0);
       this.status = null;
       this.statusText = null;
-      var isAllowedHttpHeader = function(header) {
-        return disableHeaderCheck || header && forbiddenRequestHeaders.indexOf(header.toLowerCase()) === -1;
+      var isAllowedHttpHeader = function (header) {
+        return (
+          disableHeaderCheck ||
+          (header && forbiddenRequestHeaders.indexOf(header.toLowerCase()) === -1)
+        );
       };
-      var isAllowedHttpMethod = function(method) {
+      var isAllowedHttpMethod = function (method) {
         return method && forbiddenRequestMethods.indexOf(method) === -1;
       };
-      this.open = function(method, url, async, user, password) {
+      this.open = function (method, url, async, user, password) {
         this.abort();
         errorFlag = false;
         abortedFlag = false;
         if (!isAllowedHttpMethod(method)) {
-          throw new Error("SecurityError: Request method not allowed");
+          throw new Error('SecurityError: Request method not allowed');
         }
         settings = {
-          "method": method,
-          "url": url.toString(),
-          "async": typeof async !== "boolean" ? true : async,
-          "user": user || null,
-          "password": password || null
+          method: method,
+          url: url.toString(),
+          async: typeof async !== 'boolean' ? true : async,
+          user: user || null,
+          password: password || null
         };
         setState(this.OPENED);
       };
-      this.setDisableHeaderCheck = function(state) {
+      this.setDisableHeaderCheck = function (state) {
         disableHeaderCheck = state;
       };
-      this.setRequestHeader = function(header, value) {
+      this.setRequestHeader = function (header, value) {
         if (this.readyState != this.OPENED) {
-          throw new Error("INVALID_STATE_ERR: setRequestHeader can only be called when state is OPEN");
+          throw new Error(
+            'INVALID_STATE_ERR: setRequestHeader can only be called when state is OPEN'
+          );
         }
         if (!isAllowedHttpHeader(header)) {
           console.warn('Refused to set unsafe header "' + header + '"');
           return false;
         }
         if (sendFlag) {
-          throw new Error("INVALID_STATE_ERR: send flag is true");
+          throw new Error('INVALID_STATE_ERR: send flag is true');
         }
         headers[header] = value;
         return true;
       };
-      this.getResponseHeader = function(header) {
-        if (typeof header === "string" && this.readyState > this.OPENED && response.headers[header.toLowerCase()] && !errorFlag) {
+      this.getResponseHeader = function (header) {
+        if (
+          typeof header === 'string' &&
+          this.readyState > this.OPENED &&
+          response.headers[header.toLowerCase()] &&
+          !errorFlag
+        ) {
           return response.headers[header.toLowerCase()];
         }
         return null;
       };
-      this.getAllResponseHeaders = function() {
+      this.getAllResponseHeaders = function () {
         if (this.readyState < this.HEADERS_RECEIVED || errorFlag) {
-          return "";
+          return '';
         }
-        var result = "";
+        var result = '';
         for (var i in response.headers) {
-          if (i !== "set-cookie" && i !== "set-cookie2") {
-            result += i + ": " + response.headers[i] + "\r\n";
+          if (i !== 'set-cookie' && i !== 'set-cookie2') {
+            result += i + ': ' + response.headers[i] + '\r\n';
           }
         }
         return result.substr(0, result.length - 2);
       };
-      this.getRequestHeader = function(name) {
-        if (typeof name === "string" && headers[name]) {
+      this.getRequestHeader = function (name) {
+        if (typeof name === 'string' && headers[name]) {
           return headers[name];
         }
-        return "";
+        return '';
       };
-      this.send = function(data) {
+      this.send = function (data) {
         if (this.readyState != this.OPENED) {
-          throw new Error("INVALID_STATE_ERR: connection must be opened before send() is called");
+          throw new Error('INVALID_STATE_ERR: connection must be opened before send() is called');
         }
         if (sendFlag) {
-          throw new Error("INVALID_STATE_ERR: send has already been called");
+          throw new Error('INVALID_STATE_ERR: send has already been called');
         }
-        var ssl = false, local = false;
+        var ssl = false,
+          local = false;
         var url = Url.parse(settings.url);
         var host;
         switch (url.protocol) {
-          case "https:":
+          case 'https:':
             ssl = true;
-          case "http:":
+          case 'http:':
             host = url.hostname;
             break;
-          case "file:":
+          case 'file:':
             local = true;
             break;
           case void 0:
-          case "":
-            host = "localhost";
+          case '':
+            host = 'localhost';
             break;
           default:
-            throw new Error("Protocol not supported.");
+            throw new Error('Protocol not supported.');
         }
         if (local) {
-          if (settings.method !== "GET") {
-            throw new Error("XMLHttpRequest: Only GET method is supported");
+          if (settings.method !== 'GET') {
+            throw new Error('XMLHttpRequest: Only GET method is supported');
           }
           if (settings.async) {
-            fs.readFile(unescape(url.pathname), function(error, data2) {
+            fs.readFile(unescape(url.pathname), function (error, data2) {
               if (error) {
                 self.handleError(error, error.errno || -1);
               } else {
                 self.status = 200;
-                self.responseText = data2.toString("utf8");
+                self.responseText = data2.toString('utf8');
                 self.response = data2;
                 setState(self.DONE);
               }
@@ -1720,7 +1964,7 @@ var require_XMLHttpRequest = __commonJS({
           } else {
             try {
               this.response = fs.readFileSync(unescape(url.pathname));
-              this.responseText = this.response.toString("utf8");
+              this.responseText = this.response.toString('utf8');
               this.status = 200;
               setState(self.DONE);
             } catch (e) {
@@ -1730,27 +1974,27 @@ var require_XMLHttpRequest = __commonJS({
           return;
         }
         var port = url.port || (ssl ? 443 : 80);
-        var uri = url.pathname + (url.search ? url.search : "");
-        headers["Host"] = host;
-        if (!(ssl && port === 443 || port === 80)) {
-          headers["Host"] += ":" + url.port;
+        var uri = url.pathname + (url.search ? url.search : '');
+        headers['Host'] = host;
+        if (!((ssl && port === 443) || port === 80)) {
+          headers['Host'] += ':' + url.port;
         }
         if (settings.user) {
-          if (typeof settings.password == "undefined") {
-            settings.password = "";
+          if (typeof settings.password == 'undefined') {
+            settings.password = '';
           }
-          var authBuf = new Buffer(settings.user + ":" + settings.password);
-          headers["Authorization"] = "Basic " + authBuf.toString("base64");
+          var authBuf = new Buffer(settings.user + ':' + settings.password);
+          headers['Authorization'] = 'Basic ' + authBuf.toString('base64');
         }
-        if (settings.method === "GET" || settings.method === "HEAD") {
+        if (settings.method === 'GET' || settings.method === 'HEAD') {
           data = null;
         } else if (data) {
-          headers["Content-Length"] = Buffer.isBuffer(data) ? data.length : Buffer.byteLength(data);
-          if (!headers["Content-Type"]) {
-            headers["Content-Type"] = "text/plain;charset=UTF-8";
+          headers['Content-Length'] = Buffer.isBuffer(data) ? data.length : Buffer.byteLength(data);
+          if (!headers['Content-Type']) {
+            headers['Content-Type'] = 'text/plain;charset=UTF-8';
           }
-        } else if (settings.method === "POST") {
-          headers["Content-Length"] = 0;
+        } else if (settings.method === 'POST') {
+          headers['Content-Length'] = 0;
         }
         var agent = opts.agent || false;
         var options = {
@@ -1774,10 +2018,14 @@ var require_XMLHttpRequest = __commonJS({
         if (settings.async) {
           var doRequest = ssl ? https.request : http.request;
           sendFlag = true;
-          self.dispatchEvent("readystatechange");
-          var responseHandler = function(resp2) {
+          self.dispatchEvent('readystatechange');
+          var responseHandler = function (resp2) {
             response = resp2;
-            if (response.statusCode === 302 || response.statusCode === 303 || response.statusCode === 307) {
+            if (
+              response.statusCode === 302 ||
+              response.statusCode === 303 ||
+              response.statusCode === 307
+            ) {
               settings.url = response.headers.location;
               var url2 = Url.parse(settings.url);
               host = url2.hostname;
@@ -1785,7 +2033,7 @@ var require_XMLHttpRequest = __commonJS({
                 hostname: url2.hostname,
                 port: url2.port,
                 path: url2.path,
-                method: response.statusCode === 303 ? "GET" : settings.method,
+                method: response.statusCode === 303 ? 'GET' : settings.method,
                 headers
               };
               if (ssl) {
@@ -1797,13 +2045,13 @@ var require_XMLHttpRequest = __commonJS({
                 newOptions.ciphers = opts.ciphers;
                 newOptions.rejectUnauthorized = opts.rejectUnauthorized === false ? false : true;
               }
-              request = doRequest(newOptions, responseHandler).on("error", errorHandler);
+              request = doRequest(newOptions, responseHandler).on('error', errorHandler);
               request.end();
               return;
             }
             setState(self.HEADERS_RECEIVED);
             self.status = response.statusCode;
-            response.on("data", function(chunk) {
+            response.on('data', function (chunk) {
               if (chunk) {
                 var data2 = Buffer.from(chunk);
                 self.response = Buffer.concat([self.response, data2]);
@@ -1812,23 +2060,23 @@ var require_XMLHttpRequest = __commonJS({
                 setState(self.LOADING);
               }
             });
-            response.on("end", function() {
+            response.on('end', function () {
               if (sendFlag) {
                 sendFlag = false;
                 setState(self.DONE);
-                self.responseText = self.response.toString("utf8");
+                self.responseText = self.response.toString('utf8');
               }
             });
-            response.on("error", function(error) {
+            response.on('error', function (error) {
               self.handleError(error);
             });
           };
-          var errorHandler = function(error) {
+          var errorHandler = function (error) {
             self.handleError(error);
           };
-          request = doRequest(options, responseHandler).on("error", errorHandler);
+          request = doRequest(options, responseHandler).on('error', errorHandler);
           if (opts.autoUnref) {
-            request.on("socket", (socket) => {
+            request.on('socket', (socket) => {
               socket.unref();
             });
           }
@@ -1836,108 +2084,131 @@ var require_XMLHttpRequest = __commonJS({
             request.write(data);
           }
           request.end();
-          self.dispatchEvent("loadstart");
+          self.dispatchEvent('loadstart');
         } else {
-          var contentFile = ".node-xmlhttprequest-content-" + process.pid;
-          var syncFile = ".node-xmlhttprequest-sync-" + process.pid;
-          fs.writeFileSync(syncFile, "", "utf8");
-          var execString = "var http = require('http'), https = require('https'), fs = require('fs');var doRequest = http" + (ssl ? "s" : "") + ".request;var options = " + JSON.stringify(options) + ";var responseText = '';var responseData = Buffer.alloc(0);var req = doRequest(options, function(response) {response.on('data', function(chunk) {  var data = Buffer.from(chunk);  responseText += data.toString('utf8');  responseData = Buffer.concat([responseData, data]);});response.on('end', function() {fs.writeFileSync('" + contentFile + "', JSON.stringify({err: null, data: {statusCode: response.statusCode, headers: response.headers, text: responseText, data: responseData.toString('base64')}}), 'utf8');fs.unlinkSync('" + syncFile + "');});response.on('error', function(error) {fs.writeFileSync('" + contentFile + "', 'NODE-XMLHTTPREQUEST-ERROR:' + JSON.stringify(error), 'utf8');fs.unlinkSync('" + syncFile + "');});}).on('error', function(error) {fs.writeFileSync('" + contentFile + "', 'NODE-XMLHTTPREQUEST-ERROR:' + JSON.stringify(error), 'utf8');fs.unlinkSync('" + syncFile + "');});" + (data ? "req.write('" + JSON.stringify(data).slice(1, -1).replace(/'/g, "\\'") + "');" : "") + "req.end();";
-          var syncProc = spawn(process.argv[0], ["-e", execString]);
+          var contentFile = '.node-xmlhttprequest-content-' + process.pid;
+          var syncFile = '.node-xmlhttprequest-sync-' + process.pid;
+          fs.writeFileSync(syncFile, '', 'utf8');
+          var execString =
+            "var http = require('http'), https = require('https'), fs = require('fs');var doRequest = http" +
+            (ssl ? 's' : '') +
+            '.request;var options = ' +
+            JSON.stringify(options) +
+            ";var responseText = '';var responseData = Buffer.alloc(0);var req = doRequest(options, function(response) {response.on('data', function(chunk) {  var data = Buffer.from(chunk);  responseText += data.toString('utf8');  responseData = Buffer.concat([responseData, data]);});response.on('end', function() {fs.writeFileSync('" +
+            contentFile +
+            "', JSON.stringify({err: null, data: {statusCode: response.statusCode, headers: response.headers, text: responseText, data: responseData.toString('base64')}}), 'utf8');fs.unlinkSync('" +
+            syncFile +
+            "');});response.on('error', function(error) {fs.writeFileSync('" +
+            contentFile +
+            "', 'NODE-XMLHTTPREQUEST-ERROR:' + JSON.stringify(error), 'utf8');fs.unlinkSync('" +
+            syncFile +
+            "');});}).on('error', function(error) {fs.writeFileSync('" +
+            contentFile +
+            "', 'NODE-XMLHTTPREQUEST-ERROR:' + JSON.stringify(error), 'utf8');fs.unlinkSync('" +
+            syncFile +
+            "');});" +
+            (data
+              ? "req.write('" + JSON.stringify(data).slice(1, -1).replace(/'/g, "\\'") + "');"
+              : '') +
+            'req.end();';
+          var syncProc = spawn(process.argv[0], ['-e', execString]);
           var statusText;
-          while (fs.existsSync(syncFile)) {
-          }
-          self.responseText = fs.readFileSync(contentFile, "utf8");
+          while (fs.existsSync(syncFile)) {}
+          self.responseText = fs.readFileSync(contentFile, 'utf8');
           syncProc.stdin.end();
           fs.unlinkSync(contentFile);
           if (self.responseText.match(/^NODE-XMLHTTPREQUEST-ERROR:/)) {
-            var errorObj = JSON.parse(self.responseText.replace(/^NODE-XMLHTTPREQUEST-ERROR:/, ""));
+            var errorObj = JSON.parse(self.responseText.replace(/^NODE-XMLHTTPREQUEST-ERROR:/, ''));
             self.handleError(errorObj, 503);
           } else {
-            self.status = self.responseText.replace(/^NODE-XMLHTTPREQUEST-STATUS:([0-9]*),.*/, "$1");
-            var resp = JSON.parse(self.responseText.replace(/^NODE-XMLHTTPREQUEST-STATUS:[0-9]*,(.*)/, "$1"));
+            self.status = self.responseText.replace(
+              /^NODE-XMLHTTPREQUEST-STATUS:([0-9]*),.*/,
+              '$1'
+            );
+            var resp = JSON.parse(
+              self.responseText.replace(/^NODE-XMLHTTPREQUEST-STATUS:[0-9]*,(.*)/, '$1')
+            );
             response = {
               statusCode: self.status,
               headers: resp.data.headers
             };
             self.responseText = resp.data.text;
-            self.response = Buffer.from(resp.data.data, "base64");
+            self.response = Buffer.from(resp.data.data, 'base64');
             setState(self.DONE, true);
           }
         }
       };
-      this.handleError = function(error, status) {
+      this.handleError = function (error, status) {
         this.status = status || 0;
         this.statusText = error;
         this.responseText = error.stack;
         errorFlag = true;
         setState(this.DONE);
       };
-      this.abort = function() {
+      this.abort = function () {
         if (request) {
           request.abort();
           request = null;
         }
         headers = Object.assign({}, defaultHeaders);
-        this.responseText = "";
-        this.responseXML = "";
+        this.responseText = '';
+        this.responseXML = '';
         this.response = Buffer.alloc(0);
         errorFlag = abortedFlag = true;
-        if (this.readyState !== this.UNSENT && (this.readyState !== this.OPENED || sendFlag) && this.readyState !== this.DONE) {
+        if (
+          this.readyState !== this.UNSENT &&
+          (this.readyState !== this.OPENED || sendFlag) &&
+          this.readyState !== this.DONE
+        ) {
           sendFlag = false;
           setState(this.DONE);
         }
         this.readyState = this.UNSENT;
       };
-      this.addEventListener = function(event, callback) {
+      this.addEventListener = function (event, callback) {
         if (!(event in listeners)) {
           listeners[event] = [];
         }
         listeners[event].push(callback);
       };
-      this.removeEventListener = function(event, callback) {
+      this.removeEventListener = function (event, callback) {
         if (event in listeners) {
-          listeners[event] = listeners[event].filter(function(ev) {
+          listeners[event] = listeners[event].filter(function (ev) {
             return ev !== callback;
           });
         }
       };
-      this.dispatchEvent = function(event) {
-        if (typeof self["on" + event] === "function") {
+      this.dispatchEvent = function (event) {
+        if (typeof self['on' + event] === 'function') {
           if (this.readyState === this.DONE && settings.async)
-            setTimeout(function() {
-              self["on" + event]();
+            setTimeout(function () {
+              self['on' + event]();
             }, 0);
-          else
-            self["on" + event]();
+          else self['on' + event]();
         }
         if (event in listeners) {
           for (let i = 0, len = listeners[event].length; i < len; i++) {
             if (this.readyState === this.DONE)
-              setTimeout(function() {
+              setTimeout(function () {
                 listeners[event][i].call(self);
               }, 0);
-            else
-              listeners[event][i].call(self);
+            else listeners[event][i].call(self);
           }
         }
       };
-      var setState = function(state) {
-        if (self.readyState === state || self.readyState === self.UNSENT && abortedFlag)
-          return;
+      var setState = function (state) {
+        if (self.readyState === state || (self.readyState === self.UNSENT && abortedFlag)) return;
         self.readyState = state;
         if (settings.async || self.readyState < self.OPENED || self.readyState === self.DONE) {
-          self.dispatchEvent("readystatechange");
+          self.dispatchEvent('readystatechange');
         }
         if (self.readyState === self.DONE) {
           let fire;
-          if (abortedFlag)
-            fire = "abort";
-          else if (errorFlag)
-            fire = "error";
-          else
-            fire = "load";
+          if (abortedFlag) fire = 'abort';
+          else if (errorFlag) fire = 'error';
+          else fire = 'load';
           self.dispatchEvent(fire);
-          self.dispatchEvent("loadend");
+          self.dispatchEvent('loadend');
         }
       };
     }
@@ -1952,22 +2223,21 @@ var WebRError = class extends Error {
     Object.setPrototypeOf(this, new.target.prototype);
   }
 };
-var WebRWorkerError = class extends WebRError {
-};
-var WebRChannelError = class extends WebRError {
-};
+var WebRWorkerError = class extends WebRError {};
+var WebRChannelError = class extends WebRError {};
 
 // webR/compat.ts
-var IN_NODE = typeof process !== "undefined" && process.release && process.release.name === "node";
+var IN_NODE = typeof process !== 'undefined' && process.release && process.release.name === 'node';
 var loadScript;
 if (globalThis.document) {
-  loadScript = (url) => new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.onload = () => resolve();
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
+  loadScript = (url) =>
+    new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = url;
+      script.onload = () => resolve();
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
 } else if (globalThis.importScripts) {
   loadScript = async (url) => {
     try {
@@ -1982,11 +2252,11 @@ if (globalThis.document) {
   };
 } else if (IN_NODE) {
   loadScript = async (url) => {
-    const nodePathMod = (await Promise.resolve().then(() => __toESM(require("path")))).default;
+    const nodePathMod = (await Promise.resolve().then(() => __toESM(require('path')))).default;
     await Promise.resolve().then(() => __toESM(require(nodePathMod.resolve(url))));
   };
 } else {
-  throw new WebRError("Cannot determine runtime environment");
+  throw new WebRError('Cannot determine runtime environment');
 }
 
 // webR/emscripten.ts
@@ -2026,10 +2296,10 @@ var RTypeMap = {
   function: 99
 };
 function isWebRDataJs(value) {
-  return !!value && typeof value === "object" && Object.keys(RTypeMap).includes(value.type);
+  return !!value && typeof value === 'object' && Object.keys(RTypeMap).includes(value.type);
 }
 function isComplex(value) {
-  return !!value && typeof value === "object" && "re" in value && "im" in value;
+  return !!value && typeof value === 'object' && 're' in value && 'im' in value;
 }
 
 // webR/utils-r.ts
@@ -2045,7 +2315,7 @@ function protectInc(x, prot) {
 function protectWithIndex(x) {
   const pLoc = Module2._malloc(4);
   Module2._R_ProtectWithIndex(handlePtr(x), pLoc);
-  const loc = Module2.getValue(pLoc, "i32");
+  const loc = Module2.getValue(pLoc, 'i32');
   return { loc, ptr: pLoc };
 }
 function unprotectIndex(index) {
@@ -2079,7 +2349,7 @@ function parseEvalBare(code, env) {
 var UnwindProtectException = class extends Error {
   constructor(message, cont) {
     super(message);
-    this.name = "UnwindProtectException";
+    this.name = 'UnwindProtectException';
     this.cont = cont;
   }
 };
@@ -2100,13 +2370,13 @@ function transfer(obj, transfers) {
   return obj;
 }
 function isUUID(x) {
-  return typeof x === "string" && x.length === UUID_LENGTH;
+  return typeof x === 'string' && x.length === UUID_LENGTH;
 }
 var UUID_LENGTH = 63;
 function generateUUID() {
-  const result = Array.from({ length: 4 }, randomSegment).join("-");
+  const result = Array.from({ length: 4 }, randomSegment).join('-');
   if (result.length !== UUID_LENGTH) {
-    throw new Error("comlink internal error: UUID has the wrong length");
+    throw new Error('comlink internal error: UUID has the wrong length');
   }
   return result;
 }
@@ -2114,7 +2384,7 @@ function randomSegment() {
   let result = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
   const pad = 15 - result.length;
   if (pad > 0) {
-    result = Array.from({ length: pad }, () => 0).join("") + result;
+    result = Array.from({ length: pad }, () => 0).join('') + result;
   }
   return result;
 }
@@ -2143,7 +2413,7 @@ function keep(shelter, x) {
     shelters.get(shelter).push(ptr);
     return;
   }
-  throw new Error("Unexpected shelter type " + typeof shelter);
+  throw new Error('Unexpected shelter type ' + typeof shelter);
 }
 function destroy(shelter, x) {
   const ptr = handlePtr(x);
@@ -2170,19 +2440,19 @@ function newObjectFromData(obj) {
   if (isWebRDataJs(obj)) {
     return new (getRWorkerClass(obj.type))(obj);
   }
-  if (obj && typeof obj === "object" && "type" in obj && obj.type === "null") {
+  if (obj && typeof obj === 'object' && 'type' in obj && obj.type === 'null') {
     return new RNull();
   }
   if (obj === null) {
-    return new RLogical({ type: "logical", names: null, values: [null] });
+    return new RLogical({ type: 'logical', names: null, values: [null] });
   }
-  if (typeof obj === "boolean") {
+  if (typeof obj === 'boolean') {
     return new RLogical(obj);
   }
-  if (typeof obj === "number") {
+  if (typeof obj === 'number') {
     return new RDouble(obj);
   }
-  if (typeof obj === "string") {
+  if (typeof obj === 'string') {
     return new RCharacter(obj);
   }
   if (isComplex(obj)) {
@@ -2194,37 +2464,42 @@ function newObjectFromData(obj) {
   if (Array.isArray(obj)) {
     return newObjectFromArray(obj);
   }
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     return RDataFrame.fromObject(obj);
   }
-  throw new Error("Robj construction for this JS object is not yet supported");
+  throw new Error('Robj construction for this JS object is not yet supported');
 }
 function newObjectFromArray(arr) {
   const prot = { n: 0 };
-  const hasObjects = arr.every((v) => v && typeof v === "object" && !isRObject(v) && !isComplex(v));
+  const hasObjects = arr.every((v) => v && typeof v === 'object' && !isRObject(v) && !isComplex(v));
   if (hasObjects) {
     const _arr = arr;
     const isConsistent = _arr.every((a) => {
-      return Object.keys(a).filter((k) => !Object.keys(_arr[0]).includes(k)).length === 0 && Object.keys(_arr[0]).filter((k) => !Object.keys(a).includes(k)).length === 0;
+      return (
+        Object.keys(a).filter((k) => !Object.keys(_arr[0]).includes(k)).length === 0 &&
+        Object.keys(_arr[0]).filter((k) => !Object.keys(a).includes(k)).length === 0
+      );
     });
-    const isAtomic = _arr.every((a) => Object.values(a).every((v) => {
-      return isAtomicType(v) || isRVectorAtomic(v);
-    }));
+    const isAtomic = _arr.every((a) =>
+      Object.values(a).every((v) => {
+        return isAtomicType(v) || isRVectorAtomic(v);
+      })
+    );
     if (isConsistent && isAtomic) {
       return RDataFrame.fromD3(_arr);
     }
   }
-  if (arr.every((v) => typeof v === "boolean" || v === null)) {
+  if (arr.every((v) => typeof v === 'boolean' || v === null)) {
     return new RLogical(arr);
   }
-  if (arr.every((v) => typeof v === "number" || v === null)) {
+  if (arr.every((v) => typeof v === 'number' || v === null)) {
     return new RDouble(arr);
   }
-  if (arr.every((v) => typeof v === "string" || v === null)) {
+  if (arr.every((v) => typeof v === 'string' || v === null)) {
     return new RCharacter(arr);
   }
   try {
-    const call = new RCall([new RSymbol("c"), ...arr]);
+    const call = new RCall([new RSymbol('c'), ...arr]);
     protectInc(call, prot);
     return call.eval();
   } finally {
@@ -2237,9 +2512,7 @@ var RObjectBase = class {
   }
   type() {
     const typeNumber = Module2._TYPEOF(this.ptr);
-    const type = Object.keys(RTypeMap).find(
-      (typeName) => RTypeMap[typeName] === typeNumber
-    );
+    const type = Object.keys(RTypeMap).find((typeName) => RTypeMap[typeName] === typeNumber);
     return type;
   }
 };
@@ -2269,14 +2542,14 @@ var _RObject = class extends RObjectBase {
     return this[prop];
   }
   inspect() {
-    parseEvalBare(".Internal(inspect(x))", { x: this });
+    parseEvalBare('.Internal(inspect(x))', { x: this });
   }
   isNull() {
     return Module2._TYPEOF(this.ptr) === RTypeMap.null;
   }
   isNa() {
     try {
-      const result = parseEvalBare("is.na(x)", { x: this });
+      const result = parseEvalBare('is.na(x)', { x: this });
       protect(result);
       return result.toBoolean();
     } finally {
@@ -2291,7 +2564,7 @@ var _RObject = class extends RObjectBase {
   }
   class() {
     const prot = { n: 0 };
-    const classCall = new RCall([new RSymbol("class"), this]);
+    const classCall = new RCall([new RSymbol('class'), this]);
     protectInc(classCall, prot);
     try {
       return classCall.eval();
@@ -2303,10 +2576,10 @@ var _RObject = class extends RObjectBase {
     let namesObj;
     if (values === null) {
       namesObj = objs.null;
-    } else if (Array.isArray(values) && values.every((v) => typeof v === "string" || v === null)) {
+    } else if (Array.isArray(values) && values.every((v) => typeof v === 'string' || v === null)) {
       namesObj = new RCharacter(values);
     } else {
-      throw new Error("Argument to setNames must be null or an Array of strings or null");
+      throw new Error('Argument to setNames must be null or an Array of strings or null');
     }
     Module2._Rf_setAttrib(this.ptr, objs.namesSymbol.ptr, namesObj.ptr);
     return this;
@@ -2325,7 +2598,7 @@ var _RObject = class extends RObjectBase {
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   toJs(options = { depth: 0 }, depth = 1) {
-    throw new Error("This R object cannot be converted to JS");
+    throw new Error('This R object cannot be converted to JS');
   }
   subset(prop) {
     return __privateMethod(this, _slice, slice_fn).call(this, prop, objs.bracketSymbol.ptr);
@@ -2356,7 +2629,7 @@ var _RObject = class extends RObjectBase {
       protectInc(idx, prot);
       const valueObj = new _RObject(value);
       protectInc(valueObj, prot);
-      const assign2 = new RSymbol("[[<-");
+      const assign2 = new RSymbol('[[<-');
       const call = Module2._Rf_lang4(assign2.ptr, this.ptr, idx.ptr, valueObj.ptr);
       protectInc(call, prot);
       return _RObject.wrap(safeEval(call, objs.baseEnv));
@@ -2370,13 +2643,13 @@ var _RObject = class extends RObjectBase {
     let cur = obj;
     do {
       Object.getOwnPropertyNames(cur).map((p) => props.add(p));
-    } while (cur = Object.getPrototypeOf(cur));
-    return [...props.keys()].filter((i) => typeof obj[i] === "function");
+    } while ((cur = Object.getPrototypeOf(cur)));
+    return [...props.keys()].filter((i) => typeof obj[i] === 'function');
   }
 };
 var RObject = _RObject;
 _slice = new WeakSet();
-slice_fn = function(prop, op) {
+slice_fn = function (prop, op) {
   const prot = { n: 0 };
   try {
     const idx = new _RObject(prop);
@@ -2390,11 +2663,11 @@ slice_fn = function(prop, op) {
 };
 var RNull = class extends RObject {
   constructor() {
-    super(new RObjectBase(Module2.getValue(Module2._R_NilValue, "*")));
+    super(new RObjectBase(Module2.getValue(Module2._R_NilValue, '*')));
     return this;
   }
   toJs() {
-    return { type: "null" };
+    return { type: 'null' };
   }
 };
 var RSymbol = class extends RObject {
@@ -2403,7 +2676,7 @@ var RSymbol = class extends RObject {
   // bad idea because this leaks memory.
   constructor(x) {
     if (x instanceof RObjectBase) {
-      assertRType(x, "symbol");
+      assertRType(x, 'symbol');
       super(x);
       return;
     }
@@ -2417,7 +2690,7 @@ var RSymbol = class extends RObject {
   toJs() {
     const obj = this.toObject();
     return {
-      type: "symbol",
+      type: 'symbol',
       printname: obj.printname,
       symvalue: obj.symvalue,
       internal: obj.internal
@@ -2446,7 +2719,7 @@ var RSymbol = class extends RObject {
 var RPairlist = class extends RObject {
   constructor(val) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "pairlist");
+      assertRType(val, 'pairlist');
       super(val);
       return this;
     }
@@ -2470,18 +2743,14 @@ var RPairlist = class extends RObject {
   toArray(options = { depth: 1 }) {
     return this.toJs(options).values;
   }
-  toObject({
-    allowDuplicateKey = true,
-    allowEmptyKey = false,
-    depth = -1
-  } = {}) {
+  toObject({ allowDuplicateKey = true, allowEmptyKey = false, depth = -1 } = {}) {
     const entries = this.entries({ depth });
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
-      throw new Error("Duplicate key when converting pairlist without allowDuplicateKey enabled");
+      throw new Error('Duplicate key when converting pairlist without allowDuplicateKey enabled');
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
-      throw new Error("Empty or null key when converting pairlist without allowEmptyKey enabled");
+      throw new Error('Empty or null key when converting pairlist without allowEmptyKey enabled');
     }
     return Object.fromEntries(
       entries.filter((u, idx) => entries.findIndex((v) => v[0] === u[0]) === idx)
@@ -2498,7 +2767,7 @@ var RPairlist = class extends RObject {
     for (let next = this; !next.isNull(); next = next.cdr()) {
       const symbol = next.tag();
       if (symbol.isNull()) {
-        namesArray.push("");
+        namesArray.push('');
       } else {
         hasNames = true;
         namesArray.push(symbol.toString());
@@ -2510,7 +2779,7 @@ var RPairlist = class extends RObject {
       }
     }
     const names = hasNames ? namesArray : null;
-    return { type: "pairlist", names, values };
+    return { type: 'pairlist', names, values };
   }
   includes(name) {
     return name in this.toObject();
@@ -2531,7 +2800,7 @@ var RPairlist = class extends RObject {
 var RCall = class extends RObject {
   constructor(val) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "call");
+      assertRType(val, 'call');
       super(val);
       return this;
     }
@@ -2568,8 +2837,8 @@ var RCall = class extends RObject {
     const prot = { n: 0 };
     try {
       const call = Module2._Rf_lang2(
-        new RSymbol("deparse1").ptr,
-        Module2._Rf_lang2(new RSymbol("quote").ptr, this.ptr)
+        new RSymbol('deparse1').ptr,
+        Module2._Rf_lang2(new RSymbol('quote').ptr, this.ptr)
       );
       protectInc(call, prot);
       const val = RCharacter.wrap(safeEval(call, objs.baseEnv));
@@ -2583,7 +2852,7 @@ var RCall = class extends RObject {
 var RList = class extends RObject {
   constructor(val, names = null) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "list");
+      assertRType(val, 'list');
       super(val);
       if (names) {
         if (names.length !== this.length) {
@@ -2619,24 +2888,20 @@ var RList = class extends RObject {
     return Module2._LENGTH(this.ptr);
   }
   isDataFrame() {
-    const classes = RPairlist.wrap(Module2._ATTRIB(this.ptr)).get("class");
-    return !classes.isNull() && classes.toArray().includes("data.frame");
+    const classes = RPairlist.wrap(Module2._ATTRIB(this.ptr)).get('class');
+    return !classes.isNull() && classes.toArray().includes('data.frame');
   }
   toArray(options = { depth: 1 }) {
     return this.toJs(options).values;
   }
-  toObject({
-    allowDuplicateKey = true,
-    allowEmptyKey = false,
-    depth = -1
-  } = {}) {
+  toObject({ allowDuplicateKey = true, allowEmptyKey = false, depth = -1 } = {}) {
     const entries = this.entries({ depth });
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
-      throw new Error("Duplicate key when converting list without allowDuplicateKey enabled");
+      throw new Error('Duplicate key when converting list without allowDuplicateKey enabled');
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
-      throw new Error("Empty or null key when converting list without allowEmptyKey enabled");
+      throw new Error('Empty or null key when converting list without allowEmptyKey enabled');
     }
     return Object.fromEntries(
       entries.filter((u, idx) => entries.findIndex((v) => v[0] === u[0]) === idx)
@@ -2650,7 +2915,7 @@ var RList = class extends RObject {
     }
     const entries = this.entries();
     return entries.reduce((a, entry) => {
-      entry[1].forEach((v, j) => a[j] = Object.assign(a[j] || {}, { [entry[0]]: v }));
+      entry[1].forEach((v, j) => (a[j] = Object.assign(a[j] || {}, { [entry[0]]: v })));
       return a;
     }, []);
   }
@@ -2663,7 +2928,7 @@ var RList = class extends RObject {
   }
   toJs(options = { depth: 0 }, depth = 1) {
     return {
-      type: "list",
+      type: 'list',
       names: this.names(),
       values: [...Array(this.length).keys()].map((i) => {
         if (options.depth && depth >= options.depth) {
@@ -2691,9 +2956,11 @@ var RDataFrame = class extends RList {
     const prot = { n: 0 };
     try {
       const hasNames = !!names && names.length > 0 && names.every((v) => v);
-      const hasArrays = values.length > 0 && values.every((v) => {
-        return Array.isArray(v) || ArrayBuffer.isView(v) || v instanceof ArrayBuffer;
-      });
+      const hasArrays =
+        values.length > 0 &&
+        values.every((v) => {
+          return Array.isArray(v) || ArrayBuffer.isView(v) || v instanceof ArrayBuffer;
+        });
       if (hasNames && hasArrays) {
         const _values = values;
         const isConsistentLength = _values.every((a) => a.length === _values[0].length);
@@ -2702,12 +2969,12 @@ var RDataFrame = class extends RList {
         });
         if (isConsistentLength && isAtomic) {
           const listObj = new RList({
-            type: "list",
+            type: 'list',
             names,
             values: _values.map((a) => newObjectFromData(a))
           });
           protectInc(listObj, prot);
-          const asDataFrame = new RCall([new RSymbol("as.data.frame"), listObj]);
+          const asDataFrame = new RCall([new RSymbol('as.data.frame'), listObj]);
           protectInc(asDataFrame, prot);
           return new RDataFrame(asDataFrame.eval());
         }
@@ -2749,7 +3016,7 @@ var RString = class extends RObject {
   // Unlike symbols, strings are not cached and must thus be protected
   constructor(x) {
     if (x instanceof RObjectBase) {
-      assertRType(x, "string");
+      assertRType(x, 'string');
       super(x);
       return;
     }
@@ -2765,7 +3032,7 @@ var RString = class extends RObject {
   }
   toJs() {
     return {
-      type: "string",
+      type: 'string',
       value: this.toString()
     };
   }
@@ -2773,7 +3040,7 @@ var RString = class extends RObject {
 var REnvironment = class extends RObject {
   constructor(val = {}) {
     if (val instanceof RObjectBase) {
-      assertRType(val, "environment");
+      assertRType(val, 'environment');
       super(val);
       return this;
     }
@@ -2820,8 +3087,8 @@ var REnvironment = class extends RObject {
     return RObject.wrap(Module2._FRAME(this.ptr));
   }
   subset(prop) {
-    if (typeof prop === "number") {
-      throw new Error("Object of type environment is not subsettable");
+    if (typeof prop === 'number') {
+      throw new Error('Object of type environment is not subsettable');
     }
     return this.getDollar(prop);
   }
@@ -2844,7 +3111,7 @@ var REnvironment = class extends RObject {
       }
     });
     return {
-      type: "environment",
+      type: 'environment',
       names,
       values
     };
@@ -2879,12 +3146,12 @@ var RVectorAtomic = class extends RObject {
     return super.subset(prop);
   }
   getDollar() {
-    throw new Error("$ operator is invalid for atomic vectors");
+    throw new Error('$ operator is invalid for atomic vectors');
   }
   detectMissing() {
     const prot = { n: 0 };
     try {
-      const call = Module2._Rf_lang2(new RSymbol("is.na").ptr, this.ptr);
+      const call = Module2._Rf_lang2(new RSymbol('is.na').ptr, this.ptr);
       protectInc(call, prot);
       const val = RLogical.wrap(safeEval(call, objs.baseEnv));
       protectInc(val, prot);
@@ -2896,19 +3163,19 @@ var RVectorAtomic = class extends RObject {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map((m, idx) => m ? null : arr[idx]);
+    return this.detectMissing().map((m, idx) => (m ? null : arr[idx]));
   }
   toObject({ allowDuplicateKey = true, allowEmptyKey = false } = {}) {
     const entries = this.entries();
     const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
       throw new Error(
-        "Duplicate key when converting atomic vector without allowDuplicateKey enabled"
+        'Duplicate key when converting atomic vector without allowDuplicateKey enabled'
       );
     }
     if (!allowEmptyKey && keys.some((k) => !k)) {
       throw new Error(
-        "Empty or null key when converting atomic vector without allowEmptyKey enabled"
+        'Empty or null key when converting atomic vector without allowEmptyKey enabled'
       );
     }
     return Object.fromEntries(
@@ -2931,7 +3198,7 @@ var RVectorAtomic = class extends RObject {
 var _newSetter;
 var _RLogical = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "logical", __privateGet(_RLogical, _newSetter));
+    super(val, 'logical', __privateGet(_RLogical, _newSetter));
   }
   getBoolean(idx) {
     return this.get(idx).toArray()[0];
@@ -2956,22 +3223,22 @@ var _RLogical = class extends RVectorAtomic {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map((m, idx) => m ? null : Boolean(arr[idx]));
+    return this.detectMissing().map((m, idx) => (m ? null : Boolean(arr[idx])));
   }
 };
 var RLogical = _RLogical;
 _newSetter = new WeakMap();
 __privateAdd(RLogical, _newSetter, (ptr) => {
   const data = Module2._LOGICAL(ptr);
-  const naLogical = Module2.getValue(Module2._R_NaInt, "i32");
+  const naLogical = Module2.getValue(Module2._R_NaInt, 'i32');
   return (v, i) => {
-    Module2.setValue(data + 4 * i, v === null ? naLogical : Boolean(v), "i32");
+    Module2.setValue(data + 4 * i, v === null ? naLogical : Boolean(v), 'i32');
   };
 });
 var _newSetter2;
 var _RInteger = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "integer", __privateGet(_RInteger, _newSetter2));
+    super(val, 'integer', __privateGet(_RInteger, _newSetter2));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -2999,15 +3266,15 @@ var RInteger = _RInteger;
 _newSetter2 = new WeakMap();
 __privateAdd(RInteger, _newSetter2, (ptr) => {
   const data = Module2._INTEGER(ptr);
-  const naInteger = Module2.getValue(Module2._R_NaInt, "i32");
+  const naInteger = Module2.getValue(Module2._R_NaInt, 'i32');
   return (v, i) => {
-    Module2.setValue(data + 4 * i, v === null ? naInteger : Math.round(Number(v)), "i32");
+    Module2.setValue(data + 4 * i, v === null ? naInteger : Math.round(Number(v)), 'i32');
   };
 });
 var _newSetter3;
 var _RDouble = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "double", __privateGet(_RDouble, _newSetter3));
+    super(val, 'double', __privateGet(_RDouble, _newSetter3));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -3024,7 +3291,10 @@ var _RDouble = class extends RVectorAtomic {
   }
   toTypedArray() {
     return new Float64Array(
-      Module2.HEAPF64.subarray(Module2._REAL(this.ptr) / 8, Module2._REAL(this.ptr) / 8 + this.length)
+      Module2.HEAPF64.subarray(
+        Module2._REAL(this.ptr) / 8,
+        Module2._REAL(this.ptr) / 8 + this.length
+      )
     );
   }
 };
@@ -3032,15 +3302,15 @@ var RDouble = _RDouble;
 _newSetter3 = new WeakMap();
 __privateAdd(RDouble, _newSetter3, (ptr) => {
   const data = Module2._REAL(ptr);
-  const naDouble = Module2.getValue(Module2._R_NaReal, "double");
+  const naDouble = Module2.getValue(Module2._R_NaReal, 'double');
   return (v, i) => {
-    Module2.setValue(data + 8 * i, v === null ? naDouble : v, "double");
+    Module2.setValue(data + 8 * i, v === null ? naDouble : v, 'double');
   };
 });
 var _newSetter4;
 var _RComplex = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "complex", __privateGet(_RComplex, _newSetter4));
+    super(val, 'complex', __privateGet(_RComplex, _newSetter4));
   }
   getComplex(idx) {
     return this.get(idx).toArray()[0];
@@ -3065,8 +3335,8 @@ var _RComplex = class extends RVectorAtomic {
   }
   toArray() {
     const arr = this.toTypedArray();
-    return this.detectMissing().map(
-      (m, idx) => m ? null : { re: arr[2 * idx], im: arr[2 * idx + 1] }
+    return this.detectMissing().map((m, idx) =>
+      m ? null : { re: arr[2 * idx], im: arr[2 * idx + 1] }
     );
   }
 };
@@ -3074,16 +3344,16 @@ var RComplex = _RComplex;
 _newSetter4 = new WeakMap();
 __privateAdd(RComplex, _newSetter4, (ptr) => {
   const data = Module2._COMPLEX(ptr);
-  const naDouble = Module2.getValue(Module2._R_NaReal, "double");
+  const naDouble = Module2.getValue(Module2._R_NaReal, 'double');
   return (v, i) => {
-    Module2.setValue(data + 8 * (2 * i), v === null ? naDouble : v.re, "double");
-    Module2.setValue(data + 8 * (2 * i + 1), v === null ? naDouble : v.im, "double");
+    Module2.setValue(data + 8 * (2 * i), v === null ? naDouble : v.re, 'double');
+    Module2.setValue(data + 8 * (2 * i + 1), v === null ? naDouble : v.im, 'double');
   };
 });
 var _newSetter5;
 var _RCharacter = class extends RVectorAtomic {
   constructor(val) {
-    super(val, "character", __privateGet(_RCharacter, _newSetter5));
+    super(val, 'character', __privateGet(_RCharacter, _newSetter5));
   }
   getString(idx) {
     return this.get(idx).toArray()[0];
@@ -3107,8 +3377,8 @@ var _RCharacter = class extends RVectorAtomic {
     );
   }
   toArray() {
-    return this.detectMissing().map(
-      (m, idx) => m ? null : Module2.UTF8ToString(Module2._R_CHAR(Module2._STRING_ELT(this.ptr, idx)))
+    return this.detectMissing().map((m, idx) =>
+      m ? null : Module2.UTF8ToString(Module2._R_CHAR(Module2._STRING_ELT(this.ptr, idx)))
     );
   }
 };
@@ -3129,7 +3399,7 @@ var _RRaw = class extends RVectorAtomic {
     if (val instanceof ArrayBuffer) {
       val = new Uint8Array(val);
     }
-    super(val, "raw", __privateGet(_RRaw, _newSetter6));
+    super(val, 'raw', __privateGet(_RRaw, _newSetter6));
   }
   getNumber(idx) {
     return this.get(idx).toArray()[0];
@@ -3155,7 +3425,7 @@ _newSetter6 = new WeakMap();
 __privateAdd(RRaw, _newSetter6, (ptr) => {
   const data = Module2._RAW(ptr);
   return (v, i) => {
-    Module2.setValue(data + i, Number(v), "i8");
+    Module2.setValue(data + i, Number(v), 'i8');
   };
 });
 function toWebRData(jsObj) {
@@ -3163,7 +3433,7 @@ function toWebRData(jsObj) {
     return jsObj;
   } else if (Array.isArray(jsObj) || ArrayBuffer.isView(jsObj)) {
     return { names: null, values: jsObj };
-  } else if (jsObj && typeof jsObj === "object" && !isComplex(jsObj)) {
+  } else if (jsObj && typeof jsObj === 'object' && !isComplex(jsObj)) {
     return {
       names: Object.keys(jsObj),
       values: Object.values(jsObj)
@@ -3202,28 +3472,36 @@ function isRObject(value) {
   return value instanceof RObject;
 }
 function isRVectorAtomic(value) {
-  const atomicRTypes = ["logical", "integer", "double", "complex", "character"];
-  return isRObject(value) && atomicRTypes.includes(value.type()) || isRObject(value) && value.isNa();
+  const atomicRTypes = ['logical', 'integer', 'double', 'complex', 'character'];
+  return (
+    (isRObject(value) && atomicRTypes.includes(value.type())) || (isRObject(value) && value.isNa())
+  );
 }
 function isAtomicType(value) {
-  return value === null || typeof value === "number" || typeof value === "boolean" || typeof value === "string" || isComplex(value);
+  return (
+    value === null ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    typeof value === 'string' ||
+    isComplex(value)
+  );
 }
 var objs;
 function initPersistentObjects() {
   objs = {
-    baseEnv: REnvironment.wrap(Module2.getValue(Module2._R_BaseEnv, "*")),
-    bracket2Symbol: RSymbol.wrap(Module2.getValue(Module2._R_Bracket2Symbol, "*")),
-    bracketSymbol: RSymbol.wrap(Module2.getValue(Module2._R_BracketSymbol, "*")),
-    dollarSymbol: RSymbol.wrap(Module2.getValue(Module2._R_DollarSymbol, "*")),
-    emptyEnv: REnvironment.wrap(Module2.getValue(Module2._R_EmptyEnv, "*")),
-    false: RLogical.wrap(Module2.getValue(Module2._R_FalseValue, "*")),
-    globalEnv: REnvironment.wrap(Module2.getValue(Module2._R_GlobalEnv, "*")),
-    na: RLogical.wrap(Module2.getValue(Module2._R_LogicalNAValue, "*")),
-    namesSymbol: RSymbol.wrap(Module2.getValue(Module2._R_NamesSymbol, "*")),
-    naString: RObject.wrap(Module2.getValue(Module2._R_NaString, "*")),
-    null: RNull.wrap(Module2.getValue(Module2._R_NilValue, "*")),
-    true: RLogical.wrap(Module2.getValue(Module2._R_TrueValue, "*")),
-    unboundValue: RObject.wrap(Module2.getValue(Module2._R_UnboundValue, "*"))
+    baseEnv: REnvironment.wrap(Module2.getValue(Module2._R_BaseEnv, '*')),
+    bracket2Symbol: RSymbol.wrap(Module2.getValue(Module2._R_Bracket2Symbol, '*')),
+    bracketSymbol: RSymbol.wrap(Module2.getValue(Module2._R_BracketSymbol, '*')),
+    dollarSymbol: RSymbol.wrap(Module2.getValue(Module2._R_DollarSymbol, '*')),
+    emptyEnv: REnvironment.wrap(Module2.getValue(Module2._R_EmptyEnv, '*')),
+    false: RLogical.wrap(Module2.getValue(Module2._R_FalseValue, '*')),
+    globalEnv: REnvironment.wrap(Module2.getValue(Module2._R_GlobalEnv, '*')),
+    na: RLogical.wrap(Module2.getValue(Module2._R_LogicalNAValue, '*')),
+    namesSymbol: RSymbol.wrap(Module2.getValue(Module2._R_NamesSymbol, '*')),
+    naString: RObject.wrap(Module2.getValue(Module2._R_NaString, '*')),
+    null: RNull.wrap(Module2.getValue(Module2._R_NilValue, '*')),
+    true: RLogical.wrap(Module2.getValue(Module2._R_TrueValue, '*')),
+    unboundValue: RObject.wrap(Module2.getValue(Module2._R_UnboundValue, '*'))
   };
 }
 
@@ -3259,14 +3537,12 @@ function replaceInObject(obj, test, replacer, ...replacerArgs) {
     return replacer(obj, ...replacerArgs);
   }
   if (Array.isArray(obj) || ArrayBuffer.isView(obj)) {
-    return obj.map(
-      (v) => replaceInObject(v, test, replacer, ...replacerArgs)
-    );
+    return obj.map((v) => replaceInObject(v, test, replacer, ...replacerArgs));
   }
   if (obj instanceof RObjectBase) {
     return obj;
   }
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     return Object.fromEntries(
       Object.entries(obj).map(([k, v]) => [k, replaceInObject(v, test, replacer, ...replacerArgs)])
     );
@@ -3275,7 +3551,7 @@ function replaceInObject(obj, test, replacer, ...replacerArgs) {
 }
 function newCrossOriginWorker(url, cb) {
   const req = new XMLHttpRequest();
-  req.open("get", url, true);
+  req.open('get', url, true);
   req.onload = () => {
     const worker = new Worker(URL.createObjectURL(new Blob([req.responseText])));
     cb(worker);
@@ -3283,8 +3559,7 @@ function newCrossOriginWorker(url, cb) {
   req.send();
 }
 function isCrossOrigin(urlString) {
-  if (IN_NODE)
-    return false;
+  if (IN_NODE) return false;
   const url1 = new URL(location.href);
   const url2 = new URL(urlString, location.origin);
   if (url1.host === url2.host && url1.port === url2.port && url1.protocol === url2.protocol) {
@@ -3293,11 +3568,11 @@ function isCrossOrigin(urlString) {
   return true;
 }
 function isImageBitmap(value) {
-  return typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap;
+  return typeof ImageBitmap !== 'undefined' && value instanceof ImageBitmap;
 }
 function throwUnreachable(context) {
-  let msg = "Reached the unreachable";
-  msg = msg + (context ? ": " + context : ".");
+  let msg = 'Reached the unreachable';
+  msg = msg + (context ? ': ' + context : '.');
   throw new WebRError(msg);
 }
 
@@ -3330,18 +3605,18 @@ function requestResponseMessage(ep) {
     id,
     new Promise((resolve) => {
       if (IN_NODE) {
-        ep.once("message", (message) => {
+        ep.once('message', (message) => {
           if (!message.id || message.id !== id) {
             return;
           }
           resolve(message);
         });
       } else {
-        ep.addEventListener("message", function l(ev) {
+        ep.addEventListener('message', function l(ev) {
           if (!ev.data || !ev.data.id || ev.data.id !== id) {
             return;
           }
-          ep.removeEventListener("message", l);
+          ep.removeEventListener('message', l);
           resolve(ev.data);
         });
       }
@@ -3405,7 +3680,7 @@ var AsyncQueue = class {
 _promises = new WeakMap();
 _resolvers = new WeakMap();
 _add = new WeakSet();
-add_fn = function() {
+add_fn = function () {
   __privateGet(this, _promises).push(
     new Promise((resolve) => {
       __privateGet(this, _resolvers).push(resolve);
@@ -3417,7 +3692,7 @@ add_fn = function() {
 function newRequest(msg, transferables) {
   return newRequestResponseMessage(
     {
-      type: "request",
+      type: 'request',
       data: {
         uuid: generateUUID(),
         msg
@@ -3429,7 +3704,7 @@ function newRequest(msg, transferables) {
 function newResponse(uuid, resp, transferables) {
   return newRequestResponseMessage(
     {
-      type: "response",
+      type: 'response',
       data: {
         uuid,
         resp
@@ -3446,7 +3721,7 @@ function newRequestResponseMessage(msg, transferables) {
 }
 function newSyncRequest(msg, data) {
   return {
-    type: "sync-request",
+    type: 'sync-request',
     data: { msg, reqData: data }
   };
 }
@@ -3454,17 +3729,17 @@ function newSyncRequest(msg, data) {
 // webR/payload.ts
 function webRPayloadAsError(payload) {
   const e = new WebRWorkerError(payload.obj.message);
-  if (payload.obj.name !== "Error") {
+  if (payload.obj.name !== 'Error') {
     e.name = payload.obj.name;
   }
   e.stack = payload.obj.stack;
   return e;
 }
 function isWebRPayload(value) {
-  return !!value && typeof value === "object" && "payloadType" in value && "obj" in value;
+  return !!value && typeof value === 'object' && 'payloadType' in value && 'obj' in value;
 }
 function isWebRPayloadPtr(value) {
-  return isWebRPayload(value) && value.payloadType === "ptr";
+  return isWebRPayload(value) && value.payloadType === 'ptr';
 }
 
 // webR/chan/channel.ts
@@ -3492,7 +3767,7 @@ var ChannelMain = class {
   }
   write(msg) {
     if (__privateGet(this, _closed)) {
-      throw new WebRChannelError("The webR communication channel has been closed.");
+      throw new WebRChannelError('The webR communication channel has been closed.');
     }
     this.inputQueue.put(msg);
   }
@@ -3505,7 +3780,7 @@ var ChannelMain = class {
   }
   putClosedMessage() {
     __privateSet(this, _closed, true);
-    this.outputQueue.put({ type: "closed" });
+    this.outputQueue.put({ type: 'closed' });
   }
   resolveResponse(msg) {
     const uuid = msg.data.uuid;
@@ -3513,7 +3788,7 @@ var ChannelMain = class {
     if (handles) {
       const payload = msg.data.resp;
       __privateGet(this, _parked).delete(uuid);
-      if (payload.payloadType === "err") {
+      if (payload.payloadType === 'err') {
         handles.reject(webRPayloadAsError(payload));
       } else {
         handles.resolve(payload);
@@ -3528,7 +3803,7 @@ _closed = new WeakMap();
 
 // webR/chan/task-worker.ts
 var import_msgpack2 = __toESM(require_dist());
-var decoder = new TextDecoder("utf-8");
+var decoder = new TextDecoder('utf-8');
 var _scheduled, _resolved, _result, _exception, _syncGen;
 var SyncTask = class {
   constructor(endpoint, msg, transfers = []) {
@@ -3555,7 +3830,7 @@ var SyncTask = class {
   }
   poll() {
     if (!__privateGet(this, _scheduled)) {
-      throw new Error("Task not synchronously scheduled");
+      throw new Error('Task not synchronously scheduled');
     }
     const { done, value } = __privateGet(this, _syncGen).next();
     if (!done) {
@@ -3597,7 +3872,7 @@ var SyncTask = class {
     if (__privateGet(this, _resolved)) {
       return __privateGet(this, _result);
     }
-    throw new Error("Not ready.");
+    throw new Error('Not ready.');
   }
   syncify() {
     this.scheduleSync();
@@ -3624,19 +3899,19 @@ var _Syncifier = class {
   }
   waitOnSignalBuffer() {
     const timeout = 50;
-    for (; ; ) {
+    for (;;) {
       const status = Atomics.wait(this.signalBuffer, 0, 0, timeout);
       switch (status) {
-        case "ok":
-        case "not-equal":
+        case 'ok':
+        case 'not-equal':
           return;
-        case "timed-out":
+        case 'timed-out':
           if (interruptBuffer[0] !== 0) {
             handleInterrupt();
           }
           break;
         default:
-          throw new Error("Unreachable");
+          throw new Error('Unreachable');
       }
     }
   }
@@ -3668,7 +3943,7 @@ var _Syncifier = class {
     return result;
   }
   syncifyTask(task) {
-    for (; ; ) {
+    for (;;) {
       this.waitOnSignalBuffer();
       if (this.pollTasks(task)) {
         return;
@@ -3696,7 +3971,7 @@ function releaseDataBuffer(buffer) {
 var interruptBuffer = new Int32Array(new ArrayBuffer(4));
 var handleInterrupt = () => {
   interruptBuffer[0] = 0;
-  throw new Error("Interrupted!");
+  throw new Error('Interrupted!');
 };
 function setInterruptHandler(handler) {
   handleInterrupt = handler;
@@ -3707,7 +3982,7 @@ function setInterruptBuffer(buffer) {
 
 // webR/chan/channel-shared.ts
 if (IN_NODE) {
-  globalThis.Worker = require("worker_threads").Worker;
+  globalThis.Worker = require('worker_threads').Worker;
 }
 var _interruptBuffer, _handleEventsFromWorker, handleEventsFromWorker_fn, _onMessageFromWorker;
 var SharedBufferChannelMain = class extends ChannelMain {
@@ -3723,25 +3998,25 @@ var SharedBufferChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           __privateSet(this, _interruptBuffer, new Int32Array(message.data));
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "sync-request": {
+        case 'sync-request': {
           const msg = message;
           const payload = msg.data.msg;
           const reqData = msg.data.reqData;
           switch (payload.type) {
-            case "read": {
+            case 'read': {
               const response = await this.inputQueue.get();
               await syncResponse(worker, reqData, response);
               break;
@@ -3751,7 +4026,7 @@ var SharedBufferChannelMain = class extends ChannelMain {
           }
           return;
         }
-        case "request":
+        case 'request':
           throw new WebRChannelError(
             "Can't send messages of type 'request' from a worker. Please Use 'sync-request' instead."
           );
@@ -3765,16 +4040,13 @@ var SharedBufferChannelMain = class extends ChannelMain {
         this.putClosedMessage();
       };
       const msg = {
-        type: "init",
+        type: 'init',
         data: { config, channelType: ChannelType.SharedArrayBuffer }
       };
       worker.postMessage(msg);
     };
     if (isCrossOrigin(config.baseUrl)) {
-      newCrossOriginWorker(
-        `${config.baseUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
-      );
+      newCrossOriginWorker(`${config.baseUrl}webr-worker.js`, (worker) => initWorker(worker));
     } else {
       const worker = new Worker(`${config.baseUrl}webr-worker.js`);
       initWorker(worker);
@@ -3782,7 +4054,7 @@ var SharedBufferChannelMain = class extends ChannelMain {
   }
   interrupt() {
     if (!__privateGet(this, _interruptBuffer)) {
-      throw new WebRChannelError("Failed attempt to interrupt before initialising interruptBuffer");
+      throw new WebRChannelError('Failed attempt to interrupt before initialising interruptBuffer');
     }
     this.inputQueue.reset();
     __privateGet(this, _interruptBuffer)[0] = 1;
@@ -3790,24 +4062,24 @@ var SharedBufferChannelMain = class extends ChannelMain {
 };
 _interruptBuffer = new WeakMap();
 _handleEventsFromWorker = new WeakSet();
-handleEventsFromWorker_fn = function(worker) {
+handleEventsFromWorker_fn = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       void __privateGet(this, _onMessageFromWorker).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR SharedBufferChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR SharedBufferChannel worker.')
+      );
     });
   } else {
     worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR SharedBufferChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR SharedBufferChannel worker.')
+      );
     };
   }
 };
@@ -3824,28 +4096,28 @@ var SharedBufferChannelWorker = class {
     this.onMessageFromMainThread = () => {
       return;
     };
-    __privateSet(this, _ep, IN_NODE ? require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep, IN_NODE ? require('worker_threads').parentPort : globalThis);
     setInterruptBuffer(__privateGet(this, _interruptBuffer2).buffer);
     setInterruptHandler(() => this.handleInterrupt());
   }
   resolve() {
-    this.write({ type: "resolve", data: __privateGet(this, _interruptBuffer2).buffer });
+    this.write({ type: 'resolve', data: __privateGet(this, _interruptBuffer2).buffer });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep).postMessage({ type: 'system', data: msg }, transfer2);
   }
   read() {
-    const msg = { type: "read" };
+    const msg = { type: 'read' };
     const task = new SyncTask(__privateGet(this, _ep), msg);
     return task.syncify();
   }
   inputOrDispatch() {
-    for (; ; ) {
+    for (;;) {
       const msg = this.read();
-      if (msg.type === "stdin") {
+      if (msg.type === 'stdin') {
         return Module2.allocateUTF8(msg.data);
       }
       __privateGet(this, _dispatch).call(this, msg);
@@ -3856,12 +4128,12 @@ var SharedBufferChannelWorker = class {
       Module2.callMain(args);
     } catch (e) {
       if (e instanceof WebAssembly.RuntimeError) {
-        this.writeSystem({ type: "console.error", data: e.message });
+        this.writeSystem({ type: 'console.error', data: e.message });
         this.writeSystem({
-          type: "console.error",
-          data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+          type: 'console.error',
+          data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
         });
-        this.writeSystem({ type: "close" });
+        this.writeSystem({ type: 'close' });
       }
       throw e;
     }
@@ -3887,9 +4159,18 @@ _interrupt = new WeakMap();
 // webR/chan/channel-service.ts
 var import_msgpack3 = __toESM(require_dist());
 if (IN_NODE) {
-  globalThis.Worker = require("worker_threads").Worker;
+  globalThis.Worker = require('worker_threads').Worker;
 }
-var _syncMessageCache, _registration, _interrupted, _registerServiceWorker, registerServiceWorker_fn, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn, _handleEventsFromWorker2, handleEventsFromWorker_fn2, _onMessageFromWorker2;
+var _syncMessageCache,
+  _registration,
+  _interrupted,
+  _registerServiceWorker,
+  registerServiceWorker_fn,
+  _onMessageFromServiceWorker,
+  onMessageFromServiceWorker_fn,
+  _handleEventsFromWorker2,
+  handleEventsFromWorker_fn2,
+  _onMessageFromWorker2;
 var ServiceWorkerChannelMain = class extends ChannelMain {
   constructor(config) {
     super();
@@ -3907,24 +4188,24 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "sync-request": {
+        case 'sync-request': {
           const request = message.data;
           __privateGet(this, _syncMessageCache).set(request.data.uuid, request.data.msg);
           return;
         }
-        case "request":
+        case 'request':
           throw new WebRChannelError(
             "Can't send messages of type 'request' from a worker.Use service worker fetch request instead."
           );
@@ -3932,18 +4213,22 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
     });
     ({ resolve: this.resolve, reject: this.reject, promise: this.initialised } = promiseHandles());
     console.warn(
-      "The ServiceWorker communication channel is deprecated and will be removed in a future version of webR. Consider using the PostMessage channel instead. If blocking input is required (for example, `browser()`) the SharedArrayBuffer channel should be used. See https://docs.r-wasm.org/webr/latest/serving.html for further information."
+      'The ServiceWorker communication channel is deprecated and will be removed in a future version of webR. Consider using the PostMessage channel instead. If blocking input is required (for example, `browser()`) the SharedArrayBuffer channel should be used. See https://docs.r-wasm.org/webr/latest/serving.html for further information.'
     );
     const initWorker = (worker) => {
-      __privateMethod(this, _handleEventsFromWorker2, handleEventsFromWorker_fn2).call(this, worker);
+      __privateMethod(this, _handleEventsFromWorker2, handleEventsFromWorker_fn2).call(
+        this,
+        worker
+      );
       this.close = () => {
         worker.terminate();
         this.putClosedMessage();
       };
-      void __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn).call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`).then(
-        (clientId) => {
+      void __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn)
+        .call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`)
+        .then((clientId) => {
           const msg = {
-            type: "init",
+            type: 'init',
             data: {
               config,
               channelType: ChannelType.ServiceWorker,
@@ -3952,13 +4237,11 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
             }
           };
           worker.postMessage(msg);
-        }
-      );
+        });
     };
     if (isCrossOrigin(config.serviceWorkerUrl)) {
-      newCrossOriginWorker(
-        `${config.serviceWorkerUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
+      newCrossOriginWorker(`${config.serviceWorkerUrl}webr-worker.js`, (worker) =>
+        initWorker(worker)
       );
     } else {
       const worker = new Worker(`${config.serviceWorkerUrl}webr-worker.js`);
@@ -3968,7 +4251,7 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
   activeRegistration() {
     var _a;
     if (!((_a = __privateGet(this, _registration)) == null ? void 0 : _a.active)) {
-      throw new WebRChannelError("Attempted to obtain a non-existent active registration.");
+      throw new WebRChannelError('Attempted to obtain a non-existent active registration.');
     }
     return __privateGet(this, _registration).active;
   }
@@ -3980,53 +4263,53 @@ _syncMessageCache = new WeakMap();
 _registration = new WeakMap();
 _interrupted = new WeakMap();
 _registerServiceWorker = new WeakSet();
-registerServiceWorker_fn = async function(url) {
+registerServiceWorker_fn = async function (url) {
   __privateSet(this, _registration, await navigator.serviceWorker.register(url));
   await navigator.serviceWorker.ready;
-  window.addEventListener("beforeunload", () => {
+  window.addEventListener('beforeunload', () => {
     var _a;
     void ((_a = __privateGet(this, _registration)) == null ? void 0 : _a.unregister());
   });
   const clientId = await new Promise((resolve) => {
-    navigator.serviceWorker.addEventListener(
-      "message",
-      function listener(event) {
-        if (event.data.type === "registration-successful") {
-          navigator.serviceWorker.removeEventListener("message", listener);
-          resolve(event.data.clientId);
-        }
+    navigator.serviceWorker.addEventListener('message', function listener(event) {
+      if (event.data.type === 'registration-successful') {
+        navigator.serviceWorker.removeEventListener('message', listener);
+        resolve(event.data.clientId);
       }
-    );
-    this.activeRegistration().postMessage({ type: "register-client-main" });
+    });
+    this.activeRegistration().postMessage({ type: 'register-client-main' });
   });
-  navigator.serviceWorker.addEventListener("message", (event) => {
-    void __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(this, event);
+  navigator.serviceWorker.addEventListener('message', (event) => {
+    void __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(
+      this,
+      event
+    );
   });
   return clientId;
 };
 _onMessageFromServiceWorker = new WeakSet();
-onMessageFromServiceWorker_fn = async function(event) {
-  if (event.data.type === "request") {
+onMessageFromServiceWorker_fn = async function (event) {
+  if (event.data.type === 'request') {
     const uuid = event.data.data;
     const message = __privateGet(this, _syncMessageCache).get(uuid);
     if (!message) {
-      throw new WebRChannelError("Request not found during service worker XHR request");
+      throw new WebRChannelError('Request not found during service worker XHR request');
     }
     __privateGet(this, _syncMessageCache).delete(uuid);
     switch (message.type) {
-      case "read": {
+      case 'read': {
         const response = await this.inputQueue.get();
         this.activeRegistration().postMessage({
-          type: "wasm-webr-fetch-response",
+          type: 'wasm-webr-fetch-response',
           uuid,
           response: newResponse(uuid, response)
         });
         break;
       }
-      case "interrupt": {
+      case 'interrupt': {
         const response = __privateGet(this, _interrupted);
         this.activeRegistration().postMessage({
-          type: "wasm-webr-fetch-response",
+          type: 'wasm-webr-fetch-response',
           uuid,
           response: newResponse(uuid, response)
         });
@@ -4041,24 +4324,25 @@ onMessageFromServiceWorker_fn = async function(event) {
   }
 };
 _handleEventsFromWorker2 = new WeakSet();
-handleEventsFromWorker_fn2 = function(worker) {
+handleEventsFromWorker_fn2 = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       __privateGet(this, _onMessageFromWorker2).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR ServiceWorkerChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR ServiceWorkerChannel worker.')
+      );
     });
   } else {
-    worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker2).call(this, worker, ev.data);
+    worker.onmessage = (ev) =>
+      __privateGet(this, _onMessageFromWorker2).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR ServiceWorkerChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR ServiceWorkerChannel worker.')
+      );
     };
   }
 };
@@ -4082,28 +4366,28 @@ var ServiceWorkerChannelWorker = class {
     }
     __privateSet(this, _mainThreadId, data.clientId);
     __privateSet(this, _location, data.location);
-    __privateSet(this, _ep2, IN_NODE ? require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep2, IN_NODE ? require('worker_threads').parentPort : globalThis);
   }
   resolve() {
-    this.write({ type: "resolve" });
+    this.write({ type: 'resolve' });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep2).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep2).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep2).postMessage({ type: 'system', data: msg }, transfer2);
   }
   syncRequest(message) {
     const request = newRequest(message);
-    this.write({ type: "sync-request", data: request });
+    this.write({ type: 'sync-request', data: request });
     let retryCount = 0;
-    for (; ; ) {
+    for (;;) {
       try {
-        const url = new URL("__wasm__/webr-fetch-request/", __privateGet(this, _location));
+        const url = new URL('__wasm__/webr-fetch-request/', __privateGet(this, _location));
         const xhr = new XMLHttpRequest();
         xhr.timeout = 6e4;
-        xhr.responseType = "arraybuffer";
-        xhr.open("POST", url, false);
+        xhr.responseType = 'arraybuffer';
+        xhr.open('POST', url, false);
         const fetchReqBody = {
           clientId: __privateGet(this, _mainThreadId),
           uuid: request.data.uuid
@@ -4112,7 +4396,7 @@ var ServiceWorkerChannelWorker = class {
         return (0, import_msgpack3.decode)(xhr.response);
       } catch (e) {
         if (e instanceof DOMException && retryCount++ < 1e3) {
-          console.log("Service worker request failed - resending request");
+          console.log('Service worker request failed - resending request');
         } else {
           throw e;
         }
@@ -4120,13 +4404,13 @@ var ServiceWorkerChannelWorker = class {
     }
   }
   read() {
-    const response = this.syncRequest({ type: "read" });
+    const response = this.syncRequest({ type: 'read' });
     return response.data.resp;
   }
   inputOrDispatch() {
-    for (; ; ) {
+    for (;;) {
       const msg = this.read();
-      if (msg.type === "stdin") {
+      if (msg.type === 'stdin') {
         return Module2.allocateUTF8(msg.data);
       }
       __privateGet(this, _dispatch2).call(this, msg);
@@ -4137,12 +4421,12 @@ var ServiceWorkerChannelWorker = class {
       Module2.callMain(args);
     } catch (e) {
       if (e instanceof WebAssembly.RuntimeError) {
-        this.writeSystem({ type: "console.error", data: e.message });
+        this.writeSystem({ type: 'console.error', data: e.message });
         this.writeSystem({
-          type: "console.error",
-          data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+          type: 'console.error',
+          data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
         });
-        this.writeSystem({ type: "close" });
+        this.writeSystem({ type: 'close' });
       }
       throw e;
     }
@@ -4153,7 +4437,7 @@ var ServiceWorkerChannelWorker = class {
   handleInterrupt() {
     if (Date.now() > __privateGet(this, _lastInterruptReq) + 1e3) {
       __privateSet(this, _lastInterruptReq, Date.now());
-      const response = this.syncRequest({ type: "interrupt" });
+      const response = this.syncRequest({ type: 'interrupt' });
       const interrupted = response.data.resp;
       if (interrupted) {
         __privateGet(this, _interrupt2).call(this);
@@ -4173,7 +4457,7 @@ _interrupt2 = new WeakMap();
 
 // webR/chan/channel-postmessage.ts
 if (IN_NODE) {
-  globalThis.Worker = require("worker_threads").Worker;
+  globalThis.Worker = require('worker_threads').Worker;
 }
 var _worker, _handleEventsFromWorker3, handleEventsFromWorker_fn3, _onMessageFromWorker3;
 var PostMessageChannelMain = class extends ChannelMain {
@@ -4189,23 +4473,23 @@ var PostMessageChannelMain = class extends ChannelMain {
         return;
       }
       switch (message.type) {
-        case "resolve":
+        case 'resolve':
           this.resolve();
           return;
-        case "response":
+        case 'response':
           this.resolveResponse(message);
           return;
-        case "system":
+        case 'system':
           this.systemQueue.put(message.data);
           return;
         default:
           this.outputQueue.put(message);
           return;
-        case "request": {
+        case 'request': {
           const msg = message;
           const payload = msg.data.msg;
           switch (payload.type) {
-            case "read": {
+            case 'read': {
               const input = await this.inputQueue.get();
               if (__privateGet(this, _worker)) {
                 const response = newResponse(msg.data.uuid, input);
@@ -4218,7 +4502,7 @@ var PostMessageChannelMain = class extends ChannelMain {
           }
           return;
         }
-        case "sync-request":
+        case 'sync-request':
           throw new WebRChannelError(
             "Can't send messages of type 'sync-request' in PostMessage mode. Use 'request' instead."
           );
@@ -4227,51 +4511,52 @@ var PostMessageChannelMain = class extends ChannelMain {
     ({ resolve: this.resolve, reject: this.reject, promise: this.initialised } = promiseHandles());
     const initWorker = (worker) => {
       __privateSet(this, _worker, worker);
-      __privateMethod(this, _handleEventsFromWorker3, handleEventsFromWorker_fn3).call(this, worker);
+      __privateMethod(this, _handleEventsFromWorker3, handleEventsFromWorker_fn3).call(
+        this,
+        worker
+      );
       this.close = () => {
         worker.terminate();
         this.putClosedMessage();
       };
       const msg = {
-        type: "init",
+        type: 'init',
         data: { config, channelType: ChannelType.PostMessage }
       };
       worker.postMessage(msg);
     };
     if (isCrossOrigin(config.baseUrl)) {
-      newCrossOriginWorker(
-        `${config.baseUrl}webr-worker.js`,
-        (worker) => initWorker(worker)
-      );
+      newCrossOriginWorker(`${config.baseUrl}webr-worker.js`, (worker) => initWorker(worker));
     } else {
       const worker = new Worker(`${config.baseUrl}webr-worker.js`);
       initWorker(worker);
     }
   }
   interrupt() {
-    console.error("Interrupting R execution is not available when using the PostMessage channel");
+    console.error('Interrupting R execution is not available when using the PostMessage channel');
   }
 };
 _worker = new WeakMap();
 _handleEventsFromWorker3 = new WeakSet();
-handleEventsFromWorker_fn3 = function(worker) {
+handleEventsFromWorker_fn3 = function (worker) {
   if (IN_NODE) {
-    worker.on("message", (message) => {
+    worker.on('message', (message) => {
       void __privateGet(this, _onMessageFromWorker3).call(this, worker, message);
     });
-    worker.on("error", (ev) => {
+    worker.on('error', (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR PostMessageChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR PostMessageChannel worker.')
+      );
     });
   } else {
-    worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker3).call(this, worker, ev.data);
+    worker.onmessage = (ev) =>
+      __privateGet(this, _onMessageFromWorker3).call(this, worker, ev.data);
     worker.onerror = (ev) => {
       console.error(ev);
-      this.reject(new WebRWorkerError(
-        "An error occurred initialising the webR PostMessageChannel worker."
-      ));
+      this.reject(
+        new WebRWorkerError('An error occurred initialising the webR PostMessageChannel worker.')
+      );
     };
   }
 };
@@ -4296,18 +4581,17 @@ var PostMessageChannelWorker = class {
      * top level. Any other JS errors are re-thrown.
      */
     __privateAdd(this, _asyncREPL, async () => {
-      for (; ; ) {
+      for (;;) {
         try {
           __privateSet(this, _promptDepth, 0);
-          const msg = await this.request({ type: "read" });
-          if (msg.type === "stdin") {
+          const msg = await this.request({ type: 'read' });
+          if (msg.type === 'stdin') {
             const str = Module.allocateUTF8(msg.data);
             Module._strcpy(Module._DLLbuf, str);
-            Module.setValue(Module._DLLbufp, Module._DLLbuf, "*");
+            Module.setValue(Module._DLLbufp, Module._DLLbuf, '*');
             Module._free(str);
             try {
-              while (Module._R_ReplDLLdo1() > 0)
-                ;
+              while (Module._R_ReplDLLdo1() > 0);
             } catch (e) {
               if (e instanceof WebAssembly.Exception) {
                 Module._R_ReplDLLinit();
@@ -4321,12 +4605,12 @@ var PostMessageChannelWorker = class {
           }
         } catch (e) {
           if (e instanceof WebAssembly.RuntimeError) {
-            this.writeSystem({ type: "console.error", data: e.message });
+            this.writeSystem({ type: 'console.error', data: e.message });
             this.writeSystem({
-              type: "console.error",
-              data: "An unrecoverable WebAssembly error has occurred, the webR worker will be closed."
+              type: 'console.error',
+              data: 'An unrecoverable WebAssembly error has occurred, the webR worker will be closed.'
             });
-            this.writeSystem({ type: "close" });
+            this.writeSystem({ type: 'close' });
           }
           if (!(e instanceof WebAssembly.Exception)) {
             throw e;
@@ -4334,20 +4618,20 @@ var PostMessageChannelWorker = class {
         }
       }
     });
-    __privateSet(this, _ep3, IN_NODE ? require("worker_threads").parentPort : globalThis);
+    __privateSet(this, _ep3, IN_NODE ? require('worker_threads').parentPort : globalThis);
   }
   resolve() {
-    this.write({ type: "resolve" });
+    this.write({ type: 'resolve' });
   }
   write(msg, transfer2) {
     __privateGet(this, _ep3).postMessage(msg, transfer2);
   }
   writeSystem(msg, transfer2) {
-    __privateGet(this, _ep3).postMessage({ type: "system", data: msg }, transfer2);
+    __privateGet(this, _ep3).postMessage({ type: 'system', data: msg }, transfer2);
   }
   read() {
     throw new WebRChannelError(
-      "Unable to synchronously read when using the `PostMessage` channel."
+      'Unable to synchronously read when using the `PostMessage` channel.'
     );
   }
   inputOrDispatch() {
@@ -4363,17 +4647,17 @@ var PostMessageChannelWorker = class {
   }
   run(_args) {
     const args = _args || [];
-    args.unshift("R");
+    args.unshift('R');
     const argc = args.length;
     const argv = Module._malloc(4 * (argc + 1));
     args.forEach((arg, idx) => {
       const argvPtr = argv + 4 * idx;
       const argPtr = Module.allocateUTF8(arg);
-      Module.setValue(argvPtr, argPtr, "*");
+      Module.setValue(argvPtr, argPtr, '*');
     });
     this.writeSystem({
-      type: "console.warn",
-      data: "WebR is using `PostMessage` communication channel, nested R REPLs are not available."
+      type: 'console.warn',
+      data: 'WebR is using `PostMessage` communication channel, nested R REPLs are not available.'
     });
     Module._Rf_initialize_R(argc, argv);
     Module._setup_Rmainloop();
@@ -4431,7 +4715,7 @@ function newChannelWorker(msg) {
     case ChannelType.PostMessage:
       return new PostMessageChannelWorker();
     default:
-      throw new WebRChannelError("Unknown worker channel type received");
+      throw new WebRChannelError('Unknown worker channel type received');
   }
 }
 
@@ -4464,18 +4748,19 @@ var END_BLOCK = 256;
 var REP_3_6 = 16;
 var REPZ_3_10 = 17;
 var REPZ_11_138 = 18;
-var extra_lbits = (
+var extra_lbits =
   /* extra bits for each length code */
-  new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0])
-);
-var extra_dbits = (
+  new Uint8Array([
+    0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0
+  ]);
+var extra_dbits =
   /* extra bits for each distance code */
-  new Uint8Array([0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13])
-);
-var extra_blbits = (
+  new Uint8Array([
+    0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13
+  ]);
+var extra_blbits =
   /* extra bits for each bit length code */
-  new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7])
-);
+  new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7]);
 var bl_order = new Uint8Array([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]);
 var DIST_CODE_LEN = 512;
 var static_ltree = new Array((L_CODES$1 + 2) * 2);
@@ -4511,16 +4796,16 @@ var d_code = (dist) => {
 };
 var put_short = (s, w) => {
   s.pending_buf[s.pending++] = w & 255;
-  s.pending_buf[s.pending++] = w >>> 8 & 255;
+  s.pending_buf[s.pending++] = (w >>> 8) & 255;
 };
 var send_bits = (s, value, length) => {
   if (s.bi_valid > Buf_size - length) {
-    s.bi_buf |= value << s.bi_valid & 65535;
+    s.bi_buf |= (value << s.bi_valid) & 65535;
     put_short(s, s.bi_buf);
-    s.bi_buf = value >> Buf_size - s.bi_valid;
+    s.bi_buf = value >> (Buf_size - s.bi_valid);
     s.bi_valid += length - Buf_size;
   } else {
-    s.bi_buf |= value << s.bi_valid & 65535;
+    s.bi_buf |= (value << s.bi_valid) & 65535;
     s.bi_valid += length;
   }
 };
@@ -4626,7 +4911,7 @@ var gen_codes = (tree, max_code, bl_count) => {
   let bits;
   let n;
   for (bits = 1; bits <= MAX_BITS$1; bits++) {
-    code = code + bl_count[bits - 1] << 1;
+    code = (code + bl_count[bits - 1]) << 1;
     next_code[bits] = code;
   }
   for (n = 0; n <= max_code; n++) {
@@ -4662,7 +4947,7 @@ var tr_static_init = () => {
   dist >>= 7;
   for (; code < D_CODES$1; code++) {
     base_dist[code] = dist << 7;
-    for (n = 0; n < 1 << extra_dbits[code] - 7; n++) {
+    for (n = 0; n < 1 << (extra_dbits[code] - 7); n++) {
       _dist_code[256 + dist++] = code;
     }
   }
@@ -4695,7 +4980,13 @@ var tr_static_init = () => {
     static_dtree[n * 2 + 1] = 5;
     static_dtree[n * 2] = bi_reverse(n, 5);
   }
-  static_l_desc = new StaticTreeDesc(static_ltree, extra_lbits, LITERALS$1 + 1, L_CODES$1, MAX_BITS$1);
+  static_l_desc = new StaticTreeDesc(
+    static_ltree,
+    extra_lbits,
+    LITERALS$1 + 1,
+    L_CODES$1,
+    MAX_BITS$1
+  );
   static_d_desc = new StaticTreeDesc(static_dtree, extra_dbits, 0, D_CODES$1, MAX_BITS$1);
   static_bl_desc = new StaticTreeDesc(new Array(0), extra_blbits, 0, BL_CODES$1, MAX_BL_BITS);
 };
@@ -4726,7 +5017,7 @@ var bi_windup = (s) => {
 var smaller = (tree, n, m, depth) => {
   const _n2 = n * 2;
   const _m2 = m * 2;
-  return tree[_n2] < tree[_m2] || tree[_n2] === tree[_m2] && depth[n] <= depth[m];
+  return tree[_n2] < tree[_m2] || (tree[_n2] === tree[_m2] && depth[n] <= depth[m]);
 };
 var pqdownheap = (s, tree, k) => {
   const v = s.heap[k];
@@ -4811,33 +5102,28 @@ var build_tree = (s, desc) => {
   }
   node = elems;
   do {
-    n = s.heap[
-      1
+    n =
+      s.heap[1];
       /*SMALLEST*/
-    ];
-    s.heap[
-      1
-      /*SMALLEST*/
-    ] = s.heap[s.heap_len--];
+    s.heap[1] = s.heap[s.heap_len--];
+    /*SMALLEST*/
     pqdownheap(
       s,
       tree,
       1
       /*SMALLEST*/
     );
-    m = s.heap[
-      1
+    m =
+      s.heap[1];
       /*SMALLEST*/
-    ];
     s.heap[--s.heap_max] = n;
     s.heap[--s.heap_max] = m;
     tree[node * 2] = tree[n * 2] + tree[m * 2];
     s.depth[node] = (s.depth[n] >= s.depth[m] ? s.depth[n] : s.depth[m]) + 1;
     tree[n * 2 + 1] = tree[m * 2 + 1] = node;
-    s.heap[
-      1
-      /*SMALLEST*/
-    ] = node++;
+    s.heap[1] =
+    /*SMALLEST*/
+      node++;
     pqdownheap(
       s,
       tree,
@@ -4845,10 +5131,9 @@ var build_tree = (s, desc) => {
       /*SMALLEST*/
     );
   } while (s.heap_len >= 2);
-  s.heap[--s.heap_max] = s.heap[
-    1
+  s.heap[--s.heap_max] =
+    s.heap[1];
     /*SMALLEST*/
-  ];
   gen_bitlen(s, desc);
   gen_codes(tree, max_code, s.bl_count);
 };
@@ -5025,8 +5310,8 @@ var _tr_flush_block$1 = (s, buf, stored_len, last) => {
     build_tree(s, s.l_desc);
     build_tree(s, s.d_desc);
     max_blindex = build_bl_tree(s);
-    opt_lenb = s.opt_len + 3 + 7 >>> 3;
-    static_lenb = s.static_len + 3 + 7 >>> 3;
+    opt_lenb = (s.opt_len + 3 + 7) >>> 3;
+    static_lenb = (s.static_len + 3 + 7) >>> 3;
     if (static_lenb <= opt_lenb) {
       opt_lenb = static_lenb;
     }
@@ -5075,26 +5360,29 @@ var trees = {
   _tr_align: _tr_align_1
 };
 var adler32 = (adler, buf, len, pos) => {
-  let s1 = adler & 65535 | 0, s2 = adler >>> 16 & 65535 | 0, n = 0;
+  let s1 = (adler & 65535) | 0,
+    s2 = ((adler >>> 16) & 65535) | 0,
+    n = 0;
   while (len !== 0) {
     n = len > 2e3 ? 2e3 : len;
     len -= n;
     do {
-      s1 = s1 + buf[pos++] | 0;
-      s2 = s2 + s1 | 0;
+      s1 = (s1 + buf[pos++]) | 0;
+      s2 = (s2 + s1) | 0;
     } while (--n);
     s1 %= 65521;
     s2 %= 65521;
   }
-  return s1 | s2 << 16 | 0;
+  return s1 | (s2 << 16) | 0;
 };
 var adler32_1 = adler32;
 var makeTable = () => {
-  let c, table = [];
+  let c,
+    table = [];
   for (var n = 0; n < 256; n++) {
     c = n;
     for (var k = 0; k < 8; k++) {
-      c = c & 1 ? 3988292384 ^ c >>> 1 : c >>> 1;
+      c = c & 1 ? 3988292384 ^ (c >>> 1) : c >>> 1;
     }
     table[n] = c;
   }
@@ -5106,29 +5394,29 @@ var crc32 = (crc, buf, len, pos) => {
   const end = pos + len;
   crc ^= -1;
   for (let i = pos; i < end; i++) {
-    crc = crc >>> 8 ^ t[(crc ^ buf[i]) & 255];
+    crc = (crc >>> 8) ^ t[(crc ^ buf[i]) & 255];
   }
   return crc ^ -1;
 };
 var crc32_1 = crc32;
 var messages = {
-  2: "need dictionary",
+  2: 'need dictionary',
   /* Z_NEED_DICT       2  */
-  1: "stream end",
+  1: 'stream end',
   /* Z_STREAM_END      1  */
-  0: "",
+  0: '',
   /* Z_OK              0  */
-  "-1": "file error",
+  '-1': 'file error',
   /* Z_ERRNO         (-1) */
-  "-2": "stream error",
+  '-2': 'stream error',
   /* Z_STREAM_ERROR  (-2) */
-  "-3": "data error",
+  '-3': 'data error',
   /* Z_DATA_ERROR    (-3) */
-  "-4": "insufficient memory",
+  '-4': 'insufficient memory',
   /* Z_MEM_ERROR     (-4) */
-  "-5": "buffer error",
+  '-5': 'buffer error',
   /* Z_BUF_ERROR     (-5) */
-  "-6": "incompatible version"
+  '-6': 'incompatible version'
   /* Z_VERSION_ERROR (-6) */
 };
 var constants$2 = {
@@ -5141,8 +5429,8 @@ var constants$2 = {
   Z_BLOCK: 5,
   Z_TREES: 6,
   /* Return codes for the compression/decompression functions. Negative values
-  * are errors, positive values are used for special but normal events.
-  */
+   * are errors, positive values are used for special but normal events.
+   */
   Z_OK: 0,
   Z_STREAM_END: 1,
   Z_NEED_DICT: 2,
@@ -5249,7 +5537,7 @@ var slide_hash = (s) => {
     s.prev[p] = m >= wsize ? m - wsize : 0;
   } while (--n);
 };
-var HASH_ZLIB = (s, prev, data) => (prev << s.hash_shift ^ data) & s.hash_mask;
+var HASH_ZLIB = (s, prev, data) => ((prev << s.hash_shift) ^ data) & s.hash_mask;
 var HASH = HASH_ZLIB;
 var flush_pending = (strm) => {
   const s = strm.state;
@@ -5279,7 +5567,7 @@ var put_byte = (s, b) => {
   s.pending_buf[s.pending++] = b;
 };
 var putShortMSB = (s, b) => {
-  s.pending_buf[s.pending++] = b >>> 8 & 255;
+  s.pending_buf[s.pending++] = (b >>> 8) & 255;
   s.pending_buf[s.pending++] = b & 255;
 };
 var read_buf = (strm, buf, start, size) => {
@@ -5323,13 +5611,27 @@ var longest_match = (s, cur_match) => {
   }
   do {
     match = cur_match;
-    if (_win[match + best_len] !== scan_end || _win[match + best_len - 1] !== scan_end1 || _win[match] !== _win[scan] || _win[++match] !== _win[scan + 1]) {
+    if (
+      _win[match + best_len] !== scan_end ||
+      _win[match + best_len - 1] !== scan_end1 ||
+      _win[match] !== _win[scan] ||
+      _win[++match] !== _win[scan + 1]
+    ) {
       continue;
     }
     scan += 2;
     match++;
-    do {
-    } while (_win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && _win[++scan] === _win[++match] && scan < strend);
+    do {} while (
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      _win[++scan] === _win[++match] &&
+      scan < strend
+    );
     len = MAX_MATCH - (strend - scan);
     scan = strend - MAX_MATCH;
     if (len > best_len) {
@@ -5387,11 +5689,14 @@ var fill_window = (s) => {
 };
 var deflate_stored = (s, flush) => {
   let min_block = s.pending_buf_size - 5 > s.w_size ? s.w_size : s.pending_buf_size - 5;
-  let len, left, have, last = 0;
+  let len,
+    left,
+    have,
+    last = 0;
   let used = s.strm.avail_in;
   do {
     len = 65535;
-    have = s.bi_valid + 42 >> 3;
+    have = (s.bi_valid + 42) >> 3;
     if (s.strm.avail_out < have) {
       break;
     }
@@ -5403,7 +5708,12 @@ var deflate_stored = (s, flush) => {
     if (len > have) {
       len = have;
     }
-    if (len < min_block && (len === 0 && flush !== Z_FINISH$3 || flush === Z_NO_FLUSH$2 || len !== left + s.strm.avail_in)) {
+    if (
+      len < min_block &&
+      ((len === 0 && flush !== Z_FINISH$3) ||
+        flush === Z_NO_FLUSH$2 ||
+        len !== left + s.strm.avail_in)
+    ) {
       break;
     }
     last = flush === Z_FINISH$3 && len === left + s.strm.avail_in ? 1 : 0;
@@ -5461,7 +5771,12 @@ var deflate_stored = (s, flush) => {
   if (last) {
     return BS_FINISH_DONE;
   }
-  if (flush !== Z_NO_FLUSH$2 && flush !== Z_FINISH$3 && s.strm.avail_in === 0 && s.strstart === s.block_start) {
+  if (
+    flush !== Z_NO_FLUSH$2 &&
+    flush !== Z_FINISH$3 &&
+    s.strm.avail_in === 0 &&
+    s.strstart === s.block_start
+  ) {
     return BS_BLOCK_DONE;
   }
   have = s.window_size - s.strstart;
@@ -5488,11 +5803,17 @@ var deflate_stored = (s, flush) => {
   if (s.high_water < s.strstart) {
     s.high_water = s.strstart;
   }
-  have = s.bi_valid + 42 >> 3;
+  have = (s.bi_valid + 42) >> 3;
   have = s.pending_buf_size - have > 65535 ? 65535 : s.pending_buf_size - have;
   min_block = have > s.w_size ? s.w_size : have;
   left = s.strstart - s.block_start;
-  if (left >= min_block || (left || flush === Z_FINISH$3) && flush !== Z_NO_FLUSH$2 && s.strm.avail_in === 0 && left <= have) {
+  if (
+    left >= min_block ||
+    ((left || flush === Z_FINISH$3) &&
+      flush !== Z_NO_FLUSH$2 &&
+      s.strm.avail_in === 0 &&
+      left <= have)
+  ) {
     len = left > have ? have : left;
     last = flush === Z_FINISH$3 && s.strm.avail_in === 0 && len === left ? 1 : 0;
     _tr_stored_block(s, s.block_start, len, last);
@@ -5504,7 +5825,7 @@ var deflate_stored = (s, flush) => {
 var deflate_fast = (s, flush) => {
   let hash_head;
   let bflush;
-  for (; ; ) {
+  for (;;) {
     if (s.lookahead < MIN_LOOKAHEAD) {
       fill_window(s);
       if (s.lookahead < MIN_LOOKAHEAD && flush === Z_NO_FLUSH$2) {
@@ -5573,7 +5894,7 @@ var deflate_slow = (s, flush) => {
   let hash_head;
   let bflush;
   let max_insert;
-  for (; ; ) {
+  for (;;) {
     if (s.lookahead < MIN_LOOKAHEAD) {
       fill_window(s);
       if (s.lookahead < MIN_LOOKAHEAD && flush === Z_NO_FLUSH$2) {
@@ -5592,9 +5913,17 @@ var deflate_slow = (s, flush) => {
     s.prev_length = s.match_length;
     s.prev_match = s.match_start;
     s.match_length = MIN_MATCH - 1;
-    if (hash_head !== 0 && s.prev_length < s.max_lazy_match && s.strstart - hash_head <= s.w_size - MIN_LOOKAHEAD) {
+    if (
+      hash_head !== 0 &&
+      s.prev_length < s.max_lazy_match &&
+      s.strstart - hash_head <= s.w_size - MIN_LOOKAHEAD
+    ) {
       s.match_length = longest_match(s, hash_head);
-      if (s.match_length <= 5 && (s.strategy === Z_FILTERED || s.match_length === MIN_MATCH && s.strstart - s.match_start > 4096)) {
+      if (
+        s.match_length <= 5 &&
+        (s.strategy === Z_FILTERED ||
+          (s.match_length === MIN_MATCH && s.strstart - s.match_start > 4096))
+      ) {
         s.match_length = MIN_MATCH - 1;
       }
     }
@@ -5660,7 +5989,7 @@ var deflate_rle = (s, flush) => {
   let prev;
   let scan, strend;
   const _win = s.window;
-  for (; ; ) {
+  for (;;) {
     if (s.lookahead <= MAX_MATCH) {
       fill_window(s);
       if (s.lookahead <= MAX_MATCH && flush === Z_NO_FLUSH$2) {
@@ -5676,8 +6005,17 @@ var deflate_rle = (s, flush) => {
       prev = _win[scan];
       if (prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan]) {
         strend = s.strstart + MAX_MATCH;
-        do {
-        } while (prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && prev === _win[++scan] && scan < strend);
+        do {} while (
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          prev === _win[++scan] &&
+          scan < strend
+        );
         s.match_length = MAX_MATCH - (strend - scan);
         if (s.match_length > s.lookahead) {
           s.match_length = s.lookahead;
@@ -5719,7 +6057,7 @@ var deflate_rle = (s, flush) => {
 };
 var deflate_huff = (s, flush) => {
   let bflush;
-  for (; ; ) {
+  for (;;) {
     if (s.lookahead === 0) {
       fill_window(s);
       if (s.lookahead === 0) {
@@ -5871,9 +6209,18 @@ var deflateStateCheck = (strm) => {
     return 1;
   }
   const s = strm.state;
-  if (!s || s.strm !== strm || s.status !== INIT_STATE && //#ifdef GZIP
-  s.status !== GZIP_STATE && //#endif
-  s.status !== EXTRA_STATE && s.status !== NAME_STATE && s.status !== COMMENT_STATE && s.status !== HCRC_STATE && s.status !== BUSY_STATE && s.status !== FINISH_STATE) {
+  if (
+    !s ||
+    s.strm !== strm ||
+    (s.status !== INIT_STATE && //#ifdef GZIP
+      s.status !== GZIP_STATE && //#endif
+      s.status !== EXTRA_STATE &&
+      s.status !== NAME_STATE &&
+      s.status !== COMMENT_STATE &&
+      s.status !== HCRC_STATE &&
+      s.status !== BUSY_STATE &&
+      s.status !== FINISH_STATE)
+  ) {
     return 1;
   }
   return 0;
@@ -5891,10 +6238,12 @@ var deflateResetKeep = (strm) => {
     s.wrap = -s.wrap;
   }
   s.status = //#ifdef GZIP
-  s.wrap === 2 ? GZIP_STATE : (
-    //#endif
-    s.wrap ? INIT_STATE : BUSY_STATE
-  );
+    s.wrap === 2
+      ? GZIP_STATE
+      : //#endif
+        s.wrap
+        ? INIT_STATE
+        : BUSY_STATE;
   strm.adler = s.wrap === 2 ? 0 : 1;
   s.last_flush = -2;
   _tr_init(s);
@@ -5929,7 +6278,18 @@ var deflateInit2 = (strm, level, method, windowBits, memLevel, strategy) => {
     wrap = 2;
     windowBits -= 16;
   }
-  if (memLevel < 1 || memLevel > MAX_MEM_LEVEL || method !== Z_DEFLATED$2 || windowBits < 8 || windowBits > 15 || level < 0 || level > 9 || strategy < 0 || strategy > Z_FIXED || windowBits === 8 && wrap !== 1) {
+  if (
+    memLevel < 1 ||
+    memLevel > MAX_MEM_LEVEL ||
+    method !== Z_DEFLATED$2 ||
+    windowBits < 8 ||
+    windowBits > 15 ||
+    level < 0 ||
+    level > 9 ||
+    strategy < 0 ||
+    strategy > Z_FIXED ||
+    (windowBits === 8 && wrap !== 1)
+  ) {
     return err(strm, Z_STREAM_ERROR$2);
   }
   if (windowBits === 8) {
@@ -5951,7 +6311,7 @@ var deflateInit2 = (strm, level, method, windowBits, memLevel, strategy) => {
   s.window = new Uint8Array(s.w_size * 2);
   s.head = new Uint16Array(s.hash_size);
   s.prev = new Uint16Array(s.w_size);
-  s.lit_bufsize = 1 << memLevel + 6;
+  s.lit_bufsize = 1 << (memLevel + 6);
   s.pending_buf_size = s.lit_bufsize * 4;
   s.pending_buf = new Uint8Array(s.pending_buf_size);
   s.sym_buf = s.lit_bufsize;
@@ -5969,7 +6329,11 @@ var deflate$2 = (strm, flush) => {
     return strm ? err(strm, Z_STREAM_ERROR$2) : Z_STREAM_ERROR$2;
   }
   const s = strm.state;
-  if (!strm.output || strm.avail_in !== 0 && !strm.input || s.status === FINISH_STATE && flush !== Z_FINISH$3) {
+  if (
+    !strm.output ||
+    (strm.avail_in !== 0 && !strm.input) ||
+    (s.status === FINISH_STATE && flush !== Z_FINISH$3)
+  ) {
     return err(strm, strm.avail_out === 0 ? Z_BUF_ERROR$1 : Z_STREAM_ERROR$2);
   }
   const old_flush = s.last_flush;
@@ -5990,7 +6354,7 @@ var deflate$2 = (strm, flush) => {
     s.status = BUSY_STATE;
   }
   if (s.status === INIT_STATE) {
-    let header = Z_DEFLATED$2 + (s.w_bits - 8 << 4) << 8;
+    let header = (Z_DEFLATED$2 + ((s.w_bits - 8) << 4)) << 8;
     let level_flags = -1;
     if (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2) {
       level_flags = 0;
@@ -6005,7 +6369,7 @@ var deflate$2 = (strm, flush) => {
     if (s.strstart !== 0) {
       header |= PRESET_DICT;
     }
-    header += 31 - header % 31;
+    header += 31 - (header % 31);
     putShortMSB(s, header);
     if (s.strstart !== 0) {
       putShortMSB(s, strm.adler >>> 16);
@@ -6041,17 +6405,21 @@ var deflate$2 = (strm, flush) => {
     } else {
       put_byte(
         s,
-        (s.gzhead.text ? 1 : 0) + (s.gzhead.hcrc ? 2 : 0) + (!s.gzhead.extra ? 0 : 4) + (!s.gzhead.name ? 0 : 8) + (!s.gzhead.comment ? 0 : 16)
+        (s.gzhead.text ? 1 : 0) +
+          (s.gzhead.hcrc ? 2 : 0) +
+          (!s.gzhead.extra ? 0 : 4) +
+          (!s.gzhead.name ? 0 : 8) +
+          (!s.gzhead.comment ? 0 : 16)
       );
       put_byte(s, s.gzhead.time & 255);
-      put_byte(s, s.gzhead.time >> 8 & 255);
-      put_byte(s, s.gzhead.time >> 16 & 255);
-      put_byte(s, s.gzhead.time >> 24 & 255);
+      put_byte(s, (s.gzhead.time >> 8) & 255);
+      put_byte(s, (s.gzhead.time >> 16) & 255);
+      put_byte(s, (s.gzhead.time >> 24) & 255);
       put_byte(s, s.level === 9 ? 2 : s.strategy >= Z_HUFFMAN_ONLY || s.level < 2 ? 4 : 0);
       put_byte(s, s.gzhead.os & 255);
       if (s.gzhead.extra && s.gzhead.extra.length) {
         put_byte(s, s.gzhead.extra.length & 255);
-        put_byte(s, s.gzhead.extra.length >> 8 & 255);
+        put_byte(s, (s.gzhead.extra.length >> 8) & 255);
       }
       if (s.gzhead.hcrc) {
         strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending, 0);
@@ -6159,7 +6527,7 @@ var deflate$2 = (strm, flush) => {
         }
       }
       put_byte(s, strm.adler & 255);
-      put_byte(s, strm.adler >> 8 & 255);
+      put_byte(s, (strm.adler >> 8) & 255);
       strm.adler = 0;
     }
     s.status = BUSY_STATE;
@@ -6169,8 +6537,19 @@ var deflate$2 = (strm, flush) => {
       return Z_OK$3;
     }
   }
-  if (strm.avail_in !== 0 || s.lookahead !== 0 || flush !== Z_NO_FLUSH$2 && s.status !== FINISH_STATE) {
-    let bstate = s.level === 0 ? deflate_stored(s, flush) : s.strategy === Z_HUFFMAN_ONLY ? deflate_huff(s, flush) : s.strategy === Z_RLE ? deflate_rle(s, flush) : configuration_table[s.level].func(s, flush);
+  if (
+    strm.avail_in !== 0 ||
+    s.lookahead !== 0 ||
+    (flush !== Z_NO_FLUSH$2 && s.status !== FINISH_STATE)
+  ) {
+    let bstate =
+      s.level === 0
+        ? deflate_stored(s, flush)
+        : s.strategy === Z_HUFFMAN_ONLY
+          ? deflate_huff(s, flush)
+          : s.strategy === Z_RLE
+            ? deflate_rle(s, flush)
+            : configuration_table[s.level].func(s, flush);
     if (bstate === BS_FINISH_STARTED || bstate === BS_FINISH_DONE) {
       s.status = FINISH_STATE;
     }
@@ -6209,13 +6588,13 @@ var deflate$2 = (strm, flush) => {
   }
   if (s.wrap === 2) {
     put_byte(s, strm.adler & 255);
-    put_byte(s, strm.adler >> 8 & 255);
-    put_byte(s, strm.adler >> 16 & 255);
-    put_byte(s, strm.adler >> 24 & 255);
+    put_byte(s, (strm.adler >> 8) & 255);
+    put_byte(s, (strm.adler >> 16) & 255);
+    put_byte(s, (strm.adler >> 24) & 255);
     put_byte(s, strm.total_in & 255);
-    put_byte(s, strm.total_in >> 8 & 255);
-    put_byte(s, strm.total_in >> 16 & 255);
-    put_byte(s, strm.total_in >> 24 & 255);
+    put_byte(s, (strm.total_in >> 8) & 255);
+    put_byte(s, (strm.total_in >> 16) & 255);
+    put_byte(s, (strm.total_in >> 24) & 255);
   } else {
     putShortMSB(s, strm.adler >>> 16);
     putShortMSB(s, strm.adler & 65535);
@@ -6241,7 +6620,7 @@ var deflateSetDictionary = (strm, dictionary) => {
   }
   const s = strm.state;
   const wrap = s.wrap;
-  if (wrap === 2 || wrap === 1 && s.status !== INIT_STATE || s.lookahead) {
+  if (wrap === 2 || (wrap === 1 && s.status !== INIT_STATE) || s.lookahead) {
     return Z_STREAM_ERROR$2;
   }
   if (wrap === 1) {
@@ -6300,7 +6679,7 @@ var deflateSetHeader_1 = deflateSetHeader;
 var deflate_2$1 = deflate$2;
 var deflateEnd_1 = deflateEnd;
 var deflateSetDictionary_1 = deflateSetDictionary;
-var deflateInfo = "pako deflate (from Nodeca project)";
+var deflateInfo = 'pako deflate (from Nodeca project)';
 var deflate_1$2 = {
   deflateInit: deflateInit_1,
   deflateInit2: deflateInit2_1,
@@ -6315,15 +6694,15 @@ var deflate_1$2 = {
 var _has = (obj, key) => {
   return Object.prototype.hasOwnProperty.call(obj, key);
 };
-var assign = function(obj) {
+var assign = function (obj) {
   const sources = Array.prototype.slice.call(arguments, 1);
   while (sources.length) {
     const source = sources.shift();
     if (!source) {
       continue;
     }
-    if (typeof source !== "object") {
-      throw new TypeError(source + "must be non-object");
+    if (typeof source !== 'object') {
+      throw new TypeError(source + 'must be non-object');
     }
     for (const p in source) {
       if (_has(source, p)) {
@@ -6362,16 +6741,22 @@ for (let q = 0; q < 256; q++) {
 }
 _utf8len[254] = _utf8len[254] = 1;
 var string2buf = (str) => {
-  if (typeof TextEncoder === "function" && TextEncoder.prototype.encode) {
+  if (typeof TextEncoder === 'function' && TextEncoder.prototype.encode) {
     return new TextEncoder().encode(str);
   }
-  let buf, c, c2, m_pos, i, str_len = str.length, buf_len = 0;
+  let buf,
+    c,
+    c2,
+    m_pos,
+    i,
+    str_len = str.length,
+    buf_len = 0;
   for (m_pos = 0; m_pos < str_len; m_pos++) {
     c = str.charCodeAt(m_pos);
     if ((c & 64512) === 55296 && m_pos + 1 < str_len) {
       c2 = str.charCodeAt(m_pos + 1);
       if ((c2 & 64512) === 56320) {
-        c = 65536 + (c - 55296 << 10) + (c2 - 56320);
+        c = 65536 + ((c - 55296) << 10) + (c2 - 56320);
         m_pos++;
       }
     }
@@ -6383,24 +6768,24 @@ var string2buf = (str) => {
     if ((c & 64512) === 55296 && m_pos + 1 < str_len) {
       c2 = str.charCodeAt(m_pos + 1);
       if ((c2 & 64512) === 56320) {
-        c = 65536 + (c - 55296 << 10) + (c2 - 56320);
+        c = 65536 + ((c - 55296) << 10) + (c2 - 56320);
         m_pos++;
       }
     }
     if (c < 128) {
       buf[i++] = c;
     } else if (c < 2048) {
-      buf[i++] = 192 | c >>> 6;
-      buf[i++] = 128 | c & 63;
+      buf[i++] = 192 | (c >>> 6);
+      buf[i++] = 128 | (c & 63);
     } else if (c < 65536) {
-      buf[i++] = 224 | c >>> 12;
-      buf[i++] = 128 | c >>> 6 & 63;
-      buf[i++] = 128 | c & 63;
+      buf[i++] = 224 | (c >>> 12);
+      buf[i++] = 128 | ((c >>> 6) & 63);
+      buf[i++] = 128 | (c & 63);
     } else {
-      buf[i++] = 240 | c >>> 18;
-      buf[i++] = 128 | c >>> 12 & 63;
-      buf[i++] = 128 | c >>> 6 & 63;
-      buf[i++] = 128 | c & 63;
+      buf[i++] = 240 | (c >>> 18);
+      buf[i++] = 128 | ((c >>> 12) & 63);
+      buf[i++] = 128 | ((c >>> 6) & 63);
+      buf[i++] = 128 | (c & 63);
     }
   }
   return buf;
@@ -6411,7 +6796,7 @@ var buf2binstring = (buf, len) => {
       return String.fromCharCode.apply(null, buf.length === len ? buf : buf.subarray(0, len));
     }
   }
-  let result = "";
+  let result = '';
   for (let i = 0; i < len; i++) {
     result += String.fromCharCode(buf[i]);
   }
@@ -6419,7 +6804,7 @@ var buf2binstring = (buf, len) => {
 };
 var buf2string = (buf, max) => {
   const len = max || buf.length;
-  if (typeof TextDecoder === "function" && TextDecoder.prototype.decode) {
+  if (typeof TextDecoder === 'function' && TextDecoder.prototype.decode) {
     return new TextDecoder().decode(buf.subarray(0, max));
   }
   let i, out;
@@ -6438,7 +6823,7 @@ var buf2string = (buf, max) => {
     }
     c &= c_len === 2 ? 31 : c_len === 3 ? 15 : 7;
     while (c_len > 1 && i < len) {
-      c = c << 6 | buf[i++] & 63;
+      c = (c << 6) | (buf[i++] & 63);
       c_len--;
     }
     if (c_len > 1) {
@@ -6449,8 +6834,8 @@ var buf2string = (buf, max) => {
       utf16buf[out++] = c;
     } else {
       c -= 65536;
-      utf16buf[out++] = 55296 | c >> 10 & 1023;
-      utf16buf[out++] = 56320 | c & 1023;
+      utf16buf[out++] = 55296 | ((c >> 10) & 1023);
+      utf16buf[out++] = 56320 | (c & 1023);
     }
   }
   return buf2binstring(utf16buf, out);
@@ -6486,7 +6871,7 @@ function ZStream() {
   this.next_out = 0;
   this.avail_out = 0;
   this.total_out = 0;
-  this.msg = "";
+  this.msg = '';
   this.state = null;
   this.data_type = 2;
   this.adler = 0;
@@ -6505,14 +6890,17 @@ var {
   Z_DEFLATED: Z_DEFLATED$1
 } = constants$2;
 function Deflate$1(options) {
-  this.options = common.assign({
-    level: Z_DEFAULT_COMPRESSION,
-    method: Z_DEFLATED$1,
-    chunkSize: 16384,
-    windowBits: 15,
-    memLevel: 8,
-    strategy: Z_DEFAULT_STRATEGY
-  }, options || {});
+  this.options = common.assign(
+    {
+      level: Z_DEFAULT_COMPRESSION,
+      method: Z_DEFLATED$1,
+      chunkSize: 16384,
+      windowBits: 15,
+      memLevel: 8,
+      strategy: Z_DEFAULT_STRATEGY
+    },
+    options || {}
+  );
   let opt = this.options;
   if (opt.raw && opt.windowBits > 0) {
     opt.windowBits = -opt.windowBits;
@@ -6520,7 +6908,7 @@ function Deflate$1(options) {
     opt.windowBits += 16;
   }
   this.err = 0;
-  this.msg = "";
+  this.msg = '';
   this.ended = false;
   this.chunks = [];
   this.strm = new zstream();
@@ -6541,9 +6929,9 @@ function Deflate$1(options) {
   }
   if (opt.dictionary) {
     let dict;
-    if (typeof opt.dictionary === "string") {
+    if (typeof opt.dictionary === 'string') {
       dict = strings.string2buf(opt.dictionary);
-    } else if (toString$1.call(opt.dictionary) === "[object ArrayBuffer]") {
+    } else if (toString$1.call(opt.dictionary) === '[object ArrayBuffer]') {
       dict = new Uint8Array(opt.dictionary);
     } else {
       dict = opt.dictionary;
@@ -6555,27 +6943,25 @@ function Deflate$1(options) {
     this._dict_set = true;
   }
 }
-Deflate$1.prototype.push = function(data, flush_mode) {
+Deflate$1.prototype.push = function (data, flush_mode) {
   const strm = this.strm;
   const chunkSize = this.options.chunkSize;
   let status, _flush_mode;
   if (this.ended) {
     return false;
   }
-  if (flush_mode === ~~flush_mode)
-    _flush_mode = flush_mode;
-  else
-    _flush_mode = flush_mode === true ? Z_FINISH$2 : Z_NO_FLUSH$1;
-  if (typeof data === "string") {
+  if (flush_mode === ~~flush_mode) _flush_mode = flush_mode;
+  else _flush_mode = flush_mode === true ? Z_FINISH$2 : Z_NO_FLUSH$1;
+  if (typeof data === 'string') {
     strm.input = strings.string2buf(data);
-  } else if (toString$1.call(data) === "[object ArrayBuffer]") {
+  } else if (toString$1.call(data) === '[object ArrayBuffer]') {
     strm.input = new Uint8Array(data);
   } else {
     strm.input = data;
   }
   strm.next_in = 0;
   strm.avail_in = strm.input.length;
-  for (; ; ) {
+  for (;;) {
     if (strm.avail_out === 0) {
       strm.output = new Uint8Array(chunkSize);
       strm.next_out = 0;
@@ -6605,15 +6991,14 @@ Deflate$1.prototype.push = function(data, flush_mode) {
       strm.avail_out = 0;
       continue;
     }
-    if (strm.avail_in === 0)
-      break;
+    if (strm.avail_in === 0) break;
   }
   return true;
 };
-Deflate$1.prototype.onData = function(chunk) {
+Deflate$1.prototype.onData = function (chunk) {
   this.chunks.push(chunk);
 };
-Deflate$1.prototype.onEnd = function(status) {
+Deflate$1.prototype.onEnd = function (status) {
   if (status === Z_OK$2) {
     this.result = common.flattenChunks(this.chunks);
   }
@@ -6696,170 +7081,167 @@ var inffast = function inflate_fast(strm, start) {
   dcode = state.distcode;
   lmask = (1 << state.lenbits) - 1;
   dmask = (1 << state.distbits) - 1;
-  top:
-    do {
-      if (bits < 15) {
-        hold += input[_in++] << bits;
-        bits += 8;
-        hold += input[_in++] << bits;
-        bits += 8;
-      }
-      here = lcode[hold & lmask];
-      dolen:
-        for (; ; ) {
+  top: do {
+    if (bits < 15) {
+      hold += input[_in++] << bits;
+      bits += 8;
+      hold += input[_in++] << bits;
+      bits += 8;
+    }
+    here = lcode[hold & lmask];
+    dolen: for (;;) {
+      op = here >>> 24;
+      hold >>>= op;
+      bits -= op;
+      op = (here >>> 16) & 255;
+      if (op === 0) {
+        output[_out++] = here & 65535;
+      } else if (op & 16) {
+        len = here & 65535;
+        op &= 15;
+        if (op) {
+          if (bits < op) {
+            hold += input[_in++] << bits;
+            bits += 8;
+          }
+          len += hold & ((1 << op) - 1);
+          hold >>>= op;
+          bits -= op;
+        }
+        if (bits < 15) {
+          hold += input[_in++] << bits;
+          bits += 8;
+          hold += input[_in++] << bits;
+          bits += 8;
+        }
+        here = dcode[hold & dmask];
+        dodist: for (;;) {
           op = here >>> 24;
           hold >>>= op;
           bits -= op;
-          op = here >>> 16 & 255;
-          if (op === 0) {
-            output[_out++] = here & 65535;
-          } else if (op & 16) {
-            len = here & 65535;
+          op = (here >>> 16) & 255;
+          if (op & 16) {
+            dist = here & 65535;
             op &= 15;
-            if (op) {
+            if (bits < op) {
+              hold += input[_in++] << bits;
+              bits += 8;
               if (bits < op) {
                 hold += input[_in++] << bits;
                 bits += 8;
               }
-              len += hold & (1 << op) - 1;
-              hold >>>= op;
-              bits -= op;
             }
-            if (bits < 15) {
-              hold += input[_in++] << bits;
-              bits += 8;
-              hold += input[_in++] << bits;
-              bits += 8;
+            dist += hold & ((1 << op) - 1);
+            if (dist > dmax) {
+              strm.msg = 'invalid distance too far back';
+              state.mode = BAD$1;
+              break top;
             }
-            here = dcode[hold & dmask];
-            dodist:
-              for (; ; ) {
-                op = here >>> 24;
-                hold >>>= op;
-                bits -= op;
-                op = here >>> 16 & 255;
-                if (op & 16) {
-                  dist = here & 65535;
-                  op &= 15;
-                  if (bits < op) {
-                    hold += input[_in++] << bits;
-                    bits += 8;
-                    if (bits < op) {
-                      hold += input[_in++] << bits;
-                      bits += 8;
-                    }
-                  }
-                  dist += hold & (1 << op) - 1;
-                  if (dist > dmax) {
-                    strm.msg = "invalid distance too far back";
-                    state.mode = BAD$1;
-                    break top;
-                  }
-                  hold >>>= op;
-                  bits -= op;
-                  op = _out - beg;
-                  if (dist > op) {
-                    op = dist - op;
-                    if (op > whave) {
-                      if (state.sane) {
-                        strm.msg = "invalid distance too far back";
-                        state.mode = BAD$1;
-                        break top;
-                      }
-                    }
-                    from = 0;
-                    from_source = s_window;
-                    if (wnext === 0) {
-                      from += wsize - op;
-                      if (op < len) {
-                        len -= op;
-                        do {
-                          output[_out++] = s_window[from++];
-                        } while (--op);
-                        from = _out - dist;
-                        from_source = output;
-                      }
-                    } else if (wnext < op) {
-                      from += wsize + wnext - op;
-                      op -= wnext;
-                      if (op < len) {
-                        len -= op;
-                        do {
-                          output[_out++] = s_window[from++];
-                        } while (--op);
-                        from = 0;
-                        if (wnext < len) {
-                          op = wnext;
-                          len -= op;
-                          do {
-                            output[_out++] = s_window[from++];
-                          } while (--op);
-                          from = _out - dist;
-                          from_source = output;
-                        }
-                      }
-                    } else {
-                      from += wnext - op;
-                      if (op < len) {
-                        len -= op;
-                        do {
-                          output[_out++] = s_window[from++];
-                        } while (--op);
-                        from = _out - dist;
-                        from_source = output;
-                      }
-                    }
-                    while (len > 2) {
-                      output[_out++] = from_source[from++];
-                      output[_out++] = from_source[from++];
-                      output[_out++] = from_source[from++];
-                      len -= 3;
-                    }
-                    if (len) {
-                      output[_out++] = from_source[from++];
-                      if (len > 1) {
-                        output[_out++] = from_source[from++];
-                      }
-                    }
-                  } else {
-                    from = _out - dist;
-                    do {
-                      output[_out++] = output[from++];
-                      output[_out++] = output[from++];
-                      output[_out++] = output[from++];
-                      len -= 3;
-                    } while (len > 2);
-                    if (len) {
-                      output[_out++] = output[from++];
-                      if (len > 1) {
-                        output[_out++] = output[from++];
-                      }
-                    }
-                  }
-                } else if ((op & 64) === 0) {
-                  here = dcode[(here & 65535) + (hold & (1 << op) - 1)];
-                  continue dodist;
-                } else {
-                  strm.msg = "invalid distance code";
+            hold >>>= op;
+            bits -= op;
+            op = _out - beg;
+            if (dist > op) {
+              op = dist - op;
+              if (op > whave) {
+                if (state.sane) {
+                  strm.msg = 'invalid distance too far back';
                   state.mode = BAD$1;
                   break top;
                 }
-                break;
               }
+              from = 0;
+              from_source = s_window;
+              if (wnext === 0) {
+                from += wsize - op;
+                if (op < len) {
+                  len -= op;
+                  do {
+                    output[_out++] = s_window[from++];
+                  } while (--op);
+                  from = _out - dist;
+                  from_source = output;
+                }
+              } else if (wnext < op) {
+                from += wsize + wnext - op;
+                op -= wnext;
+                if (op < len) {
+                  len -= op;
+                  do {
+                    output[_out++] = s_window[from++];
+                  } while (--op);
+                  from = 0;
+                  if (wnext < len) {
+                    op = wnext;
+                    len -= op;
+                    do {
+                      output[_out++] = s_window[from++];
+                    } while (--op);
+                    from = _out - dist;
+                    from_source = output;
+                  }
+                }
+              } else {
+                from += wnext - op;
+                if (op < len) {
+                  len -= op;
+                  do {
+                    output[_out++] = s_window[from++];
+                  } while (--op);
+                  from = _out - dist;
+                  from_source = output;
+                }
+              }
+              while (len > 2) {
+                output[_out++] = from_source[from++];
+                output[_out++] = from_source[from++];
+                output[_out++] = from_source[from++];
+                len -= 3;
+              }
+              if (len) {
+                output[_out++] = from_source[from++];
+                if (len > 1) {
+                  output[_out++] = from_source[from++];
+                }
+              }
+            } else {
+              from = _out - dist;
+              do {
+                output[_out++] = output[from++];
+                output[_out++] = output[from++];
+                output[_out++] = output[from++];
+                len -= 3;
+              } while (len > 2);
+              if (len) {
+                output[_out++] = output[from++];
+                if (len > 1) {
+                  output[_out++] = output[from++];
+                }
+              }
+            }
           } else if ((op & 64) === 0) {
-            here = lcode[(here & 65535) + (hold & (1 << op) - 1)];
-            continue dolen;
-          } else if (op & 32) {
-            state.mode = TYPE$1;
-            break top;
+            here = dcode[(here & 65535) + (hold & ((1 << op) - 1))];
+            continue dodist;
           } else {
-            strm.msg = "invalid literal/length code";
+            strm.msg = 'invalid distance code';
             state.mode = BAD$1;
             break top;
           }
           break;
         }
-    } while (_in < last && _out < end);
+      } else if ((op & 64) === 0) {
+        here = lcode[(here & 65535) + (hold & ((1 << op) - 1))];
+        continue dolen;
+      } else if (op & 32) {
+        state.mode = TYPE$1;
+        break top;
+      } else {
+        strm.msg = 'invalid literal/length code';
+        state.mode = BAD$1;
+        break top;
+      }
+      break;
+    }
+  } while (_in < last && _out < end);
   len = bits >> 3;
   _in -= len;
   bits -= len << 3;
@@ -6880,147 +7262,30 @@ var LENS$1 = 1;
 var DISTS$1 = 2;
 var lbase = new Uint16Array([
   /* Length codes 257..285 base */
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  13,
-  15,
-  17,
-  19,
-  23,
-  27,
-  31,
-  35,
-  43,
-  51,
-  59,
-  67,
-  83,
-  99,
-  115,
-  131,
-  163,
-  195,
-  227,
-  258,
-  0,
-  0
+  3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131,
+  163, 195, 227, 258, 0, 0
 ]);
 var lext = new Uint8Array([
   /* Length codes 257..285 extra */
-  16,
-  16,
-  16,
-  16,
-  16,
-  16,
-  16,
-  16,
-  17,
-  17,
-  17,
-  17,
-  18,
-  18,
-  18,
-  18,
-  19,
-  19,
-  19,
-  19,
-  20,
-  20,
-  20,
-  20,
-  21,
-  21,
-  21,
-  21,
-  16,
-  72,
-  78
+  16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20,
+  21, 21, 21, 21, 16, 72, 78
 ]);
 var dbase = new Uint16Array([
   /* Distance codes 0..29 base */
-  1,
-  2,
-  3,
-  4,
-  5,
-  7,
-  9,
-  13,
-  17,
-  25,
-  33,
-  49,
-  65,
-  97,
-  129,
-  193,
-  257,
-  385,
-  513,
-  769,
-  1025,
-  1537,
-  2049,
-  3073,
-  4097,
-  6145,
-  8193,
-  12289,
-  16385,
-  24577,
-  0,
-  0
+  1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049,
+  3073, 4097, 6145, 8193, 12289, 16385, 24577, 0, 0
 ]);
 var dext = new Uint8Array([
   /* Distance codes 0..29 extra */
-  16,
-  16,
-  16,
-  16,
-  17,
-  17,
-  18,
-  18,
-  19,
-  19,
-  20,
-  20,
-  21,
-  21,
-  22,
-  22,
-  23,
-  23,
-  24,
-  24,
-  25,
-  25,
-  26,
-  26,
-  27,
-  27,
-  28,
-  28,
-  29,
-  29,
-  64,
-  64
+  16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26,
+  27, 27, 28, 28, 29, 29, 64, 64
 ]);
 var inflate_table = (type, lens, lens_index, codes, table, table_index, work, opts) => {
   const bits = opts.bits;
   let len = 0;
   let sym = 0;
-  let min = 0, max = 0;
+  let min = 0,
+    max = 0;
   let root = 0;
   let curr = 0;
   let drop = 0;
@@ -7054,8 +7319,8 @@ var inflate_table = (type, lens, lens_index, codes, table, table_index, work, op
     root = max;
   }
   if (max === 0) {
-    table[table_index++] = 1 << 24 | 64 << 16 | 0;
-    table[table_index++] = 1 << 24 | 64 << 16 | 0;
+    table[table_index++] = (1 << 24) | (64 << 16) | 0;
+    table[table_index++] = (1 << 24) | (64 << 16) | 0;
     opts.bits = 1;
     return 0;
   }
@@ -7108,10 +7373,10 @@ var inflate_table = (type, lens, lens_index, codes, table, table_index, work, op
   low = -1;
   used = 1 << root;
   mask = used - 1;
-  if (type === LENS$1 && used > ENOUGH_LENS$1 || type === DISTS$1 && used > ENOUGH_DISTS$1) {
+  if ((type === LENS$1 && used > ENOUGH_LENS$1) || (type === DISTS$1 && used > ENOUGH_DISTS$1)) {
     return 1;
   }
-  for (; ; ) {
+  for (;;) {
     here_bits = len - drop;
     if (work[sym] + 1 < match) {
       here_op = 0;
@@ -7123,14 +7388,14 @@ var inflate_table = (type, lens, lens_index, codes, table, table_index, work, op
       here_op = 32 + 64;
       here_val = 0;
     }
-    incr = 1 << len - drop;
+    incr = 1 << (len - drop);
     fill = 1 << curr;
     min = fill;
     do {
       fill -= incr;
-      table[next + (huff >> drop) + fill] = here_bits << 24 | here_op << 16 | here_val | 0;
+      table[next + (huff >> drop) + fill] = (here_bits << 24) | (here_op << 16) | here_val | 0;
     } while (fill !== 0);
-    incr = 1 << len - 1;
+    incr = 1 << (len - 1);
     while (huff & incr) {
       incr >>= 1;
     }
@@ -7163,15 +7428,18 @@ var inflate_table = (type, lens, lens_index, codes, table, table_index, work, op
         left <<= 1;
       }
       used += 1 << curr;
-      if (type === LENS$1 && used > ENOUGH_LENS$1 || type === DISTS$1 && used > ENOUGH_DISTS$1) {
+      if (
+        (type === LENS$1 && used > ENOUGH_LENS$1) ||
+        (type === DISTS$1 && used > ENOUGH_DISTS$1)
+      ) {
         return 1;
       }
       low = huff & mask;
-      table[low] = root << 24 | curr << 16 | next - table_index | 0;
+      table[low] = (root << 24) | (curr << 16) | (next - table_index) | 0;
     }
   }
   if (huff !== 0) {
-    table[next + huff] = len - drop << 24 | 64 << 16 | 0;
+    table[next + huff] = ((len - drop) << 24) | (64 << 16) | 0;
   }
   opts.bits = root;
   return 0;
@@ -7230,7 +7498,7 @@ var ENOUGH_DISTS = 592;
 var MAX_WBITS = 15;
 var DEF_WBITS = MAX_WBITS;
 var zswap32 = (q) => {
-  return (q >>> 24 & 255) + (q >>> 8 & 65280) + ((q & 65280) << 8) + ((q & 255) << 24);
+  return ((q >>> 24) & 255) + ((q >>> 8) & 65280) + ((q & 65280) << 8) + ((q & 255) << 24);
 };
 function InflateState() {
   this.strm = null;
@@ -7286,7 +7554,7 @@ var inflateResetKeep = (strm) => {
   }
   const state = strm.state;
   strm.total_in = strm.total_out = state.total = 0;
-  strm.msg = "";
+  strm.msg = '';
   if (state.wrap) {
     strm.adler = state.wrap & 1;
   }
@@ -7446,11 +7714,10 @@ var inflate$2 = (strm, flush) => {
   const hbuf = new Uint8Array(4);
   let opts;
   let n;
-  const order = (
+  const order =
     /* permutation of code lengths */
-    new Uint8Array([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15])
-  );
-  if (inflateStateCheck(strm) || !strm.output || !strm.input && strm.avail_in !== 0) {
+    new Uint8Array([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]);
+  if (inflateStateCheck(strm) || !strm.output || (!strm.input && strm.avail_in !== 0)) {
     return Z_STREAM_ERROR$1;
   }
   state = strm.state;
@@ -7468,312 +7735,421 @@ var inflate$2 = (strm, flush) => {
   _in = have;
   _out = left;
   ret = Z_OK$1;
-  inf_leave:
-    for (; ; ) {
-      switch (state.mode) {
-        case HEAD:
-          if (state.wrap === 0) {
-            state.mode = TYPEDO;
-            break;
-          }
-          while (bits < 16) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          if (state.wrap & 2 && hold === 35615) {
-            if (state.wbits === 0) {
-              state.wbits = 15;
-            }
-            state.check = 0;
-            hbuf[0] = hold & 255;
-            hbuf[1] = hold >>> 8 & 255;
-            state.check = crc32_1(state.check, hbuf, 2, 0);
-            hold = 0;
-            bits = 0;
-            state.mode = FLAGS;
-            break;
-          }
-          if (state.head) {
-            state.head.done = false;
-          }
-          if (!(state.wrap & 1) || /* check if zlib header allowed */
-          (((hold & 255) << 8) + (hold >> 8)) % 31) {
-            strm.msg = "incorrect header check";
-            state.mode = BAD;
-            break;
-          }
-          if ((hold & 15) !== Z_DEFLATED) {
-            strm.msg = "unknown compression method";
-            state.mode = BAD;
-            break;
-          }
-          hold >>>= 4;
-          bits -= 4;
-          len = (hold & 15) + 8;
-          if (state.wbits === 0) {
-            state.wbits = len;
-          }
-          if (len > 15 || len > state.wbits) {
-            strm.msg = "invalid window size";
-            state.mode = BAD;
-            break;
-          }
-          state.dmax = 1 << state.wbits;
-          state.flags = 0;
-          strm.adler = state.check = 1;
-          state.mode = hold & 512 ? DICTID : TYPE;
-          hold = 0;
-          bits = 0;
+  inf_leave: for (;;) {
+    switch (state.mode) {
+      case HEAD:
+        if (state.wrap === 0) {
+          state.mode = TYPEDO;
           break;
-        case FLAGS:
-          while (bits < 16) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          state.flags = hold;
-          if ((state.flags & 255) !== Z_DEFLATED) {
-            strm.msg = "unknown compression method";
-            state.mode = BAD;
-            break;
-          }
-          if (state.flags & 57344) {
-            strm.msg = "unknown header flags set";
-            state.mode = BAD;
-            break;
-          }
-          if (state.head) {
-            state.head.text = hold >> 8 & 1;
-          }
-          if (state.flags & 512 && state.wrap & 4) {
-            hbuf[0] = hold & 255;
-            hbuf[1] = hold >>> 8 & 255;
-            state.check = crc32_1(state.check, hbuf, 2, 0);
-          }
-          hold = 0;
-          bits = 0;
-          state.mode = TIME;
-        case TIME:
-          while (bits < 32) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          if (state.head) {
-            state.head.time = hold;
-          }
-          if (state.flags & 512 && state.wrap & 4) {
-            hbuf[0] = hold & 255;
-            hbuf[1] = hold >>> 8 & 255;
-            hbuf[2] = hold >>> 16 & 255;
-            hbuf[3] = hold >>> 24 & 255;
-            state.check = crc32_1(state.check, hbuf, 4, 0);
-          }
-          hold = 0;
-          bits = 0;
-          state.mode = OS;
-        case OS:
-          while (bits < 16) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          if (state.head) {
-            state.head.xflags = hold & 255;
-            state.head.os = hold >> 8;
-          }
-          if (state.flags & 512 && state.wrap & 4) {
-            hbuf[0] = hold & 255;
-            hbuf[1] = hold >>> 8 & 255;
-            state.check = crc32_1(state.check, hbuf, 2, 0);
-          }
-          hold = 0;
-          bits = 0;
-          state.mode = EXLEN;
-        case EXLEN:
-          if (state.flags & 1024) {
-            while (bits < 16) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            state.length = hold;
-            if (state.head) {
-              state.head.extra_len = hold;
-            }
-            if (state.flags & 512 && state.wrap & 4) {
-              hbuf[0] = hold & 255;
-              hbuf[1] = hold >>> 8 & 255;
-              state.check = crc32_1(state.check, hbuf, 2, 0);
-            }
-            hold = 0;
-            bits = 0;
-          } else if (state.head) {
-            state.head.extra = null;
-          }
-          state.mode = EXTRA;
-        case EXTRA:
-          if (state.flags & 1024) {
-            copy = state.length;
-            if (copy > have) {
-              copy = have;
-            }
-            if (copy) {
-              if (state.head) {
-                len = state.head.extra_len - state.length;
-                if (!state.head.extra) {
-                  state.head.extra = new Uint8Array(state.head.extra_len);
-                }
-                state.head.extra.set(
-                  input.subarray(
-                    next,
-                    // extra field is limited to 65536 bytes
-                    // - no need for additional size check
-                    next + copy
-                  ),
-                  /*len + copy > state.head.extra_max - len ? state.head.extra_max : copy,*/
-                  len
-                );
-              }
-              if (state.flags & 512 && state.wrap & 4) {
-                state.check = crc32_1(state.check, input, copy, next);
-              }
-              have -= copy;
-              next += copy;
-              state.length -= copy;
-            }
-            if (state.length) {
-              break inf_leave;
-            }
-          }
-          state.length = 0;
-          state.mode = NAME;
-        case NAME:
-          if (state.flags & 2048) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            copy = 0;
-            do {
-              len = input[next + copy++];
-              if (state.head && len && state.length < 65536) {
-                state.head.name += String.fromCharCode(len);
-              }
-            } while (len && copy < have);
-            if (state.flags & 512 && state.wrap & 4) {
-              state.check = crc32_1(state.check, input, copy, next);
-            }
-            have -= copy;
-            next += copy;
-            if (len) {
-              break inf_leave;
-            }
-          } else if (state.head) {
-            state.head.name = null;
-          }
-          state.length = 0;
-          state.mode = COMMENT;
-        case COMMENT:
-          if (state.flags & 4096) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            copy = 0;
-            do {
-              len = input[next + copy++];
-              if (state.head && len && state.length < 65536) {
-                state.head.comment += String.fromCharCode(len);
-              }
-            } while (len && copy < have);
-            if (state.flags & 512 && state.wrap & 4) {
-              state.check = crc32_1(state.check, input, copy, next);
-            }
-            have -= copy;
-            next += copy;
-            if (len) {
-              break inf_leave;
-            }
-          } else if (state.head) {
-            state.head.comment = null;
-          }
-          state.mode = HCRC;
-        case HCRC:
-          if (state.flags & 512) {
-            while (bits < 16) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            if (state.wrap & 4 && hold !== (state.check & 65535)) {
-              strm.msg = "header crc mismatch";
-              state.mode = BAD;
-              break;
-            }
-            hold = 0;
-            bits = 0;
-          }
-          if (state.head) {
-            state.head.hcrc = state.flags >> 9 & 1;
-            state.head.done = true;
-          }
-          strm.adler = state.check = 0;
-          state.mode = TYPE;
-          break;
-        case DICTID:
-          while (bits < 32) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          strm.adler = state.check = zswap32(hold);
-          hold = 0;
-          bits = 0;
-          state.mode = DICT;
-        case DICT:
-          if (state.havedict === 0) {
-            strm.next_out = put;
-            strm.avail_out = left;
-            strm.next_in = next;
-            strm.avail_in = have;
-            state.hold = hold;
-            state.bits = bits;
-            return Z_NEED_DICT$1;
-          }
-          strm.adler = state.check = 1;
-          state.mode = TYPE;
-        case TYPE:
-          if (flush === Z_BLOCK || flush === Z_TREES) {
+        }
+        while (bits < 16) {
+          if (have === 0) {
             break inf_leave;
           }
-        case TYPEDO:
-          if (state.last) {
-            hold >>>= bits & 7;
-            bits -= bits & 7;
-            state.mode = CHECK;
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if (state.wrap & 2 && hold === 35615) {
+          if (state.wbits === 0) {
+            state.wbits = 15;
+          }
+          state.check = 0;
+          hbuf[0] = hold & 255;
+          hbuf[1] = (hold >>> 8) & 255;
+          state.check = crc32_1(state.check, hbuf, 2, 0);
+          hold = 0;
+          bits = 0;
+          state.mode = FLAGS;
+          break;
+        }
+        if (state.head) {
+          state.head.done = false;
+        }
+        if (
+          !(state.wrap & 1) /* check if zlib header allowed */ ||
+          (((hold & 255) << 8) + (hold >> 8)) % 31
+        ) {
+          strm.msg = 'incorrect header check';
+          state.mode = BAD;
+          break;
+        }
+        if ((hold & 15) !== Z_DEFLATED) {
+          strm.msg = 'unknown compression method';
+          state.mode = BAD;
+          break;
+        }
+        hold >>>= 4;
+        bits -= 4;
+        len = (hold & 15) + 8;
+        if (state.wbits === 0) {
+          state.wbits = len;
+        }
+        if (len > 15 || len > state.wbits) {
+          strm.msg = 'invalid window size';
+          state.mode = BAD;
+          break;
+        }
+        state.dmax = 1 << state.wbits;
+        state.flags = 0;
+        strm.adler = state.check = 1;
+        state.mode = hold & 512 ? DICTID : TYPE;
+        hold = 0;
+        bits = 0;
+        break;
+      case FLAGS:
+        while (bits < 16) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        state.flags = hold;
+        if ((state.flags & 255) !== Z_DEFLATED) {
+          strm.msg = 'unknown compression method';
+          state.mode = BAD;
+          break;
+        }
+        if (state.flags & 57344) {
+          strm.msg = 'unknown header flags set';
+          state.mode = BAD;
+          break;
+        }
+        if (state.head) {
+          state.head.text = (hold >> 8) & 1;
+        }
+        if (state.flags & 512 && state.wrap & 4) {
+          hbuf[0] = hold & 255;
+          hbuf[1] = (hold >>> 8) & 255;
+          state.check = crc32_1(state.check, hbuf, 2, 0);
+        }
+        hold = 0;
+        bits = 0;
+        state.mode = TIME;
+      case TIME:
+        while (bits < 32) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if (state.head) {
+          state.head.time = hold;
+        }
+        if (state.flags & 512 && state.wrap & 4) {
+          hbuf[0] = hold & 255;
+          hbuf[1] = (hold >>> 8) & 255;
+          hbuf[2] = (hold >>> 16) & 255;
+          hbuf[3] = (hold >>> 24) & 255;
+          state.check = crc32_1(state.check, hbuf, 4, 0);
+        }
+        hold = 0;
+        bits = 0;
+        state.mode = OS;
+      case OS:
+        while (bits < 16) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if (state.head) {
+          state.head.xflags = hold & 255;
+          state.head.os = hold >> 8;
+        }
+        if (state.flags & 512 && state.wrap & 4) {
+          hbuf[0] = hold & 255;
+          hbuf[1] = (hold >>> 8) & 255;
+          state.check = crc32_1(state.check, hbuf, 2, 0);
+        }
+        hold = 0;
+        bits = 0;
+        state.mode = EXLEN;
+      case EXLEN:
+        if (state.flags & 1024) {
+          while (bits < 16) {
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          state.length = hold;
+          if (state.head) {
+            state.head.extra_len = hold;
+          }
+          if (state.flags & 512 && state.wrap & 4) {
+            hbuf[0] = hold & 255;
+            hbuf[1] = (hold >>> 8) & 255;
+            state.check = crc32_1(state.check, hbuf, 2, 0);
+          }
+          hold = 0;
+          bits = 0;
+        } else if (state.head) {
+          state.head.extra = null;
+        }
+        state.mode = EXTRA;
+      case EXTRA:
+        if (state.flags & 1024) {
+          copy = state.length;
+          if (copy > have) {
+            copy = have;
+          }
+          if (copy) {
+            if (state.head) {
+              len = state.head.extra_len - state.length;
+              if (!state.head.extra) {
+                state.head.extra = new Uint8Array(state.head.extra_len);
+              }
+              state.head.extra.set(
+                input.subarray(
+                  next,
+                  // extra field is limited to 65536 bytes
+                  // - no need for additional size check
+                  next + copy
+                ),
+                /*len + copy > state.head.extra_max - len ? state.head.extra_max : copy,*/
+                len
+              );
+            }
+            if (state.flags & 512 && state.wrap & 4) {
+              state.check = crc32_1(state.check, input, copy, next);
+            }
+            have -= copy;
+            next += copy;
+            state.length -= copy;
+          }
+          if (state.length) {
+            break inf_leave;
+          }
+        }
+        state.length = 0;
+        state.mode = NAME;
+      case NAME:
+        if (state.flags & 2048) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          copy = 0;
+          do {
+            len = input[next + copy++];
+            if (state.head && len && state.length < 65536) {
+              state.head.name += String.fromCharCode(len);
+            }
+          } while (len && copy < have);
+          if (state.flags & 512 && state.wrap & 4) {
+            state.check = crc32_1(state.check, input, copy, next);
+          }
+          have -= copy;
+          next += copy;
+          if (len) {
+            break inf_leave;
+          }
+        } else if (state.head) {
+          state.head.name = null;
+        }
+        state.length = 0;
+        state.mode = COMMENT;
+      case COMMENT:
+        if (state.flags & 4096) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          copy = 0;
+          do {
+            len = input[next + copy++];
+            if (state.head && len && state.length < 65536) {
+              state.head.comment += String.fromCharCode(len);
+            }
+          } while (len && copy < have);
+          if (state.flags & 512 && state.wrap & 4) {
+            state.check = crc32_1(state.check, input, copy, next);
+          }
+          have -= copy;
+          next += copy;
+          if (len) {
+            break inf_leave;
+          }
+        } else if (state.head) {
+          state.head.comment = null;
+        }
+        state.mode = HCRC;
+      case HCRC:
+        if (state.flags & 512) {
+          while (bits < 16) {
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          if (state.wrap & 4 && hold !== (state.check & 65535)) {
+            strm.msg = 'header crc mismatch';
+            state.mode = BAD;
             break;
           }
+          hold = 0;
+          bits = 0;
+        }
+        if (state.head) {
+          state.head.hcrc = (state.flags >> 9) & 1;
+          state.head.done = true;
+        }
+        strm.adler = state.check = 0;
+        state.mode = TYPE;
+        break;
+      case DICTID:
+        while (bits < 32) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        strm.adler = state.check = zswap32(hold);
+        hold = 0;
+        bits = 0;
+        state.mode = DICT;
+      case DICT:
+        if (state.havedict === 0) {
+          strm.next_out = put;
+          strm.avail_out = left;
+          strm.next_in = next;
+          strm.avail_in = have;
+          state.hold = hold;
+          state.bits = bits;
+          return Z_NEED_DICT$1;
+        }
+        strm.adler = state.check = 1;
+        state.mode = TYPE;
+      case TYPE:
+        if (flush === Z_BLOCK || flush === Z_TREES) {
+          break inf_leave;
+        }
+      case TYPEDO:
+        if (state.last) {
+          hold >>>= bits & 7;
+          bits -= bits & 7;
+          state.mode = CHECK;
+          break;
+        }
+        while (bits < 3) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        state.last = hold & 1;
+        hold >>>= 1;
+        bits -= 1;
+        switch (hold & 3) {
+          case 0:
+            state.mode = STORED;
+            break;
+          case 1:
+            fixedtables(state);
+            state.mode = LEN_;
+            if (flush === Z_TREES) {
+              hold >>>= 2;
+              bits -= 2;
+              break inf_leave;
+            }
+            break;
+          case 2:
+            state.mode = TABLE;
+            break;
+          case 3:
+            strm.msg = 'invalid block type';
+            state.mode = BAD;
+        }
+        hold >>>= 2;
+        bits -= 2;
+        break;
+      case STORED:
+        hold >>>= bits & 7;
+        bits -= bits & 7;
+        while (bits < 32) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if ((hold & 65535) !== ((hold >>> 16) ^ 65535)) {
+          strm.msg = 'invalid stored block lengths';
+          state.mode = BAD;
+          break;
+        }
+        state.length = hold & 65535;
+        hold = 0;
+        bits = 0;
+        state.mode = COPY_;
+        if (flush === Z_TREES) {
+          break inf_leave;
+        }
+      case COPY_:
+        state.mode = COPY;
+      case COPY:
+        copy = state.length;
+        if (copy) {
+          if (copy > have) {
+            copy = have;
+          }
+          if (copy > left) {
+            copy = left;
+          }
+          if (copy === 0) {
+            break inf_leave;
+          }
+          output.set(input.subarray(next, next + copy), put);
+          have -= copy;
+          next += copy;
+          left -= copy;
+          put += copy;
+          state.length -= copy;
+          break;
+        }
+        state.mode = TYPE;
+        break;
+      case TABLE:
+        while (bits < 14) {
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        state.nlen = (hold & 31) + 257;
+        hold >>>= 5;
+        bits -= 5;
+        state.ndist = (hold & 31) + 1;
+        hold >>>= 5;
+        bits -= 5;
+        state.ncode = (hold & 15) + 4;
+        hold >>>= 4;
+        bits -= 4;
+        if (state.nlen > 286 || state.ndist > 30) {
+          strm.msg = 'too many length or distance symbols';
+          state.mode = BAD;
+          break;
+        }
+        state.have = 0;
+        state.mode = LENLENS;
+      case LENLENS:
+        while (state.have < state.ncode) {
           while (bits < 3) {
             if (have === 0) {
               break inf_leave;
@@ -7782,35 +8158,407 @@ var inflate$2 = (strm, flush) => {
             hold += input[next++] << bits;
             bits += 8;
           }
-          state.last = hold & 1;
-          hold >>>= 1;
-          bits -= 1;
-          switch (hold & 3) {
-            case 0:
-              state.mode = STORED;
-              break;
-            case 1:
-              fixedtables(state);
-              state.mode = LEN_;
-              if (flush === Z_TREES) {
-                hold >>>= 2;
-                bits -= 2;
-                break inf_leave;
-              }
-              break;
-            case 2:
-              state.mode = TABLE;
-              break;
-            case 3:
-              strm.msg = "invalid block type";
-              state.mode = BAD;
-          }
-          hold >>>= 2;
-          bits -= 2;
+          state.lens[order[state.have++]] = hold & 7;
+          hold >>>= 3;
+          bits -= 3;
+        }
+        while (state.have < 19) {
+          state.lens[order[state.have++]] = 0;
+        }
+        state.lencode = state.lendyn;
+        state.lenbits = 7;
+        opts = { bits: state.lenbits };
+        ret = inftrees(CODES, state.lens, 0, 19, state.lencode, 0, state.work, opts);
+        state.lenbits = opts.bits;
+        if (ret) {
+          strm.msg = 'invalid code lengths set';
+          state.mode = BAD;
           break;
-        case STORED:
-          hold >>>= bits & 7;
-          bits -= bits & 7;
+        }
+        state.have = 0;
+        state.mode = CODELENS;
+      case CODELENS:
+        while (state.have < state.nlen + state.ndist) {
+          for (;;) {
+            here = state.lencode[hold & ((1 << state.lenbits) - 1)];
+            here_bits = here >>> 24;
+            here_op = (here >>> 16) & 255;
+            here_val = here & 65535;
+            if (here_bits <= bits) {
+              break;
+            }
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          if (here_val < 16) {
+            hold >>>= here_bits;
+            bits -= here_bits;
+            state.lens[state.have++] = here_val;
+          } else {
+            if (here_val === 16) {
+              n = here_bits + 2;
+              while (bits < n) {
+                if (have === 0) {
+                  break inf_leave;
+                }
+                have--;
+                hold += input[next++] << bits;
+                bits += 8;
+              }
+              hold >>>= here_bits;
+              bits -= here_bits;
+              if (state.have === 0) {
+                strm.msg = 'invalid bit length repeat';
+                state.mode = BAD;
+                break;
+              }
+              len = state.lens[state.have - 1];
+              copy = 3 + (hold & 3);
+              hold >>>= 2;
+              bits -= 2;
+            } else if (here_val === 17) {
+              n = here_bits + 3;
+              while (bits < n) {
+                if (have === 0) {
+                  break inf_leave;
+                }
+                have--;
+                hold += input[next++] << bits;
+                bits += 8;
+              }
+              hold >>>= here_bits;
+              bits -= here_bits;
+              len = 0;
+              copy = 3 + (hold & 7);
+              hold >>>= 3;
+              bits -= 3;
+            } else {
+              n = here_bits + 7;
+              while (bits < n) {
+                if (have === 0) {
+                  break inf_leave;
+                }
+                have--;
+                hold += input[next++] << bits;
+                bits += 8;
+              }
+              hold >>>= here_bits;
+              bits -= here_bits;
+              len = 0;
+              copy = 11 + (hold & 127);
+              hold >>>= 7;
+              bits -= 7;
+            }
+            if (state.have + copy > state.nlen + state.ndist) {
+              strm.msg = 'invalid bit length repeat';
+              state.mode = BAD;
+              break;
+            }
+            while (copy--) {
+              state.lens[state.have++] = len;
+            }
+          }
+        }
+        if (state.mode === BAD) {
+          break;
+        }
+        if (state.lens[256] === 0) {
+          strm.msg = 'invalid code -- missing end-of-block';
+          state.mode = BAD;
+          break;
+        }
+        state.lenbits = 9;
+        opts = { bits: state.lenbits };
+        ret = inftrees(LENS, state.lens, 0, state.nlen, state.lencode, 0, state.work, opts);
+        state.lenbits = opts.bits;
+        if (ret) {
+          strm.msg = 'invalid literal/lengths set';
+          state.mode = BAD;
+          break;
+        }
+        state.distbits = 6;
+        state.distcode = state.distdyn;
+        opts = { bits: state.distbits };
+        ret = inftrees(
+          DISTS,
+          state.lens,
+          state.nlen,
+          state.ndist,
+          state.distcode,
+          0,
+          state.work,
+          opts
+        );
+        state.distbits = opts.bits;
+        if (ret) {
+          strm.msg = 'invalid distances set';
+          state.mode = BAD;
+          break;
+        }
+        state.mode = LEN_;
+        if (flush === Z_TREES) {
+          break inf_leave;
+        }
+      case LEN_:
+        state.mode = LEN;
+      case LEN:
+        if (have >= 6 && left >= 258) {
+          strm.next_out = put;
+          strm.avail_out = left;
+          strm.next_in = next;
+          strm.avail_in = have;
+          state.hold = hold;
+          state.bits = bits;
+          inffast(strm, _out);
+          put = strm.next_out;
+          output = strm.output;
+          left = strm.avail_out;
+          next = strm.next_in;
+          input = strm.input;
+          have = strm.avail_in;
+          hold = state.hold;
+          bits = state.bits;
+          if (state.mode === TYPE) {
+            state.back = -1;
+          }
+          break;
+        }
+        state.back = 0;
+        for (;;) {
+          here = state.lencode[hold & ((1 << state.lenbits) - 1)];
+          here_bits = here >>> 24;
+          here_op = (here >>> 16) & 255;
+          here_val = here & 65535;
+          if (here_bits <= bits) {
+            break;
+          }
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if (here_op && (here_op & 240) === 0) {
+          last_bits = here_bits;
+          last_op = here_op;
+          last_val = here_val;
+          for (;;) {
+            here =
+              state.lencode[last_val + ((hold & ((1 << (last_bits + last_op)) - 1)) >> last_bits)];
+            here_bits = here >>> 24;
+            here_op = (here >>> 16) & 255;
+            here_val = here & 65535;
+            if (last_bits + here_bits <= bits) {
+              break;
+            }
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          hold >>>= last_bits;
+          bits -= last_bits;
+          state.back += last_bits;
+        }
+        hold >>>= here_bits;
+        bits -= here_bits;
+        state.back += here_bits;
+        state.length = here_val;
+        if (here_op === 0) {
+          state.mode = LIT;
+          break;
+        }
+        if (here_op & 32) {
+          state.back = -1;
+          state.mode = TYPE;
+          break;
+        }
+        if (here_op & 64) {
+          strm.msg = 'invalid literal/length code';
+          state.mode = BAD;
+          break;
+        }
+        state.extra = here_op & 15;
+        state.mode = LENEXT;
+      case LENEXT:
+        if (state.extra) {
+          n = state.extra;
+          while (bits < n) {
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          state.length += hold & ((1 << state.extra) - 1);
+          hold >>>= state.extra;
+          bits -= state.extra;
+          state.back += state.extra;
+        }
+        state.was = state.length;
+        state.mode = DIST;
+      case DIST:
+        for (;;) {
+          here = state.distcode[hold & ((1 << state.distbits) - 1)];
+          here_bits = here >>> 24;
+          here_op = (here >>> 16) & 255;
+          here_val = here & 65535;
+          if (here_bits <= bits) {
+            break;
+          }
+          if (have === 0) {
+            break inf_leave;
+          }
+          have--;
+          hold += input[next++] << bits;
+          bits += 8;
+        }
+        if ((here_op & 240) === 0) {
+          last_bits = here_bits;
+          last_op = here_op;
+          last_val = here_val;
+          for (;;) {
+            here =
+              state.distcode[last_val + ((hold & ((1 << (last_bits + last_op)) - 1)) >> last_bits)];
+            here_bits = here >>> 24;
+            here_op = (here >>> 16) & 255;
+            here_val = here & 65535;
+            if (last_bits + here_bits <= bits) {
+              break;
+            }
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          hold >>>= last_bits;
+          bits -= last_bits;
+          state.back += last_bits;
+        }
+        hold >>>= here_bits;
+        bits -= here_bits;
+        state.back += here_bits;
+        if (here_op & 64) {
+          strm.msg = 'invalid distance code';
+          state.mode = BAD;
+          break;
+        }
+        state.offset = here_val;
+        state.extra = here_op & 15;
+        state.mode = DISTEXT;
+      case DISTEXT:
+        if (state.extra) {
+          n = state.extra;
+          while (bits < n) {
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold += input[next++] << bits;
+            bits += 8;
+          }
+          state.offset += hold & ((1 << state.extra) - 1);
+          hold >>>= state.extra;
+          bits -= state.extra;
+          state.back += state.extra;
+        }
+        if (state.offset > state.dmax) {
+          strm.msg = 'invalid distance too far back';
+          state.mode = BAD;
+          break;
+        }
+        state.mode = MATCH;
+      case MATCH:
+        if (left === 0) {
+          break inf_leave;
+        }
+        copy = _out - left;
+        if (state.offset > copy) {
+          copy = state.offset - copy;
+          if (copy > state.whave) {
+            if (state.sane) {
+              strm.msg = 'invalid distance too far back';
+              state.mode = BAD;
+              break;
+            }
+          }
+          if (copy > state.wnext) {
+            copy -= state.wnext;
+            from = state.wsize - copy;
+          } else {
+            from = state.wnext - copy;
+          }
+          if (copy > state.length) {
+            copy = state.length;
+          }
+          from_source = state.window;
+        } else {
+          from_source = output;
+          from = put - state.offset;
+          copy = state.length;
+        }
+        if (copy > left) {
+          copy = left;
+        }
+        left -= copy;
+        state.length -= copy;
+        do {
+          output[put++] = from_source[from++];
+        } while (--copy);
+        if (state.length === 0) {
+          state.mode = LEN;
+        }
+        break;
+      case LIT:
+        if (left === 0) {
+          break inf_leave;
+        }
+        output[put++] = state.length;
+        left--;
+        state.mode = LEN;
+        break;
+      case CHECK:
+        if (state.wrap) {
+          while (bits < 32) {
+            if (have === 0) {
+              break inf_leave;
+            }
+            have--;
+            hold |= input[next++] << bits;
+            bits += 8;
+          }
+          _out -= left;
+          strm.total_out += _out;
+          state.total += _out;
+          if (state.wrap & 4 && _out) {
+            strm.adler = state.check =
+              /*UPDATE_CHECK(state.check, put - _out, _out);*/
+              state.flags
+                ? crc32_1(state.check, output, _out, put - _out)
+                : adler32_1(state.check, output, _out, put - _out);
+          }
+          _out = left;
+          if (state.wrap & 4 && (state.flags ? hold : zswap32(hold)) !== state.check) {
+            strm.msg = 'incorrect data check';
+            state.mode = BAD;
+            break;
+          }
+          hold = 0;
+          bits = 0;
+        }
+        state.mode = LENGTH;
+      case LENGTH:
+        if (state.wrap && state.flags) {
           while (bits < 32) {
             if (have === 0) {
               break inf_leave;
@@ -7819,503 +8567,39 @@ var inflate$2 = (strm, flush) => {
             hold += input[next++] << bits;
             bits += 8;
           }
-          if ((hold & 65535) !== (hold >>> 16 ^ 65535)) {
-            strm.msg = "invalid stored block lengths";
+          if (state.wrap & 4 && hold !== (state.total & 4294967295)) {
+            strm.msg = 'incorrect length check';
             state.mode = BAD;
             break;
           }
-          state.length = hold & 65535;
           hold = 0;
           bits = 0;
-          state.mode = COPY_;
-          if (flush === Z_TREES) {
-            break inf_leave;
-          }
-        case COPY_:
-          state.mode = COPY;
-        case COPY:
-          copy = state.length;
-          if (copy) {
-            if (copy > have) {
-              copy = have;
-            }
-            if (copy > left) {
-              copy = left;
-            }
-            if (copy === 0) {
-              break inf_leave;
-            }
-            output.set(input.subarray(next, next + copy), put);
-            have -= copy;
-            next += copy;
-            left -= copy;
-            put += copy;
-            state.length -= copy;
-            break;
-          }
-          state.mode = TYPE;
-          break;
-        case TABLE:
-          while (bits < 14) {
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          state.nlen = (hold & 31) + 257;
-          hold >>>= 5;
-          bits -= 5;
-          state.ndist = (hold & 31) + 1;
-          hold >>>= 5;
-          bits -= 5;
-          state.ncode = (hold & 15) + 4;
-          hold >>>= 4;
-          bits -= 4;
-          if (state.nlen > 286 || state.ndist > 30) {
-            strm.msg = "too many length or distance symbols";
-            state.mode = BAD;
-            break;
-          }
-          state.have = 0;
-          state.mode = LENLENS;
-        case LENLENS:
-          while (state.have < state.ncode) {
-            while (bits < 3) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            state.lens[order[state.have++]] = hold & 7;
-            hold >>>= 3;
-            bits -= 3;
-          }
-          while (state.have < 19) {
-            state.lens[order[state.have++]] = 0;
-          }
-          state.lencode = state.lendyn;
-          state.lenbits = 7;
-          opts = { bits: state.lenbits };
-          ret = inftrees(CODES, state.lens, 0, 19, state.lencode, 0, state.work, opts);
-          state.lenbits = opts.bits;
-          if (ret) {
-            strm.msg = "invalid code lengths set";
-            state.mode = BAD;
-            break;
-          }
-          state.have = 0;
-          state.mode = CODELENS;
-        case CODELENS:
-          while (state.have < state.nlen + state.ndist) {
-            for (; ; ) {
-              here = state.lencode[hold & (1 << state.lenbits) - 1];
-              here_bits = here >>> 24;
-              here_op = here >>> 16 & 255;
-              here_val = here & 65535;
-              if (here_bits <= bits) {
-                break;
-              }
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            if (here_val < 16) {
-              hold >>>= here_bits;
-              bits -= here_bits;
-              state.lens[state.have++] = here_val;
-            } else {
-              if (here_val === 16) {
-                n = here_bits + 2;
-                while (bits < n) {
-                  if (have === 0) {
-                    break inf_leave;
-                  }
-                  have--;
-                  hold += input[next++] << bits;
-                  bits += 8;
-                }
-                hold >>>= here_bits;
-                bits -= here_bits;
-                if (state.have === 0) {
-                  strm.msg = "invalid bit length repeat";
-                  state.mode = BAD;
-                  break;
-                }
-                len = state.lens[state.have - 1];
-                copy = 3 + (hold & 3);
-                hold >>>= 2;
-                bits -= 2;
-              } else if (here_val === 17) {
-                n = here_bits + 3;
-                while (bits < n) {
-                  if (have === 0) {
-                    break inf_leave;
-                  }
-                  have--;
-                  hold += input[next++] << bits;
-                  bits += 8;
-                }
-                hold >>>= here_bits;
-                bits -= here_bits;
-                len = 0;
-                copy = 3 + (hold & 7);
-                hold >>>= 3;
-                bits -= 3;
-              } else {
-                n = here_bits + 7;
-                while (bits < n) {
-                  if (have === 0) {
-                    break inf_leave;
-                  }
-                  have--;
-                  hold += input[next++] << bits;
-                  bits += 8;
-                }
-                hold >>>= here_bits;
-                bits -= here_bits;
-                len = 0;
-                copy = 11 + (hold & 127);
-                hold >>>= 7;
-                bits -= 7;
-              }
-              if (state.have + copy > state.nlen + state.ndist) {
-                strm.msg = "invalid bit length repeat";
-                state.mode = BAD;
-                break;
-              }
-              while (copy--) {
-                state.lens[state.have++] = len;
-              }
-            }
-          }
-          if (state.mode === BAD) {
-            break;
-          }
-          if (state.lens[256] === 0) {
-            strm.msg = "invalid code -- missing end-of-block";
-            state.mode = BAD;
-            break;
-          }
-          state.lenbits = 9;
-          opts = { bits: state.lenbits };
-          ret = inftrees(LENS, state.lens, 0, state.nlen, state.lencode, 0, state.work, opts);
-          state.lenbits = opts.bits;
-          if (ret) {
-            strm.msg = "invalid literal/lengths set";
-            state.mode = BAD;
-            break;
-          }
-          state.distbits = 6;
-          state.distcode = state.distdyn;
-          opts = { bits: state.distbits };
-          ret = inftrees(DISTS, state.lens, state.nlen, state.ndist, state.distcode, 0, state.work, opts);
-          state.distbits = opts.bits;
-          if (ret) {
-            strm.msg = "invalid distances set";
-            state.mode = BAD;
-            break;
-          }
-          state.mode = LEN_;
-          if (flush === Z_TREES) {
-            break inf_leave;
-          }
-        case LEN_:
-          state.mode = LEN;
-        case LEN:
-          if (have >= 6 && left >= 258) {
-            strm.next_out = put;
-            strm.avail_out = left;
-            strm.next_in = next;
-            strm.avail_in = have;
-            state.hold = hold;
-            state.bits = bits;
-            inffast(strm, _out);
-            put = strm.next_out;
-            output = strm.output;
-            left = strm.avail_out;
-            next = strm.next_in;
-            input = strm.input;
-            have = strm.avail_in;
-            hold = state.hold;
-            bits = state.bits;
-            if (state.mode === TYPE) {
-              state.back = -1;
-            }
-            break;
-          }
-          state.back = 0;
-          for (; ; ) {
-            here = state.lencode[hold & (1 << state.lenbits) - 1];
-            here_bits = here >>> 24;
-            here_op = here >>> 16 & 255;
-            here_val = here & 65535;
-            if (here_bits <= bits) {
-              break;
-            }
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          if (here_op && (here_op & 240) === 0) {
-            last_bits = here_bits;
-            last_op = here_op;
-            last_val = here_val;
-            for (; ; ) {
-              here = state.lencode[last_val + ((hold & (1 << last_bits + last_op) - 1) >> last_bits)];
-              here_bits = here >>> 24;
-              here_op = here >>> 16 & 255;
-              here_val = here & 65535;
-              if (last_bits + here_bits <= bits) {
-                break;
-              }
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            hold >>>= last_bits;
-            bits -= last_bits;
-            state.back += last_bits;
-          }
-          hold >>>= here_bits;
-          bits -= here_bits;
-          state.back += here_bits;
-          state.length = here_val;
-          if (here_op === 0) {
-            state.mode = LIT;
-            break;
-          }
-          if (here_op & 32) {
-            state.back = -1;
-            state.mode = TYPE;
-            break;
-          }
-          if (here_op & 64) {
-            strm.msg = "invalid literal/length code";
-            state.mode = BAD;
-            break;
-          }
-          state.extra = here_op & 15;
-          state.mode = LENEXT;
-        case LENEXT:
-          if (state.extra) {
-            n = state.extra;
-            while (bits < n) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            state.length += hold & (1 << state.extra) - 1;
-            hold >>>= state.extra;
-            bits -= state.extra;
-            state.back += state.extra;
-          }
-          state.was = state.length;
-          state.mode = DIST;
-        case DIST:
-          for (; ; ) {
-            here = state.distcode[hold & (1 << state.distbits) - 1];
-            here_bits = here >>> 24;
-            here_op = here >>> 16 & 255;
-            here_val = here & 65535;
-            if (here_bits <= bits) {
-              break;
-            }
-            if (have === 0) {
-              break inf_leave;
-            }
-            have--;
-            hold += input[next++] << bits;
-            bits += 8;
-          }
-          if ((here_op & 240) === 0) {
-            last_bits = here_bits;
-            last_op = here_op;
-            last_val = here_val;
-            for (; ; ) {
-              here = state.distcode[last_val + ((hold & (1 << last_bits + last_op) - 1) >> last_bits)];
-              here_bits = here >>> 24;
-              here_op = here >>> 16 & 255;
-              here_val = here & 65535;
-              if (last_bits + here_bits <= bits) {
-                break;
-              }
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            hold >>>= last_bits;
-            bits -= last_bits;
-            state.back += last_bits;
-          }
-          hold >>>= here_bits;
-          bits -= here_bits;
-          state.back += here_bits;
-          if (here_op & 64) {
-            strm.msg = "invalid distance code";
-            state.mode = BAD;
-            break;
-          }
-          state.offset = here_val;
-          state.extra = here_op & 15;
-          state.mode = DISTEXT;
-        case DISTEXT:
-          if (state.extra) {
-            n = state.extra;
-            while (bits < n) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            state.offset += hold & (1 << state.extra) - 1;
-            hold >>>= state.extra;
-            bits -= state.extra;
-            state.back += state.extra;
-          }
-          if (state.offset > state.dmax) {
-            strm.msg = "invalid distance too far back";
-            state.mode = BAD;
-            break;
-          }
-          state.mode = MATCH;
-        case MATCH:
-          if (left === 0) {
-            break inf_leave;
-          }
-          copy = _out - left;
-          if (state.offset > copy) {
-            copy = state.offset - copy;
-            if (copy > state.whave) {
-              if (state.sane) {
-                strm.msg = "invalid distance too far back";
-                state.mode = BAD;
-                break;
-              }
-            }
-            if (copy > state.wnext) {
-              copy -= state.wnext;
-              from = state.wsize - copy;
-            } else {
-              from = state.wnext - copy;
-            }
-            if (copy > state.length) {
-              copy = state.length;
-            }
-            from_source = state.window;
-          } else {
-            from_source = output;
-            from = put - state.offset;
-            copy = state.length;
-          }
-          if (copy > left) {
-            copy = left;
-          }
-          left -= copy;
-          state.length -= copy;
-          do {
-            output[put++] = from_source[from++];
-          } while (--copy);
-          if (state.length === 0) {
-            state.mode = LEN;
-          }
-          break;
-        case LIT:
-          if (left === 0) {
-            break inf_leave;
-          }
-          output[put++] = state.length;
-          left--;
-          state.mode = LEN;
-          break;
-        case CHECK:
-          if (state.wrap) {
-            while (bits < 32) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold |= input[next++] << bits;
-              bits += 8;
-            }
-            _out -= left;
-            strm.total_out += _out;
-            state.total += _out;
-            if (state.wrap & 4 && _out) {
-              strm.adler = state.check = /*UPDATE_CHECK(state.check, put - _out, _out);*/
-              state.flags ? crc32_1(state.check, output, _out, put - _out) : adler32_1(state.check, output, _out, put - _out);
-            }
-            _out = left;
-            if (state.wrap & 4 && (state.flags ? hold : zswap32(hold)) !== state.check) {
-              strm.msg = "incorrect data check";
-              state.mode = BAD;
-              break;
-            }
-            hold = 0;
-            bits = 0;
-          }
-          state.mode = LENGTH;
-        case LENGTH:
-          if (state.wrap && state.flags) {
-            while (bits < 32) {
-              if (have === 0) {
-                break inf_leave;
-              }
-              have--;
-              hold += input[next++] << bits;
-              bits += 8;
-            }
-            if (state.wrap & 4 && hold !== (state.total & 4294967295)) {
-              strm.msg = "incorrect length check";
-              state.mode = BAD;
-              break;
-            }
-            hold = 0;
-            bits = 0;
-          }
-          state.mode = DONE;
-        case DONE:
-          ret = Z_STREAM_END$1;
-          break inf_leave;
-        case BAD:
-          ret = Z_DATA_ERROR$1;
-          break inf_leave;
-        case MEM:
-          return Z_MEM_ERROR$1;
-        case SYNC:
-        default:
-          return Z_STREAM_ERROR$1;
-      }
+        }
+        state.mode = DONE;
+      case DONE:
+        ret = Z_STREAM_END$1;
+        break inf_leave;
+      case BAD:
+        ret = Z_DATA_ERROR$1;
+        break inf_leave;
+      case MEM:
+        return Z_MEM_ERROR$1;
+      case SYNC:
+      default:
+        return Z_STREAM_ERROR$1;
     }
+  }
   strm.next_out = put;
   strm.avail_out = left;
   strm.next_in = next;
   strm.avail_in = have;
   state.hold = hold;
   state.bits = bits;
-  if (state.wsize || _out !== strm.avail_out && state.mode < BAD && (state.mode < CHECK || flush !== Z_FINISH$1)) {
-    if (updatewindow(strm, strm.output, strm.next_out, _out - strm.avail_out))
-      ;
+  if (
+    state.wsize ||
+    (_out !== strm.avail_out && state.mode < BAD && (state.mode < CHECK || flush !== Z_FINISH$1))
+  ) {
+    if (updatewindow(strm, strm.output, strm.next_out, _out - strm.avail_out));
   }
   _in -= strm.avail_in;
   _out -= strm.avail_out;
@@ -8323,11 +8607,18 @@ var inflate$2 = (strm, flush) => {
   strm.total_out += _out;
   state.total += _out;
   if (state.wrap & 4 && _out) {
-    strm.adler = state.check = /*UPDATE_CHECK(state.check, strm.next_out - _out, _out);*/
-    state.flags ? crc32_1(state.check, output, _out, strm.next_out - _out) : adler32_1(state.check, output, _out, strm.next_out - _out);
+    strm.adler = state.check =
+      /*UPDATE_CHECK(state.check, strm.next_out - _out, _out);*/
+      state.flags
+        ? crc32_1(state.check, output, _out, strm.next_out - _out)
+        : adler32_1(state.check, output, _out, strm.next_out - _out);
   }
-  strm.data_type = state.bits + (state.last ? 64 : 0) + (state.mode === TYPE ? 128 : 0) + (state.mode === LEN_ || state.mode === COPY_ ? 256 : 0);
-  if ((_in === 0 && _out === 0 || flush === Z_FINISH$1) && ret === Z_OK$1) {
+  strm.data_type =
+    state.bits +
+    (state.last ? 64 : 0) +
+    (state.mode === TYPE ? 128 : 0) +
+    (state.mode === LEN_ || state.mode === COPY_ ? 256 : 0);
+  if (((_in === 0 && _out === 0) || flush === Z_FINISH$1) && ret === Z_OK$1) {
     ret = Z_BUF_ERROR;
   }
   return ret;
@@ -8391,7 +8682,7 @@ var inflate_2$1 = inflate$2;
 var inflateEnd_1 = inflateEnd;
 var inflateGetHeader_1 = inflateGetHeader;
 var inflateSetDictionary_1 = inflateSetDictionary;
-var inflateInfo = "pako inflate (from Nodeca project)";
+var inflateInfo = 'pako inflate (from Nodeca project)';
 var inflate_1$2 = {
   inflateReset: inflateReset_1,
   inflateReset2: inflateReset2_1,
@@ -8411,8 +8702,8 @@ function GZheader() {
   this.os = 0;
   this.extra = null;
   this.extra_len = 0;
-  this.name = "";
-  this.comment = "";
+  this.name = '';
+  this.comment = '';
   this.hcrc = 0;
   this.done = false;
 }
@@ -8429,11 +8720,14 @@ var {
   Z_MEM_ERROR
 } = constants$2;
 function Inflate$1(options) {
-  this.options = common.assign({
-    chunkSize: 1024 * 64,
-    windowBits: 15,
-    to: ""
-  }, options || {});
+  this.options = common.assign(
+    {
+      chunkSize: 1024 * 64,
+      windowBits: 15,
+      to: ''
+    },
+    options || {}
+  );
   const opt = this.options;
   if (opt.raw && opt.windowBits >= 0 && opt.windowBits < 16) {
     opt.windowBits = -opt.windowBits;
@@ -8450,24 +8744,21 @@ function Inflate$1(options) {
     }
   }
   this.err = 0;
-  this.msg = "";
+  this.msg = '';
   this.ended = false;
   this.chunks = [];
   this.strm = new zstream();
   this.strm.avail_out = 0;
-  let status = inflate_1$2.inflateInit2(
-    this.strm,
-    opt.windowBits
-  );
+  let status = inflate_1$2.inflateInit2(this.strm, opt.windowBits);
   if (status !== Z_OK) {
     throw new Error(messages[status]);
   }
   this.header = new gzheader();
   inflate_1$2.inflateGetHeader(this.strm, this.header);
   if (opt.dictionary) {
-    if (typeof opt.dictionary === "string") {
+    if (typeof opt.dictionary === 'string') {
       opt.dictionary = strings.string2buf(opt.dictionary);
-    } else if (toString.call(opt.dictionary) === "[object ArrayBuffer]") {
+    } else if (toString.call(opt.dictionary) === '[object ArrayBuffer]') {
       opt.dictionary = new Uint8Array(opt.dictionary);
     }
     if (opt.raw) {
@@ -8478,25 +8769,22 @@ function Inflate$1(options) {
     }
   }
 }
-Inflate$1.prototype.push = function(data, flush_mode) {
+Inflate$1.prototype.push = function (data, flush_mode) {
   const strm = this.strm;
   const chunkSize = this.options.chunkSize;
   const dictionary = this.options.dictionary;
   let status, _flush_mode, last_avail_out;
-  if (this.ended)
-    return false;
-  if (flush_mode === ~~flush_mode)
-    _flush_mode = flush_mode;
-  else
-    _flush_mode = flush_mode === true ? Z_FINISH : Z_NO_FLUSH;
-  if (toString.call(data) === "[object ArrayBuffer]") {
+  if (this.ended) return false;
+  if (flush_mode === ~~flush_mode) _flush_mode = flush_mode;
+  else _flush_mode = flush_mode === true ? Z_FINISH : Z_NO_FLUSH;
+  if (toString.call(data) === '[object ArrayBuffer]') {
     strm.input = new Uint8Array(data);
   } else {
     strm.input = data;
   }
   strm.next_in = 0;
   strm.avail_in = strm.input.length;
-  for (; ; ) {
+  for (;;) {
     if (strm.avail_out === 0) {
       strm.output = new Uint8Array(chunkSize);
       strm.next_out = 0;
@@ -8511,7 +8799,12 @@ Inflate$1.prototype.push = function(data, flush_mode) {
         status = Z_NEED_DICT;
       }
     }
-    while (strm.avail_in > 0 && status === Z_STREAM_END && strm.state.wrap > 0 && data[strm.next_in] !== 0) {
+    while (
+      strm.avail_in > 0 &&
+      status === Z_STREAM_END &&
+      strm.state.wrap > 0 &&
+      data[strm.next_in] !== 0
+    ) {
       inflate_1$2.inflateReset(strm);
       status = inflate_1$2.inflate(strm, _flush_mode);
     }
@@ -8527,40 +8820,41 @@ Inflate$1.prototype.push = function(data, flush_mode) {
     last_avail_out = strm.avail_out;
     if (strm.next_out) {
       if (strm.avail_out === 0 || status === Z_STREAM_END) {
-        if (this.options.to === "string") {
+        if (this.options.to === 'string') {
           let next_out_utf8 = strings.utf8border(strm.output, strm.next_out);
           let tail = strm.next_out - next_out_utf8;
           let utf8str = strings.buf2string(strm.output, next_out_utf8);
           strm.next_out = tail;
           strm.avail_out = chunkSize - tail;
-          if (tail)
-            strm.output.set(strm.output.subarray(next_out_utf8, next_out_utf8 + tail), 0);
+          if (tail) strm.output.set(strm.output.subarray(next_out_utf8, next_out_utf8 + tail), 0);
           this.onData(utf8str);
         } else {
-          this.onData(strm.output.length === strm.next_out ? strm.output : strm.output.subarray(0, strm.next_out));
+          this.onData(
+            strm.output.length === strm.next_out
+              ? strm.output
+              : strm.output.subarray(0, strm.next_out)
+          );
         }
       }
     }
-    if (status === Z_OK && last_avail_out === 0)
-      continue;
+    if (status === Z_OK && last_avail_out === 0) continue;
     if (status === Z_STREAM_END) {
       status = inflate_1$2.inflateEnd(this.strm);
       this.onEnd(status);
       this.ended = true;
       return true;
     }
-    if (strm.avail_in === 0)
-      break;
+    if (strm.avail_in === 0) break;
   }
   return true;
 };
-Inflate$1.prototype.onData = function(chunk) {
+Inflate$1.prototype.onData = function (chunk) {
   this.chunks.push(chunk);
 };
-Inflate$1.prototype.onEnd = function(status) {
+Inflate$1.prototype.onEnd = function (status) {
   if (status === Z_OK) {
-    if (this.options.to === "string") {
-      this.result = this.chunks.join("");
+    if (this.options.to === 'string') {
+      this.result = this.chunks.join('');
     } else {
       this.result = common.flattenChunks(this.chunks);
     }
@@ -8572,8 +8866,7 @@ Inflate$1.prototype.onEnd = function(status) {
 function inflate$1(input, options) {
   const inflator = new Inflate$1(options);
   inflator.push(input);
-  if (inflator.err)
-    throw inflator.msg || messages[inflator.err];
+  if (inflator.err) throw inflator.msg || messages[inflator.err];
   return inflator.result;
 }
 function inflateRaw$1(input, options) {
@@ -8607,15 +8900,13 @@ function mountImageUrl(url, mountpoint) {
     const { data, metadata } = decodeVFSArchive(dataResp.response);
     mountImageData(data, metadata, mountpoint);
   } else {
-    const urlBase = url.replace(/\.data\.gz$|\.data$|\.js.metadata$/, "");
+    const urlBase = url.replace(/\.data\.gz$|\.data$|\.js.metadata$/, '');
     const metaResp = Module2.downloadFileContent(`${urlBase}.js.metadata`);
     if (metaResp.status < 200 || metaResp.status >= 300) {
       throw new Error("Can't download Emscripten filesystem image metadata.");
     }
-    const metadata = JSON.parse(
-      new TextDecoder().decode(metaResp.response)
-    );
-    const ext = metadata.gzip ? ".data.gz" : ".data";
+    const metadata = JSON.parse(new TextDecoder().decode(metaResp.response));
+    const ext = metadata.gzip ? '.data.gz' : '.data';
     const dataResp = Module2.downloadFileContent(`${urlBase}${ext}`);
     if (dataResp.status < 200 || dataResp.status >= 300) {
       throw new Error("Can't download Emscripten filesystem image data.");
@@ -8628,17 +8919,15 @@ function mountImageUrl(url, mountpoint) {
   }
 }
 function mountImagePath(path, mountpoint) {
-  const fs = require("fs");
+  const fs = require('fs');
   if (/\.tgz$|\.tar\.gz$|\.tar$/.test(path)) {
     const buffer = fs.readFileSync(path);
     const { data, metadata } = decodeVFSArchive(buffer);
     mountImageData(data, metadata, mountpoint);
   } else {
-    const pathBase = path.replace(/\.data\.gz$|\.data$|\.js.metadata$/, "");
-    const metadata = JSON.parse(
-      fs.readFileSync(`${pathBase}.js.metadata`, "utf8")
-    );
-    const ext = metadata.gzip ? ".data.gz" : ".data";
+    const pathBase = path.replace(/\.data\.gz$|\.data$|\.js.metadata$/, '');
+    const metadata = JSON.parse(fs.readFileSync(`${pathBase}.js.metadata`, 'utf8'));
+    const ext = metadata.gzip ? '.data.gz' : '.data';
     let data = fs.readFileSync(`${pathBase}${ext}`);
     if (metadata.gzip) {
       data = ungzip_1(data).buffer;
@@ -8650,7 +8939,7 @@ function mountFSNode(type, opts, mountpoint) {
   if (!IN_NODE || type !== Module2.FS.filesystems.WORKERFS) {
     return Module2.FS._mount(type, opts, mountpoint);
   }
-  if ("packages" in opts && opts.packages) {
+  if ('packages' in opts && opts.packages) {
     opts.packages.forEach((pkg) => {
       mountImageData(pkg.blob, pkg.metadata, mountpoint);
     });
@@ -8676,23 +8965,29 @@ function mountImageData(data, metadata, mountpoint) {
         sub.size = sub.byteLength;
         return sub;
       };
-      const parts = (mountpoint + f.filename).split("/");
+      const parts = (mountpoint + f.filename).split('/');
       const file = parts.pop();
       if (!file) {
         throw new Error(`Invalid mount path "${mountpoint}${f.filename}".`);
       }
-      const dir = parts.join("/");
+      const dir = parts.join('/');
       Module2.FS.mkdirTree(dir);
       const dirNode = Module2.FS.lookupPath(dir, {}).node;
       WORKERFS.createNode(dirNode, file, WORKERFS.FILE_MODE, 0, contents);
     });
   } else {
-    Module2.FS.mount(Module2.FS.filesystems.WORKERFS, {
-      packages: [{
-        blob: new Blob([data]),
-        metadata
-      }]
-    }, mountpoint);
+    Module2.FS.mount(
+      Module2.FS.filesystems.WORKERFS,
+      {
+        packages: [
+          {
+            blob: new Blob([data]),
+            metadata
+          }
+        ]
+      },
+      mountpoint
+    );
   }
 }
 function decodeVFSArchive(data) {
@@ -8729,9 +9024,9 @@ function findArchiveMetadata(buffer) {
     if (/5|g|[A-Z]/.test(type)) {
       continue;
     }
-    const filename = decoder2.decode(header.slice(0, 100)).replace(/\0+$/, "");
+    const filename = decoder2.decode(header.slice(0, 100)).replace(/\0+$/, '');
     const len = parseInt(decoder2.decode(header.slice(124, 136)), 8);
-    if (filename == ".vfs-index.json") {
+    if (filename == '.vfs-index.json') {
       return { block: offset / 512, len };
     }
     offset += 512 * Math.ceil(len / 512);
@@ -8742,11 +9037,11 @@ function findArchiveMetadata(buffer) {
 // webR/webr-worker.ts
 var initialised = false;
 var chan;
-var onWorkerMessage = function(msg) {
+var onWorkerMessage = function (msg) {
   if (!msg || !msg.type) {
     return;
   }
-  if (msg.type === "init") {
+  if (msg.type === 'init') {
     if (initialised) {
       throw new Error("Can't initialise worker multiple times.");
     }
@@ -8760,8 +9055,8 @@ var onWorkerMessage = function(msg) {
   chan == null ? void 0 : chan.onMessageFromMainThread(msg);
 };
 if (IN_NODE) {
-  const workerThreads = require("worker_threads");
-  workerThreads.parentPort.on("message", onWorkerMessage);
+  const workerThreads = require('worker_threads');
+  workerThreads.parentPort.on('message', onWorkerMessage);
   globalThis.XMLHttpRequest = require_XMLHttpRequest().XMLHttpRequest;
 } else {
   globalThis.onmessage = (ev) => onWorkerMessage(ev.data);
@@ -8769,127 +9064,128 @@ if (IN_NODE) {
 var _config;
 function dispatch(msg) {
   switch (msg.type) {
-    case "request": {
+    case 'request': {
       const req = msg;
       const reqMsg = req.data.msg;
-      const write = (resp, transferables) => chan == null ? void 0 : chan.write(newResponse(req.data.uuid, resp, transferables));
+      const write = (resp, transferables) =>
+        chan == null ? void 0 : chan.write(newResponse(req.data.uuid, resp, transferables));
       try {
         switch (reqMsg.type) {
-          case "lookupPath": {
+          case 'lookupPath': {
             const msg2 = reqMsg;
             const node = Module2.FS.lookupPath(msg2.data.path, {}).node;
             write({
               obj: copyFSNode(node),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "mkdir": {
+          case 'mkdir': {
             const msg2 = reqMsg;
             write({
               obj: copyFSNode(Module2.FS.mkdir(msg2.data.path)),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "mount": {
+          case 'mount': {
             const msg2 = reqMsg;
             const type = msg2.data.type;
-            if (type === "IDBFS" && _config.channelType == ChannelType.SharedArrayBuffer) {
+            if (type === 'IDBFS' && _config.channelType == ChannelType.SharedArrayBuffer) {
               throw new Error(
-                "The `IDBFS` filesystem type is not supported under the `SharedArrayBuffer` communication channel. The `PostMessage` communication channel must be used."
+                'The `IDBFS` filesystem type is not supported under the `SharedArrayBuffer` communication channel. The `PostMessage` communication channel must be used.'
               );
             }
             const fs = Module2.FS.filesystems[type];
             Module2.FS.mount(fs, msg2.data.options, msg2.data.mountpoint);
-            write({ obj: null, payloadType: "raw" });
+            write({ obj: null, payloadType: 'raw' });
             break;
           }
-          case "syncfs": {
+          case 'syncfs': {
             const msg2 = reqMsg;
             Module2.FS.syncfs(msg2.data.populate, (err2) => {
               if (err2) {
                 throw new Error(`Emscripten \`syncfs\` error: "${err2}".`);
               }
-              write({ obj: null, payloadType: "raw" });
+              write({ obj: null, payloadType: 'raw' });
             });
             break;
           }
-          case "readFile": {
+          case 'readFile': {
             const msg2 = reqMsg;
             const reqData = msg2.data;
             const out = {
               obj: Module2.FS.readFile(reqData.path, {
-                encoding: "binary",
+                encoding: 'binary',
                 flags: reqData.flags
               }),
-              payloadType: "raw"
+              payloadType: 'raw'
             };
             write(out, [out.obj.buffer]);
             break;
           }
-          case "rmdir": {
+          case 'rmdir': {
             const msg2 = reqMsg;
             write({
               obj: Module2.FS.rmdir(msg2.data.path),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "writeFile": {
+          case 'writeFile': {
             const msg2 = reqMsg;
             const reqData = msg2.data;
             const data = Uint8Array.from(Object.values(reqData.data));
             write({
               obj: Module2.FS.writeFile(reqData.path, data, { flags: reqData.flags }),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "unlink": {
+          case 'unlink': {
             const msg2 = reqMsg;
             write({
               obj: Module2.FS.unlink(msg2.data.path),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "unmount": {
+          case 'unmount': {
             const msg2 = reqMsg;
             write({
               obj: Module2.FS.unmount(msg2.data.path),
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
-          case "newShelter": {
+          case 'newShelter': {
             const id = generateUUID();
             shelters.set(id, []);
             write({
-              payloadType: "raw",
+              payloadType: 'raw',
               obj: id
             });
             break;
           }
-          case "shelterSize": {
+          case 'shelterSize': {
             const msg2 = reqMsg;
             const size = shelters.get(msg2.data).length;
-            write({ payloadType: "raw", obj: size });
+            write({ payloadType: 'raw', obj: size });
             break;
           }
-          case "shelterPurge": {
+          case 'shelterPurge': {
             const msg2 = reqMsg;
             purge(msg2.data);
-            write({ payloadType: "raw", obj: null });
+            write({ payloadType: 'raw', obj: null });
             break;
           }
-          case "shelterDestroy": {
+          case 'shelterDestroy': {
             const msg2 = reqMsg;
             destroy(msg2.data.id, msg2.data.obj.obj.ptr);
-            write({ payloadType: "raw", obj: null });
+            write({ payloadType: 'raw', obj: null });
             break;
           }
-          case "captureR": {
+          case 'captureR': {
             const msg2 = reqMsg;
             const data = msg2.data;
             const shelter = data.shelter;
@@ -8906,7 +9202,7 @@ function dispatch(msg) {
                 const out = capture.output.get(i);
                 const type = out.pluck(1, 1).toString();
                 const data2 = out.get(2);
-                if (type === "stdout" || type === "stderr") {
+                if (type === 'stdout' || type === 'stderr') {
                   const msg3 = data2.toString();
                   output.push({ type, data: msg3 });
                 } else {
@@ -8917,13 +9213,13 @@ function dispatch(msg) {
                       type: data2.type(),
                       methods: RObject.getMethods(data2)
                     },
-                    payloadType: "ptr"
+                    payloadType: 'ptr'
                   };
                   output.push({ type, data: payload });
                 }
               }
               const resultPayload = {
-                payloadType: "ptr",
+                payloadType: 'ptr',
                 obj: {
                   ptr: result.ptr,
                   type: result.type(),
@@ -8931,7 +9227,7 @@ function dispatch(msg) {
                 }
               };
               write({
-                payloadType: "raw",
+                payloadType: 'raw',
                 obj: {
                   result: resultPayload,
                   output,
@@ -8943,7 +9239,7 @@ function dispatch(msg) {
             }
             break;
           }
-          case "evalR": {
+          case 'evalR': {
             const msg2 = reqMsg;
             const result = evalR(msg2.data.code, msg2.data.options);
             keep(msg2.data.shelter, result);
@@ -8953,34 +9249,36 @@ function dispatch(msg) {
                 ptr: result.ptr,
                 methods: RObject.getMethods(result)
               },
-              payloadType: "ptr"
+              payloadType: 'ptr'
             });
             break;
           }
-          case "evalRRaw": {
+          case 'evalRRaw': {
             const msg2 = reqMsg;
             const result = evalR(msg2.data.code, msg2.data.options);
             protect(result);
             const throwType = () => {
-              throw new Error(`Can't convert object of type ${result.type()} to ${msg2.data.outputType}.`);
+              throw new Error(
+                `Can't convert object of type ${result.type()} to ${msg2.data.outputType}.`
+              );
             };
             try {
               let out = void 0;
               switch (msg2.data.outputType) {
-                case "void":
+                case 'void':
                   break;
-                case "boolean":
+                case 'boolean':
                   switch (result.type()) {
-                    case "logical":
+                    case 'logical':
                       out = result.toBoolean();
                       break;
                     default:
                       throwType();
                   }
                   break;
-                case "boolean[]":
+                case 'boolean[]':
                   switch (result.type()) {
-                    case "logical":
+                    case 'logical':
                       out = result.toArray();
                       if (out.some((i) => i === null)) {
                         throwType();
@@ -8990,35 +9288,35 @@ function dispatch(msg) {
                       throwType();
                   }
                   break;
-                case "number":
+                case 'number':
                   switch (result.type()) {
-                    case "logical":
+                    case 'logical':
                       out = result.toBoolean();
                       out = Number(out);
                       break;
-                    case "integer":
+                    case 'integer':
                       out = result.toNumber();
                       break;
-                    case "double":
+                    case 'double':
                       out = result.toNumber();
                       break;
                     default:
                       throwType();
                   }
                   break;
-                case "number[]":
+                case 'number[]':
                   switch (result.type()) {
-                    case "logical":
+                    case 'logical':
                       out = result.toArray();
-                      out = out.map((i) => i === null ? throwType() : Number(i));
+                      out = out.map((i) => (i === null ? throwType() : Number(i)));
                       break;
-                    case "integer":
+                    case 'integer':
                       out = result.toArray();
                       if (out.some((i) => i === null)) {
                         throwType();
                       }
                       break;
-                    case "double":
+                    case 'double':
                       out = result.toArray();
                       if (out.some((i) => i === null)) {
                         throwType();
@@ -9028,18 +9326,18 @@ function dispatch(msg) {
                       throwType();
                   }
                   break;
-                case "string":
+                case 'string':
                   switch (result.type()) {
-                    case "character":
+                    case 'character':
                       out = result.toString();
                       break;
                     default:
                       throwType();
                   }
                   break;
-                case "string[]":
+                case 'string[]':
                   switch (result.type()) {
-                    case "character":
+                    case 'character':
                       out = result.toArray();
                       if (out.some((i) => i === null)) {
                         throwType();
@@ -9050,25 +9348,25 @@ function dispatch(msg) {
                   }
                   break;
                 default:
-                  throw new Error("Unexpected output type in `evalRRaw().");
+                  throw new Error('Unexpected output type in `evalRRaw().');
               }
               write({
                 obj: out,
-                payloadType: "raw"
+                payloadType: 'raw'
               });
               break;
             } finally {
               unprotect(1);
             }
           }
-          case "newRObject": {
+          case 'newRObject': {
             const msg2 = reqMsg;
             const payload = newRObject(msg2.data.args, msg2.data.objType);
             keep(msg2.data.shelter, payload.obj.ptr);
             write(payload);
             break;
           }
-          case "callRObjectMethod": {
+          case 'callRObjectMethod': {
             const msg2 = reqMsg;
             const data = msg2.data;
             const obj = data.payload ? RObject.wrap(data.payload.obj.ptr) : RObject;
@@ -9079,42 +9377,40 @@ function dispatch(msg) {
             write(payload);
             break;
           }
-          case "invokeWasmFunction": {
+          case 'invokeWasmFunction': {
             const msg2 = reqMsg;
             const res = Module2.getWasmTableEntry(msg2.data.ptr)(...msg2.data.args);
             write({
-              payloadType: "raw",
+              payloadType: 'raw',
               obj: res
             });
             break;
           }
-          case "installPackages": {
+          case 'installPackages': {
             const msg2 = reqMsg;
             let pkgs = msg2.data.name;
             let repos = msg2.data.options.repos ? msg2.data.options.repos : _config.repoUrl;
-            if (typeof pkgs === "string")
-              pkgs = [pkgs];
-            if (typeof repos === "string")
-              repos = [repos];
+            if (typeof pkgs === 'string') pkgs = [pkgs];
+            if (typeof repos === 'string') repos = [repos];
             evalR(`webr::install(
-              c(${pkgs.map((r) => '"' + r + '"').join(",")}),
-              repos = c(${repos.map((r) => '"' + r + '"').join(",")}),
-              quiet = ${msg2.data.options.quiet ? "TRUE" : "FALSE"},
-              mount = ${msg2.data.options.mount ? "TRUE" : "FALSE"}
+              c(${pkgs.map((r) => '"' + r + '"').join(',')}),
+              repos = c(${repos.map((r) => '"' + r + '"').join(',')}),
+              quiet = ${msg2.data.options.quiet ? 'TRUE' : 'FALSE'},
+              mount = ${msg2.data.options.mount ? 'TRUE' : 'FALSE'}
             )`);
             write({
               obj: true,
-              payloadType: "raw"
+              payloadType: 'raw'
             });
             break;
           }
           default:
-            throw new Error("Unknown event `" + reqMsg.type + "`");
+            throw new Error('Unknown event `' + reqMsg.type + '`');
         }
       } catch (_e) {
         const e = _e;
         write({
-          payloadType: "err",
+          payloadType: 'err',
           obj: { name: e.name, message: e.message, stack: e.stack }
         });
         if (e instanceof UnwindProtectException) {
@@ -9125,7 +9421,7 @@ function dispatch(msg) {
       break;
     }
     default:
-      throw new Error("Unknown event `" + msg.type + "`");
+      throw new Error('Unknown event `' + msg.type + '`');
   }
 }
 function copyFSNode(obj) {
@@ -9152,15 +9448,15 @@ function copyFSNode(obj) {
 }
 function downloadFileContent(URL2, headers = []) {
   const request = new XMLHttpRequest();
-  request.open("GET", URL2, false);
-  request.responseType = "arraybuffer";
+  request.open('GET', URL2, false);
+  request.responseType = 'arraybuffer';
   try {
     headers.forEach((header) => {
-      const splitHeader = header.split(": ");
+      const splitHeader = header.split(': ');
       request.setRequestHeader(splitHeader[0], splitHeader[1]);
     });
   } catch {
-    const responseText = "An error occurred setting headers in XMLHttpRequest";
+    const responseText = 'An error occurred setting headers in XMLHttpRequest';
     console.error(responseText);
     return { status: 400, response: responseText };
   }
@@ -9175,16 +9471,12 @@ function downloadFileContent(URL2, headers = []) {
       return { status, response: responseText };
     }
   } catch {
-    return { status: 400, response: "An error occurred in XMLHttpRequest" };
+    return { status: 400, response: 'An error occurred in XMLHttpRequest' };
   }
 }
 function newRObject(args, objType) {
   const RClass = getRWorkerClass(objType);
-  const _args = replaceInObject(
-    args,
-    isWebRPayloadPtr,
-    (t) => RObject.wrap(t.obj.ptr)
-  );
+  const _args = replaceInObject(args, isWebRPayloadPtr, (t) => RObject.wrap(t.obj.ptr));
   const obj = new RClass(..._args);
   return {
     obj: {
@@ -9192,7 +9484,7 @@ function newRObject(args, objType) {
       ptr: obj.ptr,
       methods: RObject.getMethods(obj)
     },
-    payloadType: "ptr"
+    payloadType: 'ptr'
   };
 }
 function callRObjectMethod(obj, prop, args) {
@@ -9200,29 +9492,25 @@ function callRObjectMethod(obj, prop, args) {
     throw new ReferenceError(`${prop} is not defined`);
   }
   const fn = obj[prop];
-  if (typeof fn !== "function") {
-    throw Error("Requested property cannot be invoked");
+  if (typeof fn !== 'function') {
+    throw Error('Requested property cannot be invoked');
   }
   const res = fn.apply(
     obj,
     args.map((arg) => {
-      if (arg.payloadType === "ptr") {
+      if (arg.payloadType === 'ptr') {
         return RObject.wrap(arg.obj.ptr);
       }
-      return replaceInObject(
-        arg.obj,
-        isWebRPayloadPtr,
-        (t) => RObject.wrap(t.obj.ptr)
-      );
+      return replaceInObject(arg.obj, isWebRPayloadPtr, (t) => RObject.wrap(t.obj.ptr));
     })
   );
   const ret = replaceInObject(res, isRObject, (obj2) => {
     return {
       obj: { type: obj2.type(), ptr: obj2.ptr, methods: RObject.getMethods(obj2) },
-      payloadType: "ptr"
+      payloadType: 'ptr'
     };
   });
-  return { obj: ret, payloadType: "raw" };
+  return { obj: ret, payloadType: 'raw' };
 }
 function captureR(expr, options = {}) {
   var _a;
@@ -9231,48 +9519,55 @@ function captureR(expr, options = {}) {
       env: objs.globalEnv,
       captureStreams: true,
       captureConditions: true,
-      captureGraphics: typeof OffscreenCanvas !== "undefined",
+      captureGraphics: typeof OffscreenCanvas !== 'undefined',
       withAutoprint: false,
       throwJsException: true,
       withHandlers: true
     },
-    replaceInObject(
-      options,
-      isWebRPayloadPtr,
-      (t) => RObject.wrap(t.obj.ptr)
-    )
+    replaceInObject(options, isWebRPayloadPtr, (t) => RObject.wrap(t.obj.ptr))
   );
   const prot = { n: 0 };
   const devEnvObj = new REnvironment({});
   protectInc(devEnvObj, prot);
-  Module2.setValue(Module2._R_Interactive, 0, "i8");
+  Module2.setValue(Module2._R_Interactive, 0, 'i8');
   try {
     const envObj = new REnvironment(_options.env);
     protectInc(envObj, prot);
-    if (envObj.type() !== "environment") {
-      throw new Error("Attempted to evaluate R code with invalid environment object");
+    if (envObj.type() !== 'environment') {
+      throw new Error('Attempted to evaluate R code with invalid environment object');
     }
     if (_options.captureGraphics) {
-      if (typeof OffscreenCanvas === "undefined") {
+      if (typeof OffscreenCanvas === 'undefined') {
         throw new Error(
-          "This environment does not have support for OffscreenCanvas. Consider disabling plot capture using `captureGraphics: false`."
+          'This environment does not have support for OffscreenCanvas. Consider disabling plot capture using `captureGraphics: false`.'
         );
       }
-      devEnvObj.bind("canvas_options", new RList(Object.assign({
-        capture: true
-      }, _options.captureGraphics)));
-      parseEvalBare(`{
+      devEnvObj.bind(
+        'canvas_options',
+        new RList(
+          Object.assign(
+            {
+              capture: true
+            },
+            _options.captureGraphics
+          )
+        )
+      );
+      parseEvalBare(
+        `{
         old_dev <- dev.cur()
         do.call(webr::canvas, canvas_options)
         new_dev <- dev.cur()
         old_cache <- webr::canvas_cache()
         plots <- numeric()
-      }`, devEnvObj);
+      }`,
+        devEnvObj
+      );
     }
     const tPtr = objs.true.ptr;
     const fPtr = objs.false.ptr;
-    const fn = parseEvalBare("webr::eval_r", objs.baseEnv);
-    const qu = parseEvalBare("quote", objs.baseEnv);
+    const fn = parseEvalBare('webr::eval_r', objs.baseEnv);
+    const qu = parseEvalBare('quote', objs.baseEnv);
     protectInc(fn, prot);
     protectInc(qu, prot);
     const exprObj = new RObject(expr);
@@ -9289,51 +9584,61 @@ function captureR(expr, options = {}) {
     const capture = RList.wrap(safeEval(call, envObj));
     protectInc(capture, prot);
     if (_options.captureConditions && _options.throwJsException) {
-      const output = capture.get("output");
-      const error = output.toArray().find(
-        (out) => out.get("type").toString() === "error"
-      );
+      const output = capture.get('output');
+      const error = output.toArray().find((out) => out.get('type').toString() === 'error');
       if (error) {
-        const call2 = error.pluck("data", "call");
-        const source = call2 && call2.type() === "call" ? `\`${call2.deparse()}\`` : "unknown source";
-        const message = ((_a = error.pluck("data", "message")) == null ? void 0 : _a.toString()) || "An error occurred evaluating R code.";
+        const call2 = error.pluck('data', 'call');
+        const source =
+          call2 && call2.type() === 'call' ? `\`${call2.deparse()}\`` : 'unknown source';
+        const message =
+          ((_a = error.pluck('data', 'message')) == null ? void 0 : _a.toString()) ||
+          'An error occurred evaluating R code.';
         throw new Error(`Error in ${source}: ${message}`);
       }
     }
     let images = [];
     if (_options.captureGraphics) {
-      const plots = parseEvalBare(`{
+      const plots = parseEvalBare(
+        `{
         new_cache <- webr::canvas_cache()
         plots <- setdiff(new_cache, old_cache)
-      }`, devEnvObj);
+      }`,
+        devEnvObj
+      );
       protectInc(plots, prot);
       images = plots.toArray().map((idx) => {
         return Module2.webr.canvas[idx].offscreen.transferToImageBitmap();
       });
     }
     return {
-      result: capture.get("result"),
-      output: capture.get("output"),
+      result: capture.get('result'),
+      output: capture.get('output'),
       images
     };
   } finally {
-    Module2.setValue(Module2._R_Interactive, _config.interactive ? 1 : 0, "i8");
-    const newDev = devEnvObj.get("new_dev");
-    if (_options.captureGraphics && newDev.type() !== "null") {
-      parseEvalBare(`{
+    Module2.setValue(Module2._R_Interactive, _config.interactive ? 1 : 0, 'i8');
+    const newDev = devEnvObj.get('new_dev');
+    if (_options.captureGraphics && newDev.type() !== 'null') {
+      parseEvalBare(
+        `{
         dev.off(new_dev)
         dev.set(old_dev)
         webr::canvas_destroy(plots)
-      }`, devEnvObj);
+      }`,
+        devEnvObj
+      );
     }
     unprotect(prot.n);
   }
 }
 function evalR(expr, options = {}) {
   var _a, _b;
-  options = Object.assign({
-    captureGraphics: false
-  }, options);
+  options = Object.assign(
+    {
+      captureGraphics: false
+    },
+    options
+  );
   const prot = { n: 0 };
   const capture = captureR(expr, options);
   try {
@@ -9341,30 +9646,42 @@ function evalR(expr, options = {}) {
     protectInc(capture.result, prot);
     for (let i = 1; i <= capture.output.length; i++) {
       const out = capture.output.get(i);
-      const outputType = out.get("type").toString();
+      const outputType = out.get('type').toString();
       switch (outputType) {
-        case "stdout":
-          chan == null ? void 0 : chan.writeSystem({ type: "console.log", data: out.get("data").toString() });
+        case 'stdout':
+          chan == null
+            ? void 0
+            : chan.writeSystem({ type: 'console.log', data: out.get('data').toString() });
           break;
-        case "stderr":
-          chan == null ? void 0 : chan.writeSystem({ type: "console.warn", data: out.get("data").toString() });
+        case 'stderr':
+          chan == null
+            ? void 0
+            : chan.writeSystem({ type: 'console.warn', data: out.get('data').toString() });
           break;
-        case "message":
-          chan == null ? void 0 : chan.writeSystem({
-            type: "console.warn",
-            data: ((_a = out.pluck("data", "message")) == null ? void 0 : _a.toString()) || ""
-          });
+        case 'message':
+          chan == null
+            ? void 0
+            : chan.writeSystem({
+                type: 'console.warn',
+                data: ((_a = out.pluck('data', 'message')) == null ? void 0 : _a.toString()) || ''
+              });
           break;
-        case "warning":
-          chan == null ? void 0 : chan.writeSystem({
-            type: "console.warn",
-            data: `Warning message: 
-${((_b = out.pluck("data", "message")) == null ? void 0 : _b.toString()) || ""}`
-          });
+        case 'warning':
+          chan == null
+            ? void 0
+            : chan.writeSystem({
+                type: 'console.warn',
+                data: `Warning message: 
+${((_b = out.pluck('data', 'message')) == null ? void 0 : _b.toString()) || ''}`
+              });
           break;
         default:
-          chan == null ? void 0 : chan.writeSystem({ type: "console.warn", data: `Output of type ${outputType}:` });
-          chan == null ? void 0 : chan.writeSystem({ type: "console.warn", data: out.get("data").toJs() });
+          chan == null
+            ? void 0
+            : chan.writeSystem({ type: 'console.warn', data: `Output of type ${outputType}:` });
+          chan == null
+            ? void 0
+            : chan.writeSystem({ type: 'console.warn', data: out.get('data').toJs() });
           break;
       }
     }
@@ -9414,7 +9731,7 @@ function init(config) {
     resolveInit: () => {
       initPersistentObjects();
       chan == null ? void 0 : chan.setInterrupt(Module2._Rf_onintr);
-      Module2.setValue(Module2._R_Interactive, _config.interactive ? 1 : 0, "i8");
+      Module2.setValue(Module2._R_Interactive, _config.interactive ? 1 : 0, 'i8');
       evalR(`options(webr_pkg_repos="${_config.repoUrl}")`);
       chan == null ? void 0 : chan.resolve();
     },
@@ -9429,7 +9746,7 @@ function init(config) {
     },
     dataViewer: (ptr, title) => {
       const data = RList.wrap(ptr).toObject({ depth: 0 });
-      chan == null ? void 0 : chan.write({ type: "view", data: { data, title } });
+      chan == null ? void 0 : chan.write({ type: 'view', data: { data, title } });
     },
     evalJs: (code) => {
       try {
@@ -9451,7 +9768,9 @@ function init(config) {
       return 0;
     },
     setTimeoutWasm: (ptr, delay, ...args) => {
-      chan == null ? void 0 : chan.writeSystem({ type: "setTimeoutWasm", data: { ptr, delay, args } });
+      chan == null
+        ? void 0
+        : chan.writeSystem({ type: 'setTimeoutWasm', data: { ptr, delay, args } });
     }
   };
   Module2.locateFile = (path) => _config.baseUrl + path;
@@ -9459,13 +9778,13 @@ function init(config) {
   Module2.mountImageUrl = mountImageUrl;
   Module2.mountImagePath = mountImagePath;
   Module2.print = (text) => {
-    chan == null ? void 0 : chan.write({ type: "stdout", data: text });
+    chan == null ? void 0 : chan.write({ type: 'stdout', data: text });
   };
   Module2.printErr = (text) => {
-    chan == null ? void 0 : chan.write({ type: "stderr", data: text });
+    chan == null ? void 0 : chan.write({ type: 'stderr', data: text });
   };
   Module2.setPrompt = (prompt) => {
-    chan == null ? void 0 : chan.write({ type: "prompt", data: prompt });
+    chan == null ? void 0 : chan.write({ type: 'prompt', data: prompt });
   };
   globalThis.Module = Module2;
   setTimeout(() => {

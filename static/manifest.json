@@ -1,22 +1,22 @@
 {
-    "name": "Diana",
-    "short_name": "Diana",
-    "description": "Transposon Sequencing Data Visualiser",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#6366f1",
-    "background_color": "#3b3d91",
-    "start_url": ".",
-    "scope": "/",
-    "display": "standalone"
+  "name": "Diana",
+  "short_name": "Diana",
+  "description": "Transposon Sequencing Data Visualiser",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6366f1",
+  "background_color": "#3b3d91",
+  "start_url": ".",
+  "scope": "/",
+  "display": "standalone"
 }
