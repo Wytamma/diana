@@ -10,7 +10,7 @@
   </div>
   <div class="block card p-4 m-4 variant-ghost-error">
     <p class="font-bold">No reference genome</p>
-    <p>Please use the <a class="underline" href="/">Data Panel</a> to add a reference genome.</p>
+    <p>Please use the <a class="anchor" href="/">Data Panel</a> to add a reference genome.</p>
   </div>
 {:else}
   <div class="h-full variant-filled-secondary !bg-white p-2">

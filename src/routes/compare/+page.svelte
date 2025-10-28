@@ -87,7 +87,7 @@
       <div class="block card p-4 variant-ghost-error">
         <p class="font-bold">Insufficient replicates</p>
         <p>
-          Please use the <a class="underline" href="/">Data Panel</a> to ensure that you have at least
+          Please use the <a class="anchor" href="/">Data Panel</a> to ensure that you have at least
           two control and two treatment datasets to perform a valid comparison.
         </p>
       </div>
