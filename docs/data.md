@@ -59,7 +59,9 @@ variableStep chrom=plasmid
 ```
 
 !!! note
-At site `5` on the chromosome in the example file there `20` insert counts on the forward strand (`5 20`) and `1` insert counts on the reverse strand (`5 -1`).
+
+    At site `5` on the chromosome in the example file there `20` insert counts on the forward strand (`5 20`) and `1` insert counts on the reverse strand (`5 -1`).
+   
 
 ---
 
@@ -71,7 +73,8 @@ The Plot format is a simpler, less flexible format:
 - Two columns: forward count and reverse count.
 
 !!! warning
-**Plot files are not recommended**. They do not specify chromosome names, and Diana assumes a single contiguous genome based on the reference sequence. Use `.wig` files whenever possible.
+
+    **Plot files are not recommended**. They do not specify chromosome names, and Diana assumes a single contiguous genome based on the reference sequence. Use `.wig` files whenever possible.
 
 #### Example Plot file:
 
@@ -84,7 +87,8 @@ The Plot format is a simpler, less flexible format:
 ```
 
 !!! note
-Site 4 has no inserts on the forward or reverse strand (`0 0`)
+
+    Site 4 has no inserts on the forward or reverse strand (`0 0`)
 
 ---
 
@@ -170,7 +174,8 @@ ATGCGTACGTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAG
 ## 3. Reference Genome Sequence (FASTA)
 
 !!! info
-If your annotation file includes sequences (e.g., GenBank or GFF+FASTA), a separate reference genome file is **not required**.
+
+    If your annotation file includes sequences (e.g., GenBank or GFF+FASTA), a separate reference genome file is **not required**.
 
 Otherwise, supply a reference genome in FASTA format:
 
