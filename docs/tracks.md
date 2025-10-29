@@ -10,6 +10,6 @@ The IGV interface in Diana allows you to navigate the genome and view the insert
 
 ![](./images/van-inserts.png)
 
-Here we can qualitatively see the difference in inserts in the Van genes between a treatment and control dataset ([Krause et al. (2025)](https://www.biorxiv.org/content/10.1101/2025.03.03.641140v1.abstract))
+Here we can qualitatively see the difference in inserts in the Van genes between a treatment and control dataset ([Krause et al. (2025)](https://journals.asm.org/doi/10.1128/spectrum.00628-25))
 
 IGV is a powerful tool for visualising genomic data with many features and options to customise the display. For more information on how to use IGV, see the [IGV documentation](https://igv.org/doc/desktop/#UserGuide/navigation/).

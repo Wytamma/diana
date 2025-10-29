@@ -16,13 +16,17 @@ Although TIS methods differ in methods, they all rely on the same basic principl
 
 ## How can I create TIS data?
 
-There are many ways to generate TIS data e.g. TraDIS, HITS, INSeq, Tn-Seq. See [Krause et al. (2025)](https://www.biorxiv.org/content/10.1101/2025.03.03.641140v1.abstract) for our recommended pipeline for generating transposon-directed insertion-site sequencing data using Nanopore sequencing.
+There are many ways to generate TIS data e.g. TraDIS, HITS, INSeq, Tn-Seq. See [Krause et al. (2025)](https://journals.asm.org/doi/10.1128/spectrum.00628-25) for our recommended pipeline for generating transposon-directed insertion-site sequencing data using Nanopore sequencing.
 
 Once you have generated TIS count data see the [Loading data](/docs/data/) section for information on how to load your data into Diana.
 
 ## Citation
 
-Citation in progress...
+Please cite Krause et al. (2025) if you use our long read TraDIS pipeline:
+
+> Krause AL, Wirth W, Turner AM, Judd L, Li L, van Schaik W, Howden BP, Carter GP, Seemann T, Wick R, Stinear TP, Buultjens AH, Monk IR.2025.Transposon-directed insertion-site sequencing (TraDIS) analysis of Enterococcus faecium using nanopore sequencing and a WebAssembly analysis platform. Microbiol Spectr13:e00628-25.https://doi.org/10.1128/spectrum.00628-25
+
+We are working on a citation for Diana itself, please check back later.
 
 ## Used by Diana
 
